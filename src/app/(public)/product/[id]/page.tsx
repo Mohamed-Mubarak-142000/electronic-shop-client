@@ -33,8 +33,8 @@ export default function ProductDetailsPage({ params }: { params: Promise<{ id: s
             if (!id) return;
             try {
                 setLoading(true);
-                const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'https://electronic-shop-server-f1vf.vercel.app';
-                const response = await fetch(`${apiUrl}/api/products/${id}`);
+                const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'https://electronic-shop-server-f1vf.vercel.app/api';
+                const response = await fetch(`${apiUrl}/products/${id}`);
                 if (!response.ok) {
                     throw new Error("Product not found");
                 }
@@ -43,7 +43,7 @@ export default function ProductDetailsPage({ params }: { params: Promise<{ id: s
 
                 // Fetch related products if category exists
                 if (data.category) {
-                    const relatedResponse = await fetch(`${apiUrl}/api/products?category=${data.category._id}&limit=4`);
+                    const relatedResponse = await fetch(`${apiUrl}/products?category=${data.category._id}&limit=4`);
                     if (relatedResponse.ok) {
                         const relatedData = await relatedResponse.json();
                         setRelatedProducts(relatedData.products.filter((p: Product) => p._id !== data._id));

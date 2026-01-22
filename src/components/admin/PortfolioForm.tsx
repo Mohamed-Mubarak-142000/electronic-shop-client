@@ -69,7 +69,7 @@ export default function PortfolioForm({ initialData, onClose, isOpen }: Portfoli
             setUploading(true);
             try {
                 // Using existing endpoint logic from page.tsx for now
-                const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'https://electronic-shop-server-f1vf.vercel.app'}/api/upload/multiple`, {
+                const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'https://electronic-shop-server-f1vf.vercel.app/api'}/upload/multiple`, {
                     method: 'POST',
                     body: uploadFormData,
                 });
