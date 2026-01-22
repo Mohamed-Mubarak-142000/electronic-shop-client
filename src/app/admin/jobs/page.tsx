@@ -78,7 +78,7 @@ export default function JobsPage() {
             formData.append('image', file);
             setUploading(true);
             try {
-                const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/upload/cloudinary`, {
+                const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'https://electronic-shop-server-f1vf.vercel.app'}/api/upload/cloudinary`, {
                     method: 'POST',
                     body: formData,
                 });

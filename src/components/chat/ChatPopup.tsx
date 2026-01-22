@@ -8,7 +8,7 @@ import { useAuthStore } from '@/store/useAuthStore';
 import { useTranslation } from '@/hooks/useTranslation';
 import chatService, { ChatMessage } from '@/services/chatService';
 
-const SOCKET_URL = process.env.NEXT_PUBLIC_SOCKET_URL || 'http://localhost:5000';
+const SOCKET_URL = process.env.NEXT_PUBLIC_SOCKET_URL || 'https://electronic-shop-server-f1vf.vercel.app';
 
 const ChatPopup = () => {
     const { user } = useAuthStore();
