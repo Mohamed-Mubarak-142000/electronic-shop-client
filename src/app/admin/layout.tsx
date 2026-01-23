@@ -33,7 +33,6 @@ export default function AdminLayout({
         }
     }, [user, router, mounted]);
 
-    // Close sidebar on route change (mobile)
     useEffect(() => {
         setIsSidebarOpen(false);
     }, [router]);
