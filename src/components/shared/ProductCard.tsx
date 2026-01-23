@@ -71,17 +71,17 @@ export default function ProductCard({ product }: { product: Product }) {
     };
 
     return (
-        <div className="group relative bg-surface-dark rounded-2xl sm:rounded-[2rem] p-3 sm:p-4 hover:bg-surface-highlight transition-all duration-300 flex flex-col h-full font-display border border-surface-highlight/10 hover:border-primary/20 w-full min-w-[260px]">
-            <div className="relative aspect-[4/3] rounded-xl sm:rounded-[1.5rem] overflow-hidden bg-white mb-3 sm:mb-4 shadow-inner">
-                <Link href={`/product/${product._id}`}>
+        <div className="group relative bg-surface-dark rounded-2xl sm:rounded-[2rem] p-3 sm:p-4 hover:bg-surface-highlight transition-all duration-300 flex flex-col h-full font-display border border-surface-highlight/10 hover:border-primary/20 w-full">
+            <div className="relative w-full aspect-[4/3] rounded-xl sm:rounded-[1.5rem] overflow-hidden bg-white mb-3 sm:mb-4 shadow-inner flex items-center justify-center">
+                <Link href={`/product/${product._id}`} className="w-full h-full relative block">
                     {/* Performance: Lazy load product images with proper sizes */}
                     <OptimizedImage
                         alt={`${product.name} - ${product.description.slice(0, 50)}`}
-                        className="object-cover group-hover:scale-105 transition-transform duration-500 cursor-pointer"
+                        className="object-contain w-full h-full group-hover:scale-105 transition-transform duration-500 cursor-pointer"
                         src={imageSrc}
                         fill
                         loading="lazy"
-                        sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                        sizes="(max-width: 640px) 100vw, (max-width: 768px) 100vw, 400px"
                     />
                 </Link>
                 {product.isDiscountActive && product.salePrice && (

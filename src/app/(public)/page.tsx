@@ -264,6 +264,7 @@ export default function Home() {
               speed={500}
               slidesToShow={4}
               slidesToScroll={1}
+              centerMode={false}
               autoplay={true}
               autoplaySpeed={3000}
               pauseOnHover={true}
@@ -272,23 +273,20 @@ export default function Home() {
               prevArrow={<SamplePrevArrow />}
               responsive={[
                 {
-                  breakpoint: 1280,
-                  settings: {
-                    slidesToShow: 3,
-                  }
-                },
-                {
                   breakpoint: 1024,
                   settings: {
                     slidesToShow: 2,
+                    slidesToScroll: 1
                   }
                 },
                 {
-                  breakpoint: 640,
+                  breakpoint: 768,
                   settings: {
-                    slidesToShow: 1.2,
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
                     arrows: false,
-                    infinite: false,
+                    dots: true,
+                    centerMode: false
                   }
                 }
               ]}
