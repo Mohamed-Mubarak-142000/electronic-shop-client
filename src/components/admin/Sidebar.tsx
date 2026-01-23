@@ -32,8 +32,8 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
 
     return (
         <aside className={`
-            fixed inset-y-0 left-0 z-50 w-72 bg-background-dark border-r border-white/10 transition-transform duration-300 transform 
-            ${isOpen ? 'translate-x-0' : '-translate-x-full'} 
+            fixed inset-y-0 start-0 z-50 w-72 bg-background-dark border-r border-white/10 transition-transform duration-300 transform 
+            ${isOpen ? 'translate-x-0' : (language === 'ar' ? 'translate-x-[100%]' : '-translate-x-full')} 
             md:relative md:translate-x-0 md:flex flex-col flex-shrink-0
         `}>
             <div className="flex flex-col h-full p-4">

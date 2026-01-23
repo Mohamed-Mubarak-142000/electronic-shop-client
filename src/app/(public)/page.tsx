@@ -146,7 +146,7 @@ export default function Home() {
                 <span className="material-symbols-outlined text-sm">eco</span>
                 {t('home.hero.eco')}
               </span>
-              <h1 className="text-white text-5xl md:text-7xl font-black leading-[0.95] tracking-tight">
+              <h1 className="text-white text-4xl sm:text-5xl md:text-7xl font-black leading-[0.95] tracking-tight">
                 {t('home.hero.title1')} <br /> <span className="text-primary">{t('home.hero.title2')}</span>
               </h1>
               <p className="text-gray-300 text-lg md:text-xl font-normal leading-relaxed max-w-lg">
@@ -468,7 +468,7 @@ export default function Home() {
                 {t('home.getDirections')}
               </button>
             </div>
-            <div className="h-full min-h-[600px] w-full relative">
+            <div className="h-full min-h-[400px] md:min-h-[600px] w-full relative">
               <MapSelector
                 value={showroomInfo?.location || { lat: 30.0444, lng: 31.2357 }}
                 onChange={() => { }}

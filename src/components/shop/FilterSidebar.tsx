@@ -1,5 +1,6 @@
 import React from 'react';
 import { Category, Brand } from "@/types";
+import { useTranslation } from "@/hooks/useTranslation";
 
 interface FilterSidebarProps {
     categories: Category[];
@@ -32,6 +33,7 @@ export default function FilterSidebar({
     isOpen,
     onClose
 }: FilterSidebarProps) {
+    const { language } = useTranslation();
     return (
         <>
             {/* Mobile Overlay */}
@@ -43,8 +45,8 @@ export default function FilterSidebar({
             )}
 
             <aside className={`
-                fixed inset-y-0 left-0 z-[70] w-full max-w-xs bg-surface-dark p-6 border-r border-surface-highlight transition-transform duration-300 transform
-                ${isOpen ? 'translate-x-0' : '-translate-x-full'}
+                fixed inset-y-0 start-0 z-[70] w-full max-w-xs bg-surface-dark p-6 border-r border-surface-highlight transition-transform duration-300 transform
+                ${isOpen ? 'translate-x-0' : (typeof language === 'string' && language === 'ar' ? 'translate-x-full' : '-translate-x-full')}
                 lg:translate-x-0 lg:static lg:w-72 lg:flex-shrink-0 lg:rounded-2xl lg:border lg:z-0
                 flex flex-col gap-6 overflow-y-auto
             `}>

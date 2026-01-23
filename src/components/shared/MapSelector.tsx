@@ -127,46 +127,46 @@ export default function MapSelector({ value, onChange, readOnly = false }: MapSe
     }
 
     return (
-        <div className="h-[600px] w-full rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-xl relative group">
+        <div className="h-full w-full rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-xl relative group">
             {!readOnly && (
-            <div className="absolute top-4 left-4 right-12 z-20 max-w-md">
-                <div className="relative shadow-lg rounded-xl bg-white dark:bg-slate-900 ring-1 ring-slate-900/5">
-                    <div className="flex items-center px-4 py-3">
-                        <span className="material-symbols-outlined text-slate-400 mr-2">search</span>
-                        <input
-                            type="text"
-                            value={searchQuery}
-                            onChange={handleSearchInput}
-                            placeholder="Search for a location..."
-                            className="flex-1 bg-transparent border-none outline-none text-slate-900 dark:text-white placeholder:text-slate-400 text-sm"
-                            onFocus={() => setShowResults(true)}
-                        />
-                        {searching && <span className="material-symbols-outlined animate-spin text-primary text-sm">progress_activity</span>}
-                        {searchQuery && !searching && (
-                            <button onClick={() => { setSearchQuery(''); setSearchResults([]); }} className="text-slate-400 hover:text-slate-600">
-                                <span className="material-symbols-outlined text-sm">close</span>
-                            </button>
+                <div className="absolute top-2 sm:top-4 start-2 sm:start-4 end-10 sm:end-12 z-20 max-w-md">
+                    <div className="relative shadow-lg rounded-xl bg-white dark:bg-slate-900 ring-1 ring-slate-900/5">
+                        <div className="flex items-center px-4 py-3">
+                            <span className="material-symbols-outlined text-slate-400 mr-2">search</span>
+                            <input
+                                type="text"
+                                value={searchQuery}
+                                onChange={handleSearchInput}
+                                placeholder="Search for a location..."
+                                className="flex-1 bg-transparent border-none outline-none text-slate-900 dark:text-white placeholder:text-slate-400 text-sm"
+                                onFocus={() => setShowResults(true)}
+                            />
+                            {searching && <span className="material-symbols-outlined animate-spin text-primary text-sm">progress_activity</span>}
+                            {searchQuery && !searching && (
+                                <button onClick={() => { setSearchQuery(''); setSearchResults([]); }} className="text-slate-400 hover:text-slate-600">
+                                    <span className="material-symbols-outlined text-sm">close</span>
+                                </button>
+                            )}
+                        </div>
+
+                        {showResults && searchResults.length > 0 && (
+                            <div className="absolute top-full left-0 right-0 mt-2 bg-white dark:bg-slate-900 rounded-xl shadow-xl border border-slate-100 dark:border-slate-800 overflow-hidden max-h-60 overflow-y-auto">
+                                <ul>
+                                    {searchResults.map((result) => (
+                                        <li
+                                            key={result.id}
+                                            onClick={() => handleSelectResult(result)}
+                                            className="px-4 py-3 hover:bg-slate-50 dark:hover:bg-slate-800 cursor-pointer text-sm text-slate-700 dark:text-slate-300 border-b border-slate-50 dark:border-slate-800 last:border-none flex items-start gap-2"
+                                        >
+                                            <span className="material-symbols-outlined text-lg text-slate-400 mt-0.5">location_on</span>
+                                            <span>{result.place_name}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
                         )}
                     </div>
-
-                    {showResults && searchResults.length > 0 && (
-                        <div className="absolute top-full left-0 right-0 mt-2 bg-white dark:bg-slate-900 rounded-xl shadow-xl border border-slate-100 dark:border-slate-800 overflow-hidden max-h-60 overflow-y-auto">
-                            <ul>
-                                {searchResults.map((result) => (
-                                    <li
-                                        key={result.id}
-                                        onClick={() => handleSelectResult(result)}
-                                        className="px-4 py-3 hover:bg-slate-50 dark:hover:bg-slate-800 cursor-pointer text-sm text-slate-700 dark:text-slate-300 border-b border-slate-50 dark:border-slate-800 last:border-none flex items-start gap-2"
-                                    >
-                                        <span className="material-symbols-outlined text-lg text-slate-400 mt-0.5">location_on</span>
-                                        <span>{result.place_name}</span>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                    )}
                 </div>
-            </div>
             )}
 
             <Map
@@ -229,8 +229,8 @@ export default function MapSelector({ value, onChange, readOnly = false }: MapSe
                 </div>
             )}
 
-         
-            </div>
+
+        </div>
         // </div>
     );
 }

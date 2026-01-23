@@ -49,7 +49,7 @@ export default function NewProductDrawer() {
     // Handle offline cases: Fetch latest 5 on mount
     useEffect(() => {
         if (!shouldShow) return;
-        
+
         const fetchLatest = async () => {
             try {
                 const response = await productService.getProducts({ limit: 5, sort: '-createdAt' });
@@ -70,7 +70,7 @@ export default function NewProductDrawer() {
 
     useEffect(() => {
         if (!shouldShow) return;
-        
+
         if (!currentProduct && queue.length > 0) {
             const next = queue[0];
             // eslint-disable-next-line react-hooks/set-state-in-effect
@@ -85,7 +85,7 @@ export default function NewProductDrawer() {
 
     useEffect(() => {
         if (!shouldShow) return;
-        
+
         if (currentProduct) {
             const timer = setTimeout(() => {
                 setCurrentProduct(null);
@@ -109,10 +109,10 @@ export default function NewProductDrawer() {
                     animate={{ opacity: 1, transform: "translateY(0)" }}
                     exit={{ opacity: 0, transform: "translateY(100%)" }}
                     transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-                    className="fixed bottom-0 left-0 right-0 z-50 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 shadow-[0_-10px_40px_-15px_rgba(0,0,0,0.1)] p-6 rounded-t-3xl"
+                    className="fixed bottom-0 start-0 end-0 z-50 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 shadow-[0_-10px_40px_-15px_rgba(0,0,0,0.1)] p-4 sm:p-6 rounded-t-3xl"
                 >
-                    <div className="max-w-2xl mx-auto flex gap-6">
-                        <div className="w-32 h-32 flex-shrink-0 bg-slate-100 dark:bg-slate-800 rounded-2xl overflow-hidden">
+                    <div className="max-w-2xl mx-auto flex flex-col sm:flex-row gap-4 sm:gap-6">
+                        <div className="w-full sm:w-32 h-40 sm:h-32 flex-shrink-0 bg-slate-100 dark:bg-slate-800 rounded-2xl overflow-hidden">
                             {currentProduct.images?.[0] ? (
                                 <Image
                                     src={currentProduct.images[0]}
@@ -167,8 +167,8 @@ export default function NewProductDrawer() {
                         initial={{ scaleX: 1 }}
                         animate={{ scaleX: 0 }}
                         transition={{ duration: 30, ease: 'linear' }}
-                        style={{ transformOrigin: 'left' }}
-                        className="absolute bottom-0 left-0 w-full h-1 bg-primary-500/30"
+                        style={{ transformOrigin: language === 'ar' ? 'right' : 'left' }}
+                        className="absolute bottom-0 start-0 w-full h-1 bg-primary-500/30"
                     />
                 </motion.div>
             )}
