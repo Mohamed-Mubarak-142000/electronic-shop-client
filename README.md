@@ -23,13 +23,23 @@ npm install
 Create a `.env.local` file in the root directory with the following variables:
 
 ```env
-# Production Backend URL
-NEXT_PUBLIC_API_URL=https://electronic-shop-server-f1vf.vercel.app
-NEXT_PUBLIC_SOCKET_URL=https://electronic-shop-server-f1vf.vercel.app
+# Deployed Backend URLs (Production)
+NEXT_PUBLIC_API_URL=https://electronic-shop-server-one.vercel.app/api
+NEXT_PUBLIC_SOCKET_URL=https://electronic-shop-server-one.vercel.app
 
-# For local development, use:
-# NEXT_PUBLIC_API_URL=http://localhost:5000
-# NEXT_PUBLIC_SOCKET_URL=http://localhost:5000
+# Mapbox (for maps)
+NEXT_PUBLIC_MAPBOX_TOKEN=your_mapbox_token
+
+# Cloudinary (for image uploads)
+NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=your_cloudinary_cloud_name
+```
+
+The `.env.production` file should have the same production URLs:
+
+```env
+# Deployed Backend URLs (Production)
+NEXT_PUBLIC_API_URL=https://electronic-shop-server-one.vercel.app/api
+NEXT_PUBLIC_SOCKET_URL=https://electronic-shop-server-one.vercel.app
 
 # Mapbox (for maps)
 NEXT_PUBLIC_MAPBOX_TOKEN=your_mapbox_token

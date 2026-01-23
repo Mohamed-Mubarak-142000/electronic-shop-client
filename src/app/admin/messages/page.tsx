@@ -10,7 +10,7 @@ import { MessageCircle } from 'lucide-react';
 import { useTranslation } from '@/hooks/useTranslation';
 import { AdminPageHeader } from '@/components/admin/shared/AdminPageHeader';
 
-const SOCKET_URL = process.env.NEXT_PUBLIC_SOCKET_URL || 'https://electronic-shop-server-f1vf.vercel.app';
+const SOCKET_URL = process.env.NEXT_PUBLIC_SOCKET_URL || 'https://electronic-shop-server-one.vercel.app';
 
 export default function MessagesPage() {
     const { t } = useTranslation();

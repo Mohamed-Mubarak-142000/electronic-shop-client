@@ -33,7 +33,7 @@ export default function ProductDetailsPage({ params }: { params: Promise<{ id: s
             if (!id) return;
             try {
                 setLoading(true);
-                const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'https://electronic-shop-server-f1vf.vercel.app/api';
+                const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'https://electronic-shop-server-one.vercel.app/api';
                 const response = await fetch(`${apiUrl}/products/${id}`);
                 if (!response.ok) {
                     throw new Error("Product not found");

@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useAuthStore } from '../store/useAuthStore';
 
 const api = axios.create({
-    baseURL: process.env.NEXT_PUBLIC_API_URL || 'https://electronic-shop-server-f1vf.vercel.app/api',
+    baseURL: process.env.NEXT_PUBLIC_API_URL || 'https://electronic-shop-server-one.vercel.app/api',
     headers: {
         'Content-Type': 'application/json',
     },
