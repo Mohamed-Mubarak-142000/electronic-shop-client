@@ -300,7 +300,7 @@ export default function Home() {
               ]}
             >
               {bestSellers.map((product: Product) => (
-                <div key={product._id} className="px-3">
+                <div key={product._id} className="px-3 w-full">
                   <ProductCard product={product} />
                 </div>
               ))}
@@ -396,7 +396,7 @@ export default function Home() {
             <h2 className="text-2xl font-bold text-white">{t('home.newArrivals')}</h2>
             <Link href="/shop" className="text-primary font-bold text-sm hover:underline">{t('home.viewAll')}</Link>
           </div>
-          <div className="grid grid-cols-1 min-[380px]:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
+          <div className="grid grid-cols-1 min-[380px]:grid-cols-2 md:grid-cols-4 gap-4">
             {newArrivals.length > 0 ? (
               newArrivals.map((item: Product) => (
                 <div key={item._id} className="h-full">
