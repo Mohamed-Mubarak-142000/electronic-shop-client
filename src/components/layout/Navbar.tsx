@@ -106,18 +106,19 @@ export default function Navbar() {
         <div className="sticky top-0 z-50 bg-background-dark/95 backdrop-blur-md border-b border-surface-highlight">
             <div className="flex items-center justify-between px-4 py-3 lg:px-10 max-w-[1440px] mx-auto w-full">
                 {/* Logo */}
-                <div className="flex items-center gap-8">
-                    <Link href="/" className="flex items-center gap-3 text-white group">
-                        <div className="size-8 text-primary">
+                <div className="flex items-center gap-2 sm:gap-8">
+                    <Link href="/" className="flex items-center gap-2 sm:gap-3 text-white group">
+                        <div className="size-8 text-primary shrink-0">
                             <span
-                                className="material-symbols-outlined text-4xl"
+                                className="material-symbols-outlined text-3xl sm:text-4xl"
                                 style={{ fontVariationSettings: "'FILL' 1" }}
                             >
                                 bolt
                             </span>
                         </div>
-                        <h2 className="text-white text-xl font-bold tracking-tight">
-                            ElectroShop
+                        <h2 className="text-white text-lg sm:text-xl font-bold tracking-tight truncate max-w-[100px] xs:max-w-none">
+                            <span className="xs:inline hidden">ElectroShop</span>
+                            <span className="xs:hidden">Electro</span>
                         </h2>
                     </Link>
 
@@ -205,7 +206,7 @@ export default function Navbar() {
                 </div>
 
                 {/* Right Actions */}
-                <div className="flex items-center gap-6">
+                <div className="flex items-center gap-2 sm:gap-6">
                     {/* Links (Desktop) */}
                     <div className="hidden lg:flex items-center gap-6">
                         <Link
@@ -223,13 +224,13 @@ export default function Navbar() {
                     </div>
 
                     {/* Action Buttons */}
-                    <div className="flex gap-3">
+                    <div className="flex gap-1.5 sm:gap-3">
                         <Link href="/wishlist">
                             <button
                                 aria-label="Wishlist"
-                                className="relative flex items-center justify-center size-10 rounded-full bg-surface-highlight hover:bg-primary hover:text-[#122118] text-white transition-all duration-300"
+                                className="relative flex items-center justify-center size-9 sm:size-10 rounded-full bg-surface-highlight hover:bg-primary hover:text-[#122118] text-white transition-all duration-300"
                             >
-                                <span className="material-symbols-outlined text-[20px]" aria-hidden="true">
+                                <span className="material-symbols-outlined text-[18px] sm:text-[20px]" aria-hidden="true">
                                     favorite
                                 </span>
                                 {wishlistCount > 0 && (
@@ -242,9 +243,9 @@ export default function Navbar() {
                         <Link href="/cart">
                             <button
                                 aria-label="Shopping cart"
-                                className="relative flex items-center justify-center size-10 rounded-full bg-surface-highlight hover:bg-primary hover:text-[#122118] text-white transition-all duration-300"
+                                className="relative flex items-center justify-center size-9 sm:size-10 rounded-full bg-surface-highlight hover:bg-primary hover:text-[#122118] text-white transition-all duration-300"
                             >
-                                <span className="material-symbols-outlined text-[20px]" aria-hidden="true">
+                                <span className="material-symbols-outlined text-[18px] sm:text-[20px]" aria-hidden="true">
                                     shopping_cart
                                 </span>
                                 {cartCount > 0 && (
@@ -258,9 +259,9 @@ export default function Navbar() {
                         {/* Mobile Search Toggle */}
                         <button
                             onClick={() => setIsMobileSearchOpen(!isMobileSearchOpen)}
-                            className="md:hidden flex items-center justify-center size-10 rounded-full bg-surface-highlight hover:bg-primary hover:text-[#122118] text-white transition-all duration-300"
+                            className="md:hidden flex items-center justify-center size-9 sm:size-10 rounded-full bg-surface-highlight hover:bg-primary hover:text-[#122118] text-white transition-all duration-300"
                         >
-                            <span className="material-symbols-outlined text-[20px]">
+                            <span className="material-symbols-outlined text-[18px] sm:text-[20px]">
                                 {isMobileSearchOpen ? 'close' : 'search'}
                             </span>
                         </button>
@@ -268,7 +269,7 @@ export default function Navbar() {
                             <div className="relative" ref={userMenuRef}>
                                 <button
                                     onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
-                                    className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-highlight hover:bg-white/10 text-white transition-all"
+                                    className="flex items-center gap-1 sm:gap-2 px-2 sm:px-3 py-1.5 rounded-full bg-surface-highlight hover:bg-white/10 text-white transition-all"
                                 >
                                     <UserIcon size={16} />
                                     <span className="hidden md:block text-sm font-medium">
@@ -322,7 +323,7 @@ export default function Navbar() {
                             </div>
                         ) : (
                             <Link href="/login">
-                                <button className="hidden sm:flex h-10 px-6 items-center justify-center rounded-full bg-primary text-[#122118] text-sm font-bold hover:brightness-110 transition-all">
+                                <button className="flex h-9 sm:h-10 px-4 sm:px-6 items-center justify-center rounded-full bg-primary text-[#122118] text-xs sm:text-sm font-bold hover:brightness-110 transition-all">
                                     {t('auth.login')}
                                 </button>
                             </Link>
@@ -331,7 +332,7 @@ export default function Navbar() {
                         <button
                             aria-label="Toggle menu"
                             aria-expanded={isMenuOpen}
-                            className="lg:hidden text-white ml-2"
+                            className="lg:hidden text-white ml-1"
                             onClick={() => setIsMenuOpen(!isMenuOpen)}
                         >
                             <span className="material-symbols-outlined" aria-hidden="true">menu</span>

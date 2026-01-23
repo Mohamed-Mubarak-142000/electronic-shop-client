@@ -16,8 +16,8 @@ export default function ProductCard({ product }: { product: Product }) {
     const isWishlisted = isInWishlist(product._id);
 
     // Helpers
-    const currentPrice = (product.isDiscountActive && product.salePrice) 
-        ? product.salePrice 
+    const currentPrice = (product.isDiscountActive && product.salePrice)
+        ? product.salePrice
         : product.price;
 
     // Helper to determine image source
@@ -71,8 +71,8 @@ export default function ProductCard({ product }: { product: Product }) {
     };
 
     return (
-        <div className="group relative bg-surface-dark rounded-[2rem] p-4 hover:bg-surface-highlight transition-all duration-300 flex flex-col h-full font-display border border-surface-highlight/10 hover:border-primary/20">
-            <div className="relative aspect-[4/3] rounded-[1.5rem] overflow-hidden bg-white mb-4 shadow-inner">
+        <div className="group relative bg-surface-dark rounded-2xl sm:rounded-[2rem] p-3 sm:p-4 hover:bg-surface-highlight transition-all duration-300 flex flex-col h-full font-display border border-surface-highlight/10 hover:border-primary/20">
+            <div className="relative aspect-[4/3] rounded-xl sm:rounded-[1.5rem] overflow-hidden bg-white mb-3 sm:mb-4 shadow-inner">
                 <Link href={`/product/${product._id}`}>
                     {/* Performance: Lazy load product images with proper sizes */}
                     <OptimizedImage
@@ -85,67 +85,66 @@ export default function ProductCard({ product }: { product: Product }) {
                     />
                 </Link>
                 {product.isDiscountActive && product.salePrice && (
-                    <div className="absolute top-3 right-3 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full shadow-lg">
+                    <div className="absolute top-2 right-2 sm:top-3 sm:right-3 bg-red-500 text-white text-[10px] sm:text-xs font-bold px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-full shadow-lg">
                         -{Math.round(((product.price - product.salePrice) / product.price) * 100)}%
                     </div>
                 )}
             </div>
 
             <div className="flex-1 flex flex-col">
-                <div className="flex items-center justify-between mb-2">
-                    <div className="flex text-yellow-400 text-xs">
+                <div className="flex items-center justify-between mb-2 gap-2">
+                    <div className="flex text-yellow-400 text-[10px] sm:text-xs shrink-0">
                         {[1, 2, 3, 4, 5].map((star) => (
                             <span
                                 key={star}
-                                className={`material-symbols-outlined text-sm ${(product.rating || 5) >= star ? 'filled' : ''}`}
+                                className={`material-symbols-outlined text-xs sm:text-sm ${(product.rating || 5) >= star ? 'filled' : ''}`}
                                 style={{ fontVariationSettings: (product.rating || 5) >= star ? "'FILL' 1" : "" }}
                             >
                                 star
                             </span>
                         ))}
-                        <span className="text-gray-400 ml-1">({product.numReviews || 0})</span>
                     </div>
                     {brandName && (
-                        <span className="text-[10px] font-bold uppercase tracking-widest text-[#95c6a9] bg-[#95c6a9]/10 px-2 py-0.5 rounded-md">
+                        <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-widest text-[#95c6a9] bg-[#95c6a9]/10 px-1.5 sm:px-2 py-0.5 rounded-md truncate">
                             {brandName}
                         </span>
                     )}
                 </div>
 
                 <Link href={`/product/${product._id}`}>
-                    <h3 className="text-white font-bold text-lg leading-tight mb-1 group-hover:text-primary transition-colors cursor-pointer line-clamp-1">
+                    <h3 className="text-white font-bold text-base sm:text-lg leading-tight mb-1 group-hover:text-primary transition-colors cursor-pointer line-clamp-1">
                         {product.name}
                     </h3>
                 </Link>
-                <p className="text-gray-400 text-sm mb-4 line-clamp-2 min-h-[40px]">
+                <p className="text-gray-400 text-xs sm:text-sm mb-3 sm:mb-4 line-clamp-2 min-h-[32px] sm:min-h-[40px]">
                     {product.description}
                 </p>
 
-                <div className="mt-auto flex items-center justify-between">
-                    <div className="flex flex-col min-h-[3.5rem] justify-center">
+                <div className="mt-auto flex flex-wrap items-center justify-between gap-2 border-t border-white/5 pt-3">
+                    <div className="flex flex-col min-h-[2.5rem] sm:min-h-[3.5rem] justify-center">
                         {product.isDiscountActive && product.salePrice ? (
                             <>
-                                <span className="text-gray-500 text-sm line-through">{formatPrice(product.price)}</span>
-                                <span className="text-primary text-xl font-bold">{formatPrice(product.salePrice)}</span>
+                                <span className="text-gray-500 text-[10px] sm:text-xs line-through">{formatPrice(product.price)}</span>
+                                <span className="text-primary text-base sm:text-xl font-bold">{formatPrice(product.salePrice)}</span>
                             </>
                         ) : (
-                            <span className="text-primary text-xl font-bold">{formatPrice(product.price)}</span>
+                            <span className="text-primary text-base sm:text-xl font-bold">{formatPrice(product.price)}</span>
                         )}
                     </div>
-                    <div className="flex gap-2">
+                    <div className="flex gap-1.5 sm:gap-2 shrink-0">
                         <button
                             aria-label={isWishlisted ? `Remove ${product.name} from wishlist` : `Add ${product.name} to wishlist`}
                             onClick={handleWishlistToggle}
-                            className={`size-10 rounded-full border flex items-center justify-center transition-all ${isWishlisted ? 'bg-red-500/10 border-red-500 text-red-500' : 'bg-[#122118] border-surface-highlight text-white hover:border-red-500 hover:text-red-500'}`}
+                            className={`size-8 sm:size-10 rounded-full border flex items-center justify-center transition-all ${isWishlisted ? 'bg-red-500/10 border-red-500 text-red-500' : 'bg-[#122118] border-surface-highlight text-white hover:border-red-500 hover:text-red-500'}`}
                         >
-                            <span className={`material-symbols-outlined ${isWishlisted ? 'filled' : ''}`} style={{ fontVariationSettings: isWishlisted ? "'FILL' 1" : "" }} aria-hidden="true">favorite</span>
+                            <span className={`material-symbols-outlined text-lg sm:text-xl ${isWishlisted ? 'filled' : ''}`} style={{ fontVariationSettings: isWishlisted ? "'FILL' 1" : "" }} aria-hidden="true">favorite</span>
                         </button>
                         <button
                             aria-label={`Add ${product.name} to cart`}
                             onClick={handleAddToCart}
-                            className="size-10 rounded-full bg-[#122118] border border-surface-highlight text-white flex items-center justify-center hover:bg-primary hover:text-[#122118] hover:border-primary transition-all shadow-[0_0_15px_rgba(54,226,123,0)_hover:shadow-[0_0_15px_rgba(54,226,123,0.3)]"
+                            className="size-8 sm:size-10 rounded-full bg-[#122118] border border-surface-highlight text-white flex items-center justify-center hover:bg-primary hover:text-[#122118] hover:border-primary transition-all shadow-[0_0_15px_rgba(54,226,123,0)_hover:shadow-[0_0_15px_rgba(54,226,123,0.3)]"
                         >
-                            <span className="material-symbols-outlined" aria-hidden="true">add_shopping_cart</span>
+                            <span className="material-symbols-outlined text-lg sm:text-xl" aria-hidden="true">add_shopping_cart</span>
                         </button>
                     </div>
                 </div>

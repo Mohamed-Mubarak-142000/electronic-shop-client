@@ -35,7 +35,7 @@ const Slider = dynamic(() => import("react-slick"), {
 // Performance: Lazy load MapSelector to reduce initial bundle
 const MapSelector = dynamic<{ value: { lat: number; lng: number }; onChange: (v: { lat: number, lng: number }) => void; readOnly?: boolean }>(
   () => import('../../components/shared/MapSelector'),
-  { 
+  {
     ssr: false,
     loading: () => (
       <div className="h-full min-h-[600px] w-full bg-surface-dark/30 animate-pulse rounded-lg flex items-center justify-center">
@@ -140,7 +140,7 @@ export default function Home() {
             />
             <div className="absolute inset-0 bg-gradient-to-r from-[#112117]/90 via-[#112117]/40 to-transparent"></div>
             <div className="absolute inset-0 bg-gradient-to-t from-[#112117] via-transparent to-transparent opacity-60"></div>
-            
+
             <div className="relative z-10 p-8 md:p-16 max-w-3xl flex flex-col gap-6 items-start">
               <span className="inline-flex items-center gap-2 rounded-full bg-primary/20 px-3 py-1 text-xs font-bold text-primary backdrop-blur-sm border border-primary/20">
                 <span className="material-symbols-outlined text-sm">eco</span>
@@ -159,14 +159,14 @@ export default function Home() {
                     <span className="material-symbols-outlined text-sm">arrow_forward</span>
                   </button>
                 </Link>
-                <button 
-                    onClick={() => {
-                        logout();
-                        router.push('/register');
-                    }}
-                    className="h-12 px-8 rounded-full bg-surface-highlight/80 backdrop-blur-md text-white border border-[#3e6b50] text-base font-bold tracking-wide hover:bg-surface-highlight hover:scale-105 transition-all"
+                <button
+                  onClick={() => {
+                    logout();
+                    router.push('/register');
+                  }}
+                  className="h-12 px-8 rounded-full bg-surface-highlight/80 backdrop-blur-md text-white border border-[#3e6b50] text-base font-bold tracking-wide hover:bg-surface-highlight hover:scale-105 transition-all"
                 >
-                    {t('home.hero.forPros')}
+                  {t('home.hero.forPros')}
                 </button>
               </div>
             </div>
@@ -226,11 +226,11 @@ export default function Home() {
                 <Link key={cat._id} href={`/shop?category=${cat._id}`} className="group flex flex-col items-center gap-4">
                   <div className="relative w-full aspect-square rounded-full overflow-hidden border-2 border-transparent group-hover:border-primary transition-all duration-300">
                     <OptimizedImage
-                        src={cat.imageUrl || `https://placehold.co/400x400?text=${cat.name}`}
-                        alt={cat.name}
-                        fill
-                        className="object-cover transition-transform duration-500 group-hover:scale-110"
-                        sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 16vw"
+                      src={cat.imageUrl || `https://placehold.co/400x400?text=${cat.name}`}
+                      alt={cat.name}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-110"
+                      sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 16vw"
                     />
                     <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors z-10"></div>
                   </div>
@@ -287,12 +287,14 @@ export default function Home() {
                   breakpoint: 768,
                   settings: {
                     slidesToShow: 2,
+                    arrows: false,
                   }
                 },
                 {
                   breakpoint: 480,
                   settings: {
                     slidesToShow: 1,
+                    arrows: false,
                   }
                 }
               ]}
@@ -330,61 +332,61 @@ export default function Home() {
         {/* CTA Section */}
         <div className="py-12">
           <LazySection>
-          <div className="relative overflow-hidden rounded-[3rem] bg-[#254632] bg-opacity-40">
-            <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-primary/10 to-transparent"></div>
-            <div className="absolute bottom-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
-            <div className="relative z-10 flex flex-col md:flex-row items-center justify-between p-10 md:p-20 gap-10">
-              <div className="flex flex-col gap-6 max-w-2xl text-center md:text-left">
-                <div className="inline-flex items-center gap-2 self-center md:self-start bg-yellow-400/20 text-yellow-400 px-4 py-1.5 rounded-full text-sm font-bold border border-yellow-400/20">
-                  <span className="material-symbols-outlined text-sm">
-                    engineering
-                  </span>
-                  {t('home.b2b.badge')}
+            <div className="relative overflow-hidden rounded-[3rem] bg-[#254632] bg-opacity-40">
+              <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-primary/10 to-transparent"></div>
+              <div className="absolute bottom-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+              <div className="relative z-10 flex flex-col md:flex-row items-center justify-between p-10 md:p-20 gap-10">
+                <div className="flex flex-col gap-6 max-w-2xl text-center md:text-left">
+                  <div className="inline-flex items-center gap-2 self-center md:self-start bg-yellow-400/20 text-yellow-400 px-4 py-1.5 rounded-full text-sm font-bold border border-yellow-400/20">
+                    <span className="material-symbols-outlined text-sm">
+                      engineering
+                    </span>
+                    {t('home.b2b.badge')}
+                  </div>
+                  <h2 className="text-4xl md:text-5xl font-black text-white leading-tight tracking-tight">
+                    {t('home.b2b.title1')}
+                    <br />
+                    <span className="text-primary">{t('home.b2b.title2')}</span>
+                  </h2>
+                  <p className="text-gray-300 text-lg md:text-xl">
+                    {t('home.b2b.description')}
+                  </p>
+                  <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start pt-2">
+                    <Link href="/portfolio">
+                      <button className="h-14 px-8 rounded-full bg-transparent border-2 border-white/20 text-white text-lg font-bold hover:bg-white/10 transition-all">
+                        {t('nav.portfolio')}
+                      </button>
+                    </Link>
+                  </div>
                 </div>
-                <h2 className="text-4xl md:text-5xl font-black text-white leading-tight tracking-tight">
-                  {t('home.b2b.title1')}
-                  <br />
-                  <span className="text-primary">{t('home.b2b.title2')}</span>
-                </h2>
-                <p className="text-gray-300 text-lg md:text-xl">
-                  {t('home.b2b.description')}
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start pt-2">
-                  <Link href="/portfolio">
-                    <button className="h-14 px-8 rounded-full bg-transparent border-2 border-white/20 text-white text-lg font-bold hover:bg-white/10 transition-all">
-                      {t('nav.portfolio')} 
-                    </button>
-                  </Link>
-                </div>
-              </div>
-              {/* Visual Element */}
-              <div className="relative size-64 md:size-80 flex-shrink-0">
-                <div className="absolute inset-0 bg-primary/20 rounded-full blur-3xl"></div>
-                {/* Performance: Add proper sizes and loading strategy for B2B section image */}
-                <OptimizedImage
-                  alt="Professional electrician with safety equipment and project blueprints"
-                  width={320}
-                  height={320}
-                  containerClassName="w-full h-full rounded-full border-4 border-[#254632] shadow-2xl rotate-3 hover:rotate-0 transition-transform duration-500"
-                  className="relative z-10 w-full h-full object-cover rounded-full"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-AG2JpXiB2fT-3UQMvwbIsx9b-DzSLP8aG97UO710bW-wLjvufVzVglC4C3PuMCj9cIdNI-1kP9INrZraiWBOiuME2_9LXdrAwvqA0BdLCwAolHdbg6BwM0QDl6x2cF08AnJQGhu4fgIKUJPVsb-JYi3_YP20SlZrJmXcNQKYbyoOCLoowZlO4MEA0BRFoXxdbWCHjOko3iQJFK5207UCuOuof0n3TfwBpq8y2XofH1_FEEIgg2A7OJy5h48-xWaW-UdTY10xWPI"
-                  sizes="(max-width: 768px) 256px, 320px"
-                  loading="lazy"
-                />
-                <div className="absolute -bottom-4 -right-4 bg-[#122118] p-4 rounded-2xl border border-[#254632] shadow-xl z-20">
-                  <div className="flex items-center gap-3">
-                    <div className="bg-green-500/20 p-2 rounded-full text-green-500">
-                      <span className="material-symbols-outlined">verified</span>
-                    </div>
-                    <div>
-                      <div className="text-xs text-gray-400">{t('home.b2b.verified')}</div>
-                      <div className="text-white font-bold">{t('home.b2b.priority')}</div>
+                {/* Visual Element */}
+                <div className="relative size-64 md:size-80 flex-shrink-0">
+                  <div className="absolute inset-0 bg-primary/20 rounded-full blur-3xl"></div>
+                  {/* Performance: Add proper sizes and loading strategy for B2B section image */}
+                  <OptimizedImage
+                    alt="Professional electrician with safety equipment and project blueprints"
+                    width={320}
+                    height={320}
+                    containerClassName="w-full h-full rounded-full border-4 border-[#254632] shadow-2xl rotate-3 hover:rotate-0 transition-transform duration-500"
+                    className="relative z-10 w-full h-full object-cover rounded-full"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-AG2JpXiB2fT-3UQMvwbIsx9b-DzSLP8aG97UO710bW-wLjvufVzVglC4C3PuMCj9cIdNI-1kP9INrZraiWBOiuME2_9LXdrAwvqA0BdLCwAolHdbg6BwM0QDl6x2cF08AnJQGhu4fgIKUJPVsb-JYi3_YP20SlZrJmXcNQKYbyoOCLoowZlO4MEA0BRFoXxdbWCHjOko3iQJFK5207UCuOuof0n3TfwBpq8y2XofH1_FEEIgg2A7OJy5h48-xWaW-UdTY10xWPI"
+                    sizes="(max-width: 768px) 256px, 320px"
+                    loading="lazy"
+                  />
+                  <div className="absolute -bottom-4 -right-4 bg-[#122118] p-4 rounded-2xl border border-[#254632] shadow-xl z-20">
+                    <div className="flex items-center gap-3">
+                      <div className="bg-green-500/20 p-2 rounded-full text-green-500">
+                        <span className="material-symbols-outlined">verified</span>
+                      </div>
+                      <div>
+                        <div className="text-xs text-gray-400">{t('home.b2b.verified')}</div>
+                        <div className="text-white font-bold">{t('home.b2b.priority')}</div>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
           </LazySection>
         </div>
 
@@ -394,11 +396,11 @@ export default function Home() {
             <h2 className="text-2xl font-bold text-white">{t('home.newArrivals')}</h2>
             <Link href="/shop" className="text-primary font-bold text-sm hover:underline">{t('home.viewAll')}</Link>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
+          <div className="grid grid-cols-1 min-[380px]:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
             {newArrivals.length > 0 ? (
               newArrivals.map((item: Product) => (
                 <div key={item._id} className="h-full">
-                    <ProductCard product={item} />
+                  <ProductCard product={item} />
                 </div>
               ))
             ) : (
@@ -416,7 +418,7 @@ export default function Home() {
         {/* Store Locator Section */}
         <LazySection className="py-12 border-t border-[#254632] mt-8" placeholderHeight="min-h-[500px]">
           <div className="grid md:grid-cols-2 gap-8 items-center rounded-3xl bg-surface-dark overflow-hidden min-h-[500px]">
-             <div className="p-8 md:p-12">
+            <div className="p-8 md:p-12">
               <h2 className="text-3xl font-bold text-white mb-4">
                 {t('home.visitShowroom')}
               </h2>
@@ -467,9 +469,9 @@ export default function Home() {
               </button>
             </div>
             <div className="h-full min-h-[600px] w-full relative">
-              <MapSelector 
-                value={showroomInfo?.location || { lat: 30.0444, lng: 31.2357 }} 
-                onChange={() => {}}
+              <MapSelector
+                value={showroomInfo?.location || { lat: 30.0444, lng: 31.2357 }}
+                onChange={() => { }}
                 readOnly={true}
               />
             </div>
