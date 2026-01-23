@@ -71,7 +71,7 @@ export default function ProductCard({ product }: { product: Product }) {
     };
 
     return (
-        <div className="group relative bg-surface-dark rounded-2xl sm:rounded-[2rem] p-3 sm:p-4 hover:bg-surface-highlight transition-all duration-300 flex flex-col h-full font-display border border-surface-highlight/10 hover:border-primary/20 w-full">
+        <div className="group relative bg-surface-dark rounded-2xl sm:rounded-[2rem] p-3 sm:p-4 hover:bg-surface-highlight transition-all duration-300 flex flex-col h-full font-display border border-surface-highlight/10 hover:border-primary/20 w-full min-w-[260px]">
             <div className="relative aspect-[4/3] rounded-xl sm:rounded-[1.5rem] overflow-hidden bg-white mb-3 sm:mb-4 shadow-inner">
                 <Link href={`/product/${product._id}`}>
                     {/* Performance: Lazy load product images with proper sizes */}
@@ -93,7 +93,7 @@ export default function ProductCard({ product }: { product: Product }) {
 
             <div className="flex-1 flex flex-col">
                 <div className="flex items-center justify-between mb-2 gap-2">
-                    <div className="flex text-yellow-400 text-[10px] sm:text-xs shrink-0">
+                    <div className="flex flex-wrap text-yellow-400 text-[10px] sm:text-xs gap-0.5">
                         {[1, 2, 3, 4, 5].map((star) => (
                             <span
                                 key={star}
@@ -112,11 +112,11 @@ export default function ProductCard({ product }: { product: Product }) {
                 </div>
 
                 <Link href={`/product/${product._id}`}>
-                    <h3 className="text-white font-bold text-base sm:text-lg leading-tight mb-1 group-hover:text-primary transition-colors cursor-pointer line-clamp-1">
+                    <h3 className="text-white font-bold text-base sm:text-lg leading-tight mb-1 group-hover:text-primary transition-colors cursor-pointer">
                         {product.name}
                     </h3>
                 </Link>
-                <p className="text-gray-400 text-xs sm:text-sm mb-3 sm:mb-4 line-clamp-2 min-h-[32px] sm:min-h-[40px]">
+                <p className="text-gray-400 text-xs sm:text-sm mb-3 sm:mb-4 leading-relaxed">
                     {product.description}
                 </p>
 

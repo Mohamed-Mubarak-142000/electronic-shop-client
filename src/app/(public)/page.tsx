@@ -284,28 +284,22 @@ export default function Home() {
                   }
                 },
                 {
-                  breakpoint: 768,
+                  breakpoint: 640,
                   settings: {
-                    slidesToShow: 1,
+                    slidesToShow: 1.2,
                     arrows: false,
-                  }
-                },
-                {
-                  breakpoint: 480,
-                  settings: {
-                    slidesToShow: 1,
-                    arrows: false,
+                    infinite: false,
                   }
                 }
               ]}
             >
               {bestSellers.map((product: Product) => (
-                <div key={product._id} className="px-3 w-full">
+                <div key={product._id} className="px-1.5 sm:px-3">
                   <ProductCard product={product} />
                 </div>
               ))}
               {/* More Card as a slide */}
-              <div className="px-3">
+              <div className="px-1.5 sm:px-3">
                 <Link
                   href="/shop"
                   className="flex flex-col items-center justify-center bg-surface-dark/50 p-6 rounded-[2rem] border-2 border-dashed border-[#254632] hover:border-primary hover:bg-primary/5 transition-all group aspect-[3/4] h-full"
