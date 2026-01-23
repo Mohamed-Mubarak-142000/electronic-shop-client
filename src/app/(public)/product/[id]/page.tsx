@@ -247,7 +247,7 @@ export default function ProductDetailsPage({ params }: { params: Promise<{ id: s
 
                         {/* Specs Grid (Simplified for dynamic content) */}
                         {product.attributes && Object.keys(product.attributes).length > 0 && (
-                            <div className="grid grid-cols-2 gap-4 mb-8">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
                                 {Object.entries(product.attributes).slice(0, 4).map(([key, value]) => (
                                     <div key={key} className="flex items-center gap-3">
                                         <div className="size-10 rounded-full bg-slate-100 dark:bg-surface-highlight flex items-center justify-center text-slate-700 dark:text-primary">
@@ -266,8 +266,8 @@ export default function ProductDetailsPage({ params }: { params: Promise<{ id: s
                         <div className="flex flex-col gap-4 py-8 mt-4 border-t border-slate-200 dark:border-surface-highlight">
                             <div className="flex items-center gap-3 text-sm">
                                 <span className="text-slate-500 dark:text-[#95c6a9] font-semibold min-w-[100px]">Category:</span>
-                                <Link 
-                                    href={`/shop?category=${typeof product.category === 'object' ? product.category._id : product.category}`} 
+                                <Link
+                                    href={`/shop?category=${typeof product.category === 'object' ? product.category._id : product.category}`}
                                     className="text-slate-900 dark:text-white hover:text-primary transition-colors font-medium"
                                 >
                                     {typeof product.category === 'object' ? product.category.name : 'N/A'}

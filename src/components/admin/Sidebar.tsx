@@ -6,7 +6,12 @@ import { useTranslation } from '@/hooks/useTranslation';
 import { useAuthStore } from '@/store/useAuthStore';
 import { useLanguageStore } from '@/store/useLanguageStore';
 
-export default function Sidebar() {
+interface SidebarProps {
+    isOpen?: boolean;
+    onClose?: () => void;
+}
+
+export default function Sidebar({ isOpen, onClose }: SidebarProps) {
     const pathname = usePathname();
     const router = useRouter();
     const { t, language } = useTranslation();
@@ -22,20 +27,35 @@ export default function Sidebar() {
 
     const toggleLanguage = () => {
         setLanguage(language === 'en' ? 'ar' : 'en');
+        if (onClose) onClose();
     };
 
     return (
-        <aside className="hidden md:flex flex-col w-72 h-full border-r border-white/10 bg-background-dark flex-shrink-0">
+        <aside className={`
+            fixed inset-y-0 left-0 z-50 w-72 bg-background-dark border-r border-white/10 transition-transform duration-300 transform 
+            ${isOpen ? 'translate-x-0' : '-translate-x-full'} 
+            md:relative md:translate-x-0 md:flex flex-col flex-shrink-0
+        `}>
             <div className="flex flex-col h-full p-4">
                 {/* Brand */}
-                <div className="flex items-center gap-3 px-2 mb-8 mt-2">
-                    <div className="flex items-center justify-center size-10 rounded-xl bg-primary/20 text-primary">
-                        <span className="material-symbols-outlined text-3xl">bolt</span>
+                <div className="flex items-center justify-between px-2 mb-8 mt-2">
+                    <div className="flex items-center gap-3">
+                        <div className="flex items-center justify-center size-10 rounded-xl bg-primary/20 text-primary">
+                            <span className="material-symbols-outlined text-3xl">bolt</span>
+                        </div>
+                        <div className="flex flex-col">
+                            <h1 className="text-white text-lg font-bold leading-none tracking-tight">{t('admin.sidebar.brand.title')}</h1>
+                            <p className="text-gray-400 text-xs font-medium mt-1">{t('admin.sidebar.brand.subtitle')}</p>
+                        </div>
                     </div>
-                    <div className="flex flex-col">
-                        <h1 className="text-white text-lg font-bold leading-none tracking-tight">{t('admin.sidebar.brand.title')}</h1>
-                        <p className="text-gray-400 text-xs font-medium mt-1">{t('admin.sidebar.brand.subtitle')}</p>
-                    </div>
+
+                    {/* Mobile Close Button */}
+                    <button
+                        className="md:hidden p-2 text-gray-400 hover:text-white rounded-lg hover:bg-white/5"
+                        onClick={onClose}
+                    >
+                        <span className="material-symbols-outlined">close</span>
+                    </button>
                 </div>
 
                 {/* Navigation */}
@@ -289,9 +309,9 @@ export default function Sidebar() {
                 <div className="mt-auto flex items-center gap-3 p-3 rounded-xl bg-card-dark border border-white/5">
                     <div className="relative w-10 h-10 rounded-full border border-white/10 overflow-hidden bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center flex-shrink-0">
                         {user?.avatar ? (
-                            <img 
-                                src={user.avatar} 
-                                alt={user.name} 
+                            <img
+                                src={user.avatar}
+                                alt={user.name}
                                 className="w-full h-full object-cover"
                             />
                         ) : (
@@ -304,7 +324,7 @@ export default function Sidebar() {
                         <p className="text-white text-sm font-semibold truncate">{user?.name || 'User'}</p>
                         <p className="text-primary text-xs truncate capitalize">{user?.role || 'Member'}</p>
                     </div>
-                    <button 
+                    <button
                         onClick={handleLogout}
                         className="text-gray-400 hover:text-white transition-colors"
                         title="Logout"

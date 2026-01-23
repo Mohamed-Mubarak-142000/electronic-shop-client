@@ -17,10 +17,9 @@ export default function AdminLayout({
     const { user } = useAuthStore();
     const router = useRouter();
     const [mounted, setMounted] = useState(false);
+    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
     useEffect(() => {
-
-        // eslint-disable-next-line react-hooks/set-state-in-effect
         setMounted(true);
     }, []);
 
@@ -34,6 +33,11 @@ export default function AdminLayout({
         }
     }, [user, router, mounted]);
 
+    // Close sidebar on route change (mobile)
+    useEffect(() => {
+        setIsSidebarOpen(false);
+    }, [router]);
+
     if (!mounted) {
         return null;
     }
@@ -43,12 +47,21 @@ export default function AdminLayout({
     }
 
     return (
-        <div className={`flex h-screen w-full flex-row overflow-hidden ${inter.className} bg-background-light dark:bg-background-dark`}>
-            <Sidebar />
+        <div className={`flex h-screen w-full flex-row overflow-hidden ${inter.className} bg-background-light dark:bg-background-dark relative`}>
+            {/* Mobile Overlay */}
+            {isSidebarOpen && (
+                <div
+                    className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 md:hidden transition-opacity duration-300"
+                    onClick={() => setIsSidebarOpen(false)}
+                />
+            )}
+
+            <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
+
             <div className="flex-1 flex flex-col h-full overflow-hidden bg-background-light dark:bg-background-dark relative">
-                <TopBar />
+                <TopBar onMenuClick={() => setIsSidebarOpen(true)} />
                 <main className="flex-1 overflow-y-auto scroll-smooth">
-                    <div className=" mx-10 my-4 flex flex-col gap-8">
+                    <div className="px-4 md:mx-10 my-4 flex flex-col gap-8">
                         {children}
                     </div>
                 </main>

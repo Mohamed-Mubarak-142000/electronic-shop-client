@@ -6,6 +6,7 @@ interface ShopToolbarProps {
     onSortChange: (value: string) => void;
     viewMode?: 'grid' | 'list'; // Future proofing
     onViewModeChange?: (mode: 'grid' | 'list') => void;
+    onFilterOpen?: () => void;
 }
 
 export default function ShopToolbar({
@@ -13,13 +14,23 @@ export default function ShopToolbar({
     sortBy,
     onSortChange,
     viewMode = 'grid',
-    onViewModeChange
+    onViewModeChange,
+    onFilterOpen
 }: ShopToolbarProps) {
     return (
         <div className="flex flex-wrap items-center justify-between gap-4 mb-6 bg-surface-dark p-4 rounded-2xl border border-surface-highlight">
-            <p className="text-[#95c6a9] text-sm font-medium">
-                <span className="text-white font-bold">{total}</span> results found
-            </p>
+            <div className="flex items-center gap-4">
+                <button
+                    onClick={onFilterOpen}
+                    className="lg:hidden flex items-center gap-2 px-4 h-10 rounded-full bg-surface-highlight text-white text-sm font-bold hover:bg-[#2d543c] transition-colors border border-primary/20"
+                >
+                    <span className="material-symbols-outlined text-[20px]">filter_list</span>
+                    Filters
+                </button>
+                <p className="text-[#95c6a9] text-sm font-medium">
+                    <span className="text-white font-bold">{total}</span> results found
+                </p>
+            </div>
             <div className="flex items-center gap-3">
                 <div className="relative group">
                     <select

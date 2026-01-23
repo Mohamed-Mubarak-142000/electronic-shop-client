@@ -2,14 +2,21 @@
 
 import { useTranslation } from '@/hooks/useTranslation';
 
-export default function TopBar() {
+interface TopBarProps {
+    onMenuClick?: () => void;
+}
+
+export default function TopBar({ onMenuClick }: TopBarProps) {
     const { t } = useTranslation();
 
     return (
-        <header className="flex items-center justify-between px-6 py-4 border-b border-white/10 bg-background-dark/95 backdrop-blur z-10 shrink-0">
+        <header className="flex items-center justify-between px-4 md:px-6 py-4 border-b border-white/10 bg-background-dark/95 backdrop-blur z-10 shrink-0">
             {/* Mobile Menu Toggle */}
-            <button className="md:hidden text-white mr-4">
-                <span className="material-symbols-outlined">menu</span>
+            <button
+                className="md:hidden text-white mr-4 p-1 rounded-lg hover:bg-white/5 active:bg-white/10"
+                onClick={onMenuClick}
+            >
+                <span className="material-symbols-outlined">menu_open</span>
             </button>
 
             {/* Search */}

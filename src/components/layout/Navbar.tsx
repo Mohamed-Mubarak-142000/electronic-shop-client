@@ -17,6 +17,7 @@ import OptimizedImage from "@/components/shared/OptimizedImage";
 
 export default function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isMobileSearchOpen, setIsMobileSearchOpen] = useState(false);
     const cartItems = useCartStore((state) => state.cartItems);
     const wishlistItems = useWishlistStore((state) => state.wishlistItems);
     const user = useAuthStore((state) => state.user);
@@ -30,12 +31,17 @@ export default function Navbar() {
     const [searchResults, setSearchResults] = useState<{ products: Product[], categories: Category[] }>({ products: [], categories: [] });
     const [isSearching, setIsSearching] = useState(false);
     const [showResults, setShowResults] = useState(false);
+    const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
     const searchRef = useRef<HTMLDivElement>(null);
+    const userMenuRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
             if (searchRef.current && !searchRef.current.contains(event.target as Node)) {
                 setShowResults(false);
+            }
+            if (userMenuRef.current && !userMenuRef.current.contains(event.target as Node)) {
+                setIsUserMenuOpen(false);
             }
         };
 
@@ -54,9 +60,9 @@ export default function Navbar() {
                         productService.getProducts({ search: searchQuery, limit: 5 }),
                         categoryService.getCategories()
                     ]);
-                    
-                    const filteredCategories = categoriesData.filter(c => 
-                        c.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
+
+                    const filteredCategories = categoriesData.filter(c =>
+                        c.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
                         (c.nameAr && c.nameAr.includes(searchQuery))
                     ).slice(0, 3);
 
@@ -128,7 +134,7 @@ export default function Navbar() {
                                 value={searchQuery}
                                 onChange={(e) => setSearchQuery(e.target.value)}
                                 onFocus={() => {
-                                    if(searchQuery.length > 1) setShowResults(true);
+                                    if (searchQuery.length > 1) setShowResults(true);
                                 }}
                             />
                             {isSearching && (
@@ -145,7 +151,7 @@ export default function Navbar() {
                                     <div className="p-2">
                                         <div className="text-xs font-bold text-gray-500 px-3 py-1 uppercase tracking-wider">{t('home.categories')}</div>
                                         {searchResults.categories.map(cat => (
-                                            <div 
+                                            <div
                                                 key={cat._id}
                                                 onClick={() => handleCategoryClick(cat._id)}
                                                 className="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-white/5 cursor-pointer transition-colors"
@@ -162,7 +168,7 @@ export default function Navbar() {
                                         ))}
                                     </div>
                                 )}
-                                
+
                                 {searchResults.categories.length > 0 && searchResults.products.length > 0 && (
                                     <div className="h-px bg-surface-highlight mx-2"></div>
                                 )}
@@ -171,15 +177,15 @@ export default function Navbar() {
                                     <div className="p-2">
                                         <div className="text-xs font-bold text-gray-500 px-3 py-1 uppercase tracking-wider">{t('nav.shop')}</div>
                                         {searchResults.products.map(prod => (
-                                            <div 
+                                            <div
                                                 key={prod._id}
                                                 onClick={() => handleProductClick(prod._id)}
                                                 className="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-white/5 cursor-pointer transition-colors"
                                             >
                                                 <div className="size-10 rounded-lg bg-surface-highlight overflow-hidden shrink-0">
-                                                    <OptimizedImage 
-                                                        src={prod.imageUrl || (prod.images && prod.images[0]) || "https://placehold.co/100x100"} 
-                                                        alt={prod.name} 
+                                                    <OptimizedImage
+                                                        src={prod.imageUrl || (prod.images && prod.images[0]) || "https://placehold.co/100x100"}
+                                                        alt={prod.name}
                                                         className="object-cover"
                                                         width={40}
                                                         height={40}
@@ -219,7 +225,7 @@ export default function Navbar() {
                     {/* Action Buttons */}
                     <div className="flex gap-3">
                         <Link href="/wishlist">
-                            <button 
+                            <button
                                 aria-label="Wishlist"
                                 className="relative flex items-center justify-center size-10 rounded-full bg-surface-highlight hover:bg-primary hover:text-[#122118] text-white transition-all duration-300"
                             >
@@ -234,7 +240,7 @@ export default function Navbar() {
                             </button>
                         </Link>
                         <Link href="/cart">
-                            <button 
+                            <button
                                 aria-label="Shopping cart"
                                 className="relative flex items-center justify-center size-10 rounded-full bg-surface-highlight hover:bg-primary hover:text-[#122118] text-white transition-all duration-300"
                             >
@@ -248,53 +254,71 @@ export default function Navbar() {
                                 )}
                             </button>
                         </Link>
+
+                        {/* Mobile Search Toggle */}
+                        <button
+                            onClick={() => setIsMobileSearchOpen(!isMobileSearchOpen)}
+                            className="md:hidden flex items-center justify-center size-10 rounded-full bg-surface-highlight hover:bg-primary hover:text-[#122118] text-white transition-all duration-300"
+                        >
+                            <span className="material-symbols-outlined text-[20px]">
+                                {isMobileSearchOpen ? 'close' : 'search'}
+                            </span>
+                        </button>
                         {user ? (
-                            <div className="relative group">
+                            <div className="relative" ref={userMenuRef}>
                                 <button
+                                    onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
                                     className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-highlight hover:bg-white/10 text-white transition-all"
                                 >
                                     <UserIcon size={16} />
                                     <span className="hidden md:block text-sm font-medium">
                                         {user.name.split(' ')[0]}
                                     </span>
-                                    <span className="material-symbols-outlined text-sm transition-transform group-hover:rotate-180">expand_more</span>
+                                    <span className={`material-symbols-outlined text-sm transition-transform ${isUserMenuOpen ? 'rotate-180' : ''}`}>expand_more</span>
                                 </button>
 
                                 {/* Dropdown Menu */}
-                                <div className="absolute right-0 top-full mt-2 w-48 bg-background-dark border border-surface-highlight rounded-2xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-right group-hover:translate-y-0 translate-y-2 z-50 overflow-hidden">
-                                    <div className="p-2 space-y-1">
-                                        <Link
-                                            href="/profile"
-                                            className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-white/5 text-sm text-white transition-colors"
-                                        >
-                                            <span className="material-symbols-outlined text-lg">person</span>
-                                            {t('nav.profile')}
-                                        </Link>
+                                {isUserMenuOpen && (
+                                    <div className="absolute right-0 top-full mt-2 w-48 bg-background-dark border border-surface-highlight rounded-2xl shadow-2xl transition-all duration-300 transform origin-top-right z-50 overflow-hidden animate-in fade-in zoom-in-95">
+                                        <div className="p-2 space-y-1">
+                                            <Link
+                                                href="/profile"
+                                                onClick={() => setIsUserMenuOpen(false)}
+                                                className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-white/5 text-sm text-white transition-colors"
+                                            >
+                                                <span className="material-symbols-outlined text-lg">person</span>
+                                                {t('nav.profile')}
+                                            </Link>
 
-                                        <button
-                                            aria-label={`Switch language to ${language === 'ar' ? 'English' : 'Arabic'}`}
-                                            onClick={() => setLanguage(language === 'en' ? 'ar' : 'en')}
-                                            className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-white/5 text-sm text-white transition-colors"
-                                        >
-                                            <span className="material-symbols-outlined text-lg" aria-hidden="true">language</span>
-                                            {language === 'ar' ? 'English' : 'العربية'}
-                                        </button>
+                                            <button
+                                                aria-label={`Switch language to ${language === 'ar' ? 'English' : 'Arabic'}`}
+                                                onClick={() => {
+                                                    setLanguage(language === 'en' ? 'ar' : 'en');
+                                                    setIsUserMenuOpen(false);
+                                                }}
+                                                className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-white/5 text-sm text-white transition-colors text-left"
+                                            >
+                                                <span className="material-symbols-outlined text-lg" aria-hidden="true">language</span>
+                                                {language === 'ar' ? 'English' : 'العربية'}
+                                            </button>
 
-                                        <div className="h-px bg-surface-highlight mx-2 my-1"></div>
+                                            <div className="h-px bg-surface-highlight mx-2 my-1"></div>
 
-                                        <button
-                                            onClick={() => {
-                                                const { logout } = useAuthStore.getState();
-                                                logout();
-                                                toast.success(language === 'ar' ? 'تم تسجيل الخروج' : "Logged out successfully");
-                                            }}
-                                            className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-red-500/10 text-sm text-red-500 transition-colors"
-                                        >
-                                            <span className="material-symbols-outlined text-lg">logout</span>
-                                            {t('nav.logout')}
-                                        </button>
+                                            <button
+                                                onClick={() => {
+                                                    const { logout } = useAuthStore.getState();
+                                                    logout();
+                                                    setIsUserMenuOpen(false);
+                                                    toast.success(language === 'ar' ? 'تم تسجيل الخروج' : "Logged out successfully");
+                                                }}
+                                                className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-red-500/10 text-sm text-red-500 transition-colors text-left"
+                                            >
+                                                <span className="material-symbols-outlined text-lg">logout</span>
+                                                {t('nav.logout')}
+                                            </button>
+                                        </div>
                                     </div>
-                                </div>
+                                )}
                             </div>
                         ) : (
                             <Link href="/login">
@@ -316,7 +340,82 @@ export default function Navbar() {
                 </div>
             </div>
 
-            {/* Mobile Menu */}
+            {/* Mobile Search Bar */}
+            {isMobileSearchOpen && (
+                <div className="md:hidden px-4 pb-4 animate-in slide-in-from-top duration-300">
+                    <div className="relative flex items-center" ref={searchRef}>
+                        <span className={language === 'ar' ? 'absolute right-4 text-[#95c6a9]' : 'absolute left-4 text-[#95c6a9]'}>
+                            <span className="material-symbols-outlined">search</span>
+                        </span>
+                        <input
+                            autoFocus
+                            className={`w-full bg-surface-highlight text-white placeholder:text-[#95c6a9] rounded-full py-3 ${language === 'ar' ? 'pr-12 pl-4' : 'pl-12 pr-4'} focus:ring-2 focus:ring-primary focus:outline-none border-none text-sm transition-all`}
+                            placeholder={language === 'ar' ? 'بحث عن منتجات...' : 'Search products...'}
+                            type="text"
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                        />
+                        {isSearching && (
+                            <span className={`absolute ${language === 'ar' ? 'left-4' : 'right-4'} animate-spin text-primary`}>
+                                <span className="material-symbols-outlined text-sm">progress_activity</span>
+                            </span>
+                        )}
+
+                        {/* Mobile Search Results */}
+                        {showResults && (searchResults.products.length > 0 || searchResults.categories.length > 0) && (
+                            <div className="absolute top-full left-0 right-0 mt-2 bg-background-dark border border-surface-highlight rounded-2xl shadow-2xl overflow-hidden z-[60]">
+                                <div className="max-h-[60vh] overflow-y-auto">
+                                    {searchResults.categories.length > 0 && (
+                                        <div className="p-2">
+                                            <div className="text-[10px] font-bold text-gray-500 px-3 py-1 uppercase tracking-wider">{t('home.categories')}</div>
+                                            {searchResults.categories.map(cat => (
+                                                <div
+                                                    key={cat._id}
+                                                    onClick={() => { handleCategoryClick(cat._id); setIsMobileSearchOpen(false); }}
+                                                    className="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-white/5 cursor-pointer"
+                                                >
+                                                    <div className="size-8 rounded-lg bg-surface-highlight flex items-center justify-center shrink-0">
+                                                        <span className="material-symbols-outlined text-primary text-sm">category</span>
+                                                    </div>
+                                                    <span className="text-white text-sm font-medium">{cat.name}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    )}
+                                    {searchResults.products.length > 0 && (
+                                        <div className="p-2">
+                                            <div className="text-[10px] font-bold text-gray-500 px-3 py-1 uppercase tracking-wider">{t('nav.shop')}</div>
+                                            {searchResults.products.map(prod => (
+                                                <div
+                                                    key={prod._id}
+                                                    onClick={() => { handleProductClick(prod._id); setIsMobileSearchOpen(false); }}
+                                                    className="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-white/5 cursor-pointer"
+                                                >
+                                                    <div className="size-10 rounded-lg bg-surface-highlight overflow-hidden shrink-0">
+                                                        <OptimizedImage
+                                                            src={prod.imageUrl || (prod.images && prod.images[0]) || "https://placehold.co/100x100"}
+                                                            alt={prod.name}
+                                                            className="object-cover"
+                                                            width={40}
+                                                            height={40}
+                                                        />
+                                                    </div>
+                                                    <div className="flex-1 min-w-0">
+                                                        <div className="text-white text-sm font-medium truncate">{prod.name}</div>
+                                                        <div className="text-primary text-xs font-bold">${prod.salePrice || prod.price}</div>
+                                                    </div>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
+                        )}
+                    </div>
+                </div>
+            )}
+
+            {/* Mobile Menu Overlay Toggle */}
             {isMenuOpen && (
                 <div className="lg:hidden bg-background-dark border-t border-surface-highlight px-4 py-4 space-y-4">
                     <Link

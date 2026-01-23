@@ -23,6 +23,7 @@ function ShopContent() {
     const [page, setPage] = useState(Number(searchParams.get('page')) || 1);
     const [pages, setPages] = useState(1);
     const [total, setTotal] = useState(0);
+    const [isFilterOpen, setIsFilterOpen] = useState(false);
 
     // Filter states
     const [selectedCategory, setSelectedCategory] = useState(searchParams.get('category') || '');
@@ -90,11 +91,13 @@ function ShopContent() {
     const handleCategoryToggle = (id: string) => {
         setSelectedCategory(prev => prev === id ? '' : id);
         setPage(1);
+        setIsFilterOpen(false);
     };
 
     const handleBrandToggle = (id: string) => {
         setSelectedBrand(prev => prev === id ? '' : id);
         setPage(1);
+        setIsFilterOpen(false);
     };
 
     const clearFilters = () => {
@@ -142,6 +145,8 @@ function ShopContent() {
                         onMinPriceChange={(val) => { setMinPrice(val); setPage(1); }}
                         onMaxPriceChange={(val) => { setMaxPrice(val); setPage(1); }}
                         onClearFilters={clearFilters}
+                        isOpen={isFilterOpen}
+                        onClose={() => setIsFilterOpen(false)}
                     />
 
                     {/* Product Grid Area */}
@@ -151,6 +156,7 @@ function ShopContent() {
                             total={total}
                             sortBy={sortBy}
                             onSortChange={(val) => { setSortBy(val); setPage(1); }}
+                            onFilterOpen={() => setIsFilterOpen(true)}
                         />
 
                         {/* Grid */}
@@ -167,16 +173,16 @@ function ShopContent() {
                                         <ProductCard key={product._id} product={product} />
                                     ))}
                                 </div>
-                                
+
                                 {/* Pagination */}
                                 {pages > 1 && (
                                     <div className="mt-12">
                                         <Pagination
-                                           currentPage={page}
-                                           totalPages={pages}
-                                           onPageChange={setPage}
-                                           showResultsInfo={false}
-                                           className="!p-0 !bg-transparent border-none justify-center"
+                                            currentPage={page}
+                                            totalPages={pages}
+                                            onPageChange={setPage}
+                                            showResultsInfo={false}
+                                            className="!p-0 !bg-transparent border-none justify-center"
                                         />
                                     </div>
                                 )}

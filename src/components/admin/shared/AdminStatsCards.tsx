@@ -16,7 +16,7 @@ interface AdminStatsCardsProps {
 
 export function AdminStatsCards({ stats }: AdminStatsCardsProps) {
     return (
-        <div className={`grid grid-cols-1 md:grid-cols-${stats.length} gap-4`}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
             {stats.map((stat, index) => (
                 <div key={index} className="flex flex-col gap-1 rounded-xl p-5 border border-white/10 bg-surface-dark shadow-sm">
                     <div className="flex items-center justify-between">

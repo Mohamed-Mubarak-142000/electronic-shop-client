@@ -52,19 +52,19 @@ export default function RevenueChart({ data }: { data?: number[] }) {
                     {data && <path d={pathD} fill="none" stroke="#36e27b" strokeWidth="3"></path>}
                 </svg>
             </div>
-            <div className="flex justify-between text-xs text-gray-500 mt-4 px-2">
+            <div className="flex justify-between text-[10px] md:text-xs text-gray-500 mt-4 px-2">
                 <span>{t('common.months.jan')}</span>
-                <span>{t('common.months.feb')}</span>
+                <span className="hidden md:block">{t('common.months.feb')}</span>
                 <span>{t('common.months.mar')}</span>
-                <span>{t('common.months.apr')}</span>
+                <span className="hidden md:block">{t('common.months.apr')}</span>
                 <span>{t('common.months.may')}</span>
-                <span>{t('common.months.jun')}</span>
+                <span className="hidden md:block">{t('common.months.jun')}</span>
                 <span>{t('common.months.jul')}</span>
-                <span>{t('common.months.aug')}</span>
+                <span className="hidden md:block">{t('common.months.aug')}</span>
                 <span>{t('common.months.sep')}</span>
-                <span>{t('common.months.oct')}</span>
+                <span className="hidden md:block">{t('common.months.oct')}</span>
                 <span>{t('common.months.nov')}</span>
-                <span>{t('common.months.dec')}</span>
+                <span className="hidden md:block">{t('common.months.dec')}</span>
             </div>
         </div>
     );
