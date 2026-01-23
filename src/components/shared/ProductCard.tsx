@@ -71,7 +71,7 @@ export default function ProductCard({ product }: { product: Product }) {
     };
 
     return (
-        <div className="group relative bg-surface-dark rounded-2xl sm:rounded-[2rem] p-3 sm:p-4 hover:bg-surface-highlight transition-all duration-300 flex flex-col h-full font-display border border-surface-highlight/10 hover:border-primary/20">
+        <div className="group relative bg-surface-dark rounded-2xl sm:rounded-[2rem] p-3 sm:p-4 hover:bg-surface-highlight transition-all duration-300 flex flex-col h-full font-display border border-surface-highlight/10 hover:border-primary/20 w-full">
             <div className="relative aspect-[4/3] rounded-xl sm:rounded-[1.5rem] overflow-hidden bg-white mb-3 sm:mb-4 shadow-inner">
                 <Link href={`/product/${product._id}`}>
                     {/* Performance: Lazy load product images with proper sizes */}
