@@ -112,11 +112,11 @@ export default function ProductCard({ product }: { product: Product }) {
                 </div>
 
                 <Link href={`/product/${product._id}`}>
-                    <h3 className="text-white font-bold text-base sm:text-lg leading-tight mb-1 group-hover:text-primary transition-colors cursor-pointer line-clamp-2 min-h-[2.5rem]">
+                    <h3 className="text-white font-bold text-base sm:text-lg leading-tight mb-1 group-hover:text-primary transition-colors cursor-pointer line-clamp-2 h-10 overflow-hidden">
                         {product.name}
                     </h3>
                 </Link>
-                <p className="text-gray-400 text-xs sm:text-sm mb-3 sm:mb-4 leading-relaxed line-clamp-3 min-h-[3rem]">
+                <p className="text-gray-400 text-xs sm:text-sm mb-3 sm:mb-4 leading-relaxed line-clamp-2 h-10 overflow-hidden">
                     {product.description}
                 </p>
 
