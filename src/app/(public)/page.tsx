@@ -17,20 +17,10 @@ import LazySection from "@/components/shared/LazySection";
 import { useEffect } from 'react';
 
 // Performance: Import slick carousel CSS
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+
 
 // Performance: Lazy load react-slick to reduce initial bundle size
-const Slider = dynamic(() => import("react-slick"), {
-  ssr: false,
-  loading: () => (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-      {[...Array(4)].map((_, i) => (
-        <div key={i} className="h-96 bg-surface-dark/30 rounded-2xl animate-pulse"></div>
-      ))}
-    </div>
-  ),
-});
+
 
 // Performance: Lazy load MapSelector to reduce initial bundle
 const MapSelector = dynamic<{ value: { lat: number; lng: number }; onChange: (v: { lat: number, lng: number }) => void; readOnly?: boolean }>(
@@ -45,37 +35,7 @@ const MapSelector = dynamic<{ value: { lat: number; lng: number }; onChange: (v:
   }
 );
 
-interface ArrowProps {
-  className?: string;
-  style?: React.CSSProperties;
-  onClick?: React.MouseEventHandler<HTMLButtonElement>;
-}
 
-function SampleNextArrow(props: ArrowProps) {
-  const { onClick } = props;
-  return (
-    <button
-      aria-label="Next slide"
-      className="absolute right-0 top-1/2 -translate-y-1/2 z-10 size-12 rounded-full bg-[#112117]/80 backdrop-blur-sm border border-[#254632] flex items-center justify-center text-white hover:bg-primary hover:text-[#112117] transition-all shadow-xl -mr-6"
-      onClick={onClick}
-    >
-      <span className="material-symbols-outlined" aria-hidden="true">chevron_right</span>
-    </button>
-  );
-}
-
-function SamplePrevArrow(props: ArrowProps) {
-  const { onClick } = props;
-  return (
-    <button
-      aria-label="Previous slide"
-      className="absolute left-0 top-1/2 -translate-y-1/2 z-10 size-12 rounded-full bg-[#112117]/80 backdrop-blur-sm border border-[#254632] flex items-center justify-center text-white hover:bg-primary hover:text-[#112117] transition-all shadow-xl -ml-6"
-      onClick={onClick}
-    >
-      <span className="material-symbols-outlined" aria-hidden="true">chevron_left</span>
-    </button>
-  );
-}
 
 export default function Home() {
   const { t, language } = useTranslation();
@@ -286,46 +246,14 @@ export default function Home() {
           </div>
 
           {bestSellers.length > 0 ? (
-            <Slider
-              dots={false}
-              infinite={bestSellers.length > 4}
-              speed={500}
-              slidesToShow={4}
-              slidesToScroll={1}
-              centerMode={false}
-              autoplay={true}
-              autoplaySpeed={3000}
-              pauseOnHover={true}
-              rtl={language === 'ar'}
-              nextArrow={<SampleNextArrow />}
-              prevArrow={<SamplePrevArrow />}
-              responsive={[
-                {
-                  breakpoint: 1280,
-                  settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 1,
-                  }
-                },
-                {
-                  breakpoint: 768,
-                  settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-                    arrows: false,
-                    dots: true,
-                    centerMode: false
-                  }
-                }
-              ]}
-            >
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4">
               {bestSellers.map((product: Product) => (
-                <div key={product._id} className="px-1.5 sm:px-3">
+                <div key={product._id} className="h-full">
                   <ProductCard product={product} />
                 </div>
               ))}
-              {/* More Card as a slide */}
-              <div className="px-1.5 sm:px-3">
+              {/* More Card */}
+              <div className="h-full">
                 <Link
                   href="/shop"
                   className="flex flex-col items-center justify-center bg-surface-dark/50 p-6 rounded-[2rem] border-2 border-dashed border-[#254632] hover:border-primary hover:bg-primary/5 transition-all group aspect-[3/4] h-full"
@@ -339,7 +267,7 @@ export default function Home() {
                   </p>
                 </Link>
               </div>
-            </Slider>
+            </div>
           ) : (
             <div className="py-20 flex flex-col items-center justify-center bg-surface-dark/30 rounded-[3rem] border border-surface-highlight/10">
               <span className="material-symbols-outlined text-5xl text-gray-600 mb-4 animate-pulse">shopping_cart_off</span>

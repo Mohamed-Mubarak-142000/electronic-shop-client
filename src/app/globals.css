@@ -90,16 +90,3 @@ body {
     background-position: 40px 0;
   }
 }
-
-/* Slick Slider Customization */
-.slick-track {
-  display: flex !important;
-}
-
-.slick-slide {
-  height: inherit !important;
-}
-
-.slick-list {
-  margin: 0 -12px;
-}
