@@ -301,10 +301,10 @@ export default function Home() {
               prevArrow={<SamplePrevArrow />}
               responsive={[
                 {
-                  breakpoint: 1024,
+                  breakpoint: 1280,
                   settings: {
                     slidesToShow: 2,
-                    slidesToScroll: 1
+                    slidesToScroll: 1,
                   }
                 },
                 {
