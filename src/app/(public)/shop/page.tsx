@@ -161,14 +161,14 @@ function ShopContent() {
 
                         {/* Grid */}
                         {loading ? (
-                            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                                 {[...Array(6)].map((_, i) => (
                                     <div key={i} className="bg-surface-dark rounded-[2rem] p-4 h-96 animate-pulse border border-surface-highlight"></div>
                                 ))}
                             </div>
                         ) : products.length > 0 ? (
                             <>
-                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                                     {products.map((product) => (
                                         <ProductCard key={product._id} product={product} />
                                     ))}
