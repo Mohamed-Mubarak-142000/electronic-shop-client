@@ -6,9 +6,10 @@ import { ProfileFormValues } from "./profile-schema";
 interface AddressInfoProps {
     form: UseFormReturn<ProfileFormValues>;
     language: string;
+    readOnly?: boolean;
 }
 
-export function AddressInfo({ form, language }: AddressInfoProps) {
+export function AddressInfo({ form, language, readOnly = false }: AddressInfoProps) {
     return (
         <div className="bg-white dark:bg-surface-dark p-6 md:p-8 rounded-2xl shadow-sm border border-slate-100 dark:border-border-dark h-full">
             <h2 className="text-xl font-bold mb-6 flex items-center gap-2">
@@ -29,7 +30,8 @@ export function AddressInfo({ form, language }: AddressInfoProps) {
                                     </div>
                                     <Input
                                         {...field}
-                                        className="ps-12 rounded-full h-14 bg-white dark:bg-surface-dark border-gray-200 dark:border-gray-700 focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all shadow-sm"
+                                        readOnly={readOnly}
+                                        className={`ps-12 rounded-full h-14 bg-white dark:bg-surface-dark border-gray-200 dark:border-gray-700 focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all shadow-sm ${readOnly ? 'opacity-60 cursor-not-allowed bg-gray-50 dark:bg-gray-800' : ''}`}
                                     />
                                 </div>
                             </FormControl>
@@ -52,7 +54,8 @@ export function AddressInfo({ form, language }: AddressInfoProps) {
                                         </div>
                                         <Input
                                             {...field}
-                                            className="ps-12 rounded-full h-14 bg-white dark:bg-surface-dark border-gray-200 dark:border-gray-700 focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all shadow-sm"
+                                            readOnly={readOnly}
+                                            className={`ps-12 rounded-full h-14 bg-white dark:bg-surface-dark border-gray-200 dark:border-gray-700 focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all shadow-sm ${readOnly ? 'opacity-60 cursor-not-allowed bg-gray-50 dark:bg-gray-800' : ''}`}
                                         />
                                     </div>
                                 </FormControl>
@@ -74,7 +77,8 @@ export function AddressInfo({ form, language }: AddressInfoProps) {
                                         </div>
                                         <Input
                                             {...field}
-                                            className="ps-12 rounded-full h-14 bg-white dark:bg-surface-dark border-gray-200 dark:border-gray-700 focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all shadow-sm"
+                                            readOnly={readOnly}
+                                            className={`ps-12 rounded-full h-14 bg-white dark:bg-surface-dark border-gray-200 dark:border-gray-700 focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all shadow-sm ${readOnly ? 'opacity-60 cursor-not-allowed bg-gray-50 dark:bg-gray-800' : ''}`}
                                         />
                                     </div>
                                 </FormControl>

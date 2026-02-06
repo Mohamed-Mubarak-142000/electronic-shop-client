@@ -11,7 +11,7 @@ export interface SearchResult {
 export const mapService = {
     async searchPlaces(query: string): Promise<SearchResult[]> {
         if (!query.trim()) return [];
-        
+
         try {
             const response = await axios.get(
                 `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(query)}.json`,
@@ -26,6 +26,23 @@ export const mapService = {
             return response.data.features || [];
         } catch (error) {
             console.error('Search failed:', error);
+            throw error;
+        }
+    },
+
+    async reverseGeocode(lat: number, lng: number): Promise<any> {
+        try {
+            const response = await axios.get(
+                `https://api.mapbox.com/geocoding/v5/mapbox.places/${lng},${lat}.json`,
+                {
+                    params: {
+                        access_token: MAPBOX_TOKEN,
+                    }
+                }
+            );
+            return response.data.features || [];
+        } catch (error) {
+            console.error('Reverse geocoding failed:', error);
             throw error;
         }
     }

@@ -16,12 +16,14 @@ import { ProfessionalInfo } from '@/components/profile/ProfessionalInfo';
 import { AvatarUpload } from '@/components/profile/AvatarUpload';
 import { UserOrders } from '@/components/profile/UserOrders';
 import { Form } from '@/components/ui/form';
+import { mapService } from '@/services/mapService';
 
 export default function ProfilePage() {
     const { user, login } = useAuthStore();
     const { t, language, dir } = useTranslation();
     const [loading, setLoading] = useState(false);
     const [initialData, setInitialData] = useState<ProfileFormValues | null>(null);
+    const [isAddressAutoFilled, setIsAddressAutoFilled] = useState(false);
 
     const form = useForm<ProfileFormValues>({
         resolver: zodResolver(profileSchema) as Resolver<ProfileFormValues>,
@@ -107,6 +109,35 @@ export default function ProfilePage() {
         }
     };
 
+    const handleLocationChange = async (loc: { lat: number; lng: number }) => {
+        form.setValue('location', loc, { shouldDirty: true });
+
+        try {
+            const features = await mapService.reverseGeocode(loc.lat, loc.lng);
+            if (features && features.length > 0) {
+                const feature = features[0];
+                const context = feature.context || [];
+
+                // Extract components
+                const country = context.find((c: any) => c.id.startsWith('country'))?.text || '';
+                const city = context.find((c: any) => c.id.startsWith('place'))?.text ||
+                    context.find((c: any) => c.id.startsWith('district'))?.text || '';
+                const street = feature.place_name || '';
+
+                form.setValue('address.street', street, { shouldDirty: true });
+                form.setValue('address.city', city, { shouldDirty: true });
+                form.setValue('address.country', country, { shouldDirty: true });
+
+                setIsAddressAutoFilled(true);
+                toast.success(language === 'ar' ? 'تم تحديث العنوان من الخريطة' : 'Address updated from map');
+            }
+        } catch (error) {
+            console.error('Failed to reverse geocode:', error);
+            // Don't disable fields if geocoding fails, let user type
+            setIsAddressAutoFilled(false);
+        }
+    };
+
     const hasChanges = form.formState.isDirty;
 
     // Show loading spinner while checking auth or fetching initial data
@@ -139,7 +170,7 @@ export default function ProfilePage() {
                         {/* Top Row: Basic Info & Address */}
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                             <BasicInfo form={form} t={t} language={language} />
-                            <AddressInfo form={form} language={language} />
+                            <AddressInfo form={form} language={language} readOnly={isAddressAutoFilled} />
                         </div>
 
                         {/* Professional Info */}
@@ -158,7 +189,7 @@ export default function ProfilePage() {
                             <div className="rounded-2xl overflow-hidden border border-slate-200 dark:border-gray-700 h-[400px]">
                                 <MapSelector
                                     value={form.watch('location')}
-                                    onChange={(loc) => form.setValue('location', loc, { shouldDirty: true })}
+                                    onChange={handleLocationChange}
                                 />
                             </div>
 
