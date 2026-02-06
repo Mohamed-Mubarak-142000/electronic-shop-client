@@ -107,6 +107,14 @@ export default function Home() {
     queryFn: () => userService.getShowroomInfo().catch(() => null),
   });
 
+  const user = useAuthStore((state) => state.user);
+
+  const { data: recommendedProducts, isLoading: loadingRecommended } = useQuery({
+    queryKey: ['products', 'recommended'],
+    queryFn: productService.getRecommendedProducts,
+    enabled: !!user,
+  });
+
   const loading = loadingBestSellers || loadingCategories || loadingNewArrivals || loadingBrands || loadingShowroom;
 
   const bestSellers = bestSellersData?.products || [];
@@ -198,6 +206,26 @@ export default function Home() {
             )}
           </div>
         </div>
+
+        {/* Recommended For You (Logged In User) */}
+        {user && recommendedProducts && recommendedProducts.length > 0 && (
+          <div className="py-10">
+            <div className="flex items-center gap-4 mb-6">
+              <span className="material-symbols-outlined text-primary text-3xl">verified</span>
+              <h2 className="text-3xl font-bold text-white tracking-tight">
+                {language === 'ar' ? 'موصى به لك' : 'Recommended For You'}
+              </h2>
+              <div className="h-px flex-1 bg-[#254632]"></div>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+              {recommendedProducts.map((product: Product) => (
+                <div key={product._id} className="h-full">
+                  <ProductCard product={product} />
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* Categories */}
         <div className="py-10">
@@ -388,7 +416,7 @@ export default function Home() {
             <h2 className="text-2xl font-bold text-white">{t('home.newArrivals')}</h2>
             <Link href="/shop" className="text-primary font-bold text-sm hover:underline">{t('home.viewAll')}</Link>
           </div>
-          <div className="grid grid-cols-1 min-[380px]:grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
             {newArrivals.length > 0 ? (
               newArrivals.map((item: Product) => (
                 <div key={item._id} className="h-full">

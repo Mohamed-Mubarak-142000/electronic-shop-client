@@ -11,8 +11,10 @@ import { useRouter } from 'next/navigation';
 import AuthLayout from '@/components/auth/AuthLayout';
 import SocialLogin from '@/components/auth/SocialLogin';
 import { Input } from '@/components/ui/input';
+import { PasswordInput } from '@/components/ui/PasswordInput';
 import { Button } from '@/components/ui/button';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
+import { useTranslation } from '@/hooks/useTranslation';
 
 // Existing schema
 const formSchema = z.object({
@@ -22,6 +24,7 @@ const formSchema = z.object({
 
 export default function LoginPage() {
     const router = useRouter();
+    const { t, language } = useTranslation();
     const [error, setError] = useState('');
 
     const form = useForm<z.infer<typeof formSchema>>({
@@ -37,7 +40,6 @@ export default function LoginPage() {
             return await authService.login(values);
         },
         onSuccess: (data) => {
-            router.push('/admin');
             if (data.role === 'admin') router.push('/admin');
             else router.push('/');
         },
@@ -51,7 +53,7 @@ export default function LoginPage() {
     }
 
     return (
-        <AuthLayout type="login" heading="Welcome Back" subheading="Log in to access your trade dashboard.">
+        <AuthLayout type="login" heading={t('auth.welcome')} subheading={t('auth.loginSubtitle')}>
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-5">
                     {/* Email Field */}
@@ -60,16 +62,16 @@ export default function LoginPage() {
                         name="email"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Email Address</FormLabel>
+                                <FormLabel className="text-gray-900 dark:text-white">{t('auth.email')}</FormLabel>
                                 <FormControl>
                                     <div className="relative group">
-                                        <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                        <div className={`absolute inset-y-0 ${language === 'ar' ? 'right-0 pr-4' : 'left-0 pl-4'} flex items-center pointer-events-none z-10`}>
                                             <span className="material-symbols-outlined text-gray-400 group-focus-within:text-primary transition-colors">mail</span>
                                         </div>
                                         <Input
                                             {...field}
-                                            className="w-full rounded-full bg-white dark:bg-surface-dark border border-gray-200 dark:border-border-dark text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-[#95c6a9] h-14 pl-12 pr-4 focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all duration-200 shadow-sm"
-                                            placeholder="name@company.com"
+                                            className={`w-full rounded-full bg-white dark:bg-surface-dark border border-gray-200 dark:border-border-dark text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-[#95c6a9] h-14 ${language === 'ar' ? 'pr-12 pl-4' : 'pl-12 pr-4'} focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all duration-200 shadow-sm`}
+                                            placeholder={t('auth.register.emailPlaceholder')}
                                             type="email"
                                         />
                                     </div>
@@ -80,25 +82,24 @@ export default function LoginPage() {
                     />
 
                     {/* Password Field */}
-                     <FormField
+                    <FormField
                         control={form.control}
                         name="password"
                         render={({ field }) => (
                             <FormItem>
                                 <div className="flex justify-between items-center ml-1">
-                                    <FormLabel>Password</FormLabel>
-                                    <Link href="/forgot-password" className="text-xs font-medium text-primary hover:text-primary/80 transition-colors">Forgot Password?</Link>
+                                    <FormLabel className="text-gray-900 dark:text-white">{t('auth.register.password')}</FormLabel>
+                                    <Link href="/forgot-password" className="text-xs font-medium text-primary hover:text-primary/80 transition-colors">{t('auth.forgotPassword')}</Link>
                                 </div>
                                 <FormControl>
                                     <div className="relative group">
-                                        <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                        <div className={`absolute inset-y-0 ${language === 'ar' ? 'right-0 pr-4' : 'left-0 pl-4'} flex items-center pointer-events-none z-10`}>
                                             <span className="material-symbols-outlined text-gray-400 group-focus-within:text-primary transition-colors">lock</span>
                                         </div>
-                                        <Input
+                                        <PasswordInput
                                             {...field}
-                                            className="w-full rounded-full bg-white dark:bg-surface-dark border border-gray-200 dark:border-border-dark text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-[#95c6a9] h-14 pl-12 pr-12 focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all duration-200 shadow-sm"
-                                            placeholder="Enter your password"
-                                            type="password"
+                                            className={`w-full rounded-full bg-white dark:bg-surface-dark border border-gray-200 dark:border-border-dark text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-[#95c6a9] h-14 ${language === 'ar' ? 'pr-12 pl-4' : 'pl-12 pr-4'} focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all duration-200 shadow-sm`}
+                                            placeholder={t('auth.register.passwordPlaceholder')}
                                         />
                                     </div>
                                 </FormControl>
@@ -115,7 +116,7 @@ export default function LoginPage() {
                                 <span className="material-symbols-outlined" style={{ fontSize: "16px", fontWeight: "bold" }}>check</span>
                             </span>
                         </div>
-                        <label className="text-sm text-gray-600 dark:text-gray-400 cursor-pointer select-none" htmlFor="remember">Remember this device</label>
+                        <label className="text-sm text-gray-600 dark:text-gray-400 cursor-pointer select-none" htmlFor="remember">{t('auth.rememberMe')}</label>
                     </div>
 
                     {error && <p className="text-red-500 text-sm">{error}</p>}
@@ -125,13 +126,13 @@ export default function LoginPage() {
                         disabled={mutation.isPending}
                         className="mt-4 flex w-full cursor-pointer items-center justify-center rounded-full bg-primary text-background-dark h-14 text-base font-bold tracking-wide hover:bg-primary/90 hover:shadow-[0_0_20px_rgba(54,226,123,0.4)] active:scale-[0.98] transition-all duration-200 disabled:opacity-70"
                     >
-                        {mutation.isPending ? 'Signing in...' : 'Sign In'}
+                        {mutation.isPending ? t('auth.signingIn') : t('auth.signIn')}
                     </Button>
 
                     <SocialLogin />
 
                     <div className="flex justify-center mt-6">
-                        <p className="text-gray-500 dark:text-gray-400 text-sm">Don&apos;t have an account? <Link href="/register" className="text-primary font-semibold hover:underline">Register now</Link></p>
+                        <p className="text-gray-500 dark:text-gray-400 text-sm">{t('auth.noAccount')} <Link href="/register" className="text-primary font-semibold hover:underline">{t('auth.registerNow')}</Link></p>
                     </div>
                 </form>
             </Form>

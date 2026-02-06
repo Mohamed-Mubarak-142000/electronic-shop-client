@@ -29,5 +29,10 @@ export const productService = {
     async getProductStats() {
         const response = await api.get('/dashboard/products/stats');
         return response.data;
+    },
+
+    async getRecommendedProducts() {
+        const response = await api.get('/products/recommended');
+        return response.data;
     }
 };

@@ -11,35 +11,52 @@ import { useState } from 'react';
 import toast from 'react-hot-toast';
 import AuthLayout from '@/components/auth/AuthLayout';
 import { Input } from '@/components/ui/input';
+import { PasswordInput } from '@/components/ui/PasswordInput';
 import { Button } from '@/components/ui/button';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
+import { useTranslation } from '@/hooks/useTranslation';
 
+// We need to define schema based on translation if we want error messages translated, 
+// but typically Zod messages are hardcoded or passed via map. 
+// For now, I'll keep English validation messages or simple ones.
 const formSchema = z.object({
-    account_type: z.enum(['homeowner', 'business']),
     name: z.string().min(2, 'Name must be at least 2 characters'),
     email: z.string().email('Invalid email address'),
     password: z.string().min(6, 'Password must be at least 6 characters'),
+    confirmPassword: z.string()
+}).refine((data) => data.password === data.confirmPassword, {
+    message: "Passwords do not match",
+    path: ["confirmPassword"],
 });
 
 type FormData = z.infer<typeof formSchema>;
 
 export default function RegisterPage() {
     const router = useRouter();
+    const { t, language } = useTranslation();
     const [serverError, setServerError] = useState('');
 
     const form = useForm<FormData>({
         resolver: zodResolver(formSchema),
         defaultValues: {
-            account_type: 'homeowner',
             name: '',
             email: '',
             password: '',
+            confirmPassword: '',
         },
     });
 
     const mutation = useMutation({
         mutationFn: async (values: FormData) => {
-            return await authService.register(values);
+            // Adapt values to backend expected format if needed
+            // Backend might expect account_type or simple registration
+            return await authService.register({
+                name: values.name,
+                email: values.email,
+                password: values.password,
+                // Defaulting to homeowner as we removed the switch
+                account_type: 'homeowner'
+            });
         },
         onSuccess: () => {
             toast.success('Registration successful! Please log in.');
@@ -56,12 +73,12 @@ export default function RegisterPage() {
     };
 
     return (
-        <AuthLayout 
-            type="register" 
-            heading="Join the Circuit" 
-            subheading="Create an account to start your project today."
-            visualHeading="Power up your workflow."
-            visualDescription="Access wholesale pricing, manage project lists, and get same-day shipping on over 10,000 electrical components."
+        <AuthLayout
+            type="register"
+            heading={t('auth.register.title')}
+            subheading={t('auth.register.subtitle')}
+            visualHeading={t('auth.register.visualHeading')}
+            visualDescription={t('auth.register.visualDescription')}
             showVisualOnMobile={true}
         >
             {serverError && (
@@ -72,42 +89,6 @@ export default function RegisterPage() {
 
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-5">
-                    {/* Segmented Control */}
-                    <FormField
-                        control={form.control}
-                        name="account_type"
-                        render={({ field }) => (
-                            <FormItem className="space-y-0">
-                                <div className="p-1 bg-gray-200 dark:bg-surface-dark rounded-full flex relative">
-                                    <label className="flex-1 text-center cursor-pointer relative z-10">
-                                        <input 
-                                            type="radio" 
-                                            className="peer sr-only" 
-                                            {...field}
-                                            value="homeowner"
-                                            checked={field.value === 'homeowner'}
-                                        />
-                                        <div className="w-full py-2.5 rounded-full text-sm font-medium text-gray-500 dark:text-gray-400 peer-checked:bg-white dark:peer-checked:bg-surface-highlight peer-checked:text-black dark:peer-checked:text-primary peer-checked:shadow-sm transition-all">
-                                            Homeowner
-                                        </div>
-                                    </label>
-                                    <label className="flex-1 text-center cursor-pointer relative z-10">
-                                        <input 
-                                             type="radio" 
-                                             className="peer sr-only" 
-                                             {...field}
-                                             value="business"
-                                             checked={field.value === 'business'}
-                                        />
-                                        <div className="w-full py-2.5 rounded-full text-sm font-medium text-gray-500 dark:text-gray-400 peer-checked:bg-white dark:peer-checked:bg-surface-highlight peer-checked:text-black dark:peer-checked:text-primary peer-checked:shadow-sm transition-all">
-                                            Electrician / Business
-                                        </div>
-                                    </label>
-                                </div>
-                                <FormMessage />
-                            </FormItem>
-                        )}
-                    />
 
                     {/* Name Input */}
                     <FormField
@@ -115,15 +96,15 @@ export default function RegisterPage() {
                         name="name"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Full Name</FormLabel>
+                                <FormLabel className="text-gray-900 dark:text-white">{t('auth.name')}</FormLabel>
                                 <FormControl>
                                     <div className="relative flex items-center">
-                                        <Input 
+                                        <Input
                                             {...field}
-                                            className="w-full bg-white dark:bg-surface-dark border border-gray-300 dark:border-border-dark text-gray-900 dark:text-white text-base rounded-full h-14 pl-5 pr-12 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all placeholder:text-gray-400 dark:placeholder:text-gray-500" 
-                                            placeholder="e.g. Thomas Edison" 
+                                            className="w-full bg-white dark:bg-surface-dark border border-gray-300 dark:border-border-dark text-gray-900 dark:text-white text-base rounded-full h-14 pl-5 pr-12 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all placeholder:text-gray-400 dark:placeholder:text-gray-500"
+                                            placeholder={t('auth.register.namePlaceholder')}
                                         />
-                                        <div className="absolute right-5 text-gray-400 dark:text-[#95c6a9] flex items-center pointer-events-none">
+                                        <div className={`absolute ${language === 'ar' ? 'left-5' : 'right-5'} text-gray-400 dark:text-[#95c6a9] flex items-center pointer-events-none`}>
                                             <span className="material-symbols-outlined">person</span>
                                         </div>
                                     </div>
@@ -139,16 +120,16 @@ export default function RegisterPage() {
                         name="email"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Email Address</FormLabel>
+                                <FormLabel className="text-gray-900 dark:text-white">{t('auth.email')}</FormLabel>
                                 <FormControl>
                                     <div className="relative flex items-center">
-                                        <Input 
+                                        <Input
                                             {...field}
-                                            className="w-full bg-white dark:bg-surface-dark border border-gray-300 dark:border-border-dark text-gray-900 dark:text-white text-base rounded-full h-14 pl-5 pr-12 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all placeholder:text-gray-400 dark:placeholder:text-gray-500" 
-                                            placeholder="name@example.com" 
-                                            type="email" 
+                                            className="w-full bg-white dark:bg-surface-dark border border-gray-300 dark:border-border-dark text-gray-900 dark:text-white text-base rounded-full h-14 pl-5 pr-12 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all placeholder:text-gray-400 dark:placeholder:text-gray-500"
+                                            placeholder={t('auth.register.emailPlaceholder')}
+                                            type="email"
                                         />
-                                        <div className="absolute right-5 text-gray-400 dark:text-[#95c6a9] flex items-center pointer-events-none">
+                                        <div className={`absolute ${language === 'ar' ? 'left-5' : 'right-5'} text-gray-400 dark:text-[#95c6a9] flex items-center pointer-events-none`}>
                                             <span className="material-symbols-outlined">mail</span>
                                         </div>
                                     </div>
@@ -164,39 +145,52 @@ export default function RegisterPage() {
                         name="password"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Password</FormLabel>
+                                <FormLabel className="text-gray-900 dark:text-white">{t('auth.register.password')}</FormLabel>
                                 <FormControl>
-                                    <div className="relative flex items-center">
-                                        <Input 
-                                            {...field}
-                                            className="w-full bg-white dark:bg-surface-dark border border-gray-300 dark:border-border-dark text-gray-900 dark:text-white text-base rounded-full h-14 pl-5 pr-12 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all placeholder:text-gray-400 dark:placeholder:text-gray-500" 
-                                            placeholder="Create a strong password" 
-                                            type="password" 
-                                        />
-                                        <div className="absolute right-5 text-gray-400 dark:text-[#95c6a9] flex items-center pointer-events-none">
-                                            <span className="material-symbols-outlined">lock</span>
-                                        </div>
-                                    </div>
+                                    <PasswordInput
+                                        {...field}
+                                        className="w-full bg-white dark:bg-surface-dark border border-gray-300 dark:border-border-dark text-gray-900 dark:text-white text-base rounded-full h-14 pl-5 pr-12 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all placeholder:text-gray-400 dark:placeholder:text-gray-500"
+                                        placeholder={t('auth.register.passwordPlaceholder')}
+                                    />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
                         )}
                     />
 
-                    <Button 
-                        type="submit" 
+                    {/* Confirm Password Input */}
+                    <FormField
+                        control={form.control}
+                        name="confirmPassword"
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormLabel className="text-gray-900 dark:text-white">{t('auth.register.confirmPassword')}</FormLabel>
+                                <FormControl>
+                                    <PasswordInput
+                                        {...field}
+                                        className="w-full bg-white dark:bg-surface-dark border border-gray-300 dark:border-border-dark text-gray-900 dark:text-white text-base rounded-full h-14 pl-5 pr-12 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all placeholder:text-gray-400 dark:placeholder:text-gray-500"
+                                        placeholder={t('auth.register.confirmPasswordPlaceholder')}
+                                    />
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+
+                    <Button
+                        type="submit"
                         disabled={mutation.isPending}
                         className="mt-2 w-full h-14 rounded-full bg-primary hover:bg-primary/90 text-background-dark text-base font-bold shadow-[0_0_20px_rgba(54,226,123,0.4)] disabled:opacity-50 disabled:cursor-not-allowed transition-all"
                     >
-                        {mutation.isPending ? 'Creating Account...' : 'Create Account'}
+                        {mutation.isPending ? t('auth.register.submitting') : t('auth.register.submit')}
                     </Button>
                 </form>
             </Form>
 
             <p className="mt-8 text-center text-sm text-gray-500 dark:text-gray-400">
-                Already have an account?{' '}
+                {t('auth.register.haveAccount')}{' '}
                 <Link href="/login" className="font-bold text-gray-900 dark:text-white hover:text-primary transition-colors">
-                    Log In
+                    {t('auth.register.login')}
                 </Link>
             </p>
         </AuthLayout>

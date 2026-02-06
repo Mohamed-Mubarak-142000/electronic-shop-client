@@ -130,10 +130,6 @@ export default function ProfilePage() {
                     </div>
                 </div>
 
-                {/* User Orders Section */}
-                <div className="mb-8">
-                    <UserOrders />
-                </div>
 
                 <Form {...form}>
                     <form onSubmit={form.handleSubmit(handleSubmit)} className="flex flex-col gap-8">
@@ -148,7 +144,7 @@ export default function ProfilePage() {
 
                         {/* Professional Info */}
                         {(user.role === 'admin' || user.role === 'business') && (
-                             <ProfessionalInfo form={form} language={language} />
+                            <ProfessionalInfo form={form} language={language} />
                         )}
 
                         {/* Location Info */}
@@ -158,8 +154,8 @@ export default function ProfilePage() {
                                 {language === 'ar' ? 'الموقع الجغرافي' : 'Geographic Location'}
                             </h2>
                             <p className="text-sm text-slate-500 mb-6">{language === 'ar' ? 'ابحث عن عنوانك أو انقر على الخريطة لتحديد موقعك' : 'Search for your address or click on the map to set your location'}</p>
-                            
-                            <div className="rounded-2xl overflow-hidden border border-slate-200 dark:border-gray-700">
+
+                            <div className="rounded-2xl overflow-hidden border border-slate-200 dark:border-gray-700 h-[400px]">
                                 <MapSelector
                                     value={form.watch('location')}
                                     onChange={(loc) => form.setValue('location', loc, { shouldDirty: true })}
@@ -183,6 +179,11 @@ export default function ProfilePage() {
                         </div>
                     </form>
                 </Form>
+            </div>
+
+            {/* User Orders Section */}
+            <div className="w-full max-w-[1000px] px-4 pb-8 lg:pb-12">
+                <UserOrders />
             </div>
         </div>
     );

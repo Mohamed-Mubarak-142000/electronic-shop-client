@@ -11,6 +11,28 @@ export const en = {
     "auth.name": "Full Name",
     "auth.verifyOtp": "Verify OTP",
     "auth.enterOtp": "Enter the code sent to your email",
+    "auth.register.title": "Join the Circuit",
+    "auth.register.subtitle": "Create an account to start your project today.",
+    "auth.register.visualHeading": "Power up your workflow.",
+    "auth.register.visualDescription": "Access wholesale pricing, manage project lists, and get same-day shipping on over 10,000 electrical components.",
+    "auth.register.password": "Password",
+    "auth.register.confirmPassword": "Confirm Password",
+    "auth.register.submit": "Create Account",
+    "auth.register.submitting": "Creating Account...",
+    "auth.register.haveAccount": "Already have an account?",
+    "auth.register.login": "Log In",
+    "auth.register.passwordsDoNotMatch": "Passwords do not match",
+    "auth.register.namePlaceholder": "e.g. Thomas Edison",
+    "auth.register.emailPlaceholder": "name@example.com",
+    "auth.register.passwordPlaceholder": "Create a strong password",
+    "auth.register.confirmPasswordPlaceholder": "Confirm your password",
+    "auth.welcome": "Welcome Back",
+    "auth.loginSubtitle": "Log in to access your trade dashboard.",
+    "auth.rememberMe": "Remember this device",
+    "auth.signIn": "Sign In",
+    "auth.signingIn": "Signing in...",
+    "auth.noAccount": "Don't have an account?",
+    "auth.registerNow": "Register now",
 
     // Common
     welcome: "Welcome",
@@ -296,7 +318,7 @@ export const en = {
     "admin.schedules.subtitle": "Manage automated price drops and special offers",
     "admin.schedules.new_schedule": "New Schedule",
     "admin.schedules.create_title": "Create Discount Schedule",
-    
+
     // Schedule Table
     "admin.schedules.table.product": "Product",
     "admin.schedules.table.discount": "Discount",
@@ -310,7 +332,7 @@ export const en = {
     "admin.schedules.table.from": "From",
     "admin.schedules.table.to": "To",
     "admin.schedules.table.loading": "Loading schedules...",
-    
+
     // Schedule Form
     "admin.schedules.form.product": "Product",
     "admin.schedules.form.search_placeholder": "Search product...",
@@ -429,7 +451,7 @@ export const en = {
     "admin.orders.summary.tax": "Tax",
     "admin.orders.summary.total": "Total",
     "admin.orders.invoice": "Invoice",
-    
+
     // Product Drawer (Component)
     "product.new_product_badge": "New Product!",
 
@@ -496,6 +518,28 @@ export const ar = {
     "auth.name": "الاسم الكامل",
     "auth.verifyOtp": "تحقق من رمز التحقق",
     "auth.enterOtp": "أدخل الرمز المرسل إلى بريدك الإلكتروني",
+    "auth.register.title": "انضم إلى الدائرة",
+    "auth.register.subtitle": "أنشئ حساباً لتبدأ مشروعك اليوم.",
+    "auth.register.visualHeading": "عزز سير عملك.",
+    "auth.register.visualDescription": "احصل على أسعار الجملة، وإدارة قوائم المشاريع، وشحن في نفس اليوم لأكثر من 10,000 مكون كهربائي.",
+    "auth.register.password": "كلمة المرور",
+    "auth.register.confirmPassword": "تأكيد كلمة المرور",
+    "auth.register.submit": "إنشاء حساب",
+    "auth.register.submitting": "جاري إنشاء الحساب...",
+    "auth.register.haveAccount": "لديك حساب بالفعل؟",
+    "auth.register.login": "تسجيل الدخول",
+    "auth.register.passwordsDoNotMatch": "كلمات المرور غير متطابقة",
+    "auth.register.namePlaceholder": "مثال: أحمد محمد",
+    "auth.register.emailPlaceholder": "name@example.com",
+    "auth.register.passwordPlaceholder": "أنشئ كلمة مرور قوية",
+    "auth.register.confirmPasswordPlaceholder": "أعد كتابة كلمة المرور",
+    "auth.welcome": "مرحباً بعودتك",
+    "auth.loginSubtitle": "سجل الدخول للوصول إلى لوحة التحكم.",
+    "auth.rememberMe": "تذكر هذا الجهاز",
+    "auth.signIn": "تسجيل الدخول",
+    "auth.signingIn": "جاري الدخول...",
+    "auth.noAccount": "ليس لديك حساب؟",
+    "auth.registerNow": "سجل الآن",
 
     // Common
     welcome: "مرحباً",
@@ -777,7 +821,7 @@ export const ar = {
     "admin.schedules.subtitle": "إدارة تخفيضات الأسعار والعروض الخاصة",
     "admin.schedules.new_schedule": "جدول جديد",
     "admin.schedules.create_title": "إنشاء جدول خصم",
-    
+
     // Schedule Table
     "admin.schedules.table.product": "المنتج",
     "admin.schedules.table.discount": "الخصم",
@@ -791,7 +835,7 @@ export const ar = {
     "admin.schedules.table.from": "من",
     "admin.schedules.table.to": "إلى",
     "admin.schedules.table.loading": "جاري تحميل الجداول...",
-    
+
     // Schedule Form
     "admin.schedules.form.product": "المنتج",
     "admin.schedules.form.search_placeholder": "بحث عن منتج...",
