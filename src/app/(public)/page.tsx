@@ -129,7 +129,7 @@ export default function Home() {
   }
 
   return (
-    <div className="flex flex-col items-center w-full bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display">
+    <div className="flex flex-col items-center w-full bg-background-dark text-white font-display">
       <div className="w-full max-w-[1440px] px-4 md:px-10 pb-10">
 
         {/* Hero Section */}
@@ -416,7 +416,7 @@ export default function Home() {
             <h2 className="text-2xl font-bold text-white">{t('home.newArrivals')}</h2>
             <Link href="/shop" className="text-primary font-bold text-sm hover:underline">{t('home.viewAll')}</Link>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4">
             {newArrivals.length > 0 ? (
               newArrivals.map((item: Product) => (
                 <div key={item._id} className="h-full">
