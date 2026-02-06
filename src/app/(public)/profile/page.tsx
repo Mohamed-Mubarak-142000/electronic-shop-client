@@ -170,7 +170,7 @@ export default function ProfilePage() {
                         {/* Top Row: Basic Info & Address */}
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                             <BasicInfo form={form} t={t} language={language} />
-                            <AddressInfo form={form} language={language} readOnly={isAddressAutoFilled} />
+                            <AddressInfo form={form} language={language} readOnly={true} />
                         </div>
 
                         {/* Professional Info */}
