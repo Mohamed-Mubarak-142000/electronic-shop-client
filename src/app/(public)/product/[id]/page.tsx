@@ -129,10 +129,10 @@ export default function ProductDetailsPage({ params }: { params: Promise<{ id: s
     }
 
     return (
-        <div className="w-full bg-background-light dark:bg-background-dark min-h-screen font-display flex flex-col items-center">
+        <div className="w-full bg-background-dark min-h-screen font-display flex flex-col items-center text-white">
             <div className="flex-grow w-full max-w-[1440px] px-4 sm:px-6 lg:px-8 py-8">
                 {/* Breadcrumbs */}
-                <div className="flex flex-wrap items-center gap-2 mb-8 text-sm text-slate-500 dark:text-[#95c6a9]">
+                <div className="flex flex-wrap items-center gap-2 mb-8 text-sm text-[#95c6a9]">
                     <Link href="/" className="hover:text-primary transition-colors">Home</Link>
                     <span className="material-symbols-outlined text-base">chevron_right</span>
                     <Link href="/shop" className="hover:text-primary transition-colors">Shop</Link>
@@ -412,7 +412,7 @@ export default function ProductDetailsPage({ params }: { params: Promise<{ id: s
                 {relatedProducts.length > 0 && (
                     <div className="mb-16">
                         <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-8">Related Products</h2>
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 lg:gap-6">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
                             {relatedProducts.map((item: Product) => (
                                 <ProductCard key={item._id} product={item} />
                             ))}
