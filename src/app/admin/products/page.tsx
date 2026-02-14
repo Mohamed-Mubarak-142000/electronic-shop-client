@@ -86,7 +86,7 @@ export default function ProductsPage() {
                 placeholder={t('admin.products.search_placeholder')}
             >
                 <select
-                    className="form-select block w-full sm:w-auto pl-3 pr-10 py-2 text-sm border-none rounded-lg bg-surface-dark text-white focus:outline-none focus:ring-2 focus:ring-primary cursor-pointer"
+                    className="form-select block w-full sm:w-auto pl-3 pr-10 py-2 text-sm border-none rounded-lg bg-surface-dark text-foreground focus:outline-none focus:ring-2 focus:ring-primary cursor-pointer"
                     value={category}
                     onChange={(e) => setCategory(e.target.value)}
                 >
@@ -96,7 +96,7 @@ export default function ProductsPage() {
                     ))}
                 </select>
                 <select
-                    className="form-select block w-full sm:w-auto pl-3 pr-10 py-2 text-sm border-none rounded-lg bg-surface-dark text-white focus:outline-none focus:ring-2 focus:ring-primary cursor-pointer"
+                    className="form-select block w-full sm:w-auto pl-3 pr-10 py-2 text-sm border-none rounded-lg bg-surface-dark text-foreground focus:outline-none focus:ring-2 focus:ring-primary cursor-pointer"
                     value={brand}
                     onChange={(e) => setBrand(e.target.value)}
                 >
@@ -106,27 +106,27 @@ export default function ProductsPage() {
                     ))}
                 </select>
                 <select
-                    className="form-select block w-full sm:w-auto pl-3 pr-10 py-2 text-sm border-none rounded-lg bg-surface-dark text-white focus:outline-none focus:ring-2 focus:ring-primary cursor-pointer"
+                    className="form-select block w-full sm:w-auto pl-3 pr-10 py-2 text-sm border-none rounded-lg bg-surface-dark text-foreground focus:outline-none focus:ring-2 focus:ring-primary cursor-pointer"
                     value={stockStatus}
                     onChange={(e) => setStockStatus(e.target.value)}
                 >
                     <option value="">{t('admin.products.filter_status')}</option>
-                    <option value="in-stock">In Stock</option>
-                    <option value="low-stock">Low Stock</option>
-                    <option value="out-of-stock">Out of Stock</option>
+                    <option value="in-stock">{t('admin.status.in_stock')}</option>
+                    <option value="low-stock">{t('admin.status.low_stock')}</option>
+                    <option value="out-of-stock">{t('admin.status.out_of_stock')}</option>
                 </select>
                 
-                <div className="h-9 w-px bg-white/10 mx-1 hidden sm:block"></div>
+                <div className="h-9 w-px bg-border mx-1 hidden sm:block"></div>
                 <select
-                    className="form-select block w-full sm:w-auto pl-3 pr-10 py-2 text-sm border-none rounded-lg bg-surface-dark text-white focus:outline-none focus:ring-2 focus:ring-primary cursor-pointer"
+                    className="form-select block w-full sm:w-auto pl-3 pr-10 py-2 text-sm border-none rounded-lg bg-surface-dark text-foreground focus:outline-none focus:ring-2 focus:ring-primary cursor-pointer"
                     value={sort}
                     onChange={(e) => setSort(e.target.value)}
                 >
-                    <option value="-createdAt">Newest</option>
-                    <option value="createdAt">Oldest</option>
-                    <option value="price">Price: Low to High</option>
-                    <option value="-price">Price: High to Low</option>
-                    <option value="-stock">Stock: High to Low</option>
+                    <option value="-createdAt">{t('admin.products.sort.newest')}</option>
+                    <option value="createdAt">{t('admin.products.sort.oldest')}</option>
+                    <option value="price">{t('admin.products.sort.price_low_high')}</option>
+                    <option value="-price">{t('admin.products.sort.price_high_low')}</option>
+                    <option value="-stock">{t('admin.products.sort.stock_high_low')}</option>
                 </select>
             </AdminSearchToolbar>
 

@@ -64,9 +64,9 @@ export default function CategoriesPage() {
                 placeholder={t('admin.categories.search_placeholder')}
             >
                 {/* Extra filters if needed */}
-                 <button className="flex items-center gap-2 px-3 py-2 rounded-lg bg-surface-dark hover:bg-white/5 text-white text-sm font-medium transition-colors">
+                 <button className="flex items-center gap-2 px-3 py-2 rounded-lg bg-surface-dark hover:bg-surface-highlight text-foreground text-sm font-medium transition-colors">
                     <span className="material-symbols-outlined text-[18px]">sort</span>
-                    <span>Name (A-Z)</span>
+                    <span>{t('admin.categories.sort.name_asc')}</span>
                 </button>
             </AdminSearchToolbar>
 

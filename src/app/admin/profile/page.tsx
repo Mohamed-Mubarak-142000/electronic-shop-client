@@ -110,20 +110,20 @@ export default function ProfilePage() {
 
     // Show loading spinner while checking auth or fetching initial data
     if (!user || (!initialData && user)) return (
-        <div className="flex flex-col items-center justify-center w-full min-h-screen bg-surface-dark">
+        <div className="flex flex-col items-center justify-center w-full min-h-screen bg-background">
             <div className="w-16 h-16 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
         </div>
     );
 
     return (
-        <div className="flex flex-col items-center w-full bg-surface-dark text-white font-display min-h-screen" dir={dir}>
+        <div className="flex flex-col items-center w-full bg-background text-foreground font-display min-h-screen" dir={dir}>
             <div className="w-full px-4 py-8 lg:py-12">
                 <div className="mb-8 items-center justify-between gap-6 flex flex-col md:flex-row">
                     <div>
-                        <h1 className="text-3xl md:text-4xl font-black tracking-tight text-white mb-2">
+                        <h1 className="text-3xl md:text-4xl font-black tracking-tight text-foreground mb-2">
                             {language === 'ar' ? 'الملف الشخصي' : 'Profile'}
                         </h1>
-                        <p className="text-slate-400 text-sm md:text-base">
+                        <p className="text-text-secondary text-sm md:text-base">
                             {language === 'ar' ? 'إدارة معلوماتك الشخصية' : 'Manage your personal information'}
                         </p>
                     </div>
@@ -146,14 +146,14 @@ export default function ProfilePage() {
                         )}
 
                         {/* Location Info */}
-                        <div className="bg-surface-dark p-6 md:p-8 rounded-2xl shadow-sm border border-border-dark w-full">
+                        <div className="bg-card p-6 md:p-8 rounded-2xl shadow-sm border border-border w-full">
                             <h2 className="text-xl font-bold mb-4 flex items-center gap-2">
                                 <span className="material-symbols-outlined text-primary">location_on</span>
                                 {language === 'ar' ? 'الموقع الجغرافي' : 'Geographic Location'}
                             </h2>
-                            <p className="text-sm text-slate-400 mb-6">{language === 'ar' ? 'ابحث عن عنوانك أو انقر على الخريطة لتحديد موقعك' : 'Search for your address or click on the map to set your location'}</p>
+                            <p className="text-sm text-text-secondary mb-6">{language === 'ar' ? 'ابحث عن عنوانك أو انقر على الخريطة لتحديد موقعك' : 'Search for your address or click on the map to set your location'}</p>
                             
-                            <div className="rounded-2xl overflow-hidden border border-gray-700">
+                            <div className="rounded-2xl overflow-hidden border border-border">
                                 <MapSelector
                                     value={form.watch('location')}
                                     onChange={(loc) => form.setValue('location', loc, { shouldDirty: true })}
@@ -164,7 +164,7 @@ export default function ProfilePage() {
                                 <button
                                     type="submit"
                                     disabled={loading || !hasChanges}
-                                    className="w-full py-4 bg-primary hover:bg-green-400 text-background-dark rounded-full font-black text-lg transition-all shadow-lg hover:shadow-[0_0_20px_rgba(54,226,123,0.4)] transform hover:-translate-y-0.5 disabled:opacity-50 disabled:transform-none disabled:shadow-none"
+                                    className="w-full py-4 bg-primary hover:bg-primary-hover text-text-on-primary rounded-full font-black text-lg transition-all shadow-lg hover:shadow-[0_0_20px_rgba(54,226,123,0.4)] transform hover:-translate-y-0.5 disabled:opacity-50 disabled:transform-none disabled:shadow-none"
                                 >
                                     {loading ? (
                                         <span className="flex items-center justify-center gap-2">

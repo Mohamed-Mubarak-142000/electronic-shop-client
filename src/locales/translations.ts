@@ -329,6 +329,9 @@ export const en = {
     "admin.jobs.error": "Failed to schedule job",
     "admin.jobs.delete_success": "Job deleted",
     "admin.jobs.delete_error": "Failed to delete job",
+    "admin.jobs.confirm_delete": "Are you sure?",
+    "admin.jobs.image_upload_success": "Image uploaded successfully",
+    "admin.jobs.image_upload_failed": "Image upload failed",
 
     // Admin Schedules
     "admin.schedules.title": "Discount Schedules",
@@ -420,6 +423,11 @@ export const en = {
     "admin.products.subtitle": "Manage your product catalog, prices, and stock levels.",
     "admin.products.search_placeholder": "Search products...",
     "admin.products.filter_status": "All Statuses",
+    "admin.products.sort.newest": "Newest",
+    "admin.products.sort.oldest": "Oldest",
+    "admin.products.sort.price_low_high": "Price: Low to High",
+    "admin.products.sort.price_high_low": "Price: High to Low",
+    "admin.products.sort.stock_high_low": "Stock: High to Low",
     "admin.stats.total_products": "Total Products",
     "admin.stats.low_stock_alerts": "Low Stock Alerts",
     "admin.stats.inventory_value": "Inventory Value",
@@ -429,6 +437,7 @@ export const en = {
     "admin.categories.subtitle": "Organize your product inventory structure and manage visibility.",
     "admin.categories.add": "Add Category",
     "admin.categories.search_placeholder": "Search categories...",
+    "admin.categories.sort.name_asc": "Name (A-Z)",
     "admin.stats.total_categories": "Total Categories",
     "admin.stats.active_categories": "Active Categories",
     "admin.stats.hidden_categories": "Hidden",
@@ -446,6 +455,12 @@ export const en = {
 
     "admin.orders.title": "Orders Management",
     "admin.orders.subtitle": "Track and manage customer orders and shipments.",
+    "admin.orders.search_placeholder": "Search by Order ID...",
+    "admin.orders.sort.newest": "Newest First",
+    "admin.orders.sort.oldest": "Oldest First",
+    "admin.orders.sort.highest_value": "Highest Value",
+    "admin.orders.sort.lowest_value": "Lowest Value",
+    "admin.orders.all_statuses": "All Statuses",
     "admin.orders.select_order": "Select an Order",
     "admin.orders.select_order_desc": "Click on an order from the list to view details",
     "admin.orders.order": "Order",
@@ -455,6 +470,15 @@ export const en = {
 
     "admin.customers.title": "Customers",
     "admin.customers.subtitle": "Manage user accounts and permissions.",
+    "admin.customers.search_placeholder": "Search by name or email...",
+    "admin.customers.all_roles": "All Roles",
+    "admin.customers.role.user": "User",
+    "admin.customers.role.admin": "Admin",
+    "admin.customers.role.business": "Business",
+    "admin.customers.sort.newest": "Newest First",
+    "admin.customers.sort.oldest": "Oldest First",
+    "admin.customers.sort.name_asc": "Name (A-Z)",
+    "admin.customers.sort.name_desc": "Name (Z-A)",
 
     // Order Details
     "admin.orders.update_status": "Update",
@@ -841,6 +865,8 @@ export const ar = {
     order_success: "تم الطلب بنجاح!",
 
     // Admin
+    "admin.dashboard.loading": "Loading dashboard...",
+    "admin.dashboard.loading": "جاري تحميل لوحة التحكم...",
     "admin.dashboard": "لوحة التحكم",
     "admin.dashboard_subtitle": "إليك ما يحدث في متجرك اليوم.",
     "admin.export": "تصدير التقرير",
@@ -1023,6 +1049,9 @@ export const ar = {
     "admin.jobs.error": "فشل في جدولة الوظيفة",
     "admin.jobs.delete_success": "تم حذف الوظيفة",
     "admin.jobs.delete_error": "فشل حذف الوظيفة",
+    "admin.jobs.confirm_delete": "هل أنت متأكد؟",
+    "admin.jobs.image_upload_success": "تم رفع الصورة بنجاح",
+    "admin.jobs.image_upload_failed": "فشل رفع الصورة",
 
     // Admin Schedules
     "admin.schedules.title": "جداول الخصومات",
@@ -1118,6 +1147,11 @@ export const ar = {
     "admin.products.search_placeholder": "بحث عن منتجات...",
     "admin.products.filter_status": "كل الحالات",
     "admin.stats.total_products": "إجمالي المنتجات",
+    "admin.products.sort.newest": "الأحدث",
+    "admin.products.sort.oldest": "الأقدم",
+    "admin.products.sort.price_low_high": "السعر: من الأدني للأعلى",
+    "admin.products.sort.price_high_low": "السعر: من الأعلى للأدني",
+    "admin.products.sort.stock_high_low": "المخزون: من الأعلى للأدني",
     "admin.stats.low_stock_alerts": "تنبيهات انخفاض المخزون",
     "admin.stats.inventory_value": "قيمة المخزون",
     "admin.stats.attention": "انتباه",
@@ -1126,6 +1160,7 @@ export const ar = {
     "admin.categories.subtitle": "تنظيم هيكل مخزون المنتجات وإدارة الظهور.",
     "admin.categories.add": "إضافة فئة",
     "admin.categories.search_placeholder": "بحث عن فئات...",
+    "admin.categories.sort.name_asc": "الاسم (أ-ي)",
     "admin.stats.total_categories": "إجمالي الفئات",
     "admin.stats.active_categories": "فئات نشطة",
     "admin.stats.hidden_categories": "مخفية",
@@ -1143,6 +1178,12 @@ export const ar = {
 
     "admin.orders.title": "إدارة الطلبات",
     "admin.orders.subtitle": "تتبع وإدارة طلبات العملاء والشحنات.",
+    "admin.orders.search_placeholder": "البحث برقم الطلب...",
+    "admin.orders.sort.newest": "الأحدث أولاً",
+    "admin.orders.sort.oldest": "الأقدم أولاً",
+    "admin.orders.sort.highest_value": "القيمة الأعلى",
+    "admin.orders.sort.lowest_value": "القيمة الأدنى",
+    "admin.orders.all_statuses": "كل الحالات",
     "admin.orders.select_order": "اختر طلب",
     "admin.orders.select_order_desc": "انقر على طلب من القائمة لعرض التفاصيل",
     "admin.orders.order": "طلب",
@@ -1152,6 +1193,15 @@ export const ar = {
 
     "admin.customers.title": "العملاء",
     "admin.customers.subtitle": "إدارة حسابات المستخدمين والصلاحيات.",
+    "admin.customers.search_placeholder": "البحث بالاسم أو البريد الإلكتروني...",
+    "admin.customers.all_roles": "كل الأدوار",
+    "admin.customers.role.user": "مستخدم",
+    "admin.customers.role.admin": "مسؤول",
+    "admin.customers.role.business": "شركة",
+    "admin.customers.sort.newest": "الأحدث أولاً",
+    "admin.customers.sort.oldest": "الأقدم أولاً",
+    "admin.customers.sort.name_asc": "الاسم (أ-ي)",
+    "admin.customers.sort.name_desc": "الاسم (ي-أ)",
 
     // Order Details
     "admin.orders.update_status": "تحديث",

@@ -26,29 +26,29 @@ export default function CustomersPage() {
             <AdminSearchToolbar
                 searchTerm={searchTerm}
                 onSearchChange={setSearchTerm}
-                placeholder="Search by name or email..."
+                placeholder={t('admin.customers.search_placeholder')}
             >
                 <select
-                    className="form-select block w-full sm:w-auto pl-3 pr-10 py-2 text-sm border-none rounded-lg bg-surface-dark text-white focus:outline-none focus:ring-2 focus:ring-primary cursor-pointer"
+                    className="form-select block w-full sm:w-auto pl-3 pr-10 py-2 text-sm border-none rounded-lg bg-surface-dark text-foreground focus:outline-none focus:ring-2 focus:ring-primary cursor-pointer"
                     value={role}
                     onChange={(e) => setRole(e.target.value)}
                 >
-                    <option value="">All Roles</option>
-                    <option value="user">User</option>
-                    <option value="admin">Admin</option>
-                    <option value="business">Business</option>
+                    <option value="">{t('admin.customers.all_roles')}</option>
+                    <option value="user">{t('admin.customers.role.user')}</option>
+                    <option value="admin">{t('admin.customers.role.admin')}</option>
+                    <option value="business">{t('admin.customers.role.business')}</option>
                 </select>
                 
-                <div className="h-9 w-px bg-white/10 mx-1 hidden sm:block"></div>
+                <div className="h-9 w-px bg-border mx-1 hidden sm:block"></div>
                 <select
-                    className="form-select block w-full sm:w-auto pl-3 pr-10 py-2 text-sm border-none rounded-lg bg-surface-dark text-white focus:outline-none focus:ring-2 focus:ring-primary cursor-pointer"
+                    className="form-select block w-full sm:w-auto pl-3 pr-10 py-2 text-sm border-none rounded-lg bg-surface-dark text-foreground focus:outline-none focus:ring-2 focus:ring-primary cursor-pointer"
                     value={sort}
                     onChange={(e) => setSort(e.target.value)}
                 >
-                    <option value="-createdAt">Newest First</option>
-                    <option value="createdAt">Oldest First</option>
-                    <option value="name">Name (A-Z)</option>
-                    <option value="-name">Name (Z-A)</option>
+                    <option value="-createdAt">{t('admin.customers.sort.newest')}</option>
+                    <option value="createdAt">{t('admin.customers.sort.oldest')}</option>
+                    <option value="name">{t('admin.customers.sort.name_asc')}</option>
+                    <option value="-name">{t('admin.customers.sort.name_desc')}</option>
                 </select>
             </AdminSearchToolbar>
 

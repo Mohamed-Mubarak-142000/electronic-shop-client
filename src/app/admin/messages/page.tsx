@@ -132,13 +132,13 @@ export default function MessagesPage() {
             </div>
 
             {/* Chat Interface Container */}
-            <div className="flex-1 bg-card-dark rounded-xl border border-white/10 overflow-hidden flex flex-col md:flex-row shadow-2xl">
+            <div className="flex-1 bg-card-dark rounded-xl border border-border overflow-hidden flex flex-col md:flex-row shadow-2xl">
 
                 {/* Conversation List Side */}
-                <div className={`w-full md:w-80 border-r border-white/10 flex-shrink-0 flex flex-col ${selectedUserId ? 'hidden md:flex' : 'flex'}`}>
-                    <div className="p-4 border-b border-white/10 bg-card-dark/50">
-                        <h2 className="font-semibold text-white">{t('admin.messages.conversations_list')}</h2>
-                        <p className="text-xs text-gray-400 mt-1">
+                <div className={`w-full md:w-80 border-r border-border flex-shrink-0 flex flex-col ${selectedUserId ? 'hidden md:flex' : 'flex'}`}>
+                    <div className="p-4 border-b border-border bg-card-dark/50">
+                        <h2 className="font-semibold text-foreground">{t('admin.messages.conversations_list')}</h2>
+                        <p className="text-xs text-text-secondary mt-1">
                             {conversations.length} {conversations.length === 1 ? t('admin.messages.conversation_count') : t('admin.messages.conversations_count')}
                         </p>
                     </div>

@@ -29,13 +29,13 @@ export default function AdminPortfolioPage() {
 
     return (
         <div className="h-full flex flex-col relative overflow-hidden">
-            <div className="bg-surface-dark border-b border-white/5 py-5 px-8 sticky top-0 z-10">
+            <div className="bg-surface-dark border-b border-border py-5 px-8 sticky top-0 z-10">
                 <AdminPageHeader
                     title={t('admin.portfolio.title')}
                     action={
                         <button
                             onClick={handleCreate}
-                            className="flex items-center gap-2 bg-primary px-4 py-2 rounded-lg text-white font-medium hover:bg-primary/90 transition-colors"
+                            className="flex items-center gap-2 bg-primary px-4 py-2 rounded-lg text-text-on-primary font-medium hover:bg-primary-hover transition-colors"
                         >
                             <span className="material-symbols-outlined">add</span>
                             {t('admin.portfolio.add')}

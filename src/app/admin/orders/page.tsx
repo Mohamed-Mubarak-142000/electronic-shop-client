@@ -26,31 +26,31 @@ export default function OrdersPage() {
             <AdminSearchToolbar
                 searchTerm={searchTerm}
                 onSearchChange={setSearchTerm}
-                placeholder="Search by Order ID..."
+                placeholder={t('admin.orders.search_placeholder')}
             >
                 <select
-                    className="form-select block w-full sm:w-auto pl-3 pr-10 py-2 text-sm border-none rounded-lg bg-surface-dark text-white focus:outline-none focus:ring-2 focus:ring-primary cursor-pointer"
+                    className="form-select block w-full sm:w-auto pl-3 pr-10 py-2 text-sm border-none rounded-lg bg-surface-dark text-foreground focus:outline-none focus:ring-2 focus:ring-primary cursor-pointer"
                     value={status}
                     onChange={(e) => setStatus(e.target.value)}
                 >
-                    <option value="">All Statuses</option>
-                    <option value="Pending">Pending</option>
-                    <option value="Processing">Processing</option>
-                    <option value="Shipped">Shipped</option>
-                    <option value="Delivered">Delivered</option>
-                    <option value="Cancelled">Cancelled</option>
+                    <option value="">{t('admin.orders.all_statuses')}</option>
+                    <option value="Pending">{t('admin.status.pending')}</option>
+                    <option value="Processing">{t('admin.status.processing')}</option>
+                    <option value="Shipped">{t('admin.status.shipped')}</option>
+                    <option value="Delivered">{t('admin.status.delivered')}</option>
+                    <option value="Cancelled">{t('admin.status.cancelled')}</option>
                 </select>
                 
-                <div className="h-9 w-px bg-white/10 mx-1 hidden sm:block"></div>
+                <div className="h-9 w-px bg-border mx-1 hidden sm:block"></div>
                 <select
-                    className="form-select block w-full sm:w-auto pl-3 pr-10 py-2 text-sm border-none rounded-lg bg-surface-dark text-white focus:outline-none focus:ring-2 focus:ring-primary cursor-pointer"
+                    className="form-select block w-full sm:w-auto pl-3 pr-10 py-2 text-sm border-none rounded-lg bg-surface-dark text-foreground focus:outline-none focus:ring-2 focus:ring-primary cursor-pointer"
                     value={sort}
                     onChange={(e) => setSort(e.target.value)}
                 >
-                    <option value="-createdAt">Newest First</option>
-                    <option value="createdAt">Oldest First</option>
-                    <option value="-total">Highest Value</option>
-                    <option value="total">Lowest Value</option>
+                    <option value="-createdAt">{t('admin.orders.sort.newest')}</option>
+                    <option value="createdAt">{t('admin.orders.sort.oldest')}</option>
+                    <option value="-total">{t('admin.orders.sort.highest_value')}</option>
+                    <option value="total">{t('admin.orders.sort.lowest_value')}</option>
                 </select>
             </AdminSearchToolbar>
 
