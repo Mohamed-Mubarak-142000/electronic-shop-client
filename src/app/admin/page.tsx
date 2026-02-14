@@ -29,7 +29,7 @@ export default function AdminDashboardPage() {
     }, []);
 
     if (loading) {
-        return <div className="text-foreground">{t('admin.dashboard.loading')}</div>;
+        return <div className="text-foreground">{t('common.loading')}</div>;
     }
 
     return (

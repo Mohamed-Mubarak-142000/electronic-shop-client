@@ -30,6 +30,7 @@ export const translations = {
         },
         admin: {
             dashboard: 'Dashboard',
+            dashboard_subtitle: 'Overview of your store performance',
             products: 'Products',
             categories: 'Categories',
             brands: 'Brands',
@@ -39,7 +40,9 @@ export const translations = {
             edit: 'Edit',
             delete: 'Delete',
             status: 'Status',
-            scheduled: 'Scheduled At'
+            scheduled: 'Scheduled At',
+            export: 'Export Data',
+            add_product: 'Add Product'
         },
         home: {
             hero: {
@@ -142,6 +145,7 @@ export const translations = {
         },
         admin: {
             dashboard: 'لوحة القيادة',
+            dashboard_subtitle: 'نظرة عامة على أداء متجرك',
             products: 'المنتجات',
             categories: 'الفئات',
             brands: 'الماركات',
@@ -151,7 +155,9 @@ export const translations = {
             edit: 'تعديل',
             delete: 'حذف',
             status: 'الحالة',
-            scheduled: 'مجدولة في'
+            scheduled: 'مجدولة في',
+            export: 'تصدير البيانات',
+            add_product: 'إضافة منتج'
         },
         home: {
             hero: {
