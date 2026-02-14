@@ -33,8 +33,13 @@ export const authService = {
         return response.data;
     },
 
-    async resetPassword(token: string, data: Record<string, unknown>) {
-        const response = await api.put(`/auth/reset-password/${token}`, data);
+    async verifyResetOTP(data: { email: string, otp: string }) {
+        const response = await api.post('/auth/verify-reset-otp', data);
+        return response.data;
+    },
+
+    async resetPassword(data: Record<string, unknown>) {
+        const response = await api.post('/auth/reset-password', data);
         return response.data;
     },
 

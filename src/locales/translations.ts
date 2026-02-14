@@ -33,6 +33,15 @@ export const en = {
     "auth.signingIn": "Signing in...",
     "auth.noAccount": "Don't have an account?",
     "auth.registerNow": "Register now",
+    "auth.resetPassword": "Reset Password",
+    "auth.enterNewPassword": "Enter your new password",
+    "auth.newPassword": "New Password",
+    "auth.confirmNewPassword": "Confirm New Password",
+    "auth.resendOtp": "Resend Code",
+    "auth.otpExpired": "OTP expired. Please request a new code.",
+    "auth.otpSent": "Code sent to your email",
+    "auth.passwordResetSuccess": "Password reset successful",
+    "auth.backToLogin": "Back to Login",
 
     // Common
     welcome: "Welcome",
@@ -540,6 +549,15 @@ export const ar = {
     "auth.signingIn": "جاري الدخول...",
     "auth.noAccount": "ليس لديك حساب؟",
     "auth.registerNow": "سجل الآن",
+    "auth.resetPassword": "إعادة تعيين كلمة المرور",
+    "auth.enterNewPassword": "أدخل كلمة المرور الجديدة",
+    "auth.newPassword": "كلمة المرور الجديدة",
+    "auth.confirmNewPassword": "تأكيد كلمة المرور الجديدة",
+    "auth.resendOtp": "إعادة إرسال الرمز",
+    "auth.otpExpired": "انتهت صلاحية الرمز. يرجى طلب رمز جديد.",
+    "auth.otpSent": "تم إرسال الرمز إلى بريدك الإلكتروني",
+    "auth.passwordResetSuccess": "تم إعادة تعيين كلمة المرور بنجاح",
+    "auth.backToLogin": "العودة لتسجيل الدخول",
 
     // Common
     welcome: "مرحباً",
