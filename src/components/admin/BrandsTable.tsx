@@ -58,11 +58,11 @@ export default function BrandsTable({ filters }: BrandsTableProps) {
             cell: (row) => (
                 <div className="flex items-center gap-4">
                     <div className="size-12 rounded-full bg-white p-2 shrink-0 overflow-hidden flex items-center justify-center border-2 border-[#254632] group-hover:border-primary transition-colors">
-                        <Image 
-                            className="object-contain w-auto h-auto" 
-                            src={row.logoUrl || '/placeholder.png'} 
-                            alt={row.name} 
-                            width={32} 
+                        <Image
+                            className="object-cover w-full h-full"
+                            src={row.logoUrl || '/placeholder.png'}
+                            alt={row.name}
+                            width={32}
                             height={32}
                         />
                     </div>

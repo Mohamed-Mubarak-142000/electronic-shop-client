@@ -78,7 +78,7 @@ export default function ProductCard({ product }: { product: Product }) {
                     {/* Performance: Lazy load product images with proper sizes */}
                     <OptimizedImage
                         alt={`${product.name} - ${product.description.slice(0, 50)}`}
-                        className="object-contain w-full h-full group-hover:scale-105 transition-transform duration-500 cursor-pointer"
+                        className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500 cursor-pointer"
                         src={imageSrc}
                         fill
                         loading="lazy"

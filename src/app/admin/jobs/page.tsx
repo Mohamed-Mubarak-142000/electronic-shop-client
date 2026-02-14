@@ -134,8 +134,8 @@ export default function JobsPage() {
                                 </td>
                                 <td className="px-6 py-4">
                                     <span className={`px-2 py-1 rounded-md text-xs ${job.status === 'Completed' ? 'bg-green-500/10 text-green-500' :
-                                            job.status === 'Pending' ? 'bg-yellow-500/10 text-yellow-500' :
-                                                'bg-blue-500/10 text-blue-500'
+                                        job.status === 'Pending' ? 'bg-yellow-500/10 text-yellow-500' :
+                                            'bg-blue-500/10 text-blue-500'
                                         }`}>
                                         {job.status}
                                     </span>
@@ -212,7 +212,7 @@ export default function JobsPage() {
                                     onChange={(e) => setNewJob({ ...newJob, data: { ...newJob.data, messageAr: e.target.value } })}
                                 />
                             </div>
-                            
+
                             {/* Image Upload */}
                             <div>
                                 <label className="block text-xs font-semibold text-gray-400 uppercase mb-1">{t('admin.jobs.image')}</label>
@@ -233,7 +233,7 @@ export default function JobsPage() {
                                 {uploading && <p className="text-sm text-yellow-400 mt-2">{t('admin.jobs.uploading')}</p>}
                                 {newJob.data.imageUrl && (
                                     <div className="mt-4 relative group w-fit">
-                                        <Image src={newJob.data.imageUrl || ''} alt="Job Image" width={128} height={128} className="object-contain rounded-lg border border-white/10 bg-white" />
+                                        <Image src={newJob.data.imageUrl || ''} alt="Job Image" width={128} height={128} className="object-cover rounded-lg border border-white/10 bg-white" />
                                         <button
                                             type="button"
                                             onClick={() => setNewJob(prev => ({ ...prev, data: { ...prev.data, imageUrl: '' } }))}

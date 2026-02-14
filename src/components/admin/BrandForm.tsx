@@ -200,7 +200,7 @@ export default function BrandForm({ initialData }: BrandFormProps) {
                             {uploading && <p className="text-sm text-yellow-400">Uploading to Cloudinary...</p>}
                             {form.watch('logoUrl') && (
                                 <div className="mt-4 relative group w-fit">
-                                    <Image src={form.watch('logoUrl') || ''} alt="Brand Logo" width={128} height={128} className="object-contain rounded-lg border border-white/10 bg-white" />
+                                    <Image src={form.watch('logoUrl') || ''} alt="Brand Logo" width={128} height={128} className="object-cover rounded-lg border border-white/10 bg-white" />
                                     <button
                                         type="button"
                                         onClick={() => form.setValue('logoUrl', '')}

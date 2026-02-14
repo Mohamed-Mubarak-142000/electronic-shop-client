@@ -29,7 +29,7 @@ export default function OptimizedImage({
   return (
     <div className={cn(
       props.fill ? "absolute inset-0 h-full w-full" : "relative",
-      "overflow-hidden", 
+      "overflow-hidden",
       containerClassName
     )}>
       {useSkeleton && !isLoaded && (
@@ -39,7 +39,7 @@ export default function OptimizedImage({
         src={src}
         alt={alt}
         className={cn(
-          "duration-700 ease-in-out",
+          "duration-700 ease-in-out object-cover",
           useSkeleton && !isLoaded ? "scale-110 blur-2xl grayscale" : "scale-100 blur-0 grayscale-0",
           className
         )}
