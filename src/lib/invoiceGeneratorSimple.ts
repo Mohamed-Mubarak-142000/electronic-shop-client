@@ -1,10 +1,23 @@
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
 
-// Initialize pdfMake with default fonts
+// Properly initialize pdfMake with fonts
 if (typeof window !== 'undefined') {
-  const vfs = (pdfFonts as any).pdfMake?.vfs || (pdfFonts as any).vfs || pdfFonts;
-  (pdfMake as any).vfs = vfs;
+  // Set the virtual file system
+  const vfsData = (pdfFonts as any).pdfMake?.vfs || (pdfFonts as any).vfs || pdfFonts;
+  (pdfMake as any).vfs = vfsData;
+  
+  // Set default fonts
+  (pdfMake as any).fonts = {
+    Roboto: {
+      normal: 'Roboto-Regular.ttf',
+      bold: 'Roboto-Medium.ttf',
+      italics: 'Roboto-Italic.ttf',
+      bolditalics: 'Roboto-MediumItalic.ttf'
+    }
+  };
+  
+  console.log('✓ pdfMake initialized with default fonts');
 }
 
 interface InvoiceItem {
@@ -184,27 +197,36 @@ export const generateSimpleInvoicePDF = (
   };
 
   try {
+    console.log('Creating PDF document...');
     const pdfDocGenerator = pdfMake.createPdf(docDefinition);
     const fileName = `invoice-${data.invoiceNumber}.pdf`;
 
+    console.log(`PDF action: ${action}, filename: ${fileName}`);
+
     switch (action) {
       case 'download':
-        console.log(`Downloading PDF: ${fileName}`);
+        console.log(`Starting download: ${fileName}`);
         pdfDocGenerator.download(fileName);
+        console.log('✓ Download initiated');
         break;
       case 'print':
         console.log('Opening print dialog...');
         pdfDocGenerator.print();
+        console.log('✓ Print dialog opened');
         break;
       case 'open':
         console.log('Opening PDF in new tab...');
         pdfDocGenerator.open();
+        console.log('✓ PDF opened');
         break;
     }
 
-    console.log('✓ Simple PDF generated successfully');
+    console.log('✓ Simple PDF generation completed successfully');
   } catch (error) {
-    console.error('Error generating simple PDF:', error);
+    console.error('✗ Error generating simple PDF:', error);
+    if (error instanceof Error) {
+      console.error('Error details:', error.message, error.stack);
+    }
     throw error;
   }
 };

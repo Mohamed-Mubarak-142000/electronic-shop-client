@@ -115,10 +115,13 @@ export default function OrderDetailsPage() {
                 </div>
                 <button
                     onClick={async () => {
-                        console.log('Print Invoice button clicked');
+                        console.log('========================================');
+                        console.log('PRINT INVOICE CLICKED');
+                        console.log('========================================');
+                        
                         try {
                             setGeneratingInvoice(true);
-                            console.log('Preparing invoice data...');
+                            console.log('Step 1: Preparing invoice data...');
                             
                             // Prepare complete invoice data with all details
                             const invoiceData = {
@@ -152,32 +155,52 @@ export default function OrderDetailsPage() {
                                 subtotal: order.itemsPrice || 0,
                                 shippingCost: order.shippingPrice || order.shipping?.cost || 0,
                                 taxAmount: order.taxPrice || 0,
-                                discount: 0, // Add discount if available in order data
+                                discount: 0,
                                 
                                 // Additional Notes
                                 notes: `Order Status: ${currentStatus} | Payment Status: ${order.isPaid ? 'Paid' : 'Pending'}`
                             };
                             
-                            console.log('Invoice data prepared');
+                            console.log('Step 2: Invoice data prepared:', {
+                                invoiceNumber: invoiceData.invoiceNumber,
+                                itemCount: invoiceData.items.length,
+                                total: invoiceData.subtotal + invoiceData.shippingCost + invoiceData.taxAmount
+                            });
                             
                             // Try with custom fonts first (for Arabic support)
                             try {
-                                console.log('Attempting PDF generation with custom fonts (Arabic support)...');
+                                console.log('Step 3: Attempting PDF generation with Amiri fonts (Arabic support)...');
                                 await generateInvoicePDF(invoiceData, language as 'ar' | 'en', 'download');
-                                console.log('✓ PDF generated with custom fonts');
-                                toast.success('Invoice PDF generated successfully!');
+                                
+                                // Wait a moment to ensure download started
+                                await new Promise(resolve => setTimeout(resolve, 500));
+                                
+                                console.log('========================================');
+                                console.log('✓ SUCCESS: PDF Generated with Arabic support');
+                                console.log('========================================');
+                                toast.success('Invoice PDF downloaded successfully!');
                             } catch (fontError) {
-                                console.warn('Custom font generation failed, trying simple version:', fontError);
+                                console.warn('Custom font generation failed:', fontError);
+                                console.log('Step 4: Falling back to simple PDF generator...');
+                                
                                 // Fallback to simple version without custom fonts
-                                console.log('Generating simple PDF (English only)...');
                                 generateSimpleInvoicePDF(invoiceData, 'download');
-                                console.log('✓ Simple PDF generated');
-                                toast.success('Invoice PDF generated (without Arabic support)');
+                                
+                                // Wait a moment to ensure download started
+                                await new Promise(resolve => setTimeout(resolve, 500));
+                                
+                                console.log('========================================');
+                                console.log('✓ SUCCESS: Simple PDF Generated (English only)');
+                                console.log('========================================');
+                                toast.success('Invoice PDF downloaded (English version)');
                             }
                         } catch (error: any) {
-                            console.error('!!! Failed to generate invoice !!!');
-                            console.error('Error:', error);
+                            console.log('========================================');
+                            console.error('✗ ERROR: Failed to generate invoice');
+                            console.error('Error details:', error);
                             console.error('Error message:', error?.message);
+                            console.error('Error stack:', error?.stack);
+                            console.log('========================================');
                             toast.error(error?.message || 'Failed to generate invoice. Please check console for details.');
                         } finally {
                             setGeneratingInvoice(false);

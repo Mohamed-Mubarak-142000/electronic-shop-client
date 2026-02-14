@@ -4,8 +4,8 @@ import { loadCustomFonts, fontDefinitions } from './customFonts';
 
 // Initialize pdfMake with default fonts
 if (typeof window !== 'undefined') {
-  const vfs = (pdfFonts as any).pdfMake?.vfs || (pdfFonts as any).vfs || pdfFonts;
-  (pdfMake as any).vfs = vfs;
+  const vfsData = (pdfFonts as any).pdfMake?.vfs || (pdfFonts as any).vfs || pdfFonts;
+  (pdfMake as any).vfs = vfsData;
   (pdfMake as any).fonts = {
     Roboto: {
       normal: 'Roboto-Regular.ttf',
@@ -14,6 +14,7 @@ if (typeof window !== 'undefined') {
       bolditalics: 'Roboto-MediumItalic.ttf',
     }
   };
+  console.log('✓ pdfMake initialized with default fonts');
 }
 
 // Flag to track if fonts are loaded
@@ -30,13 +31,15 @@ const initializeFonts = async (): Promise<boolean> => {
 
   // If fonts are already loaded, return immediately
   if (fontsLoaded) {
+    console.log('Custom fonts already loaded');
     return true;
   }
 
   // Prevent concurrent loading
   if (fontsLoading) {
+    console.log('Fonts are currently loading, waiting...');
     // Wait a bit and check again
-    await new Promise(resolve => setTimeout(resolve, 100));
+    await new Promise(resolve => setTimeout(resolve, 200));
     return fontsLoaded;
   }
 
@@ -44,7 +47,7 @@ const initializeFonts = async (): Promise<boolean> => {
   fontsLoading = true;
   
   try {
-    console.log('Initializing custom fonts...');
+    console.log('Loading custom Amiri fonts for Arabic support...');
     const customFonts = await loadCustomFonts();
     
     if (customFonts) {
@@ -61,14 +64,14 @@ const initializeFonts = async (): Promise<boolean> => {
       (pdfMake as any).fonts = fontDefinitions;
       
       fontsLoaded = true;
-      console.log('✓ Custom fonts initialized successfully');
+      console.log('✓ Custom Amiri fonts loaded successfully');
       return true;
     } else {
       console.warn('⚠ Failed to load custom fonts, will use default fonts');
       return false;
     }
   } catch (error) {
-    console.error('✗ Error initializing custom fonts:', error);
+    console.error('✗ Error loading custom fonts:', error);
     return false;
   } finally {
     fontsLoading = false;
@@ -680,23 +683,39 @@ export const generateInvoicePDF = async (
 
     const fileName = `invoice-${data.invoiceNumber}.pdf`;
     
-    switch (action) {
-      case 'download':
-        console.log(`Downloading PDF: ${fileName}`);
-        pdfDocGenerator.download(fileName);
-        console.log('✓ Download initiated');
-        break;
-      case 'print':
-        console.log('Opening print dialog...');
-        pdfDocGenerator.print();
-        console.log('✓ Print dialog opened');
-        break;
-      case 'open':
-        console.log('Opening PDF in new tab...');
-        pdfDocGenerator.open();
-        console.log('✓ PDF opened in new tab');
-        break;
-    }
+    // Use a promise to ensure the action completes
+    return new Promise<void>((resolve, reject) => {
+      try {
+        switch (action) {
+          case 'download':
+            console.log(`Initiating download: ${fileName}`);
+            pdfDocGenerator.download(fileName, () => {
+              console.log('✓ Download completed');
+              resolve();
+            });
+            // Also resolve after a short delay as backup
+            setTimeout(() => resolve(), 1000);
+            break;
+          case 'print':
+            console.log('Opening print dialog...');
+            pdfDocGenerator.print({}, window);
+            console.log('✓ Print dialog opened');
+            resolve();
+            break;
+          case 'open':
+            console.log('Opening PDF in new tab...');
+            pdfDocGenerator.open({}, window);
+            console.log('✓ PDF opened in new tab');
+            resolve();
+            break;
+          default:
+            reject(new Error(`Unknown action: ${action}`));
+        }
+      } catch (err) {
+        console.error('Error in PDF action:', err);
+        reject(err);
+      }
+    });
     
     console.log('=== PDF Generation Complete ===');
   } catch (error) {
