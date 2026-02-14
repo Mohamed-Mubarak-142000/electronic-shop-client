@@ -10,6 +10,7 @@ import { useCurrency } from '@/hooks/useCurrency';
 import Image from 'next/image';
 import { AdminDataTable } from './shared/AdminDataTable';
 import { useResourceDelete } from '@/hooks/useResourceDelete';
+import { Button } from '@/components/ui/button';
 
 // Define the Product type based on API response
 type Product = {
@@ -138,16 +139,18 @@ export default function ProductsTable({ filters }: ProductsTableProps) {
             cell: (row) => (
                 <div className="flex items-center justify-end gap-2 text-right">
                     <Link href={`/admin/products/edit/${row._id}`}>
-                        <button className="p-1 text-gray-400 hover:text-white hover:bg-white/10 rounded transition-colors">
+                        <Button size="icon" variant="outline" className="rounded-full">
                             <span className="material-symbols-outlined text-[20px]">edit</span>
-                        </button>
+                        </Button>
                     </Link>
-                    <button
+                    <Button
                         onClick={() => handleDelete(row._id)}
-                        className="p-1 text-gray-400 hover:text-red-400 hover:bg-red-900/20 rounded transition-colors"
+                        size="icon"
+                        variant="destructive"
+                        className="rounded-full"
                     >
                         <span className="material-symbols-outlined text-[20px]">delete</span>
-                    </button>
+                    </Button>
                 </div>
             )
         }

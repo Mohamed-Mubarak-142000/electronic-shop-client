@@ -9,6 +9,7 @@ import { orderService } from '@/services/orderService';
 import { useTranslation } from '@/hooks/useTranslation';
 import { useCurrency } from '@/hooks/useCurrency';
 import { Order } from '@/types';
+import { Button } from '@/components/ui/button';
 
 interface OrdersTableProps {
     filters?: {
@@ -116,15 +117,17 @@ export default function OrdersTable({ filters }: OrdersTableProps) {
             header: t('admin.table.actions'),
             className: 'text-right',
             cell: (row) => (
-                <button 
+                <Button
                     onClick={(e) => {
                         e.stopPropagation();
                         router.push(`/admin/orders/${row._id}`);
                     }}
-                    className="text-gray-400 hover:text-primary p-2 rounded-lg hover:bg-primary/10 transition-colors"
+                    size="icon"
+                    variant="outline"
+                    className="rounded-full"
                 >
                     <span className="material-symbols-outlined">visibility</span>
-                </button>
+                </Button>
             )
         }
     ];

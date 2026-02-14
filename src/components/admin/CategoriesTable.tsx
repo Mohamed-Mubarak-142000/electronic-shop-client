@@ -10,6 +10,7 @@ import { Category } from '@/types';
 import Image from 'next/image';
 import { AdminDataTable } from './shared/AdminDataTable';
 import { useResourceDelete } from '@/hooks/useResourceDelete';
+import { Button } from '@/components/ui/button';
 
 interface CategoriesTableProps {
     filters: {
@@ -85,16 +86,19 @@ export default function CategoriesTable({ filters }: CategoriesTableProps) {
             cell: (row) => (
                 <div className="flex items-center justify-end gap-2 text-right">
                     <Link href={`/admin/categories/edit/${row._id}`}>
-                        <button className="size-8 flex items-center justify-center rounded-full bg-secondary text-white hover:bg-primary hover:text-background-dark transition-colors" title={t('admin.tooltips.edit')}>
+                        <Button size="icon" variant="outline" className="rounded-full" title={t('admin.tooltips.edit')}>
                             <span className="material-symbols-outlined text-lg">edit</span>
-                        </button>
+                        </Button>
                     </Link>
-                    <button
+                    <Button
                         onClick={() => handleDelete(row._id)}
-                        className="size-8 flex items-center justify-center rounded-full bg-secondary text-white hover:bg-red-500 hover:text-white transition-colors" title={t('admin.tooltips.delete')}
+                        size="icon"
+                        variant="destructive"
+                        className="rounded-full"
+                        title={t('admin.tooltips.delete')}
                     >
                         <span className="material-symbols-outlined text-lg">delete</span>
-                    </button>
+                    </Button>
                 </div>
             )
         }

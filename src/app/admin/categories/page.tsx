@@ -64,10 +64,10 @@ export default function CategoriesPage() {
                 placeholder={t('admin.categories.search_placeholder')}
             >
                 {/* Extra filters if needed */}
-                 <button className="flex items-center gap-2 px-3 py-2 rounded-lg bg-surface-dark hover:bg-surface-highlight text-foreground text-sm font-medium transition-colors">
+                 <Button variant="outline" className="rounded-full">
                     <span className="material-symbols-outlined text-[18px]">sort</span>
                     <span>{t('admin.categories.sort.name_asc')}</span>
-                </button>
+                </Button>
             </AdminSearchToolbar>
 
             <CategoriesTable filters={{ searchTerm }} />

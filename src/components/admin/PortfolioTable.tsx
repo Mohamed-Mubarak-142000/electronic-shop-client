@@ -8,6 +8,7 @@ import { portfolioService } from '@/services/portfolioService';
 import { useTranslation } from '@/hooks/useTranslation';
 import { Portfolio } from '@/types'; 
 import { useResourceDelete } from '@/hooks/useResourceDelete';
+import { Button } from '@/components/ui/button';
 
 interface PortfolioTableProps {
     onEdit: (project: Portfolio) => void;
@@ -65,12 +66,12 @@ export default function PortfolioTable({ onEdit }: PortfolioTableProps) {
             className: 'text-right',
             cell: (row) => (
                 <div className="flex justify-end gap-2">
-                    <button onClick={() => onEdit(row)} className="text-primary hover:text-white p-1">
+                    <Button onClick={() => onEdit(row)} size="icon" variant="outline" className="rounded-full">
                         <span className="material-symbols-outlined text-xl">edit</span>
-                    </button>
-                    <button onClick={() => handleDelete(row._id)} className="text-red-400 hover:text-white p-1">
+                    </Button>
+                    <Button onClick={() => handleDelete(row._id)} size="icon" variant="destructive" className="rounded-full">
                         <span className="material-symbols-outlined text-xl">delete</span>
-                    </button>
+                    </Button>
                 </div>
             )
         }

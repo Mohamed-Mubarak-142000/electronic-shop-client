@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import { Button } from '@/components/ui/button';
 
 interface AdminPageHeaderProps {
     title: string;
@@ -46,10 +47,10 @@ export function AdminPageHeader({
                 </div>
                 {action || (addLink && addText && (
                     <Link href={addLink}>
-                        <button className="flex items-center justify-center gap-2 rounded-lg h-10 px-6 bg-primary hover:bg-green-400 text-background-dark text-sm font-bold transition-all shadow-lg shadow-primary/20">
+                        <Button className="rounded-full shadow-[0_0_20px_rgba(54,226,123,0.3)] hover:shadow-[0_0_30px_rgba(54,226,123,0.5)]">
                             <span className="material-symbols-outlined text-[20px]">add</span>
                             <span>{addText}</span>
-                        </button>
+                        </Button>
                     </Link>
                 ))}
             </div>

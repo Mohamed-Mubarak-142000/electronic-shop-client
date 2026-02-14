@@ -12,6 +12,7 @@ import { uploadService } from '@/services/uploadService';
 import { useTranslation } from '@/hooks/useTranslation';
 import { Category, Brand } from '@/types';
 import Image from 'next/image';
+import { Button } from '@/components/ui/button';
 
 const categorySchema = z.object({
     name: z.string().min(1, 'Name is required'),
@@ -250,13 +251,13 @@ export default function CategoryForm({ initialData }: CategoryFormProps) {
                     </div>
                 </div>
                 {/* Submit Action */}
-                <button
+                <Button
                     type="submit"
                     disabled={createMutation.isPending || updateMutation.isPending}
-                    className="w-full flex items-center justify-center rounded-lg h-12 bg-primary text-background-dark text-base font-bold shadow-lg hover:bg-green-400 transition-colors disabled:opacity-50"
+                    className="w-full rounded-full shadow-[0_0_20px_rgba(54,226,123,0.3)] hover:shadow-[0_0_30px_rgba(54,226,123,0.5)]"
                 >
                     {(createMutation.isPending || updateMutation.isPending) ? t('admin.product.saving') : (initialData ? t('admin.category.update') : t('admin.category.create'))}
-                </button>
+                </Button>
             </div>
         </form>
     );

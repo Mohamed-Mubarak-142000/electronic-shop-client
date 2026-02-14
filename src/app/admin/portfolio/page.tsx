@@ -6,6 +6,7 @@ import { AdminPageHeader } from '@/components/admin/shared/AdminPageHeader';
 import PortfolioTable from '@/components/admin/PortfolioTable';
 import PortfolioForm from '@/components/admin/PortfolioForm';
 import { Portfolio } from '@/types';
+import { Button } from '@/components/ui/button';
 
 export default function AdminPortfolioPage() {
     const { t } = useTranslation();
@@ -33,13 +34,13 @@ export default function AdminPortfolioPage() {
                 <AdminPageHeader
                     title={t('admin.portfolio.title')}
                     action={
-                        <button
+                        <Button
                             onClick={handleCreate}
-                            className="flex items-center gap-2 bg-primary px-4 py-2 rounded-lg text-text-on-primary font-medium hover:bg-primary-hover transition-colors"
+                            className="rounded-full shadow-[0_0_20px_rgba(54,226,123,0.3)] hover:shadow-[0_0_30px_rgba(54,226,123,0.5)]"
                         >
                             <span className="material-symbols-outlined">add</span>
                             {t('admin.portfolio.add')}
-                        </button>
+                        </Button>
                     }
                 />
             </div>

@@ -36,9 +36,9 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
             ${isOpen ? 'translate-x-0' : (language === 'ar' ? 'translate-x-[100%]' : '-translate-x-full')} 
             md:relative md:translate-x-0 md:flex flex-col flex-shrink-0
         `}>
-            <div className="flex flex-col h-full p-4">
+            <div className="flex flex-col h-full">
                 {/* Brand */}
-                <div className="flex items-center justify-between px-2 mb-8 mt-2">
+                <div className="flex items-center justify-between px-6 py-4 border-b border-white/10">
                     <div className="flex items-center gap-3">
                         <div className="flex items-center justify-center size-10 rounded-xl bg-primary/20 text-primary">
                             <span className="material-symbols-outlined text-3xl">bolt</span>
@@ -59,7 +59,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
                 </div>
 
                 {/* Navigation */}
-                <nav className="flex flex-col gap-1 flex-1">
+                <nav className="flex flex-col gap-1 flex-1 overflow-y-auto px-4 py-4 scroll-smooth">
                     <Link
                         href="/admin"
                         className={`flex items-center gap-3 px-3 py-3 rounded-lg transition-colors border-l-4 ${isActive('/admin') && pathname === '/admin' // Exact match for dashboard root
@@ -290,12 +290,15 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
                         >
                             {t('admin.sidebar.schedules')}
                         </span>
-                    </Link>                </nav>
+                    </Link>
+                </nav>
 
+                {/* Bottom Section */}
+                <div className="px-4 pb-4 border-t border-white/10 pt-3 flex-shrink-0">
                 {/* Language Switcher */}
                 <button
                     onClick={toggleLanguage}
-                    className="flex items-center gap-3 px-3 py-3 rounded-lg hover:bg-white/5 transition-colors border border-white/10 mb-3"
+                    className="flex items-center gap-3 px-3 py-3 rounded-lg hover:bg-white/5 transition-colors border border-white/10 mb-3 w-full"
                     title={language === 'en' ? 'Switch to Arabic' : 'Switch to English'}
                 >
                     <span className="material-symbols-outlined text-primary">language</span>
@@ -306,13 +309,21 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
                 </button>
 
                 {/* User Profile (Bottom Sidebar) */}
-                <div className="mt-auto flex items-center gap-3 p-3 rounded-xl bg-card-dark border border-white/5">
+                <div className="flex items-center gap-3 p-3 rounded-xl bg-card-dark border border-white/5">
                     <div className="relative w-10 h-10 rounded-full border border-white/10 overflow-hidden bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center flex-shrink-0">
                         {user?.avatar ? (
                             <img
                                 src={user.avatar}
-                                alt={user.name}
+                                alt={user?.name || 'User'}
                                 className="w-full h-full object-cover"
+                                onError={(e) => {
+                                    const target = e.target as HTMLImageElement;
+                                    target.style.display = 'none';
+                                    const parent = target.parentElement;
+                                    if (parent) {
+                                        parent.innerHTML = `<span class="material-symbols-outlined text-primary text-2xl">${user?.role === 'admin' ? 'admin_panel_settings' : 'person'}</span>`;
+                                    }
+                                }}
                             />
                         ) : (
                             <span className="material-symbols-outlined text-primary text-2xl">
@@ -331,6 +342,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
                     >
                         <span className="material-symbols-outlined text-xl">logout</span>
                     </button>
+                </div>
                 </div>
             </div>
         </aside>

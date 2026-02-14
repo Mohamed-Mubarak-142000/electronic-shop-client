@@ -8,6 +8,7 @@ import { useMutation, useQuery } from '@tanstack/react-query';
 import { useEffect } from 'react';
 import toast from 'react-hot-toast';
 import MapSelector from '../shared/MapSelector';
+import { Button } from '@/components/ui/button';
 
 const profileSchema = z.object({
     firstName: z.string().min(1, 'First name is required'),
@@ -235,12 +236,12 @@ export default function ProfileForm() {
 
                 {/* Save Button */}
                 <div className="lg:col-span-12 flex justify-end gap-3 mt-4">
-                     <button type="button" onClick={() => reset()} className="flex items-center justify-center rounded-lg h-10 px-6 border border-white/10 bg-transparent text-white hover:bg-white/10 transition-colors font-bold text-sm">
+                     <Button type="button" onClick={() => reset()} variant="outline" className="rounded-full">
                         Reset
-                    </button>
-                    <button type="submit" disabled={isSubmitting} className="flex items-center justify-center rounded-lg h-10 px-6 bg-primary text-black hover:bg-green-400 transition-colors font-bold text-sm shadow-[0_0_15px_rgba(54,226,123,0.3)] disabled:opacity-70">
+                    </Button>
+                    <Button type="submit" disabled={isSubmitting} className="rounded-full shadow-[0_0_20px_rgba(54,226,123,0.3)] hover:shadow-[0_0_30px_rgba(54,226,123,0.5)]">
                         {isSubmitting ? 'Saving...' : 'Save Changes'}
-                    </button>
+                    </Button>
                 </div>
             </div>
         </form>

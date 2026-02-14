@@ -4,6 +4,7 @@ import { useTranslation } from '@/hooks/useTranslation';
 import { useCurrency } from '@/hooks/useCurrency';
 import { Order } from '@/types';
 import Image from 'next/image';
+import { Button } from '@/components/ui/button';
 
 interface OrderDetailsDrawerProps {
     order?: Order | null;
@@ -45,9 +46,9 @@ export default function OrderDetailsDrawer({ order, onClose }: OrderDetailsDrawe
                         <option value="paid">{t('admin.status.paid')}</option>
                         <option value="delivered">{t('admin.status.delivered')}</option>
                     </select>
-                    <button className="bg-primary text-black font-bold px-4 py-2 rounded-lg text-sm whitespace-nowrap">
+                    <Button className="rounded-full shadow-[0_0_20px_rgba(54,226,123,0.3)] hover:shadow-[0_0_30px_rgba(54,226,123,0.5)] whitespace-nowrap">
                         {t('admin.orders.update_status')}
-                    </button>
+                    </Button>
                 </div>
             </div>
             {/* Scrollable Content */}

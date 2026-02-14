@@ -9,6 +9,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useRouter } from 'next/navigation';
 import { categoryService, brandService } from '@/services/metadataService';
 import { useTranslation } from '@/hooks/useTranslation';
+import { Button } from '@/components/ui/button';
 
 const schema = z.object({
     name: z.string().min(1, 'Name is required'),
@@ -136,13 +137,13 @@ export default function MetaDataForm({ type, initialData }: MetaDataFormProps) {
                     </label>
                 )}
 
-                <button
+                <Button
                     type="submit"
                     disabled={createMutation.isPending || updateMutation.isPending}
-                    className="w-full flex items-center justify-center rounded-lg h-12 bg-primary text-background-dark text-base font-bold shadow-lg hover:bg-green-400 transition-colors disabled:opacity-50"
+                    className="w-full rounded-full shadow-[0_0_20px_rgba(54,226,123,0.3)] hover:shadow-[0_0_30px_rgba(54,226,123,0.5)]"
                 >
                     {(createMutation.isPending || updateMutation.isPending) ? t('admin.product.saving') : (initialData ? t('admin.orders.update_status') : t(isCategory ? 'admin.category.create' : 'admin.brand.create'))}
-                </button>
+                </Button>
             </div>
         </form>
     );
