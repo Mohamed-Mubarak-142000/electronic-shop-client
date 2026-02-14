@@ -153,7 +153,7 @@ export default function ProfilePage() {
                             </h2>
                             <p className="text-sm text-text-secondary mb-6">{language === 'ar' ? 'ابحث عن عنوانك أو انقر على الخريطة لتحديد موقعك' : 'Search for your address or click on the map to set your location'}</p>
                             
-                            <div className="rounded-2xl overflow-hidden border border-border">
+                            <div className="h-[500px] rounded-2xl overflow-hidden border border-border">
                                 <MapSelector
                                     value={form.watch('location')}
                                     onChange={(loc) => form.setValue('location', loc, { shouldDirty: true })}

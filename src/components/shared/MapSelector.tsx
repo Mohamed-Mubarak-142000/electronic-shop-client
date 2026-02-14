@@ -127,7 +127,7 @@ export default function MapSelector({ value, onChange, readOnly = false }: MapSe
     }
 
     return (
-        <div className="h-full w-full rounded-2xl overflow-hidden border border-surface-highlight shadow-xl relative group">
+        <div className="h-[500px] w-full rounded-2xl overflow-hidden border border-surface-highlight shadow-xl relative group">
             {!readOnly && (
                 <div className="absolute top-2 sm:top-4 start-2 sm:start-4 end-10 sm:end-12 z-20 max-w-md">
                     <div className="relative shadow-lg rounded-xl bg-surface-dark ring-1 ring-white/5">
@@ -228,9 +228,6 @@ export default function MapSelector({ value, onChange, readOnly = false }: MapSe
                     </div>
                 </div>
             )}
-
-
         </div>
-        // </div>
     );
 }

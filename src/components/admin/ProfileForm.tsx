@@ -221,16 +221,18 @@ export default function ProfileForm() {
                     <div className="flex flex-col gap-5">
                         <h3 className="text-white text-lg font-bold border-b border-white/10 pb-2">Location</h3>
                         <p className="text-gray-400 text-sm">Pin your location on the map to help customers find you.</p>
-                        <Controller
-                            control={control}
-                            name="location"
-                            render={({ field }) => (
-                                <MapSelector
-                                    value={field.value || { lat: 30.0444, lng: 31.2357 }} // Default Cairo if undefined
-                                    onChange={(val) => field.onChange(val)}
-                                />
-                            )}
-                        />
+                        <div className="h-[500px] rounded-2xl overflow-hidden">
+                            <Controller
+                                control={control}
+                                name="location"
+                                render={({ field }) => (
+                                    <MapSelector
+                                        value={field.value || { lat: 30.0444, lng: 31.2357 }} // Default Cairo if undefined
+                                        onChange={(val) => field.onChange(val)}
+                                    />
+                                )}
+                            />
+                        </div>
                     </div>
                 </div>
 

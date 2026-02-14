@@ -8,6 +8,7 @@ import { useTranslation } from '@/hooks/useTranslation';
 import { AdminPageHeader } from '@/components/admin/shared/AdminPageHeader';
 import { AdminStatsCards, StatCardItem } from '@/components/admin/shared/AdminStatsCards';
 import { AdminSearchToolbar } from '@/components/admin/shared/AdminSearchToolbar';
+import { Button } from '@/components/ui/button';
 
 export default function CategoriesPage() {
     const { t } = useTranslation();
