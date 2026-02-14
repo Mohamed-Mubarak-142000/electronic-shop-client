@@ -33,7 +33,13 @@ const HeroSlider: React.FC<HeroSliderProps> = ({ products }) => {
         return () => clearInterval(timer);
     }, [nextSlide]);
 
-    if (!products || products.length === 0) return null;
+    if (!products || products.length === 0) {
+        return (
+            <div className="relative w-full overflow-hidden bg-surface-dark min-h-[700px] shadow-2xl rounded-b-[3rem] flex items-center justify-center">
+                <p className="text-white text-xl">{language === 'ar' ? 'لا توجد منتجات متاحة للعرض' : 'No products available for slider'}</p>
+            </div>
+        );
+    }
 
     const currentProduct = products[currentIndex];
 
@@ -56,8 +62,8 @@ const HeroSlider: React.FC<HeroSliderProps> = ({ products }) => {
     };
 
     return (
-        <div className="relative w-full overflow-hidden bg-surface-dark min-h-[700px] shadow-2xl rounded-b-[3rem] group flex flex-col md:flex-row">
-            <AnimatePresence initial={false} custom={direction}>
+        <div className="relative w-full overflow-hidden bg-surface-dark min-h-[700px] shadow-2xl rounded-b-[3rem] group">
+            <AnimatePresence initial={false} custom={direction} mode="wait">
                 <motion.div
                     key={currentIndex}
                     custom={direction}
@@ -72,10 +78,10 @@ const HeroSlider: React.FC<HeroSliderProps> = ({ products }) => {
                     className="absolute inset-0 w-full h-full flex flex-col md:flex-row"
                 >
                     {/* Left Side - Image (50%) */}
-                    <div className="w-full md:w-1/2 relative h-[350px] md:h-auto overflow-hidden">
+                    <div className="w-full md:w-1/2 relative h-[350px] md:h-full overflow-hidden">
                         <OptimizedImage
-                            src={currentProduct.imageUrl || currentProduct.images[0] || 'https://placehold.co/800x800'}
-                            alt={language === 'ar' ? currentProduct.nameAr : currentProduct.name}
+                            src={currentProduct.imageUrl || currentProduct.images?.[0] || 'https://placehold.co/800x800'}
+                            alt={language === 'ar' ? (currentProduct.nameAr || currentProduct.name || 'Product') : (currentProduct.name || currentProduct.nameAr || 'Product')}
                             fill
                             priority
                             className="object-cover transition-transform duration-1000 group-hover:scale-105"
@@ -85,32 +91,36 @@ const HeroSlider: React.FC<HeroSliderProps> = ({ products }) => {
                     </div>
 
                     {/* Right Side - Info (50%) */}
-                    <div className="w-full md:w-1/2 p-6 md:p-20 flex flex-col justify-center gap-4 md:gap-8 relative z-10 bg-surface-dark/95 backdrop-blur-sm">
+                    <div className="w-full md:w-1/2 p-6 md:p-20 flex flex-col justify-center gap-4 md:gap-8 relative z-10 bg-surface-dark md:bg-surface-dark/95 backdrop-blur-sm">
                         <div className="flex flex-col gap-2 md:gap-3">
                             <span className="text-primary font-bold text-sm md:text-base tracking-[0.2em] uppercase">
                                 {language === 'ar'
-                                    ? (typeof currentProduct.category === 'object' ? currentProduct.category?.nameAr : 'مميز')
-                                    : (typeof currentProduct.category === 'object' ? currentProduct.category?.name : 'FEATURED')}
+                                    ? (typeof currentProduct.category === 'object' && currentProduct.category?.nameAr ? currentProduct.category.nameAr : 'مميز')
+                                    : (typeof currentProduct.category === 'object' && currentProduct.category?.name ? currentProduct.category.name : 'FEATURED')}
                             </span>
-                            <h2 className="text-white text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-black leading-[1.1] tracking-tight">
-                                {language === 'ar' ? currentProduct.nameAr : currentProduct.name}
+                            <h2 className="text-white text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-black leading-[1.1] tracking-tight drop-shadow-lg">
+                                {language === 'ar' 
+                                    ? (currentProduct.nameAr || currentProduct.name || 'منتج مميز') 
+                                    : (currentProduct.name || currentProduct.nameAr || 'Featured Product')}
                             </h2>
                         </div>
 
-                        <p className="text-gray-300 text-base sm:text-lg md:text-2xl leading-relaxed md:leading-normal line-clamp-3 md:line-clamp-4 max-w-2xl">
-                            {language === 'ar' ? currentProduct.descriptionAr : currentProduct.description}
+                        <p className="text-gray-300 text-base sm:text-lg md:text-2xl leading-relaxed md:leading-normal line-clamp-3 md:line-clamp-4 max-w-2xl drop-shadow-md">
+                            {language === 'ar' 
+                                ? (currentProduct.descriptionAr || currentProduct.description || 'اكتشف هذا المنتج الرائع بأفضل الأسعار') 
+                                : (currentProduct.description || currentProduct.descriptionAr || 'Discover this amazing product at the best prices')}
                         </p>
 
                         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 mt-2 md:mt-6">
                             <div className="flex flex-col">
-                                <span className="text-gray-500 text-xs md:text-sm uppercase tracking-wider font-bold mb-1">{t('product.price')}</span>
-                                <span className="text-white text-4xl md:text-5xl font-black text-nowrap">
-                                    {currentProduct.price} <small className="text-sm md:text-lg font-bold text-gray-400">{t('common.currency_egp')}</small>
+                                <span className="text-gray-400 text-xs md:text-sm uppercase tracking-wider font-bold mb-1">{t('product.price')}</span>
+                                <span className="text-white text-4xl md:text-5xl font-black text-nowrap drop-shadow-lg">
+                                    {currentProduct.price || 0} <small className="text-sm md:text-lg font-bold text-gray-400">{t('common.currency_egp')}</small>
                                 </span>
                             </div>
 
                             <Link href={`/product/${currentProduct._id}`} className="w-full sm:w-auto sm:flex-1 max-w-[240px]">
-                                <Button className="w-full h-12 md:h-16 text-lg font-bold rounded-full transition-all flex items-center justify-center gap-2 group/btn">
+                                <Button className="w-full h-12 md:h-16 text-lg font-bold rounded-full transition-all flex items-center justify-center gap-2 group/btn shadow-lg hover:shadow-xl">
                                     {t('product.viewDetails')}
                                     <ArrowRight size={24} className="group-hover/btn:translate-x-1 transition-transform" />
                                 </Button>

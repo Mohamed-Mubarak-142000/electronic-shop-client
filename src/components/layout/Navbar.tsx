@@ -132,11 +132,11 @@ export default function Navbar() {
                     {/* Search Bar (Desktop) */}
                     <div className="hidden md:flex items-center relative" ref={searchRef}>
                         <label className="relative flex items-center min-w-[320px]">
-                            <span className={language === 'ar' ? 'absolute right-4 text-secondary' : 'absolute left-4 text-secondary'}>
+                            <span className={language === 'ar' ? 'absolute right-4 text-gray-400' : 'absolute left-4 text-gray-400'}>
                                 <span className="material-symbols-outlined">search</span>
                             </span>
                             <input
-                                className={`w-full bg-surface-highlight text-white placeholder:text-secondary rounded-full py-2.5 ${language === 'ar' ? 'pr-12 pl-4' : 'pl-12 pr-4'} focus:ring-2 focus:ring-primary focus:outline-none border-none text-sm transition-all hover:bg-surface-highlight`}
+                                className={`w-full bg-surface-highlight text-white placeholder:text-gray-400 rounded-full py-2.5 ${language === 'ar' ? 'pr-12 pl-4' : 'pl-12 pr-4'} focus:ring-2 focus:ring-primary focus:outline-none border-none text-sm transition-all hover:bg-surface-highlight`}
                                 placeholder={language === 'ar' ? 'بحث عن مصابيح، مفاتيح، أدوات...' : 'Search bulbs, switches, tools...'}
                                 type="text"
                                 value={searchQuery}
@@ -274,6 +274,17 @@ export default function Navbar() {
                                 {isMobileSearchOpen ? 'close' : 'search'}
                             </span>
                         </button>
+
+                        {/* Language Switcher - Always Visible */}
+                        <button
+                            aria-label={`Switch language to ${language === 'ar' ? 'English' : 'Arabic'}`}
+                            onClick={() => setLanguage(language === 'en' ? 'ar' : 'en')}
+                            className="hidden sm:flex items-center justify-center size-9 sm:size-10 rounded-full bg-surface-highlight hover:bg-primary hover:text-text-on-primary-alt text-white transition-all duration-300"
+                            title={language === 'ar' ? 'English' : 'العربية'}
+                        >
+                            <span className="material-symbols-outlined text-[18px] sm:text-[20px]" aria-hidden="true">language</span>
+                        </button>
+
                         {user ? (
                             <div className="relative" ref={userMenuRef}>
                                 <button
@@ -299,18 +310,6 @@ export default function Navbar() {
                                                 <span className="material-symbols-outlined text-lg">person</span>
                                                 {t('nav.profile')}
                                             </Link>
-
-                                            <button
-                                                aria-label={`Switch language to ${language === 'ar' ? 'English' : 'Arabic'}`}
-                                                onClick={() => {
-                                                    setLanguage(language === 'en' ? 'ar' : 'en');
-                                                    setIsUserMenuOpen(false);
-                                                }}
-                                                className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-white/5 text-sm text-white transition-colors text-left"
-                                            >
-                                                <span className="material-symbols-outlined text-lg" aria-hidden="true">language</span>
-                                                {language === 'ar' ? 'English' : 'العربية'}
-                                            </button>
 
                                             <div className="h-px bg-surface-highlight mx-2 my-1"></div>
 
@@ -354,12 +353,12 @@ export default function Navbar() {
             {isMobileSearchOpen && (
                 <div className="md:hidden px-4 pb-4 animate-in slide-in-from-top duration-300">
                     <div className="relative flex items-center" ref={searchRef}>
-                        <span className={language === 'ar' ? 'absolute right-4 text-secondary' : 'absolute left-4 text-secondary'}>
+                        <span className={language === 'ar' ? 'absolute right-4 text-gray-400' : 'absolute left-4 text-gray-400'}>
                             <span className="material-symbols-outlined">search</span>
                         </span>
                         <input
                             autoFocus
-                            className={`w-full bg-surface-highlight text-white placeholder:text-secondary rounded-full py-3 ${language === 'ar' ? 'pr-12 pl-4' : 'pl-12 pr-4'} focus:ring-2 focus:ring-primary focus:outline-none border-none text-sm transition-all`}
+                            className={`w-full bg-surface-highlight text-white placeholder:text-gray-400 rounded-full py-3 ${language === 'ar' ? 'pr-12 pl-4' : 'pl-12 pr-4'} focus:ring-2 focus:ring-primary focus:outline-none border-none text-sm transition-all`}
                             placeholder={language === 'ar' ? 'بحث عن منتجات...' : 'Search products...'}
                             type="text"
                             value={searchQuery}
