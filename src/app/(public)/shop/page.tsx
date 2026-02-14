@@ -10,6 +10,7 @@ import ShopToolbar from "@/components/shop/ShopToolbar";
 import { productService } from "@/services/productService";
 import { categoryService, brandService } from "@/services/metadataService";
 import { Product, Category, Brand } from "@/types";
+import { Button } from '@/components/ui/button';
 
 function ShopContent() {
     const router = useRouter();
@@ -192,12 +193,12 @@ function ShopContent() {
                                 <span className="material-symbols-outlined text-6xl text-[#95c6a9] mb-4 opacity-20">inventory_2</span>
                                 <h3 className="text-white text-xl font-bold mb-2">No products found</h3>
                                 <p className="text-[#95c6a9]">Try adjusting your filters or search criteria.</p>
-                                <button
+                                <Button
                                     onClick={clearFilters}
-                                    className="mt-6 px-6 py-2 bg-primary text-background-dark font-bold rounded-full hover:bg-green-400 transition-colors"
+                                    className="mt-6 px-6 py-2 font-bold rounded-full transition-colors"
                                 >
                                     Clear All Filters
-                                </button>
+                                </Button>
                             </div>
                         )}
                     </div>

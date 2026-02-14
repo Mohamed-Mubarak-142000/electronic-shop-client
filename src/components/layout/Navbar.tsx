@@ -11,6 +11,7 @@ import { useConfigStore } from "@/store/useConfigStore";
 import { useTranslation } from "@/hooks/useTranslation";
 import { toast } from "react-hot-toast";
 import { User as UserIcon } from "lucide-react";
+import { Button } from '@/components/ui/button';
 import { productService } from "@/services/productService";
 import { categoryService } from "@/services/metadataService";
 import { Product, Category } from "@/types";
@@ -331,9 +332,9 @@ export default function Navbar() {
                             </div>
                         ) : (
                             <Link href="/login">
-                                <button className="flex h-9 sm:h-10 px-4 sm:px-6 items-center justify-center rounded-full bg-primary text-[#122118] text-xs sm:text-sm font-bold hover:brightness-110 transition-all">
+                                <Button className="h-9 sm:h-10 px-4 sm:px-6 text-xs sm:text-sm font-bold">
                                     {t('auth.login')}
-                                </button>
+                                </Button>
                             </Link>
                         )}
                         {/* Mobile Menu Button */}

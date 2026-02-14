@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { useLanguageStore } from '@/store/useLanguageStore';
+import { Button } from '@/components/ui/button';
 
 interface AuthHeaderProps {
     type: 'login' | 'register';
@@ -30,9 +31,9 @@ export default function AuthHeader({ type }: AuthHeaderProps) {
                     </button>
                 </div>
                 <Link href={type === 'login' ? '/register' : '/login'}>
-                    <button className="flex cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-6 bg-primary text-background-dark text-sm font-bold leading-normal hover:bg-primary/90 transition-all shadow-[0_0_15px_rgba(54,226,123,0.3)]">
+                    <Button className="h-10 px-6 text-sm">
                         <span className="truncate">{type === 'login' ? 'Sign Up' : 'Log In'}</span>
-                    </button>
+                    </Button>
                 </Link>
             </div>
             {/* Mobile Menu Icon Placeholder */}

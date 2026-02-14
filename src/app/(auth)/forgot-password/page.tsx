@@ -6,6 +6,7 @@ import { authService } from '@/services/authService';
 import { toast } from 'react-hot-toast';
 import { useTranslation } from '@/hooks/useTranslation';
 import Link from 'next/link';
+import { Button } from '@/components/ui/button';
 
 type Step = 'email' | 'otp' | 'reset';
 
@@ -122,13 +123,13 @@ export default function ForgotPasswordPage() {
                         />
                     </div>
 
-                    <button
+                    <Button
                         type="submit"
                         disabled={loading}
-                        className="w-full py-4 bg-primary-600 hover:bg-primary-700 text-white rounded-2xl font-bold transition-all disabled:opacity-50 shadow-lg shadow-primary-500/20"
+                        className="w-full py-4 text-lg font-bold h-auto shadow-lg shadow-primary/20"
                     >
                         {loading ? '...' : (language === 'ar' ? 'إرسال الرمز' : 'Send Code')}
-                    </button>
+                    </Button>
 
                     <div className="text-center">
                         <Link href="/login" className="text-sm text-primary-600 hover:underline">
@@ -158,13 +159,13 @@ export default function ForgotPasswordPage() {
                         />
                     </div>
 
-                    <button
+                    <Button
                         type="submit"
                         disabled={loading || otp.length < 6}
-                        className="w-full py-4 bg-primary-600 hover:bg-primary-700 text-white rounded-2xl font-bold transition-all disabled:opacity-50 shadow-lg shadow-primary-500/20"
+                        className="w-full py-4 text-lg font-bold h-auto shadow-lg shadow-primary/20"
                     >
                         {loading ? '...' : t('auth.verifyOtp')}
-                    </button>
+                    </Button>
 
                     <div className="text-center space-y-4">
                         <button
@@ -216,13 +217,13 @@ export default function ForgotPasswordPage() {
                         </div>
                     </div>
 
-                    <button
+                    <Button
                         type="submit"
                         disabled={loading}
-                        className="w-full py-4 bg-primary-600 hover:bg-primary-700 text-white rounded-2xl font-bold transition-all disabled:opacity-50 shadow-lg shadow-primary-500/20"
+                        className="w-full py-4 text-lg font-bold h-auto shadow-lg shadow-primary/20"
                     >
                         {loading ? '...' : t('auth.resetPassword')}
-                    </button>
+                    </Button>
                 </form>
             )}
         </div>

@@ -124,7 +124,7 @@ export default function LoginPage() {
                     <Button
                         type="submit"
                         disabled={mutation.isPending}
-                        className="mt-4 flex w-full cursor-pointer items-center justify-center rounded-full bg-primary text-background-dark h-14 text-base font-bold tracking-wide hover:bg-primary/90 hover:shadow-[0_0_20px_rgba(54,226,123,0.4)] active:scale-[0.98] transition-all duration-200 disabled:opacity-70"
+                        className="mt-4 flex w-full h-14 text-base tracking-wide active:scale-[0.98] transition-all duration-200"
                     >
                         {mutation.isPending ? t('auth.signingIn') : t('auth.signIn')}
                     </Button>

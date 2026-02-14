@@ -10,6 +10,7 @@ import ProductCard from "@/components/shared/ProductCard";
 import { useCurrency } from "@/hooks/useCurrency";
 import { Product } from "@/types";
 import OptimizedImage from "@/components/shared/OptimizedImage";
+import { Button } from '@/components/ui/button';
 
 export default function ProductDetailsPage({ params }: { params: Promise<{ id: string }> }) {
     const { id } = use(params);
@@ -331,20 +332,21 @@ export default function ProductDetailsPage({ params }: { params: Promise<{ id: s
                             </div>
 
                             <div className="flex gap-4">
-                                <button
+                                <Button
                                     onClick={handleAddToCart}
                                     disabled={product.stock === 0}
-                                    className={`flex-1 font-bold text-lg h-14 rounded-full flex items-center justify-center gap-2 transition-all ${product.stock > 0 ? 'bg-primary hover:bg-[#2ec56a] text-surface-dark shadow-[0_0_20px_rgba(54,226,123,0.3)] hover:shadow-[0_0_30px_rgba(54,226,123,0.5)]' : 'bg-slate-300 text-slate-500 cursor-not-allowed'}`}
+                                    className={`flex-1 h-14 text-lg font-bold gap-2 ${product.stock === 0 ? 'bg-slate-700 text-slate-500 hover:bg-slate-700' : ''}`}
                                 >
                                     <span className="material-symbols-outlined">shopping_cart</span>
                                     Add to Cart
-                                </button>
-                                <button
+                                </Button>
+                                <Button
+                                    variant="outline"
                                     onClick={handleWishlistToggle}
-                                    className={`size-14 rounded-full border flex items-center justify-center transition-all ${isWishlisted ? 'bg-red-500/10 border-red-500 text-red-500' : 'border-[#366348] text-[#95c6a9] hover:border-red-500 hover:text-red-500'}`}
+                                    className={`size-14 rounded-full border flex items-center justify-center transition-all ${isWishlisted ? 'bg-red-500/10 border-red-500 text-red-500 hover:bg-red-500/20 hover:text-red-600 hover:border-red-600' : 'bg-transparent border-[#366348] text-[#95c6a9] hover:bg-transparent hover:border-red-500 hover:text-red-500'}`}
                                 >
                                     <span className={`material-symbols-outlined ${isWishlisted ? 'filled' : ''}`} style={{ fontVariationSettings: isWishlisted ? "'FILL' 1" : "" }}>favorite</span>
-                                </button>
+                                </Button>
                             </div>
 
 

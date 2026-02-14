@@ -7,6 +7,7 @@ import { Product } from '@/types';
 import { useTranslation } from '@/hooks/useTranslation';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Button } from '@/components/ui/button';
 
 interface HeroSliderProps {
     products: Product[];
@@ -109,10 +110,10 @@ const HeroSlider: React.FC<HeroSliderProps> = ({ products }) => {
                             </div>
 
                             <Link href={`/product/${currentProduct._id}`} className="w-full sm:w-auto sm:flex-1 max-w-[240px]">
-                                <button className="w-full h-12 md:h-16 bg-primary text-[#122118] text-lg font-bold rounded-2xl shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-2 group/btn">
+                                <Button className="w-full h-12 md:h-16 text-lg font-bold rounded-full transition-all flex items-center justify-center gap-2 group/btn">
                                     {t('product.viewDetails')}
                                     <ArrowRight size={24} className="group-hover/btn:translate-x-1 transition-transform" />
-                                </button>
+                                </Button>
                             </Link>
                         </div>
                     </div>

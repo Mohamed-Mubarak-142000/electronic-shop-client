@@ -6,6 +6,7 @@ import { toast } from "react-hot-toast";
 import { useCurrency } from "@/hooks/useCurrency";
 import { Product } from "@/types";
 import OptimizedImage from "@/components/shared/OptimizedImage";
+import { Button } from '@/components/ui/button';
 
 export default function ProductCard({ product }: { product: Product }) {
     const user = useAuthStore((state) => state.user);
@@ -132,20 +133,23 @@ export default function ProductCard({ product }: { product: Product }) {
                         )}
                     </div>
                     <div className="flex gap-1.5 sm:gap-2 shrink-0">
-                        <button
+                        <Button
+                            variant="outline"
+                            size="icon-lg"
                             aria-label={isWishlisted ? `Remove ${product.name} from wishlist` : `Add ${product.name} to wishlist`}
                             onClick={handleWishlistToggle}
-                            className={`size-8 sm:size-10 rounded-full border flex items-center justify-center transition-all ${isWishlisted ? 'bg-red-500/10 border-red-500 text-red-500' : 'bg-[#122118] border-surface-highlight text-white hover:border-red-500 hover:text-red-500'}`}
+                            className={`rounded-full border transition-all ${isWishlisted ? 'bg-red-500/10 border-red-500 text-red-500 hover:text-red-600 hover:border-red-600' : 'bg-[#122118] border-surface-highlight text-white hover:text-red-500 hover:border-red-500 hover:bg-[#122118]'}`}
                         >
                             <span className={`material-symbols-outlined text-lg sm:text-xl ${isWishlisted ? 'filled' : ''}`} style={{ fontVariationSettings: isWishlisted ? "'FILL' 1" : "" }} aria-hidden="true">favorite</span>
-                        </button>
-                        <button
+                        </Button>
+                        <Button
+                            size="icon-lg"
                             aria-label={`Add ${product.name} to cart`}
                             onClick={handleAddToCart}
-                            className="size-8 sm:size-10 rounded-full bg-[#122118] border border-surface-highlight text-white flex items-center justify-center hover:bg-primary hover:text-[#122118] hover:border-primary transition-all shadow-[0_0_15px_rgba(54,226,123,0)_hover:shadow-[0_0_15px_rgba(54,226,123,0.3)]"
+                            className="rounded-full shadow-none hover:shadow-[0_0_15px_rgba(54,226,123,0.3)] transition-all"
                         >
                             <span className="material-symbols-outlined text-lg sm:text-xl" aria-hidden="true">add_shopping_cart</span>
-                        </button>
+                        </Button>
                     </div>
                 </div>
             </div>

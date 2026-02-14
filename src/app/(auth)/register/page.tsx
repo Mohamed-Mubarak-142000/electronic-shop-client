@@ -180,7 +180,7 @@ export default function RegisterPage() {
                     <Button
                         type="submit"
                         disabled={mutation.isPending}
-                        className="mt-2 w-full h-14 rounded-full bg-primary hover:bg-primary/90 text-background-dark text-base font-bold shadow-[0_0_20px_rgba(54,226,123,0.4)] disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                        className="mt-2 w-full h-14 text-base transition-all"
                     >
                         {mutation.isPending ? t('auth.register.submitting') : t('auth.register.submit')}
                     </Button>

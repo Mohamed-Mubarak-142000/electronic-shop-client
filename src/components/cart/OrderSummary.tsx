@@ -1,6 +1,7 @@
 import React from 'react';
 import { useTranslation } from "@/hooks/useTranslation";
 import { useCurrency } from "@/hooks/useCurrency";
+import { Button } from '@/components/ui/button';
 
 interface OrderSummaryProps {
     subtotal: number;
@@ -41,13 +42,13 @@ export default function OrderSummary({ subtotal, tax, total, onCheckout }: Order
                 </div>
             </div>
 
-            <button
+            <Button
                 onClick={onCheckout}
-                className="w-full bg-primary hover:bg-green-400 text-surface-dark font-black text-lg py-4 rounded-full shadow-[0_0_20px_rgba(54,226,123,0.3)] hover:shadow-[0_0_30px_rgba(54,226,123,0.5)] transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2 mt-4"
+                className="w-full h-auto text-lg py-4 transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2 mt-4"
             >
                 <span>{t('checkout')}</span>
                 <span className="material-symbols-outlined rtl:rotate-180">arrow_forward</span>
-            </button>
+            </Button>
 
             {/* Trust Signals */}
             <div className="flex justify-center gap-6 mt-2 pt-4 border-t border-surface-highlight">
