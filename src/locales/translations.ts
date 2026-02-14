@@ -54,6 +54,8 @@ export const en = {
     cart: "Cart",
     wishlist: "Wishlist",
     profile: "Profile",
+    "common.account": "Account",
+    "common.legal": "Legal",
 
     // Cart
     your_cart: "Shopping Cart",
@@ -545,7 +547,55 @@ export const en = {
     "footer.privacy": "Privacy Policy",
     "footer.terms": "Terms of Service",
     "footer.sitemap": "Sitemap",
+    "footer.aboutUs": "About Us",
     "validation.common_error": "Please check the form for errors",
+
+    // Support Page
+    "support.title": "How can we help you?",
+    "support.subtitle": "Find answers, get guidance, or contact our expert team.",
+    "support.whatis.title": "What is ElectroShop?",
+    "support.whatis.description": "ElectroShop is a premium marketplace for high-quality electrical components and supplies. Whether you're a professional contractor or a DIY enthusiast, we provide the tools and parts you need to power your world safely and efficiently.",
+    "support.purpose.title": "Our Purpose",
+    "support.purpose.description": "We aim to simplify the procurement of electrical goods by providing a reliable, fast, and user-friendly platform with expert technical support.",
+    "support.services.title": "Our Services",
+    "support.services.item1": "Swift delivery of electrical components",
+    "support.services.item2": "Technical consultation and project planning",
+    "support.services.item3": "B2B wholesale solutions for contractors",
+    "support.services.item4": "Comprehensive installation guides",
+    "support.help.title": "Need Immediate Assistance?",
+    "support.help.description": "If you're facing any issues with your order or have technical questions, here's how you can get help:",
+    "support.channels.title": "Support Channels",
+    "support.channels.email": "Email Support",
+    "support.channels.phone": "Phone Support",
+    "support.channels.chat": "Live Chat",
+    "support.guidance.title": "Helpful Guidance",
+    "support.guidance.text": "For faster resolution, please have your order number or project details ready when contacting us. You can also visit our FAQ section for immediate answers to common questions.",
+
+    // About Us Page
+    "about.title": "About ElectroShop",
+    "about.mission": "Our Mission",
+    "about.mission.desc": "To empower electrical professionals and homeowners with the best-in-class components and unparalleled support.",
+    "about.story": "Our Story",
+    "about.story.desc": "Founded with a vision to modernize the electrical supply industry, ElectroShop has grown from a local distributor to a leading online marketplace, serving thousands of satisfied customers every month.",
+
+    // Privacy Policy
+    "privacy.title": "Privacy Policy",
+    "privacy.lastUpdated": "Last Updated: February 2026",
+    "privacy.intro": "Your privacy is important to us. This policy explains how we collect, use, and protect your personal information.",
+
+    // Terms & Conditions
+    "terms.title": "Terms & Conditions",
+    "terms.lastUpdated": "Last Updated: February 2026",
+    "terms.intro": "By using ElectroShop, you agree to the following terms and conditions. Please read them carefully.",
+
+    // Contact
+    "contact.title": "Contact Us",
+    "contact.subtitle": "We'd love to hear from you. Send us a message and we'll respond as soon as possible.",
+    "contact.form.name": "Your Name",
+    "contact.form.email": "Your Email",
+    "contact.form.subject": "Subject",
+    "contact.form.message": "Message",
+    "contact.form.send": "Send Message",
 };
 
 export const ar = {
@@ -604,6 +654,8 @@ export const ar = {
     cart: "عربة التسوق",
     wishlist: "المفضلة",
     profile: "الملف الشخصي",
+    "common.account": "الحساب",
+    "common.legal": "قانوني",
 
     // Cart
     your_cart: "عربة التسوق",
@@ -1092,7 +1144,55 @@ export const ar = {
     "footer.subscribe": "اشتراك",
     "footer.rights": "جميع الحقوق محفوظة.",
     "footer.privacy": "سياسة الخصوصية",
-    "footer.terms": "شروط الخدمة",
+    "footer.terms": "الشروط والأحكام",
     "footer.sitemap": "خريطة الموقع",
+    "footer.aboutUs": "من نحن",
+
+    // Support Page
+    "support.title": "كيف يمكننا مساعدتك؟",
+    "support.subtitle": "ابحث عن الإجابات، احصل على التوجيه، أو اتصل بفريق الخبراء لدينا.",
+    "support.whatis.title": "ما هو إلكتروشوب؟",
+    "support.whatis.description": "إلكتروشوب هو سوق متميز للمكونات والمستلزمات الكهربائية عالية الجودة. سواء كنت مقاولاً محترفاً أو هاوياً للتنفيذ الذاتي، فنحن نوفر لك الأدوات والقطع التي تحتاجها لتشغيل عالمك بأمان وكفاءة.",
+    "support.purpose.title": "هدفنا",
+    "support.purpose.description": "نهدف إلى تبسيط عملية شراء السلع الكهربائية من خلال توفير منصة موثوقة وسريعة وسهلة الاستخدام مع دعم فني خبير.",
+    "support.services.title": "خدماتنا",
+    "support.services.item1": "توصيل سريع للمكونات الكهربائية",
+    "support.services.item2": "استشارات فنية وتخطيط المشاريع",
+    "support.services.item3": "حلول الجملة B2B للمقاولين",
+    "support.services.item4": "أدلة تركيب شاملة",
+    "support.help.title": "هل تحتاج لمساعدة فورية؟",
+    "support.help.description": "إذا كنت تواجه أي مشاكل في طلبك أو لديك أسئلة فنية، فإليك كيف يمكنك الحصول على المساعدة:",
+    "support.channels.title": "قنوات الدعم",
+    "support.channels.email": "الدعم عبر البريد الإلكتروني",
+    "support.channels.phone": "الدعم عبر الهاتف",
+    "support.channels.chat": "المحادثة المباشرة",
+    "support.guidance.title": "توجيهات مفيدة",
+    "support.guidance.text": "لسرعة الحل، يرجى تجهيز رقم الطلب أو تفاصيل المشروع عند الاتصال بنا. يمكنك أيضاً زيارة قسم الأسئلة الشائعة للحصول على إجابات فورية للأسئلة الشائعة.",
+
+    // About Us Page
+    "about.title": "عن إلكتروشوب",
+    "about.mission": "مهمتنا",
+    "about.mission.desc": "تمكين محترفي الكهرباء وأصحاب المنازل بأفضل المكونات في فئتها ودعم لا مثيل له.",
+    "about.story": "قصتنا",
+    "about.story.desc": "تأسست إلكتروشوب برؤية لتحديث صناعة التوريدات الكهربائية، ونمت من موزع محلي إلى سوق عبر الإنترنت رائد، لخدمة آلاف العملاء الراضين كل شهر.",
+
+    // Privacy Policy
+    "privacy.title": "سياسة الخصوصية",
+    "privacy.lastUpdated": "آخر تحديث: فبراير 2026",
+    "privacy.intro": "خصوصيتك مهمة بالنسبة لنا. تشرح هذه السياسة كيفية جمعنا لمعلوماتك الشخصية واستخدامها وحمايتها.",
+
+    // Terms & Conditions
+    "terms.title": "الشروط والأحكام",
+    "terms.lastUpdated": "آخر تحديث: فبراير 2026",
+    "terms.intro": "باستخدامك لإلكتروشوب، فإنك توافق على الشروط والأحكام التالية. يرجى قراءتها بعناية.",
+
+    // Contact
+    "contact.title": "اتصل بنا",
+    "contact.subtitle": "يسعدنا الاستماع إليك. أرسل لنا رسالة وسنقوم بالرد في أقرب وقت ممكن.",
+    "contact.form.name": "اسمك",
+    "contact.form.email": "بريدك الإلكتروني",
+    "contact.form.subject": "الموضوع",
+    "contact.form.message": "الرسالة",
+    "contact.form.send": "إرسال الرسالة",
     "validation.common_error": "يرجى التحقق من النموذج بحثاً عن أخطاء",
 };

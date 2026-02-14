@@ -56,6 +56,7 @@ export default function Footer() {
                             <li><Link href="/installation" className="hover:text-primary transition-colors">{t('footer.guide')}</Link></li>
                             <li><Link href="/faq" className="hover:text-primary transition-colors">{t('footer.faq')}</Link></li>
                             <li><Link href="/contact" className="hover:text-primary transition-colors">{t('footer.contact')}</Link></li>
+                            <li><Link href="/support" className="hover:text-primary transition-colors font-bold italic underline decoration-primary/30 underline-offset-4">{t('support.title')}</Link></li>
                         </ul>
                     </div>
 
@@ -82,6 +83,7 @@ export default function Footer() {
                 <div className="border-t border-surface-highlight pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
                     <p className="text-gray-500 text-xs">© {new Date().getFullYear()} ElectroShop Inc. {t('footer.rights')}</p>
                     <div className="flex gap-6">
+                        <Link href="/about" className="text-gray-500 hover:text-white text-xs">{t('footer.aboutUs')}</Link>
                         <Link href="/privacy" className="text-gray-500 hover:text-white text-xs">{t('footer.privacy')}</Link>
                         <Link href="/terms" className="text-gray-500 hover:text-white text-xs">{t('footer.terms')}</Link>
                         <Link href="/sitemap" className="text-gray-500 hover:text-white text-xs">{t('footer.sitemap')}</Link>
