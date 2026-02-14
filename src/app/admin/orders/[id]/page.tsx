@@ -6,6 +6,7 @@ import { orderService } from '@/services/orderService';
 import { useTranslation } from '@/hooks/useTranslation';
 import { useCurrency } from '@/hooks/useCurrency';
 import { generateInvoicePDF } from '@/lib/invoiceGenerator';
+import { generateSimpleInvoicePDF } from '@/lib/invoiceGeneratorSimple';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
@@ -114,8 +115,10 @@ export default function OrderDetailsPage() {
                 </div>
                 <button
                     onClick={async () => {
+                        console.log('Print Invoice button clicked');
                         try {
                             setGeneratingInvoice(true);
+                            console.log('Preparing invoice data...');
                             
                             // Prepare complete invoice data with all details
                             const invoiceData = {
@@ -155,13 +158,30 @@ export default function OrderDetailsPage() {
                                 notes: `Order Status: ${currentStatus} | Payment Status: ${order.isPaid ? 'Paid' : 'Pending'}`
                             };
                             
-                            await generateInvoicePDF(invoiceData, language as 'ar' | 'en', 'download');
-                            toast.success('Invoice PDF generated successfully!');
-                        } catch (error) {
-                            console.error('Failed to generate invoice:', error);
-                            toast.error('Failed to generate invoice. Please try again.');
+                            console.log('Invoice data prepared');
+                            
+                            // Try with custom fonts first (for Arabic support)
+                            try {
+                                console.log('Attempting PDF generation with custom fonts (Arabic support)...');
+                                await generateInvoicePDF(invoiceData, language as 'ar' | 'en', 'download');
+                                console.log('✓ PDF generated with custom fonts');
+                                toast.success('Invoice PDF generated successfully!');
+                            } catch (fontError) {
+                                console.warn('Custom font generation failed, trying simple version:', fontError);
+                                // Fallback to simple version without custom fonts
+                                console.log('Generating simple PDF (English only)...');
+                                generateSimpleInvoicePDF(invoiceData, 'download');
+                                console.log('✓ Simple PDF generated');
+                                toast.success('Invoice PDF generated (without Arabic support)');
+                            }
+                        } catch (error: any) {
+                            console.error('!!! Failed to generate invoice !!!');
+                            console.error('Error:', error);
+                            console.error('Error message:', error?.message);
+                            toast.error(error?.message || 'Failed to generate invoice. Please check console for details.');
                         } finally {
                             setGeneratingInvoice(false);
+                            console.log('Invoice generation process complete');
                         }
                     }}
                     disabled={generatingInvoice}

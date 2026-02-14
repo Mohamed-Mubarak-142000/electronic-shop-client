@@ -2,65 +2,77 @@ import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
 import { loadCustomFonts, fontDefinitions } from './customFonts';
 
-// Initialize pdfMake with default fonts first
+// Initialize pdfMake with default fonts
 if (typeof window !== 'undefined') {
-  (pdfMake as any).vfs = (pdfFonts as any).pdfMake?.vfs || pdfFonts;
+  const vfs = (pdfFonts as any).pdfMake?.vfs || (pdfFonts as any).vfs || pdfFonts;
+  (pdfMake as any).vfs = vfs;
+  (pdfMake as any).fonts = {
+    Roboto: {
+      normal: 'Roboto-Regular.ttf',
+      bold: 'Roboto-Medium.ttf',
+      italics: 'Roboto-Italic.ttf',
+      bolditalics: 'Roboto-MediumItalic.ttf',
+    }
+  };
 }
 
 // Flag to track if fonts are loaded
 let fontsLoaded = false;
 let fontsLoading = false;
-let fontLoadPromise: Promise<void> | null = null;
 
 /**
  * Initialize custom fonts with Amiri support for Arabic
  */
-const initializeFonts = async () => {
+const initializeFonts = async (): Promise<boolean> => {
   if (typeof window === 'undefined') {
-    return;
+    return false;
   }
 
   // If fonts are already loaded, return immediately
   if (fontsLoaded) {
-    return;
+    return true;
   }
 
-  // If fonts are currently loading, wait for that promise
-  if (fontsLoading && fontLoadPromise) {
-    return fontLoadPromise;
+  // Prevent concurrent loading
+  if (fontsLoading) {
+    // Wait a bit and check again
+    await new Promise(resolve => setTimeout(resolve, 100));
+    return fontsLoaded;
   }
 
   // Start loading fonts
   fontsLoading = true;
-  fontLoadPromise = (async () => {
-    try {
-      const customFonts = await loadCustomFonts();
+  
+  try {
+    console.log('Initializing custom fonts...');
+    const customFonts = await loadCustomFonts();
+    
+    if (customFonts) {
+      // Get default VFS
+      const defaultVfs = (pdfFonts as any).pdfMake?.vfs || (pdfFonts as any).vfs || pdfFonts;
       
-      if (customFonts) {
-        // Combine default fonts with custom fonts
-        const defaultVfs = (pdfFonts as any).pdfMake?.vfs || pdfFonts;
-        (pdfMake as any).vfs = {
-          ...defaultVfs,
-          ...customFonts,
-        };
+      // Combine default fonts with custom fonts
+      (pdfMake as any).vfs = {
+        ...defaultVfs,
+        ...customFonts,
+      };
 
-        // Define font families
-        (pdfMake as any).fonts = fontDefinitions;
-        
-        fontsLoaded = true;
-        console.log('Custom fonts loaded successfully');
-      } else {
-        console.warn('Failed to load custom fonts, using default fonts');
-      }
-    } catch (error) {
-      console.error('Error initializing custom fonts:', error);
-      // Fall back to default fonts
-    } finally {
-      fontsLoading = false;
+      // Define font families including Amiri
+      (pdfMake as any).fonts = fontDefinitions;
+      
+      fontsLoaded = true;
+      console.log('✓ Custom fonts initialized successfully');
+      return true;
+    } else {
+      console.warn('⚠ Failed to load custom fonts, will use default fonts');
+      return false;
     }
-  })();
-
-  return fontLoadPromise;
+  } catch (error) {
+    console.error('✗ Error initializing custom fonts:', error);
+    return false;
+  } finally {
+    fontsLoading = false;
+  }
 };
 
 interface InvoiceItem {
@@ -594,14 +606,22 @@ export const generateInvoicePDF = async (
   language: Language = 'en',
   action: 'download' | 'print' | 'open' = 'download'
 ): Promise<void> => {
+  console.log('=== Starting PDF Generation ===');
+  console.log('Language:', language);
+  console.log('Action:', action);
+  console.log('Invoice Data:', data);
+
   try {
-    // Initialize custom fonts before generating PDF
-    await initializeFonts();
+    // Try to initialize custom fonts (but don't fail if it doesn't work)
+    console.log('Attempting to load custom fonts...');
+    const fontsInitialized = await initializeFonts();
+    console.log('Fonts initialized:', fontsInitialized ? 'Yes (Amiri)' : 'No (using Roboto)');
 
     let content: any[] = [];
 
     if (language === 'both') {
       // Generate both English and Arabic versions on separate pages
+      console.log('Generating bilingual invoice...');
       content = [
         ...generateCompanyInfo(data, 'en'),
         ...generateHeader(data, 'en'),
@@ -617,6 +637,7 @@ export const generateInvoicePDF = async (
       ];
     } else {
       // Generate single language version
+      console.log(`Generating ${language} invoice...`);
       content = [
         ...generateCompanyInfo(data, language),
         ...generateHeader(data, language),
@@ -625,6 +646,8 @@ export const generateInvoicePDF = async (
         ...generateFooter(data, language),
       ];
     }
+
+    console.log('Content generated, creating PDF definition...');
 
     const docDefinition: any = {
       pageSize: 'A4',
@@ -651,22 +674,39 @@ export const generateInvoicePDF = async (
       },
     };
 
+    console.log('Creating PDF with pdfMake...');
     const pdfDocGenerator = pdfMake.createPdf(docDefinition);
+    console.log('PDF generator created successfully');
 
+    const fileName = `invoice-${data.invoiceNumber}.pdf`;
+    
     switch (action) {
       case 'download':
-        pdfDocGenerator.download(`invoice-${data.invoiceNumber}.pdf`);
+        console.log(`Downloading PDF: ${fileName}`);
+        pdfDocGenerator.download(fileName);
+        console.log('✓ Download initiated');
         break;
       case 'print':
+        console.log('Opening print dialog...');
         pdfDocGenerator.print();
+        console.log('✓ Print dialog opened');
         break;
       case 'open':
+        console.log('Opening PDF in new tab...');
         pdfDocGenerator.open();
+        console.log('✓ PDF opened in new tab');
         break;
     }
+    
+    console.log('=== PDF Generation Complete ===');
   } catch (error) {
-    console.error('Error generating invoice PDF:', error);
-    throw new Error('Failed to generate invoice. Please try again.');
+    console.error('=== PDF Generation Failed ===');
+    console.error('Error details:', error);
+    if (error instanceof Error) {
+      console.error('Error message:', error.message);
+      console.error('Error stack:', error.stack);
+    }
+    throw new Error(`Failed to generate invoice: ${error instanceof Error ? error.message : 'Unknown error'}`);
   }
 };
 
