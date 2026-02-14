@@ -96,61 +96,63 @@ export default function Home() {
 
   return (
     <div className="flex flex-col items-center w-full bg-background-dark text-white font-display">
-      <div className="w-full max-w-[1440px] px-4 md:px-10 pb-10">
 
-        {/* Hero / Slider Section */}
-        <div className="py-6">
-          {configs?.heroType === 'slider' && sliderProducts && sliderProducts.length > 0 ? (
-            <HeroSlider products={sliderProducts} />
-          ) : (
-            <div className="relative overflow-hidden rounded-[2rem] min-h-[520px] flex items-center group">
-              {/* Performance: Hero image with high priority for LCP optimization */}
-              <OptimizedImage
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDADEqPsOmKi_XwT6AvVte0yDQygWKaXYZ2lasqr0jLA8v6hyUh66MVDYjpNFU2O-7zz3D72k5QkRVp3KOi-6o1nxnw_63XoyWOIxgMPa1GdeCpvrrQzN7J5iGAyJProQ_TjdnkXTwzicepoLZ2xTTorXP5pj0ehkLNZeXjB9HXxcVg1WHQdS6TNptMGr6odEC-0zSdIqIksRC6UuEzr0jlBxHubRXGtva1bUJHDOmUihlEXDu6s5dQPFSYlNCgAZK6wZq4Tfchwog"
-                alt="Electro Shop Hero - Modern Electronics and Professional Tools"
-                fill
-                priority
-                fetchPriority="high"
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, (max-width: 1440px) 90vw, 1440px"
-                quality={85}
-              />
-              <div className="absolute inset-0 bg-gradient-to-r from-[#112117]/90 via-[#112117]/40 to-transparent"></div>
-              <div className="absolute inset-0 bg-gradient-to-t from-[#112117] via-transparent to-transparent opacity-60"></div>
 
-              <div className="relative z-10 p-8 md:p-16 max-w-3xl flex flex-col gap-6 items-start">
-                <span className="inline-flex items-center gap-2 rounded-full bg-primary/20 px-3 py-1 text-xs font-bold text-primary backdrop-blur-sm border border-primary/20">
-                  <span className="material-symbols-outlined text-sm">eco</span>
-                  {t('home.hero.eco')}
-                </span>
-                <h1 className="text-white text-4xl sm:text-5xl md:text-7xl font-black leading-[0.95] tracking-tight">
-                  {configs?.heroTitle1 || t('home.hero.title1')} <br />
-                  <span className="text-primary">{configs?.heroTitle2 || t('home.hero.title2')}</span>
-                </h1>
-                <p className="text-gray-300 text-lg md:text-xl font-normal leading-relaxed max-w-lg">
-                  {configs?.heroSubtitle || t('home.hero.subtitle')}
-                </p>
-                <div className="flex flex-wrap gap-4 mt-4">
-                  <Link href="/shop">
-                    <button className="h-12 px-8 rounded-full bg-primary text-[#122118] text-base font-bold tracking-wide hover:scale-105 transition-transform flex items-center gap-2">
-                      {t('home.hero.shopHome')}
-                      <span className="material-symbols-outlined text-sm">arrow_forward</span>
-                    </button>
-                  </Link>
-                  <button
-                    onClick={() => {
-                      logout();
-                      router.push('/register');
-                    }}
-                    className="h-12 px-8 rounded-full bg-surface-highlight/80 backdrop-blur-md text-white border border-[#3e6b50] text-base font-bold tracking-wide hover:bg-surface-highlight hover:scale-105 transition-all"
-                  >
-                    {t('home.hero.forPros')}
+      {/* Hero / Slider Section - Full Width */}
+      <div className="w-full">
+        {configs?.heroType === 'slider' && sliderProducts && sliderProducts.length > 0 ? (
+          <HeroSlider products={sliderProducts} />
+        ) : (
+          <div className="relative overflow-hidden min-h-[520px] flex items-center group">
+            {/* Performance: Hero image with high priority for LCP optimization */}
+            <OptimizedImage
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuDADEqPsOmKi_XwT6AvVte0yDQygWKaXYZ2lasqr0jLA8v6hyUh66MVDYjpNFU2O-7zz3D72k5QkRVp3KOi-6o1nxnw_63XoyWOIxgMPa1GdeCpvrrQzN7J5iGAyJProQ_TjdnkXTwzicepoLZ2xTTorXP5pj0ehkLNZeXjB9HXxcVg1WHQdS6TNptMGr6odEC-0zSdIqIksRC6UuEzr0jlBxHubRXGtva1bUJHDOmUihlEXDu6s5dQPFSYlNCgAZK6wZq4Tfchwog"
+              alt="Electro Shop Hero - Modern Electronics and Professional Tools"
+              fill
+              priority
+              fetchPriority="high"
+              className="object-cover"
+              sizes="100vw"
+              quality={85}
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#112117]/90 via-[#112117]/40 to-transparent"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-[#112117] via-transparent to-transparent opacity-60"></div>
+
+            <div className="relative z-10 p-8 md:p-16 max-w-3xl flex flex-col gap-6 items-start">
+              <span className="inline-flex items-center gap-2 rounded-full bg-primary/20 px-3 py-1 text-xs font-bold text-primary backdrop-blur-sm border border-primary/20">
+                <span className="material-symbols-outlined text-sm">eco</span>
+                {t('home.hero.eco')}
+              </span>
+              <h1 className="text-white text-4xl sm:text-5xl md:text-7xl font-black leading-[0.95] tracking-tight">
+                {configs?.heroTitle1 || t('home.hero.title1')} <br />
+                <span className="text-primary">{configs?.heroTitle2 || t('home.hero.title2')}</span>
+              </h1>
+              <p className="text-gray-300 text-lg md:text-xl font-normal leading-relaxed max-w-lg">
+                {configs?.heroSubtitle || t('home.hero.subtitle')}
+              </p>
+              <div className="flex flex-wrap gap-4 mt-4">
+                <Link href="/shop">
+                  <button className="h-12 px-8 rounded-full bg-primary text-[#122118] text-base font-bold tracking-wide hover:scale-105 transition-transform flex items-center gap-2">
+                    {t('home.hero.shopHome')}
+                    <span className="material-symbols-outlined text-sm">arrow_forward</span>
                   </button>
-                </div>
+                </Link>
+                <button
+                  onClick={() => {
+                    logout();
+                    router.push('/register');
+                  }}
+                  className="h-12 px-8 rounded-full bg-surface-highlight/80 backdrop-blur-md text-white border border-[#3e6b50] text-base font-bold tracking-wide hover:bg-surface-highlight hover:scale-105 transition-all"
+                >
+                  {t('home.hero.forPros')}
+                </button>
               </div>
             </div>
-          )}
-        </div>
+          </div>
+        )}
+      </div>
+
+      <div className="w-full max-w-[1440px] px-4 md:px-10 pb-10 pt-6">
 
         {/* Brand Marquee */}
         {configs?.showPartnerSection !== false && (
