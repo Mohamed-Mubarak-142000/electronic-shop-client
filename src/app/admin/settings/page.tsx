@@ -107,53 +107,53 @@ export default function SettingsPage() {
     };
 
     return (
-        <div className="p-6 w-full max-w-4xl mx-auto">
+        <div className="p-6 w-full mx-auto">
             <h1 className="text-2xl font-bold text-white mb-6">{t('settings.title')}</h1>
 
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
 
-                <div className="space-y-4 p-6 rounded-2xl bg-slate-900 border border-slate-800">
-                    <h2 className="text-lg font-semibold text-primary-400 flex items-center gap-2">
+                <div className="space-y-4 p-6 rounded-2xl bg-card-dark/40 border border-white/5 shadow-sm">
+                    <h2 className="text-lg font-semibold text-primary flex items-center gap-2">
                         <span className="material-symbols-outlined">settings</span>
                         {t('settings.general')}
                     </h2>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div className="space-y-2">
-                            <Label className="text-slate-400">{t('settings.language')}</Label>
+                            <Label className="text-gray-400">{t('settings.language')}</Label>
                             <select
-                                className="w-full p-3 rounded-xl border border-slate-800 bg-slate-950 text-white outline-none focus:border-primary-500 transition-all"
+                                className="w-full p-3 rounded-xl border border-white/10 bg-background-dark/80 text-white outline-none focus:border-primary/50 transition-all font-medium"
                                 {...form.register('language')}
                             >
-                                <option value="en">English</option>
-                                <option value="ar">Arabic</option>
+                                <option value="en" className="bg-background-dark">English</option>
+                                <option value="ar" className="bg-background-dark">Arabic</option>
                             </select>
                         </div>
                         <div className="space-y-2">
-                            <Label className="text-slate-400">{t('settings.currency')}</Label>
+                            <Label className="text-gray-400">{t('settings.currency')}</Label>
                             <select
-                                className="w-full p-3 rounded-xl border border-slate-800 bg-slate-950 text-white outline-none focus:border-primary-500 transition-all"
+                                className="w-full p-3 rounded-xl border border-white/10 bg-background-dark/80 text-white outline-none focus:border-primary/50 transition-all font-medium"
                                 {...form.register('currency')}
                             >
-                                <option value="USD">USD ($)</option>
-                                <option value="EGP">EGP (جنيه)</option>
-                                <option value="AED">AED (د.إ)</option>
+                                <option value="USD" className="bg-background-dark">USD ($)</option>
+                                <option value="EGP" className="bg-background-dark">EGP (جنيه)</option>
+                                <option value="AED" className="bg-background-dark">AED (د.إ)</option>
                             </select>
                         </div>
                     </div>
                 </div>
 
-                <div className="space-y-4 p-6 rounded-2xl bg-slate-900 border border-slate-800">
-                    <h2 className="text-lg font-semibold text-primary-400 flex items-center gap-2">
+                <div className="space-y-4 p-6 rounded-2xl bg-card-dark/40 border border-white/5 shadow-sm">
+                    <h2 className="text-lg font-semibold text-primary flex items-center gap-2">
                         <span className="material-symbols-outlined">payments</span>
                         {t('settings.payment')}
                     </h2>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div className="space-y-2">
-                            <Label className="text-slate-400">{t('settings.vodafone')}</Label>
+                            <Label className="text-gray-400">{t('settings.vodafone')}</Label>
                             <Input
-                                className="bg-slate-950 border-slate-800 text-white p-3 rounded-xl"
+                                className="bg-background-dark/80 border-white/10 text-white p-3 rounded-xl"
                                 {...form.register('vodafoneCashNumber')}
                             />
                             {form.formState.errors.vodafoneCashNumber && (
@@ -162,9 +162,9 @@ export default function SettingsPage() {
                         </div>
 
                         <div className="space-y-2">
-                            <Label className="text-slate-400">{t('settings.instapay')}</Label>
+                            <Label className="text-gray-400">{t('settings.instapay')}</Label>
                             <Input
-                                className="bg-slate-950 border-slate-800 text-white p-3 rounded-xl"
+                                className="bg-background-dark/80 border-white/10 text-white p-3 rounded-xl"
                                 {...form.register('instapayNumber')}
                             />
                             {form.formState.errors.instapayNumber && (
@@ -173,9 +173,9 @@ export default function SettingsPage() {
                         </div>
 
                         <div className="space-y-2">
-                            <Label className="text-slate-400">{t('settings.credit_card')}</Label>
+                            <Label className="text-gray-400">{t('settings.credit_card')}</Label>
                             <Input
-                                className="bg-slate-950 border-slate-800 text-white p-3 rounded-xl"
+                                className="bg-background-dark/80 border-white/10 text-white p-3 rounded-xl"
                                 {...form.register('creditCardNumber')}
                             />
                             {form.formState.errors.creditCardNumber && (
@@ -184,10 +184,10 @@ export default function SettingsPage() {
                         </div>
 
                         <div className="space-y-2">
-                            <Label className="text-slate-400">{t('settings.taxi')}</Label>
+                            <Label className="text-gray-400">{t('settings.taxi')}</Label>
                             <Input
                                 type="number"
-                                className="bg-slate-950 border-slate-800 text-white p-3 rounded-xl"
+                                className="bg-background-dark/80 border-white/10 text-white p-3 rounded-xl"
                                 {...form.register('taxiAmount')}
                             />
                         </div>
@@ -195,60 +195,60 @@ export default function SettingsPage() {
                 </div>
 
                 {/* Email Settings Section */}
-                <div className="space-y-4 p-6 rounded-2xl bg-slate-900 border border-slate-800">
-                    <h2 className="text-lg font-semibold text-primary-400 flex items-center gap-2">
+                <div className="space-y-4 p-6 rounded-2xl bg-card-dark/40 border border-white/5 shadow-sm">
+                    <h2 className="text-lg font-semibold text-primary flex items-center gap-2">
                         <span className="material-symbols-outlined">mail</span>
                         {t('settings.email_settings')}
                     </h2>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div className="space-y-2">
-                            <Label className="text-slate-400">{t('settings.email_host')}</Label>
+                            <Label className="text-gray-400">{t('settings.email_host')}</Label>
                             <Input
                                 placeholder="smtp.gmail.com"
-                                className="bg-slate-950 border-slate-800 text-white p-3 rounded-xl"
+                                className="bg-background-dark/80 border-white/10 text-white p-3 rounded-xl"
                                 {...form.register('emailHost')}
                             />
                         </div>
                         <div className="space-y-2">
-                            <Label className="text-slate-400">{t('settings.email_port')}</Label>
+                            <Label className="text-gray-400">{t('settings.email_port')}</Label>
                             <Input
                                 type="number"
                                 placeholder="587"
-                                className="bg-slate-950 border-slate-800 text-white p-3 rounded-xl"
+                                className="bg-background-dark/80 border-white/10 text-white p-3 rounded-xl"
                                 {...form.register('emailPort')}
                             />
                         </div>
                         <div className="space-y-2">
-                            <Label className="text-slate-400">{t('settings.email_user')}</Label>
+                            <Label className="text-gray-400">{t('settings.email_user')}</Label>
                             <Input
                                 placeholder="user@gmail.com"
-                                className="bg-slate-950 border-slate-800 text-white p-3 rounded-xl"
+                                className="bg-background-dark/80 border-white/10 text-white p-3 rounded-xl"
                                 {...form.register('emailUser')}
                             />
                         </div>
                         <div className="space-y-2">
-                            <Label className="text-slate-400">{t('settings.email_password')}</Label>
+                            <Label className="text-gray-400">{t('settings.email_password')}</Label>
                             <Input
                                 type="password"
                                 placeholder="••••••••••••"
-                                className="bg-slate-950 border-slate-800 text-white p-3 rounded-xl"
+                                className="bg-background-dark/80 border-white/10 text-white p-3 rounded-xl"
                                 {...form.register('emailPassword')}
                             />
                         </div>
                         <div className="space-y-2">
-                            <Label className="text-slate-400">{t('settings.from_name')}</Label>
+                            <Label className="text-gray-400">{t('settings.from_name')}</Label>
                             <Input
                                 placeholder="Electro Shop"
-                                className="bg-slate-950 border-slate-800 text-white p-3 rounded-xl"
+                                className="bg-background-dark/80 border-white/10 text-white p-3 rounded-xl"
                                 {...form.register('fromName')}
                             />
                         </div>
                         <div className="space-y-2">
-                            <Label className="text-slate-400">{t('settings.from_email')}</Label>
+                            <Label className="text-gray-400">{t('settings.from_email')}</Label>
                             <Input
                                 placeholder="noreply@electroshop.com"
-                                className="bg-slate-950 border-slate-800 text-white p-3 rounded-xl"
+                                className="bg-background-dark/80 border-white/10 text-white p-3 rounded-xl"
                                 {...form.register('fromEmail')}
                             />
                         </div>
@@ -256,18 +256,18 @@ export default function SettingsPage() {
                 </div>
 
                 {/* Homepage Configuration Section */}
-                <div className="space-y-6 p-6 rounded-2xl bg-slate-900 border border-slate-800">
-                    <h2 className="text-lg font-semibold text-primary-400 flex items-center gap-2">
+                <div className="space-y-6 p-6 rounded-2xl bg-card-dark/40 border border-white/5 shadow-sm">
+                    <h2 className="text-lg font-semibold text-primary flex items-center gap-2">
                         <span className="material-symbols-outlined">home</span>
                         {t('settings.homepage_config')}
                     </h2>
 
                     <div className="space-y-6">
                         {/* Hero Section Type Selection */}
-                        <div className="p-4 rounded-xl bg-slate-950/50 border border-slate-800/50">
-                            <Label className="text-slate-400 mb-2 block">{t('settings.hero_type')}</Label>
+                        <div className="p-4 rounded-xl bg-background-dark/40 border border-white/5">
+                            <Label className="text-gray-400 mb-2 block">{t('settings.hero_type')}</Label>
                             <div className="flex gap-4">
-                                <label className="flex-1 flex items-center justify-between p-3 rounded-xl bg-slate-900 border border-slate-800 cursor-pointer hover:border-primary-500/50 transition-all">
+                                <label className="flex-1 flex items-center justify-between p-3 rounded-xl bg-background-dark/60 border border-white/10 cursor-pointer hover:border-primary/50 transition-all">
                                     <div className="flex items-center gap-3">
                                         <span className="material-symbols-outlined text-primary-400">image</span>
                                         <span className="text-white text-sm font-medium">{t('settings.hero_type_static')}</span>
@@ -276,10 +276,10 @@ export default function SettingsPage() {
                                         type="radio"
                                         value="hero"
                                         {...form.register('heroType')}
-                                        className="w-4 h-4 accent-primary-500"
+                                        className="w-4 h-4 accent-primary"
                                     />
                                 </label>
-                                <label className="flex-1 flex items-center justify-between p-3 rounded-xl bg-slate-900 border border-slate-800 cursor-pointer hover:border-primary-500/50 transition-all">
+                                <label className="flex-1 flex items-center justify-between p-3 rounded-xl bg-background-dark/60 border border-white/10 cursor-pointer hover:border-primary/50 transition-all">
                                     <div className="flex items-center gap-3">
                                         <span className="material-symbols-outlined text-primary-400">view_carousel</span>
                                         <span className="text-white text-sm font-medium">{t('settings.hero_type_slider')}</span>
@@ -288,7 +288,7 @@ export default function SettingsPage() {
                                         type="radio"
                                         value="slider"
                                         {...form.register('heroType')}
-                                        className="w-4 h-4 accent-primary-500"
+                                        className="w-4 h-4 accent-primary"
                                     />
                                 </label>
                             </div>
@@ -296,25 +296,25 @@ export default function SettingsPage() {
 
                         {/* Static Hero Content */}
                         {form.watch('heroType') === 'hero' && (
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-4 rounded-xl bg-slate-950/50 border border-slate-800/50 animate-in fade-in slide-in-from-top-2 duration-300">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-4 rounded-xl bg-background-dark/30 border border-white/5 animate-in fade-in slide-in-from-top-2 duration-300">
                                 <div className="space-y-2">
-                                    <Label className="text-slate-400">{t('settings.hero_title1')}</Label>
+                                    <Label className="text-gray-400">{t('settings.hero_title1')}</Label>
                                     <Input
-                                        className="bg-slate-950 border-slate-800 text-white p-3 rounded-xl"
+                                        className="bg-background-dark/80 border-white/10 text-white p-3 rounded-xl"
                                         {...form.register('heroTitle1')}
                                     />
                                 </div>
                                 <div className="space-y-2">
-                                    <Label className="text-slate-400">{t('settings.hero_title2')}</Label>
+                                    <Label className="text-gray-400">{t('settings.hero_title2')}</Label>
                                     <Input
-                                        className="bg-slate-950 border-slate-800 text-white p-3 rounded-xl"
+                                        className="bg-background-dark/80 border-white/10 text-white p-3 rounded-xl"
                                         {...form.register('heroTitle2')}
                                     />
                                 </div>
                                 <div className="space-y-2 md:col-span-2">
-                                    <Label className="text-slate-400">{t('settings.hero_subtitle')}</Label>
+                                    <Label className="text-gray-400">{t('settings.hero_subtitle')}</Label>
                                     <textarea
-                                        className="w-full bg-slate-950 border border-slate-800 text-white p-3 rounded-xl min-h-[100px] outline-none focus:border-primary-500 transition-all font-sans"
+                                        className="w-full bg-background-dark/80 border border-white/10 text-white p-3 rounded-xl min-h-[100px] outline-none focus:border-primary transition-all font-sans"
                                         {...form.register('heroSubtitle')}
                                     />
                                 </div>
@@ -323,14 +323,14 @@ export default function SettingsPage() {
 
                         {/* Product Slider Content */}
                         {form.watch('heroType') === 'slider' && (
-                            <div className="p-4 rounded-xl bg-slate-950/50 border border-slate-800/50 space-y-4 animate-in fade-in slide-in-from-top-2 duration-300">
-                                <Label className="text-slate-400">{t('settings.hero_slider_products')}</Label>
+                            <div className="p-4 rounded-xl bg-background-dark/30 border border-white/5 space-y-4 animate-in fade-in slide-in-from-top-2 duration-300">
+                                <Label className="text-gray-400">{t('settings.hero_slider_products')}</Label>
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     {[1, 2, 3, 4].map((num) => (
                                         <div key={num} className="space-y-2">
-                                            <Label className="text-xs text-slate-500 uppercase tracking-wider font-bold">Slide {num}</Label>
+                                            <Label className="text-xs text-gray-500 uppercase tracking-wider font-bold">Slide {num}</Label>
                                             <select
-                                                className="w-full bg-slate-900 border border-slate-800 text-white p-3 rounded-xl outline-none focus:border-primary-500 transition-all appearance-none cursor-pointer"
+                                                className="w-full bg-background-dark/80 border border-white/10 text-white p-3 rounded-xl outline-none focus:border-primary transition-all appearance-none cursor-pointer"
                                                 {...form.register(`heroSliderProduct${num}` as any)}
                                             >
                                                 <option value="">{t('settings.select_product')}</option>
@@ -347,51 +347,51 @@ export default function SettingsPage() {
                         )}
 
                         {/* B2B Content */}
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-4 rounded-xl bg-slate-950/50 border border-slate-800/50">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-4 rounded-xl bg-background-dark/30 border border-white/5">
                             <div className="space-y-2">
-                                <Label className="text-slate-400">{t('settings.b2b_badge')}</Label>
+                                <Label className="text-gray-400">{t('settings.b2b_badge')}</Label>
                                 <Input
-                                    className="bg-slate-950 border-slate-800 text-white p-3 rounded-xl"
+                                    className="bg-background-dark/80 border-white/10 text-white p-3 rounded-xl"
                                     {...form.register('b2bBadge')}
                                 />
                             </div>
                             <div className="hidden md:block"></div>
                             <div className="space-y-2">
-                                <Label className="text-slate-400">{t('settings.b2b_title1')}</Label>
+                                <Label className="text-gray-400">{t('settings.b2b_title1')}</Label>
                                 <Input
-                                    className="bg-slate-950 border-slate-800 text-white p-3 rounded-xl"
+                                    className="bg-background-dark/80 border-white/10 text-white p-3 rounded-xl"
                                     {...form.register('b2bTitle1')}
                                 />
                             </div>
                             <div className="space-y-2">
-                                <Label className="text-slate-400">{t('settings.b2b_title2')}</Label>
+                                <Label className="text-gray-400">{t('settings.b2b_title2')}</Label>
                                 <Input
-                                    className="bg-slate-950 border-slate-800 text-white p-3 rounded-xl"
+                                    className="bg-background-dark/80 border-white/10 text-white p-3 rounded-xl"
                                     {...form.register('b2bTitle2')}
                                 />
                             </div>
                             <div className="space-y-2 md:col-span-2">
-                                <Label className="text-slate-400">{t('settings.b2b_description')}</Label>
+                                <Label className="text-gray-400">{t('settings.b2b_description')}</Label>
                                 <textarea
-                                    className="w-full bg-slate-950 border border-slate-800 text-white p-3 rounded-xl min-h-[100px] outline-none focus:border-primary-500 transition-all font-sans"
+                                    className="w-full bg-background-dark/80 border border-white/10 text-white p-3 rounded-xl min-h-[100px] outline-none focus:border-primary transition-all font-sans"
                                     {...form.register('b2bDescription')}
                                 />
                             </div>
                         </div>
 
                         {/* Testimonials Content */}
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-4 rounded-xl bg-slate-950/50 border border-slate-800/50">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-4 rounded-xl bg-background-dark/30 border border-white/5">
                             <div className="space-y-2">
-                                <Label className="text-slate-400">{t('settings.testimonials_title')}</Label>
+                                <Label className="text-gray-400">{t('settings.testimonials_title')}</Label>
                                 <Input
-                                    className="bg-slate-950 border-slate-800 text-white p-3 rounded-xl"
+                                    className="bg-background-dark/80 border-white/10 text-white p-3 rounded-xl"
                                     {...form.register('testimonialsTitle')}
                                 />
                             </div>
                             <div className="space-y-2">
-                                <Label className="text-slate-400">{t('settings.testimonials_subtitle')}</Label>
+                                <Label className="text-gray-400">{t('settings.testimonials_subtitle')}</Label>
                                 <Input
-                                    className="bg-slate-950 border-slate-800 text-white p-3 rounded-xl"
+                                    className="bg-background-dark/80 border-white/10 text-white p-3 rounded-xl"
                                     {...form.register('testimonialsSubtitle')}
                                 />
                             </div>
@@ -408,10 +408,10 @@ export default function SettingsPage() {
                                 { key: 'showTestimonialsSection', label: t('settings.show_testimonials'), icon: 'format_quote' },
                                 { key: 'showShowroomMapSection', label: t('settings.show_showroom_map'), icon: 'map' },
                             ].map((item) => (
-                                <div key={item.key} className="flex items-center justify-between p-4 rounded-xl bg-slate-950/50 border border-slate-800/50 hover:bg-slate-950 transition-colors">
+                                <div key={item.key} className="flex items-center justify-between p-4 rounded-xl bg-background-dark/30 border border-white/10 hover:bg-background-dark/50 transition-colors">
                                     <div className="flex items-center gap-3">
-                                        <span className="material-symbols-outlined text-slate-500">{item.icon}</span>
-                                        <span className="text-slate-300 font-medium">{item.label}</span>
+                                        <span className="material-symbols-outlined text-gray-500">{item.icon}</span>
+                                        <span className="text-gray-300 font-medium">{item.label}</span>
                                     </div>
                                     <label className="relative inline-flex items-center cursor-pointer">
                                         <input
@@ -419,7 +419,7 @@ export default function SettingsPage() {
                                             className="sr-only peer"
                                             {...form.register(item.key as any)}
                                         />
-                                        <div className="w-11 h-6 bg-slate-800 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-600"></div>
+                                        <div className="w-11 h-6 bg-surface-dark peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-600"></div>
                                     </label>
                                 </div>
                             ))}
@@ -427,32 +427,32 @@ export default function SettingsPage() {
                     </div>
                 </div>
 
-                <div className="space-y-4 p-6 rounded-2xl bg-slate-900 border border-slate-800">
-                    <h2 className="text-lg font-semibold text-primary-400 flex items-center gap-2">
+                <div className="space-y-4 p-6 rounded-2xl bg-card-dark/40 border border-white/5 shadow-sm">
+                    <h2 className="text-lg font-semibold text-primary flex items-center gap-2">
                         <span className="material-symbols-outlined">image</span>
                         {t('settings.product_limits')}
                     </h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div className="space-y-2">
-                            <Label className="text-slate-400">{t('settings.min_images')}</Label>
+                            <Label className="text-gray-400">{t('settings.min_images')}</Label>
                             <Input
                                 type="number"
-                                className="bg-slate-950 border-slate-800 text-white p-3 rounded-xl"
+                                className="bg-background-dark/80 border-white/10 text-white p-3 rounded-xl"
                                 {...form.register('minProductImages')}
                             />
                         </div>
                         <div className="space-y-2">
-                            <Label className="text-slate-400">{t('settings.max_images')}</Label>
+                            <Label className="text-gray-400">{t('settings.max_images')}</Label>
                             <Input
                                 type="number"
-                                className="bg-slate-950 border-slate-800 text-white p-3 rounded-xl"
+                                className="bg-background-dark/80 border-white/10 text-white p-3 rounded-xl"
                                 {...form.register('maxProductImages')}
                             />
                         </div>
                     </div>
                 </div>
 
-                <div className="flex justify-end pt-6 border-t border-slate-800">
+                <div className="flex justify-end pt-6 border-t border-white/5">
                     <Button
                         type="submit"
                         disabled={isConfigLoading}
