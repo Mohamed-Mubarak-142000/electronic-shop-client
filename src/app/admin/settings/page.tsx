@@ -462,7 +462,7 @@ export default function SettingsPage() {
                     <Button
                         type="submit"
                         disabled={isConfigLoading}
-                        className="bg-primary-600 hover:bg-primary-700 text-text-on-primary px-8 h-12 rounded-xl font-bold shadow-lg shadow-primary-600/20 active:scale-95 transition-all"
+                        className="h-14 text-lg font-bold gap-2 px-8"
                     >
                         {isConfigLoading ? (
                             <div className="flex items-center gap-2">
