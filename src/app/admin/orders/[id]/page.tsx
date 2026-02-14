@@ -116,22 +116,47 @@ export default function OrderDetailsPage() {
                     onClick={async () => {
                         try {
                             setGeneratingInvoice(true);
+                            
+                            // Prepare complete invoice data with all details
                             const invoiceData = {
                                 invoiceNumber: order._id.substring(0, 8),
                                 date: new Date(order.createdAt).toLocaleDateString(),
+                                
+                                // Customer Information
                                 clientName: order.user?.name || 'Customer',
+                                clientEmail: order.user?.email || '',
+                                clientPhone: order.user?.phone || '',
+                                clientAddress: shippingAddr || 'No address provided',
+                                
+                                // Company Information
                                 companyName: 'Electro Shop',
+                                companyAddress: 'Your Company Address Here',
+                                companyPhone: '+1 (555) 123-4567',
                                 companyEmail: 'info@electroshop.com',
+                                
+                                // Currency
                                 currency: '$',
+                                
+                                // Order Items
                                 items: order.orderItems?.map(item => ({
                                     description: item.name,
                                     quantity: item.qty,
                                     price: item.price
                                 })) || [],
-                                notes: `Payment Method: ${order.paymentMethod} | Status: ${currentStatus}`
+                                
+                                // Payment Details
+                                paymentMethod: order.paymentMethod || 'N/A',
+                                subtotal: order.itemsPrice || 0,
+                                shippingCost: order.shippingPrice || order.shipping?.cost || 0,
+                                taxAmount: order.taxPrice || 0,
+                                discount: 0, // Add discount if available in order data
+                                
+                                // Additional Notes
+                                notes: `Order Status: ${currentStatus} | Payment Status: ${order.isPaid ? 'Paid' : 'Pending'}`
                             };
+                            
                             await generateInvoicePDF(invoiceData, language as 'ar' | 'en', 'download');
-                            toast.success('Invoice generated successfully!');
+                            toast.success('Invoice PDF generated successfully!');
                         } catch (error) {
                             console.error('Failed to generate invoice:', error);
                             toast.error('Failed to generate invoice. Please try again.');
@@ -149,8 +174,8 @@ export default function OrderDetailsPage() {
                         </>
                     ) : (
                         <>
-                            <span className="material-symbols-outlined text-xl">download</span>
-                            {t('admin.orders.download_invoice') || 'Download Invoice'}
+                            <span className="material-symbols-outlined text-xl">print</span>
+                            Print Invoice
                         </>
                     )}
                 </button>

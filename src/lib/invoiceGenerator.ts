@@ -78,6 +78,9 @@ interface InvoiceData {
   companyAddress?: string;
   companyPhone?: string;
   companyEmail?: string;
+  clientEmail?: string;
+  clientPhone?: string;
+  clientAddress?: string;
   notes?: string;
   currency?: string;
   paymentMethod?: string;
@@ -96,6 +99,9 @@ const translations = {
     invoiceNumber: 'رقم الفاتورة',
     date: 'التاريخ',
     clientName: 'اسم العميل',
+    clientEmail: 'البريد الإلكتروني',
+    clientPhone: 'رقم الهاتف',
+    clientAddress: 'عنوان العميل',
     description: 'الوصف',
     quantity: 'الكمية',
     price: 'السعر',
@@ -109,12 +115,16 @@ const translations = {
     shipping: 'الشحن',
     tax: 'الضريبة',
     discount: 'الخصم',
+    customerInfo: 'معلومات العميل',
   },
   en: {
     invoice: 'INVOICE',
     invoiceNumber: 'Invoice Number',
     date: 'Date',
     clientName: 'Client Name',
+    clientEmail: 'Email',
+    clientPhone: 'Phone',
+    clientAddress: 'Address',
     description: 'Description',
     quantity: 'Quantity',
     price: 'Price',
@@ -128,6 +138,7 @@ const translations = {
     shipping: 'Shipping',
     tax: 'Tax',
     discount: 'Discount',
+    customerInfo: 'Customer Information',
   },
 };
 
@@ -234,7 +245,7 @@ const generateHeader = (data: InvoiceData, language: 'ar' | 'en'): any[] => {
   const t = translations[language];
   const isRTL = language === 'ar';
 
-  return [
+  const header: any[] = [
     {
       text: t.invoice,
       style: 'header',
@@ -280,21 +291,72 @@ const generateHeader = (data: InvoiceData, language: 'ar' | 'en'): any[] => {
         },
         {
           width: '50%',
-          stack: [
-            {
-              text: [
-                { text: `${t.clientName}: `, bold: true, color: '#475569' },
-                { text: data.clientName, color: '#0f172a' },
-              ],
-              alignment: isRTL ? 'left' : 'right',
-              margin: [0, 0, 0, 8],
-            },
-          ],
+          stack: [],
         },
       ],
       margin: [0, 0, 0, 20],
     },
   ];
+
+  // Add customer information section
+  const customerInfoStack: any[] = [
+    {
+      text: t.customerInfo,
+      fontSize: 12,
+      bold: true,
+      color: '#2563eb',
+      alignment: isRTL ? 'right' : 'left',
+      margin: [0, 0, 0, 8],
+    },
+    {
+      text: [
+        { text: `${t.clientName}: `, bold: true, color: '#475569', fontSize: 10 },
+        { text: data.clientName, color: '#0f172a', fontSize: 10 },
+      ],
+      alignment: isRTL ? 'right' : 'left',
+      margin: [0, 0, 0, 5],
+    },
+  ];
+
+  if (data.clientEmail) {
+    customerInfoStack.push({
+      text: [
+        { text: `${t.clientEmail}: `, bold: true, color: '#475569', fontSize: 10 },
+        { text: data.clientEmail, color: '#0f172a', fontSize: 10 },
+      ],
+      alignment: isRTL ? 'right' : 'left',
+      margin: [0, 0, 0, 5],
+    });
+  }
+
+  if (data.clientPhone) {
+    customerInfoStack.push({
+      text: [
+        { text: `${t.clientPhone}: `, bold: true, color: '#475569', fontSize: 10 },
+        { text: data.clientPhone, color: '#0f172a', fontSize: 10 },
+      ],
+      alignment: isRTL ? 'right' : 'left',
+      margin: [0, 0, 0, 5],
+    });
+  }
+
+  if (data.clientAddress) {
+    customerInfoStack.push({
+      text: [
+        { text: `${t.clientAddress}: `, bold: true, color: '#475569', fontSize: 10 },
+        { text: data.clientAddress, color: '#0f172a', fontSize: 10 },
+      ],
+      alignment: isRTL ? 'right' : 'left',
+      margin: [0, 0, 0, 5],
+    });
+  }
+
+  header.push({
+    stack: customerInfoStack,
+    margin: [0, 0, 0, 20],
+  });
+
+  return header;
 };
 
 /**
