@@ -152,7 +152,7 @@ export default function ProductDetailsPage({ params }: { params: Promise<{ id: s
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 xl:gap-20 mb-16">
                     {/* Left: Image Gallery */}
                     <div className="flex flex-col gap-4">
-                        <div className="relative w-full aspect-square rounded-[2rem] overflow-hidden bg-slate-100 dark:bg-surface-dark group border border-slate-200 dark:border-transparent">
+                        <div className="relative w-full aspect-square rounded-[2rem] overflow-hidden bg-surface-dark group border border-surface-highlight/10">
                             {product.images.length > 0 ? (
                                 <OptimizedImage
                                     alt={product.name}
@@ -190,7 +190,7 @@ export default function ProductDetailsPage({ params }: { params: Promise<{ id: s
                                     <button
                                         key={index}
                                         onClick={() => setActiveImageIndex(index)}
-                                        className={`flex-shrink-0 w-24 h-24 rounded-2xl overflow-hidden border-2 transition-all ${activeImageIndex === index ? 'border-primary ring-2 ring-primary/20' : 'border-transparent hover:border-slate-300 dark:hover:border-slate-600 opacity-70 hover:opacity-100'}`}
+                                        className={`flex-shrink-0 w-24 h-24 rounded-2xl overflow-hidden border-2 transition-all ${activeImageIndex === index ? 'border-primary ring-2 ring-primary/20' : 'border-transparent hover:border-surface-highlight opacity-70 hover:opacity-100'}`}
                                     >
                                         <OptimizedImage
                                             alt={`Thumbnail ${index}`}
@@ -213,12 +213,12 @@ export default function ProductDetailsPage({ params }: { params: Promise<{ id: s
                                     <span key={i} className={`material-symbols-outlined text-[18px] ${i < 4 ? 'fill-current' : ''}`} style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
                                 ))}
                             </div>
-                            <span className="text-sm text-slate-500 dark:text-slate-400 font-medium hover:text-primary cursor-pointer transition-colors">(12 Reviews)</span>
+                            <span className="text-sm text-slate-400 font-medium hover:text-primary cursor-pointer transition-colors">(12 Reviews)</span>
                         </div>
-                        <h1 className="text-3xl sm:text-4xl lg:text-[40px] font-bold text-slate-900 dark:text-white leading-[1.1] tracking-tight mb-4">
+                        <h1 className="text-3xl sm:text-4xl lg:text-[40px] font-bold text-white leading-[1.1] tracking-tight mb-4">
                             {product.name}
                             {product.brand && typeof product.brand === 'object' && (
-                                <span className="block text-2xl lg:text-3xl font-normal text-slate-500 dark:text-slate-400 mt-1">by {product.brand.name}</span>
+                                <span className="block text-2xl lg:text-3xl font-normal text-slate-400 mt-1">by {product.brand.name}</span>
                             )}
                         </h1>
                         <div className="flex items-end gap-4 mb-6">
@@ -239,8 +239,8 @@ export default function ProductDetailsPage({ params }: { params: Promise<{ id: s
                                 <span className="text-4xl font-bold text-primary">{formatPrice(product.price)}</span>
                             )}
                         </div>
-                        <div className="p-4 rounded-xl bg-slate-50 dark:bg-surface-dark border border-slate-100 dark:border-transparent mb-8">
-                            <p className="text-slate-600 dark:text-slate-300 leading-relaxed">
+                        <div className="p-4 rounded-xl bg-surface-dark/50 border border-surface-highlight/10 mb-8">
+                            <p className="text-slate-300 leading-relaxed">
                                 {product.description}
                             </p>
                         </div>
@@ -250,12 +250,12 @@ export default function ProductDetailsPage({ params }: { params: Promise<{ id: s
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
                                 {Object.entries(product.attributes).slice(0, 4).map(([key, value]) => (
                                     <div key={key} className="flex items-center gap-3">
-                                        <div className="size-10 rounded-full bg-slate-100 dark:bg-surface-highlight flex items-center justify-center text-slate-700 dark:text-primary">
+                                        <div className="size-10 rounded-full bg-surface-highlight flex items-center justify-center text-primary">
                                             <span className="material-symbols-outlined">info</span>
                                         </div>
                                         <div>
-                                            <p className="text-xs text-slate-500 dark:text-[#95c6a9]">{key}</p>
-                                            <p className="text-sm font-semibold text-slate-900 dark:text-white">{value}</p>
+                                            <p className="text-xs text-[#95c6a9]">{key}</p>
+                                            <p className="text-sm font-semibold text-white">{value}</p>
                                         </div>
                                     </div>
                                 ))}
@@ -263,28 +263,28 @@ export default function ProductDetailsPage({ params }: { params: Promise<{ id: s
                         )}
 
                         {/* Product Meta Info */}
-                        <div className="flex flex-col gap-4 py-8 mt-4 border-t border-slate-200 dark:border-surface-highlight">
+                        <div className="flex flex-col gap-4 py-8 mt-4 border-t border-surface-highlight">
                             <div className="flex items-center gap-3 text-sm">
-                                <span className="text-slate-500 dark:text-[#95c6a9] font-semibold min-w-[100px]">Category:</span>
+                                <span className="text-[#95c6a9] font-semibold min-w-[100px]">Category:</span>
                                 <Link
                                     href={`/shop?category=${typeof product.category === 'object' ? product.category._id : product.category}`}
-                                    className="text-slate-900 dark:text-white hover:text-primary transition-colors font-medium"
+                                    className="text-white hover:text-primary transition-colors font-medium"
                                 >
                                     {typeof product.category === 'object' ? product.category.name : 'N/A'}
                                 </Link>
                             </div>
                             <div className="flex items-center gap-3 text-sm">
-                                <span className="text-slate-500 dark:text-[#95c6a9] font-semibold min-w-[100px]">Brand:</span>
-                                <span className="text-slate-900 dark:text-white font-medium">
+                                <span className="text-[#95c6a9] font-semibold min-w-[100px]">Brand:</span>
+                                <span className="text-white font-medium">
                                     {typeof product.brand === 'object' ? product.brand.name : 'N/A'}
                                 </span>
                             </div>
                             {product.tags && product.tags.length > 0 && (
                                 <div className="flex items-center gap-3 text-sm">
-                                    <span className="text-slate-500 dark:text-[#95c6a9] font-semibold min-w-[100px]">Tags:</span>
+                                    <span className="text-[#95c6a9] font-semibold min-w-[100px]">Tags:</span>
                                     <div className="flex flex-wrap gap-2">
                                         {product.tags.map(tag => (
-                                            <span key={tag} className="px-3 py-1 rounded-full bg-slate-100 dark:bg-surface-highlight text-[11px] uppercase tracking-wider font-bold text-slate-600 dark:text-primary border border-slate-200 dark:border-transparent">
+                                            <span key={tag} className="px-3 py-1 rounded-full bg-surface-highlight text-[11px] uppercase tracking-wider font-bold text-primary border border-transparent">
                                                 {tag}
                                             </span>
                                         ))}
@@ -294,7 +294,7 @@ export default function ProductDetailsPage({ params }: { params: Promise<{ id: s
 
                         </div>
 
-                        <div className="h-px w-full bg-slate-200 dark:bg-surface-highlight mb-8"></div>
+                        <div className="h-px w-full bg-surface-highlight/20 mb-8"></div>
 
                         {/* Actions */}
                         <div className="flex flex-col gap-6">
@@ -307,22 +307,22 @@ export default function ProductDetailsPage({ params }: { params: Promise<{ id: s
                                     {product.stock > 0 ? `In Stock (${product.stock} available)` : 'Out of Stock'}
                                 </div>
                                 {product.stock > 0 && (
-                                    <div className="flex items-center rounded-full bg-slate-100 dark:bg-surface-highlight p-1">
+                                    <div className="flex items-center rounded-full bg-surface-highlight p-1">
                                         <button
                                             onClick={handleDecreaseQuantity}
-                                            className="size-10 rounded-full bg-white dark:bg-background-dark text-slate-600 dark:text-white hover:bg-slate-50 dark:hover:bg-surface-dark shadow-sm flex items-center justify-center transition-all"
+                                            className="size-10 rounded-full bg-background-dark text-white hover:bg-surface-dark shadow-sm flex items-center justify-center transition-all"
                                         >
                                             <span className="material-symbols-outlined text-sm">remove</span>
                                         </button>
                                         <input
-                                            className="w-12 bg-transparent text-center border-none p-0 text-slate-900 dark:text-white font-bold focus:ring-0"
+                                            className="w-12 bg-transparent text-center border-none p-0 text-white font-bold focus:ring-0"
                                             type="text"
                                             value={quantity}
                                             readOnly
                                         />
                                         <button
                                             onClick={handleIncreaseQuantity}
-                                            className="size-10 rounded-full bg-white dark:bg-background-dark text-slate-600 dark:text-white hover:bg-slate-50 dark:hover:bg-surface-dark shadow-sm flex items-center justify-center transition-all"
+                                            className="size-10 rounded-full bg-background-dark text-white hover:bg-surface-dark shadow-sm flex items-center justify-center transition-all"
                                         >
                                             <span className="material-symbols-outlined text-sm">add</span>
                                         </button>
@@ -341,7 +341,7 @@ export default function ProductDetailsPage({ params }: { params: Promise<{ id: s
                                 </button>
                                 <button
                                     onClick={handleWishlistToggle}
-                                    className={`size-14 rounded-full border flex items-center justify-center transition-all ${isWishlisted ? 'bg-red-500/10 border-red-500 text-red-500' : 'border-slate-300 dark:border-[#366348] text-slate-600 dark:text-[#95c6a9] hover:border-red-500 hover:text-red-500'}`}
+                                    className={`size-14 rounded-full border flex items-center justify-center transition-all ${isWishlisted ? 'bg-red-500/10 border-red-500 text-red-500' : 'border-[#366348] text-[#95c6a9] hover:border-red-500 hover:text-red-500'}`}
                                 >
                                     <span className={`material-symbols-outlined ${isWishlisted ? 'filled' : ''}`} style={{ fontVariationSettings: isWishlisted ? "'FILL' 1" : "" }}>favorite</span>
                                 </button>
@@ -354,13 +354,13 @@ export default function ProductDetailsPage({ params }: { params: Promise<{ id: s
 
                 {/* Detailed Info Tabs */}
                 <div className="w-full mb-16">
-                    <div className="border-b border-slate-200 dark:border-surface-highlight mb-8 overflow-x-auto hide-scrollbar">
+                    <div className="border-b border-surface-highlight mb-8 overflow-x-auto hide-scrollbar">
                         <div className="flex gap-8 min-w-max">
                             {["Description", "Specifications"].map((tab) => (
                                 <button
                                     key={tab}
                                     onClick={() => setActiveTab(tab)}
-                                    className={`pb-4 border-b-2 font-medium text-lg px-2 transition-colors ${activeTab === tab ? 'border-primary text-primary font-bold' : 'border-transparent text-slate-500 dark:text-[#95c6a9] hover:text-slate-800 dark:hover:text-white'}`}
+                                    className={`pb-4 border-b-2 font-medium text-lg px-2 transition-colors ${activeTab === tab ? 'border-primary text-primary font-bold' : 'border-transparent text-[#95c6a9] hover:text-white'}`}
                                 >
                                     {tab}
                                 </button>
@@ -370,8 +370,8 @@ export default function ProductDetailsPage({ params }: { params: Promise<{ id: s
 
                     {activeTab === "Description" && (
                         <div className="animate-in fade-in duration-300">
-                            <div className="text-slate-600 dark:text-slate-300 space-y-6">
-                                <h3 className="text-2xl font-bold text-slate-900 dark:text-white">About this product</h3>
+                            <div className="text-slate-300 space-y-6">
+                                <h3 className="text-2xl font-bold text-white">About this product</h3>
                                 <p className="leading-relaxed">
                                     {product.description}
                                 </p>
@@ -381,25 +381,25 @@ export default function ProductDetailsPage({ params }: { params: Promise<{ id: s
 
                     {activeTab === "Specifications" && (
                         <div className="animate-in fade-in duration-300">
-                            <div className="bg-slate-50 dark:bg-surface-dark rounded-2xl p-6 border border-slate-100 dark:border-surface-highlight">
-                                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-6">Technical Specs</h3>
+                            <div className="bg-surface-dark rounded-2xl p-6 border border-surface-highlight/10">
+                                <h3 className="text-xl font-bold text-white mb-6">Technical Specs</h3>
                                 <div className="space-y-4">
-                                    <div className="flex justify-between pb-4 border-b border-slate-200 dark:border-surface-highlight">
-                                        <span className="text-slate-500 dark:text-[#95c6a9]">Brand</span>
-                                        <span className="font-medium text-slate-900 dark:text-white">
+                                    <div className="flex justify-between pb-4 border-b border-surface-highlight/10">
+                                        <span className="text-[#95c6a9]">Brand</span>
+                                        <span className="font-medium text-white">
                                             {typeof product.brand === 'object' ? product.brand.name : 'N/A'}
                                         </span>
                                     </div>
-                                    <div className="flex justify-between pb-4 border-b border-slate-200 dark:border-surface-highlight">
-                                        <span className="text-slate-500 dark:text-[#95c6a9]">Category</span>
-                                        <span className="font-medium text-slate-900 dark:text-white">
+                                    <div className="flex justify-between pb-4 border-b border-surface-highlight/10">
+                                        <span className="text-[#95c6a9]">Category</span>
+                                        <span className="font-medium text-white">
                                             {typeof product.category === 'object' ? product.category.name : 'N/A'}
                                         </span>
                                     </div>
                                     {product.attributes && Object.entries(product.attributes).map(([key, value]) => (
-                                        <div key={key} className="flex justify-between pb-4 border-b border-slate-200 dark:border-surface-highlight">
-                                            <span className="text-slate-500 dark:text-[#95c6a9]">{key}</span>
-                                            <span className="font-medium text-slate-900 dark:text-white">{value}</span>
+                                        <div key={key} className="flex justify-between pb-4 border-b border-surface-highlight/10">
+                                            <span className="text-[#95c6a9]">{key}</span>
+                                            <span className="font-medium text-white">{value}</span>
                                         </div>
                                     ))}
                                 </div>
@@ -411,7 +411,7 @@ export default function ProductDetailsPage({ params }: { params: Promise<{ id: s
                 {/* Related Products */}
                 {relatedProducts.length > 0 && (
                     <div className="mb-16">
-                        <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-8">Related Products</h2>
+                        <h2 className="text-2xl font-bold text-white mb-8">Related Products</h2>
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
                             {relatedProducts.map((item: Product) => (
                                 <ProductCard key={item._id} product={item} />

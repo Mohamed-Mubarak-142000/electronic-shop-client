@@ -62,7 +62,7 @@ export default function LoginPage() {
                         name="email"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel className="text-gray-900 dark:text-white">{t('auth.email')}</FormLabel>
+                                <FormLabel className="text-white">{t('auth.email')}</FormLabel>
                                 <FormControl>
                                     <div className="relative group">
                                         <div className={`absolute inset-y-0 ${language === 'ar' ? 'right-0 pr-4' : 'left-0 pl-4'} flex items-center pointer-events-none z-10`}>
@@ -70,7 +70,7 @@ export default function LoginPage() {
                                         </div>
                                         <Input
                                             {...field}
-                                            className={`w-full rounded-full bg-white dark:bg-surface-dark border border-gray-200 dark:border-border-dark text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-[#95c6a9] h-14 ${language === 'ar' ? 'pr-12 pl-4' : 'pl-12 pr-4'} focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all duration-200 shadow-sm`}
+                                            className={`w-full rounded-full bg-surface-dark border border-border-dark text-white placeholder:text-[#95c6a9] h-14 ${language === 'ar' ? 'pr-12 pl-4' : 'pl-12 pr-4'} focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all duration-200 shadow-sm`}
                                             placeholder={t('auth.register.emailPlaceholder')}
                                             type="email"
                                         />
@@ -88,7 +88,7 @@ export default function LoginPage() {
                         render={({ field }) => (
                             <FormItem>
                                 <div className="flex justify-between items-center ml-1">
-                                    <FormLabel className="text-gray-900 dark:text-white">{t('auth.register.password')}</FormLabel>
+                                    <FormLabel className="text-white">{t('auth.register.password')}</FormLabel>
                                     <Link href="/forgot-password" className="text-xs font-medium text-primary hover:text-primary/80 transition-colors">{t('auth.forgotPassword')}</Link>
                                 </div>
                                 <FormControl>
@@ -98,7 +98,7 @@ export default function LoginPage() {
                                         </div>
                                         <PasswordInput
                                             {...field}
-                                            className={`w-full rounded-full bg-white dark:bg-surface-dark border border-gray-200 dark:border-border-dark text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-[#95c6a9] h-14 ${language === 'ar' ? 'pr-12 pl-4' : 'pl-12 pr-4'} focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all duration-200 shadow-sm`}
+                                            className={`w-full rounded-full bg-surface-dark border border-border-dark text-white placeholder:text-[#95c6a9] h-14 ${language === 'ar' ? 'pr-12 pl-4' : 'pl-12 pr-4'} focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all duration-200 shadow-sm`}
                                             placeholder={t('auth.register.passwordPlaceholder')}
                                         />
                                     </div>
@@ -111,12 +111,12 @@ export default function LoginPage() {
                     {/* Remember Me */}
                     <div className="flex items-center gap-3 ml-1 mt-1">
                         <div className="relative flex items-center">
-                            <input className="peer h-5 w-5 cursor-pointer appearance-none rounded-md border border-gray-300 dark:border-border-dark bg-white dark:bg-surface-dark checked:bg-primary checked:border-primary focus:ring-primary/20 transition-all" id="remember" type="checkbox" />
+                            <input className="peer h-5 w-5 cursor-pointer appearance-none rounded-md border border-border-dark bg-surface-dark checked:bg-primary checked:border-primary focus:ring-primary/20 transition-all" id="remember" type="checkbox" />
                             <span className="absolute text-background-dark opacity-0 peer-checked:opacity-100 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none">
                                 <span className="material-symbols-outlined" style={{ fontSize: "16px", fontWeight: "bold" }}>check</span>
                             </span>
                         </div>
-                        <label className="text-sm text-gray-600 dark:text-gray-400 cursor-pointer select-none" htmlFor="remember">{t('auth.rememberMe')}</label>
+                        <label className="text-sm text-gray-400 cursor-pointer select-none" htmlFor="remember">{t('auth.rememberMe')}</label>
                     </div>
 
                     {error && <p className="text-red-500 text-sm">{error}</p>}
@@ -132,7 +132,7 @@ export default function LoginPage() {
                     <SocialLogin />
 
                     <div className="flex justify-center mt-6">
-                        <p className="text-gray-500 dark:text-gray-400 text-sm">{t('auth.noAccount')} <Link href="/register" className="text-primary font-semibold hover:underline">{t('auth.registerNow')}</Link></p>
+                        <p className="text-gray-400 text-sm">{t('auth.noAccount')} <Link href="/register" className="text-primary font-semibold hover:underline">{t('auth.registerNow')}</Link></p>
                     </div>
                 </form>
             </Form>

@@ -98,8 +98,8 @@ export default function ForgotPasswordPage() {
     };
 
     return (
-        <div className="max-w-md mx-auto mt-20 p-8 bg-white dark:bg-slate-900 rounded-3xl shadow-xl border border-slate-100 dark:border-slate-800">
-            <h1 className="text-2xl font-bold mb-2 text-center">
+        <div className="max-w-md mx-auto mt-20 p-8 bg-surface-dark rounded-3xl shadow-xl border border-border-dark">
+            <h1 className="text-2xl font-bold mb-2 text-center text-white">
                 {step === 'email' && t('auth.forgotPassword')}
                 {step === 'otp' && t('auth.verifyOtp')}
                 {step === 'reset' && t('auth.resetPassword')}
@@ -107,15 +107,15 @@ export default function ForgotPasswordPage() {
 
             {step === 'email' && (
                 <form onSubmit={handleEmailSubmit} className="space-y-6 mt-8">
-                    <p className="text-slate-500 text-sm text-center mb-4">
+                    <p className="text-gray-400 text-sm text-center mb-4">
                         {language === 'ar' ? 'أدخل بريدك الإلكتروني لتلقي رمز التحقق' : 'Enter your email to receive a verification code'}
                     </p>
                     <div>
-                        <label className="block text-sm font-medium mb-1">{t('auth.email')}</label>
+                        <label className="block text-sm font-medium mb-1 text-white">{t('auth.email')}</label>
                         <input
                             type="email"
                             required
-                            className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800 rounded-xl border border-transparent focus:border-primary-500 outline-none transition-all"
+                            className="w-full px-4 py-3 bg-background-dark rounded-xl border border-border-dark focus:border-primary outline-none transition-all text-white placeholder:text-gray-500"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             placeholder="your@email.com"
@@ -140,10 +140,10 @@ export default function ForgotPasswordPage() {
 
             {step === 'otp' && (
                 <form onSubmit={handleOtpSubmit} className="space-y-6 mt-8">
-                    <p className="text-slate-500 text-sm text-center">
+                    <p className="text-gray-400 text-sm text-center">
                         {t('auth.enterOtp')}
                     </p>
-                    <p className="text-primary-600 font-bold text-center text-xl">
+                    <p className="text-primary font-bold text-center text-xl">
                         {formatTime(timer)}
                     </p>
                     <div>
@@ -151,7 +151,7 @@ export default function ForgotPasswordPage() {
                             type="text"
                             maxLength={6}
                             required
-                            className="w-full text-center text-3xl tracking-widest py-4 bg-slate-50 dark:bg-slate-800 rounded-2xl border-2 border-transparent focus:border-primary-500 outline-none transition-all"
+                            className="w-full text-center text-3xl tracking-widest py-4 bg-background-dark rounded-2xl border-2 border-border-dark focus:border-primary outline-none transition-all text-white"
                             value={otp}
                             onChange={(e) => setOtp(e.target.value)}
                             placeholder="000000"
@@ -171,14 +171,14 @@ export default function ForgotPasswordPage() {
                             type="button"
                             onClick={handleResendOtp}
                             disabled={loading || timer > 540}
-                            className="text-sm text-primary-600 hover:underline disabled:text-slate-400"
+                            className="text-sm text-primary hover:underline disabled:text-gray-500"
                         >
                             {t('auth.resendOtp')}
                         </button>
                         <button
                             type="button"
                             onClick={() => setStep('email')}
-                            className="block w-full text-sm text-slate-500 hover:underline"
+                            className="block w-full text-sm text-gray-400 hover:underline"
                         >
                             {language === 'ar' ? 'تغيير البريد الإلكتروني' : 'Change Email'}
                         </button>
@@ -188,28 +188,28 @@ export default function ForgotPasswordPage() {
 
             {step === 'reset' && (
                 <form onSubmit={handleResetSubmit} className="space-y-6 mt-8">
-                    <p className="text-slate-500 text-sm text-center">
+                    <p className="text-gray-400 text-sm text-center">
                         {t('auth.enterNewPassword')}
                     </p>
                     <div className="space-y-4">
                         <div>
-                            <label className="block text-sm font-medium mb-1">{t('auth.newPassword')}</label>
+                            <label className="block text-sm font-medium mb-1 text-white">{t('auth.newPassword')}</label>
                             <input
                                 type="password"
                                 required
                                 minLength={6}
-                                className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800 rounded-xl border border-transparent focus:border-primary-500 outline-none transition-all"
+                                className="w-full px-4 py-3 bg-background-dark rounded-xl border border-border-dark focus:border-primary outline-none transition-all text-white"
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
                             />
                         </div>
                         <div>
-                            <label className="block text-sm font-medium mb-1">{t('auth.confirmNewPassword')}</label>
+                            <label className="block text-sm font-medium mb-1 text-white">{t('auth.confirmNewPassword')}</label>
                             <input
                                 type="password"
                                 required
                                 minLength={6}
-                                className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800 rounded-xl border border-transparent focus:border-primary-500 outline-none transition-all"
+                                className="w-full px-4 py-3 bg-background-dark rounded-xl border border-border-dark focus:border-primary outline-none transition-all text-white"
                                 value={confirmPassword}
                                 onChange={(e) => setConfirmPassword(e.target.value)}
                             />

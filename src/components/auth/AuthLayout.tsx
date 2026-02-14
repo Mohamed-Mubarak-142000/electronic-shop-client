@@ -12,11 +12,11 @@ interface AuthLayoutProps {
     visualDescription?: string;
 }
 
-export default function AuthLayout({ 
-    children, 
-    type, 
-    heading, 
-    subheading, 
+export default function AuthLayout({
+    children,
+    type,
+    heading,
+    subheading,
     showVisualOnMobile = false,
     visualHeading = "Powering Your Next Big Project",
     visualDescription = "Join thousands of electricians and contractors getting exclusive trade pricing, bulk discounts, and next-day delivery on premium electrical supplies."
@@ -59,11 +59,11 @@ export default function AuthLayout({
             </div>
 
             {/* Right Column: Form */}
-            <div className="w-full lg:w-1/2 flex items-center justify-center p-6 sm:p-12 lg:p-24 bg-background-light dark:bg-background-dark pt-[100px] lg:pt-0">
+            <div className="w-full lg:w-1/2 flex items-center justify-center p-6 sm:p-12 lg:p-24 bg-background-dark pt-[100px] lg:pt-0">
                 <div className="w-full max-w-[480px] flex flex-col gap-8">
                     <div className="text-center lg:text-left">
-                        <h1 className="text-gray-900 dark:text-white tracking-tight text-3xl md:text-4xl font-bold leading-tight mb-2">{heading}</h1>
-                        <p className="text-gray-500 dark:text-gray-400 text-base font-normal leading-normal">{subheading}</p>
+                        <h1 className="text-white tracking-tight text-3xl md:text-4xl font-bold leading-tight mb-2">{heading}</h1>
+                        <p className="text-gray-400 text-base font-normal leading-normal">{subheading}</p>
                     </div>
 
                     {children}

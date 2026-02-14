@@ -82,7 +82,7 @@ export default function RegisterPage() {
             showVisualOnMobile={true}
         >
             {serverError && (
-                <div className="mb-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded dark:bg-red-900/30 dark:border-red-900 dark:text-red-400">
+                <div className="mb-4 p-3 bg-red-900/30 border border-red-900 text-red-400 rounded">
                     {serverError}
                 </div>
             )}
@@ -96,15 +96,15 @@ export default function RegisterPage() {
                         name="name"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel className="text-gray-900 dark:text-white">{t('auth.name')}</FormLabel>
+                                <FormLabel className="text-white">{t('auth.name')}</FormLabel>
                                 <FormControl>
                                     <div className="relative flex items-center">
                                         <Input
                                             {...field}
-                                            className="w-full bg-white dark:bg-surface-dark border border-gray-300 dark:border-border-dark text-gray-900 dark:text-white text-base rounded-full h-14 pl-5 pr-12 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all placeholder:text-gray-400 dark:placeholder:text-gray-500"
+                                            className="w-full bg-surface-dark border border-border-dark text-white text-base rounded-full h-14 pl-5 pr-12 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all placeholder:text-gray-500"
                                             placeholder={t('auth.register.namePlaceholder')}
                                         />
-                                        <div className={`absolute ${language === 'ar' ? 'left-5' : 'right-5'} text-gray-400 dark:text-[#95c6a9] flex items-center pointer-events-none`}>
+                                        <div className={`absolute ${language === 'ar' ? 'left-5' : 'right-5'} text-[#95c6a9] flex items-center pointer-events-none`}>
                                             <span className="material-symbols-outlined">person</span>
                                         </div>
                                     </div>
@@ -120,16 +120,16 @@ export default function RegisterPage() {
                         name="email"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel className="text-gray-900 dark:text-white">{t('auth.email')}</FormLabel>
+                                <FormLabel className="text-white">{t('auth.email')}</FormLabel>
                                 <FormControl>
                                     <div className="relative flex items-center">
                                         <Input
                                             {...field}
-                                            className="w-full bg-white dark:bg-surface-dark border border-gray-300 dark:border-border-dark text-gray-900 dark:text-white text-base rounded-full h-14 pl-5 pr-12 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all placeholder:text-gray-400 dark:placeholder:text-gray-500"
+                                            className="w-full bg-surface-dark border border-border-dark text-white text-base rounded-full h-14 pl-5 pr-12 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all placeholder:text-gray-500"
                                             placeholder={t('auth.register.emailPlaceholder')}
                                             type="email"
                                         />
-                                        <div className={`absolute ${language === 'ar' ? 'left-5' : 'right-5'} text-gray-400 dark:text-[#95c6a9] flex items-center pointer-events-none`}>
+                                        <div className={`absolute ${language === 'ar' ? 'left-5' : 'right-5'} text-[#95c6a9] flex items-center pointer-events-none`}>
                                             <span className="material-symbols-outlined">mail</span>
                                         </div>
                                     </div>
@@ -145,11 +145,11 @@ export default function RegisterPage() {
                         name="password"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel className="text-gray-900 dark:text-white">{t('auth.register.password')}</FormLabel>
+                                <FormLabel className="text-white">{t('auth.register.password')}</FormLabel>
                                 <FormControl>
                                     <PasswordInput
                                         {...field}
-                                        className="w-full bg-white dark:bg-surface-dark border border-gray-300 dark:border-border-dark text-gray-900 dark:text-white text-base rounded-full h-14 pl-5 pr-12 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all placeholder:text-gray-400 dark:placeholder:text-gray-500"
+                                        className="w-full bg-surface-dark border border-border-dark text-white text-base rounded-full h-14 pl-5 pr-12 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all placeholder:text-gray-500"
                                         placeholder={t('auth.register.passwordPlaceholder')}
                                     />
                                 </FormControl>
@@ -164,11 +164,11 @@ export default function RegisterPage() {
                         name="confirmPassword"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel className="text-gray-900 dark:text-white">{t('auth.register.confirmPassword')}</FormLabel>
+                                <FormLabel className="text-white">{t('auth.register.confirmPassword')}</FormLabel>
                                 <FormControl>
                                     <PasswordInput
                                         {...field}
-                                        className="w-full bg-white dark:bg-surface-dark border border-gray-300 dark:border-border-dark text-gray-900 dark:text-white text-base rounded-full h-14 pl-5 pr-12 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all placeholder:text-gray-400 dark:placeholder:text-gray-500"
+                                        className="w-full bg-surface-dark border border-border-dark text-white text-base rounded-full h-14 pl-5 pr-12 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all placeholder:text-gray-500"
                                         placeholder={t('auth.register.confirmPasswordPlaceholder')}
                                     />
                                 </FormControl>
@@ -187,9 +187,9 @@ export default function RegisterPage() {
                 </form>
             </Form>
 
-            <p className="mt-8 text-center text-sm text-gray-500 dark:text-gray-400">
+            <p className="mt-8 text-center text-sm text-gray-400">
                 {t('auth.register.haveAccount')}{' '}
-                <Link href="/login" className="font-bold text-gray-900 dark:text-white hover:text-primary transition-colors">
+                <Link href="/login" className="font-bold text-white hover:text-primary transition-colors">
                     {t('auth.register.login')}
                 </Link>
             </p>

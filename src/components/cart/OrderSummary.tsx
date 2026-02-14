@@ -14,28 +14,28 @@ export default function OrderSummary({ subtotal, tax, total, onCheckout }: Order
     const { formatPrice } = useCurrency();
 
     return (
-        <div className="bg-white dark:bg-surface-dark rounded-2xl shadow-lg border border-gray-100 dark:border-surface-highlight p-6 md:p-8 flex flex-col gap-6">
-            <h2 className="text-xl font-bold text-slate-900 dark:text-white">{t('order_summary')}</h2>
+        <div className="bg-surface-dark rounded-2xl shadow-lg border border-surface-highlight p-6 md:p-8 flex flex-col gap-6">
+            <h2 className="text-xl font-bold text-white">{t('order_summary')}</h2>
             <div className="space-y-4">
-                <div className="flex justify-between items-center text-slate-600 dark:text-slate-400">
+                <div className="flex justify-between items-center text-slate-400">
                     <span className="text-sm">{t('subtotal')}</span>
-                    <span className="font-bold text-slate-900 dark:text-white">{formatPrice(subtotal)}</span>
+                    <span className="font-bold text-white">{formatPrice(subtotal)}</span>
                 </div>
-                <div className="flex justify-between items-center text-slate-600 dark:text-slate-400">
+                <div className="flex justify-between items-center text-slate-400">
                     <span className="text-sm">{t('tax')}</span>
-                    <span className="font-bold text-slate-900 dark:text-white">{formatPrice(tax)}</span>
+                    <span className="font-bold text-white">{formatPrice(tax)}</span>
                 </div>
-                <div className="flex justify-between items-center text-slate-600 dark:text-slate-400">
+                <div className="flex justify-between items-center text-slate-400">
                     <span className="text-sm">{t('shipping')}</span>
                     <span className="font-bold text-primary">{t('free')}</span>
                 </div>
             </div>
-            <div className="border-t border-dashed border-slate-200 dark:border-surface-highlight my-2"></div>
+            <div className="border-t border-dashed border-surface-highlight my-2"></div>
             <div className="flex justify-between items-end">
-                <span className="text-base font-bold text-slate-900 dark:text-white">{t('total')}</span>
+                <span className="text-base font-bold text-white">{t('total')}</span>
                 <div className="text-right">
-                    
-                    <span className="text-3xl font-black text-slate-900 dark:text-white tracking-tight">
+
+                    <span className="text-3xl font-black text-white tracking-tight">
                         {formatPrice(total)}
                     </span>
                 </div>
@@ -50,7 +50,7 @@ export default function OrderSummary({ subtotal, tax, total, onCheckout }: Order
             </button>
 
             {/* Trust Signals */}
-            <div className="flex justify-center gap-6 mt-2 pt-4 border-t border-slate-100 dark:border-surface-highlight">
+            <div className="flex justify-center gap-6 mt-2 pt-4 border-t border-surface-highlight">
                 <div className="flex items-center gap-1.5 text-xs font-medium text-slate-400" title="Secure Payment">
                     <span className="material-symbols-outlined text-[16px]">lock</span>
                     <span>Secure</span>

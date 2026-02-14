@@ -111,7 +111,7 @@ export default function MapSelector({ value, onChange, readOnly = false }: MapSe
     };
 
     if (!isMounted) {
-        return <div className="h-[400px] w-full bg-slate-100 dark:bg-slate-800 animate-pulse rounded-xl" />;
+        return <div className="h-[400px] w-full bg-surface-dark animate-pulse rounded-xl" />;
     }
 
     if (!MAPBOX_TOKEN) {
@@ -127,10 +127,10 @@ export default function MapSelector({ value, onChange, readOnly = false }: MapSe
     }
 
     return (
-        <div className="h-full w-full rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-xl relative group">
+        <div className="h-full w-full rounded-2xl overflow-hidden border border-surface-highlight shadow-xl relative group">
             {!readOnly && (
                 <div className="absolute top-2 sm:top-4 start-2 sm:start-4 end-10 sm:end-12 z-20 max-w-md">
-                    <div className="relative shadow-lg rounded-xl bg-white dark:bg-slate-900 ring-1 ring-slate-900/5">
+                    <div className="relative shadow-lg rounded-xl bg-surface-dark ring-1 ring-white/5">
                         <div className="flex items-center px-4 py-3">
                             <span className="material-symbols-outlined text-slate-400 mr-2">search</span>
                             <input
@@ -138,7 +138,7 @@ export default function MapSelector({ value, onChange, readOnly = false }: MapSe
                                 value={searchQuery}
                                 onChange={handleSearchInput}
                                 placeholder="Search for a location..."
-                                className="flex-1 bg-transparent border-none outline-none text-slate-900 dark:text-white placeholder:text-slate-400 text-sm"
+                                className="flex-1 bg-transparent border-none outline-none text-white placeholder:text-slate-400 text-sm"
                                 onFocus={() => setShowResults(true)}
                             />
                             {searching && <span className="material-symbols-outlined animate-spin text-primary text-sm">progress_activity</span>}
@@ -150,13 +150,13 @@ export default function MapSelector({ value, onChange, readOnly = false }: MapSe
                         </div>
 
                         {showResults && searchResults.length > 0 && (
-                            <div className="absolute top-full left-0 right-0 mt-2 bg-white dark:bg-slate-900 rounded-xl shadow-xl border border-slate-100 dark:border-slate-800 overflow-hidden max-h-60 overflow-y-auto">
+                            <div className="absolute top-full left-0 right-0 mt-2 bg-surface-dark rounded-xl shadow-xl border border-surface-highlight overflow-hidden max-h-60 overflow-y-auto">
                                 <ul>
                                     {searchResults.map((result) => (
                                         <li
                                             key={result.id}
                                             onClick={() => handleSelectResult(result)}
-                                            className="px-4 py-3 hover:bg-slate-50 dark:hover:bg-slate-800 cursor-pointer text-sm text-slate-700 dark:text-slate-300 border-b border-slate-50 dark:border-slate-800 last:border-none flex items-start gap-2"
+                                            className="px-4 py-3 hover:bg-surface-highlight cursor-pointer text-sm text-slate-300 border-b border-surface-highlight/10 last:border-none flex items-start gap-2"
                                         >
                                             <span className="material-symbols-outlined text-lg text-slate-400 mt-0.5">location_on</span>
                                             <span>{result.place_name}</span>
@@ -174,7 +174,7 @@ export default function MapSelector({ value, onChange, readOnly = false }: MapSe
                 {...viewState}
                 onMove={evt => setViewState(evt.viewState)}
                 style={{ width: '100%', height: '100%' }}
-                mapStyle="mapbox://styles/mapbox/streets-v12"
+                mapStyle="mapbox://styles/mapbox/dark-v11"
                 mapboxAccessToken={MAPBOX_TOKEN}
                 onClick={handleMapClick}
                 onError={(e) => {
@@ -221,7 +221,7 @@ export default function MapSelector({ value, onChange, readOnly = false }: MapSe
             </Map>
 
             {mapError && (
-                <div className="absolute inset-0 z-50 bg-white/80 dark:bg-slate-900/80 flex items-center justify-center">
+                <div className="absolute inset-0 z-50 bg-background-dark/80 flex items-center justify-center">
                     <div className="text-center p-4">
                         <p className="text-red-500 font-bold">Map Error</p>
                         <p className="text-sm">{mapError}</p>

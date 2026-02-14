@@ -58,14 +58,14 @@ export default function CartPage() {
 
     if (cartItems.length === 0) {
         return (
-            <div className="flex flex-col items-center w-full bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display min-h-screen" dir={dir}>
+            <div className="flex flex-col items-center w-full bg-background-dark text-white font-display min-h-screen" dir={dir}>
                 <div className="w-full max-w-[1440px] px-4 md:px-10 py-10">
                     <div className="flex flex-col items-center justify-center min-h-[60vh] text-center">
-                        <div className="size-24 rounded-full bg-slate-100 dark:bg-surface-dark flex items-center justify-center text-slate-400 mb-6">
+                        <div className="size-24 rounded-full bg-surface-dark flex items-center justify-center text-slate-400 mb-6">
                             <span className="material-symbols-outlined text-5xl">shopping_cart</span>
                         </div>
-                        <h1 className="text-3xl font-black text-slate-900 dark:text-white mb-4">{t('cart_empty')}</h1>
-                        <p className="text-slate-500 dark:text-slate-400 mb-8 max-w-md mx-auto">
+                        <h1 className="text-3xl font-black text-white mb-4">{t('cart_empty')}</h1>
+                        <p className="text-slate-400 mb-8 max-w-md mx-auto">
                             {t('cart_empty_desc')}
                         </p>
                         <Link href="/shop">
@@ -80,23 +80,23 @@ export default function CartPage() {
     }
 
     return (
-        <div className="flex flex-col items-center w-full bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display min-h-screen" dir={dir}>
+        <div className="flex flex-col items-center w-full bg-background-dark text-white font-display min-h-screen" dir={dir}>
             <div className="w-full max-w-[1440px] px-4 md:px-10 py-8 lg:py-12">
                 {/* Page Header */}
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8">
                     <div>
-                        <h1 className="text-3xl md:text-4xl font-black tracking-tight text-slate-900 dark:text-white mb-2">{t('your_cart')}</h1>
-                        <p className="text-slate-500 dark:text-slate-400 text-sm md:text-base">
+                        <h1 className="text-3xl md:text-4xl font-black tracking-tight text-white mb-2">{t('your_cart')}</h1>
+                        <p className="text-slate-400 text-sm md:text-base">
                             {t('items_in_cart', { count: cartItems.length })}
                         </p>
                     </div>
                     {/* Tabs */}
-                    <div className="inline-flex bg-slate-200 dark:bg-surface-dark p-1 rounded-full">
+                    <div className="inline-flex bg-surface-dark p-1 rounded-full">
                         <button
                             onClick={() => setActiveTab("cart")}
                             className={`px-6 py-2 rounded-full shadow-sm font-bold text-sm transition-all ${activeTab === "cart"
-                                ? "bg-white dark:bg-primary text-slate-900 dark:text-surface-dark"
-                                : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+                                ? "bg-primary text-surface-dark"
+                                : "text-slate-400 hover:text-white"
                                 }`}
                         >
                             {t('cart')} ({cartItems.length})
@@ -104,8 +104,8 @@ export default function CartPage() {
                         <button
                             onClick={() => setActiveTab("wishlist")}
                             className={`px-6 py-2 rounded-full font-medium text-sm transition-all ${activeTab === "wishlist"
-                                ? "bg-white dark:bg-primary text-slate-900 dark:text-surface-dark shadow-sm font-bold"
-                                : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+                                ? "bg-primary text-surface-dark shadow-sm font-bold"
+                                : "text-slate-400 hover:text-white"
                                 }`}
                         >
                             {t('wishlist')} (0)
@@ -117,7 +117,7 @@ export default function CartPage() {
                     {/* Cart Items Section */}
                     <div className="flex-1 w-full space-y-4">
                         {/* Table Header (Hidden on Mobile) */}
-                        <div className="hidden md:grid grid-cols-12 gap-4 px-6 py-3 text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider border-b border-gray-200 dark:border-surface-highlight">
+                        <div className="hidden md:grid grid-cols-12 gap-4 px-6 py-3 text-xs font-semibold text-slate-400 uppercase tracking-wider border-b border-surface-highlight">
                             <div className="col-span-6">{t('product')}</div>
                             <div className="col-span-2 text-center">{t('price')}</div>
                             <div className="col-span-2 text-center">{t('quantity')}</div>
@@ -125,22 +125,22 @@ export default function CartPage() {
                         </div>
 
                         {cartItems.map((item) => (
-                            <CartItem 
-                                key={item.id} 
-                                item={item} 
-                                onUpdateQuantity={handleUpdateQuantity} 
-                                onRemove={handleRemoveItem} 
+                            <CartItem
+                                key={item.id}
+                                item={item}
+                                onUpdateQuantity={handleUpdateQuantity}
+                                onRemove={handleRemoveItem}
                             />
                         ))}
                     </div>
 
                     {/* Order Summary Sidebar */}
                     <div className="w-full lg:w-[380px] shrink-0 sticky top-24">
-                        <OrderSummary 
-                            subtotal={subtotal} 
-                            tax={tax} 
-                            total={total} 
-                            onCheckout={handleCheckout} 
+                        <OrderSummary
+                            subtotal={subtotal}
+                            tax={tax}
+                            total={total}
+                            onCheckout={handleCheckout}
                         />
                     </div>
                 </div>
