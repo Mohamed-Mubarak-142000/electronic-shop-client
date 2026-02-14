@@ -132,11 +132,11 @@ export interface Portfolio {
 }
 
 export interface PortfolioOwnerResponse {
-    owner: User & { 
-        jobTitle?: string; 
+    owner: User & {
+        jobTitle?: string;
         jobTitleAr?: string;
-        bio?: string; 
-        bioAr?: string; 
+        bio?: string;
+        bioAr?: string;
         skills?: Array<{
             name: string;
             nameAr: string;
@@ -206,5 +206,32 @@ export interface Config {
     taxiAmount: number;
     minProductImages: number;
     maxProductImages: number;
+    showPortfolioPage?: boolean;
+    showCategoriesSection?: boolean;
+    showBestSellersSection?: boolean;
+    showPartnerSection?: boolean;
+    showNewArrivalsSection?: boolean;
+    showTestimonialsSection?: boolean;
+    showShowroomMapSection?: boolean;
+    heroTitle1?: string;
+    heroTitle2?: string;
+    heroSubtitle?: string;
+    b2bBadge?: string;
+    b2bTitle1?: string;
+    b2bTitle2?: string;
+    b2bDescription?: string;
+    testimonialsTitle?: string;
+    testimonialsSubtitle?: string;
+    emailHost?: string;
+    emailPort?: number;
+    emailUser?: string;
+    emailPassword?: string;
+    fromName?: string;
+    fromEmail?: string;
+    heroType?: 'hero' | 'slider';
+    heroSliderProduct1?: string;
+    heroSliderProduct2?: string;
+    heroSliderProduct3?: string;
+    heroSliderProduct4?: string;
     [key: string]: unknown;
 }

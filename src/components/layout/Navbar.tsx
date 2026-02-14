@@ -7,6 +7,7 @@ import { useCartStore } from "@/store/useCartStore";
 import { useWishlistStore } from "@/store/useWishlistStore";
 import { useAuthStore } from "@/store/useAuthStore";
 import { useLanguageStore } from "@/store/useLanguageStore";
+import { useConfigStore } from "@/store/useConfigStore";
 import { useTranslation } from "@/hooks/useTranslation";
 import { toast } from "react-hot-toast";
 import { User as UserIcon } from "lucide-react";
@@ -22,6 +23,7 @@ export default function Navbar() {
     const wishlistItems = useWishlistStore((state) => state.wishlistItems);
     const user = useAuthStore((state) => state.user);
     const { language, setLanguage } = useLanguageStore();
+    const { configs, fetchConfigs } = useConfigStore();
     const { t } = useTranslation();
     const cartCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
     const wishlistCount = wishlistItems.length;
@@ -34,6 +36,10 @@ export default function Navbar() {
     const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
     const searchRef = useRef<HTMLDivElement>(null);
     const userMenuRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        fetchConfigs();
+    }, []);
 
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
@@ -215,12 +221,14 @@ export default function Navbar() {
                         >
                             {t('nav.shop')}
                         </Link>
-                        <Link
-                            href="/portfolio"
-                            className="text-sm font-medium text-white hover:text-primary transition-colors"
-                        >
-                            {t('nav.portfolio')}
-                        </Link>
+                        {configs?.showPortfolioPage !== false && (
+                            <Link
+                                href="/portfolio"
+                                className="text-sm font-medium text-white hover:text-primary transition-colors"
+                            >
+                                {t('nav.portfolio')}
+                            </Link>
+                        )}
                     </div>
 
                     {/* Action Buttons */}
@@ -426,13 +434,15 @@ export default function Navbar() {
                     >
                         {t('nav.shop')}
                     </Link>
-                    <Link
-                        href="/portfolio"
-                        className="block text-sm font-medium text-white hover:text-primary transition-colors"
-                        onClick={() => setIsMenuOpen(false)}
-                    >
-                        {t('nav.portfolio')}
-                    </Link>
+                    {configs?.showPortfolioPage !== false && (
+                        <Link
+                            href="/portfolio"
+                            className="block text-sm font-medium text-white hover:text-primary transition-colors"
+                            onClick={() => setIsMenuOpen(false)}
+                        >
+                            {t('nav.portfolio')}
+                        </Link>
+                    )}
                     {/* Mobile Language Switcher */}
                     <button
                         onClick={() => {

@@ -1,5 +1,5 @@
 import api from './api';
-import { Config } from '../types';
+import { Config, Product } from '../types';
 
 export const configService = {
     async getConfigs(): Promise<Config> {
@@ -9,6 +9,11 @@ export const configService = {
 
     async updateConfigs(data: Partial<Config>): Promise<Config> {
         const response = await api.post('/config', data);
+        return response.data;
+    },
+
+    async getHeroSliderProducts(): Promise<Product[]> {
+        const response = await api.get('/config/slider-products');
         return response.data;
     }
 };

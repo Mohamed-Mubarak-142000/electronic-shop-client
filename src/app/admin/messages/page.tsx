@@ -123,34 +123,48 @@ export default function MessagesPage() {
     )?.user.name || null;
 
     return (
-        <div className="flex flex-col h-full">
-            <div className="mb-6 px-6 pt-6">
+        <div className="flex flex-col h-[calc(100vh-140px)] md:h-[calc(100vh-180px)]">
+            <div className="mb-4 md:mb-6">
                 <AdminPageHeader
                     title={t('admin.messages.title')}
                     subtitle={t('admin.messages.subtitle')}
                 />
             </div>
 
-            {/* Chat Interface */}
-            <div className="flex-1 bg-card-dark rounded-xl border border-white/10 overflow-hidden flex">
-                {/* Conversation List - Left Side */}
-                <div className="w-80 border-r border-white/10 flex-shrink-0">
-                    <div className="p-4 border-b border-white/10">
+            {/* Chat Interface Container */}
+            <div className="flex-1 bg-card-dark rounded-xl border border-white/10 overflow-hidden flex flex-col md:flex-row shadow-2xl">
+
+                {/* Conversation List Side */}
+                <div className={`w-full md:w-80 border-r border-white/10 flex-shrink-0 flex flex-col ${selectedUserId ? 'hidden md:flex' : 'flex'}`}>
+                    <div className="p-4 border-b border-white/10 bg-card-dark/50">
                         <h2 className="font-semibold text-white">{t('admin.messages.conversations_list')}</h2>
                         <p className="text-xs text-gray-400 mt-1">
                             {conversations.length} {conversations.length === 1 ? t('admin.messages.conversation_count') : t('admin.messages.conversations_count')}
                         </p>
                     </div>
-                    <ConversationList
-                        conversations={conversations}
-                        selectedUserId={selectedUserId}
-                        onSelectUser={handleSelectUser}
-                        isLoading={isLoadingConversations}
-                    />
+                    <div className="flex-1 overflow-y-auto">
+                        <ConversationList
+                            conversations={conversations}
+                            selectedUserId={selectedUserId}
+                            onSelectUser={handleSelectUser}
+                            isLoading={isLoadingConversations}
+                        />
+                    </div>
                 </div>
 
-                {/* Chat Interface - Right Side */}
-                <div className="flex-1">
+                {/* Chat Interface Side */}
+                <div className={`flex-1 flex flex-col min-h-0 ${!selectedUserId ? 'hidden md:flex' : 'flex'}`}>
+                    {selectedUserId && (
+                        <div className="md:hidden p-2 border-b border-white/10 bg-card-dark/50">
+                            <button
+                                onClick={() => setSelectedUserId(null)}
+                                className="flex items-center gap-2 text-primary text-sm font-medium p-2 hover:bg-white/5 rounded-lg transition-colors"
+                            >
+                                <span className="material-symbols-outlined text-[20px] transform transition-transform group-hover:-translate-x-1">arrow_back</span>
+                                {t('common.back')}
+                            </button>
+                        </div>
+                    )}
                     <AdminChatInterface
                         userId={selectedUserId}
                         userName={selectedUserName}

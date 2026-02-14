@@ -1,67 +1,48 @@
 "use client";
 
-import { use, useEffect, useState } from "react";
+import { use, useEffect, useState, useRef, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useQuery } from "@tanstack/react-query";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import { portfolioService } from "@/services/portfolioService";
 import { useTranslation } from "@/hooks/useTranslation";
 import { Portfolio } from "@/types";
 import { ChevronLeft, ChevronRight, Calendar, User, Tag } from "lucide-react";
 
-interface ArrowProps {
-    className?: string;
-    style?: React.CSSProperties;
-    onClick?: React.MouseEventHandler<HTMLButtonElement>;
-}
-
-function NextArrow(props: ArrowProps) {
-    const { onClick } = props;
-    return (
-        <button
-            onClick={onClick}
-            className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full backdrop-blur-sm transition-all shadow-lg hover:scale-110"
-        >
-            <ChevronRight size={24} />
-        </button>
-    );
-}
-
-function PrevArrow(props: ArrowProps) {
-    const { onClick } = props;
-    return (
-        <button
-            onClick={onClick}
-            className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full backdrop-blur-sm transition-all shadow-lg hover:scale-110"
-        >
-            <ChevronLeft size={24} />
-        </button>
-    );
-}
-
 export default function PortfolioDetailsPage({ params }: { params: Promise<{ id: string }> }) {
     const { id } = use(params);
     const { t, language } = useTranslation();
+    const scrollRef = useRef<HTMLDivElement>(null);
+    const [activeIndex, setActiveIndex] = useState(0);
 
     const { data: project, isLoading, error } = useQuery({
         queryKey: ['portfolio', id],
         queryFn: () => portfolioService.getPortfolioById(id),
     });
 
-    const settings = {
-        dots: true,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        nextArrow: <NextArrow />,
-        prevArrow: <PrevArrow />,
-        autoplay: true,
-        autoplaySpeed: 5000,
+    const scroll = (direction: "left" | "right") => {
+        if (scrollRef.current) {
+            const { clientWidth } = scrollRef.current;
+            const scrollAmount = direction === "left" ? -clientWidth : clientWidth;
+            scrollRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
+        }
     };
+
+    const handleScroll = useCallback(() => {
+        if (scrollRef.current) {
+            const { scrollLeft, clientWidth } = scrollRef.current;
+            const index = Math.round(scrollLeft / clientWidth);
+            setActiveIndex(index);
+        }
+    }, []);
+
+    useEffect(() => {
+        const node = scrollRef.current;
+        if (node) {
+            node.addEventListener("scroll", handleScroll);
+        }
+        return () => node?.removeEventListener("scroll", handleScroll);
+    }, [handleScroll]);
 
     if (isLoading) {
         return (
@@ -115,21 +96,54 @@ export default function PortfolioDetailsPage({ params }: { params: Promise<{ id:
                     {/* Left Column: Slider (Takes 2 columns) */}
                     <div className="lg:col-span-2 space-y-8">
                         {/* Image Slider */}
-                        <div className="rounded-3xl overflow-hidden shadow-2xl border border-white/5 bg-surface-dark/50">
+                        <div className="relative group rounded-3xl overflow-hidden shadow-2xl border border-white/5 bg-surface-dark/50">
                             {project.images && project.images.length > 0 ? (
-                                <Slider {...settings} className="portfolio-slider">
-                                    {project.images.map((img, index) => (
-                                        <div key={index} className="relative aspect-video focus:outline-none">
-                                            <Image
-                                                src={img}
-                                                alt={`${title} - image ${index + 1}`}
-                                                fill
-                                                className="object-cover"
-                                                priority={index === 0}
-                                            />
-                                        </div>
-                                    ))}
-                                </Slider>
+                                <>
+                                    <div
+                                        ref={scrollRef}
+                                        className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide scroll-smooth"
+                                    >
+                                        {project.images.map((img, index) => (
+                                            <div key={index} className="min-w-full relative aspect-video snap-start focus:outline-none">
+                                                <Image
+                                                    src={img}
+                                                    alt={`${title} - image ${index + 1}`}
+                                                    fill
+                                                    className="object-cover"
+                                                    priority={index === 0}
+                                                />
+                                            </div>
+                                        ))}
+                                    </div>
+
+                                    {/* Navigation Buttons */}
+                                    {project.images.length > 1 && (
+                                        <>
+                                            <button
+                                                onClick={() => scroll(language === 'ar' ? 'right' : 'left')}
+                                                className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full backdrop-blur-sm transition-all shadow-lg hover:scale-110 opacity-0 group-hover:opacity-100"
+                                            >
+                                                <ChevronLeft size={24} />
+                                            </button>
+                                            <button
+                                                onClick={() => scroll(language === 'ar' ? 'left' : 'right')}
+                                                className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full backdrop-blur-sm transition-all shadow-lg hover:scale-110 opacity-0 group-hover:opacity-100"
+                                            >
+                                                <ChevronRight size={24} />
+                                            </button>
+
+                                            {/* Indicators */}
+                                            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+                                                {project.images.map((_, i) => (
+                                                    <div
+                                                        key={i}
+                                                        className={`h-1.5 rounded-full transition-all duration-300 ${activeIndex === i ? 'w-8 bg-primary' : 'w-2 bg-white/50'}`}
+                                                    />
+                                                ))}
+                                            </div>
+                                        </>
+                                    )}
+                                </>
                             ) : (
                                 <div className="aspect-video bg-gray-200 dark:bg-gray-800 flex items-center justify-center">
                                     <p className="text-gray-500">{language === 'ar' ? 'لا توجد صور' : 'No images available'}</p>
@@ -215,6 +229,16 @@ export default function PortfolioDetailsPage({ params }: { params: Promise<{ id:
                     </div>
                 </div>
             </div>
+
+            <style jsx global>{`
+                .scrollbar-hide::-webkit-scrollbar {
+                    display: none;
+                }
+                .scrollbar-hide {
+                    -ms-overflow-style: none;
+                    scrollbar-width: none;
+                }
+            `}</style>
         </div>
     );
 }
