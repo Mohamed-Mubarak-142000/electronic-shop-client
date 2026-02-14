@@ -55,7 +55,7 @@ export default function FilterSidebar({
                         <h3 className="text-white font-bold text-lg">Filters</h3>
                         <button
                             onClick={onClearFilters}
-                            className="text-[#95c6a9] text-xs hover:text-primary transition-colors ml-2"
+                            className="text-secondary text-xs hover:text-primary transition-colors ml-2"
                         >
                             Clear All
                         </button>
@@ -81,7 +81,7 @@ export default function FilterSidebar({
                                     onChange={() => onCategoryToggle(cat._id)}
                                     className="rounded border-2 border-surface-highlight bg-transparent text-primary focus:ring-0 focus:ring-offset-0 size-5"
                                 />
-                                <span className={`transition-colors ${selectedCategory === cat._id ? "text-white font-medium" : "text-[#95c6a9] group-hover:text-white"}`}>
+                                <span className={`transition-colors ${selectedCategory === cat._id ? "text-white font-medium" : "text-secondary group-hover:text-white"}`}>
                                     {cat.name}
                                 </span>
                             </label>
@@ -95,7 +95,7 @@ export default function FilterSidebar({
                     <h4 className="text-white font-semibold text-sm uppercase tracking-wider opacity-80">Price Range</h4>
                     <div className="flex gap-2 mt-1">
                         <div className="flex-1 bg-surface-highlight rounded-lg px-3 py-2">
-                            <span className="text-xs text-[#95c6a9] block">Min</span>
+                            <span className="text-xs text-secondary block">Min</span>
                             <input
                                 className="w-full bg-transparent border-none p-0 text-white text-sm focus:ring-0 font-bold"
                                 type="number"
@@ -105,7 +105,7 @@ export default function FilterSidebar({
                             />
                         </div>
                         <div className="flex-1 bg-surface-highlight rounded-lg px-3 py-2">
-                            <span className="text-xs text-[#95c6a9] block">Max</span>
+                            <span className="text-xs text-secondary block">Max</span>
                             <input
                                 className="w-full bg-transparent border-none p-0 text-white text-sm focus:ring-0 font-bold"
                                 type="number"
@@ -130,7 +130,7 @@ export default function FilterSidebar({
                                     onChange={() => onBrandToggle(brand._id)}
                                     className="rounded border-2 border-surface-highlight bg-transparent text-primary focus:ring-0 focus:ring-offset-0 size-5"
                                 />
-                                <span className={`transition-colors ${selectedBrand === brand._id ? "text-white font-medium" : "text-[#95c6a9] group-hover:text-white"}`}>
+                                <span className={`transition-colors ${selectedBrand === brand._id ? "text-white font-medium" : "text-secondary group-hover:text-white"}`}>
                                     {brand.name}
                                 </span>
                             </label>

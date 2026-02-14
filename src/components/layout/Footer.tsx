@@ -7,7 +7,7 @@ export default function Footer() {
     const { t } = useTranslation();
 
     return (
-        <footer className="bg-[#0b1610] border-t border-surface-highlight pt-16 pb-8 font-display">
+        <footer className="bg-background-darker border-t border-surface-highlight pt-16 pb-8 font-display">
             <div className="max-w-[1440px] mx-auto px-4 md:px-10">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
                     {/* Brand Column */}
@@ -71,7 +71,7 @@ export default function Footer() {
                                 type="email"
                             />
                             <button
-                                className="w-full bg-primary text-[#122118] font-bold rounded-full px-5 py-3 hover:brightness-110 transition-all text-sm"
+                                className="w-full bg-primary text-text-on-primary-alt font-bold rounded-full px-5 py-3 hover:brightness-110 transition-all text-sm"
                                 type="button"
                             >
                                 {t('footer.subscribe')}

@@ -7,20 +7,24 @@ export default function FAQPage() {
 
     const faqs = [
         {
-            q: "Do you ship internationally?",
-            a: "Currently, we focus on providing the best service within our primary regions. Please contact support for bulk international orders."
+            q: t('faq.question1'),
+            a: t('faq.answer1')
         },
         {
-            q: "Are the products certified?",
-            a: "Yes, all our electrical components meet standard safety certifications including UL, CE, and RoHS where applicable."
+            q: t('faq.question2'),
+            a: t('faq.answer2')
         },
         {
-            q: "Can I get a trade discount?",
-            a: "Absolutely. Registered professionals and businesses qualify for B2B pricing. Check our 'For Pros' section for more details."
+            q: t('faq.question3'),
+            a: t('faq.answer3')
         },
         {
-            q: "How fast is delivery?",
-            a: "Standard delivery typically takes 2-4 business days. Express shipping options are available at checkout."
+            q: t('faq.question4'),
+            a: t('faq.answer4')
+        },
+        {
+            q: t('faq.question5'),
+            a: t('faq.answer5')
         }
     ];
 

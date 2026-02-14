@@ -132,11 +132,11 @@ export default function Navbar() {
                     {/* Search Bar (Desktop) */}
                     <div className="hidden md:flex items-center relative" ref={searchRef}>
                         <label className="relative flex items-center min-w-[320px]">
-                            <span className={language === 'ar' ? 'absolute right-4 text-[#95c6a9]' : 'absolute left-4 text-[#95c6a9]'}>
+                            <span className={language === 'ar' ? 'absolute right-4 text-secondary' : 'absolute left-4 text-secondary'}>
                                 <span className="material-symbols-outlined">search</span>
                             </span>
                             <input
-                                className={`w-full bg-surface-highlight text-white placeholder:text-[#95c6a9] rounded-full py-2.5 ${language === 'ar' ? 'pr-12 pl-4' : 'pl-12 pr-4'} focus:ring-2 focus:ring-primary focus:outline-none border-none text-sm transition-all hover:bg-[#2d543c]`}
+                                className={`w-full bg-surface-highlight text-white placeholder:text-secondary rounded-full py-2.5 ${language === 'ar' ? 'pr-12 pl-4' : 'pl-12 pr-4'} focus:ring-2 focus:ring-primary focus:outline-none border-none text-sm transition-all hover:bg-surface-highlight`}
                                 placeholder={language === 'ar' ? 'بحث عن مصابيح، مفاتيح، أدوات...' : 'Search bulbs, switches, tools...'}
                                 type="text"
                                 value={searchQuery}
@@ -237,7 +237,7 @@ export default function Navbar() {
                         <Link href="/wishlist">
                             <button
                                 aria-label="Wishlist"
-                                className="relative flex items-center justify-center size-9 sm:size-10 rounded-full bg-surface-highlight hover:bg-primary hover:text-[#122118] text-white transition-all duration-300"
+                                className="relative flex items-center justify-center size-9 sm:size-10 rounded-full bg-surface-highlight hover:bg-primary hover:text-text-on-primary-alt text-white transition-all duration-300"
                             >
                                 <span className="material-symbols-outlined text-[18px] sm:text-[20px]" aria-hidden="true">
                                     favorite
@@ -252,13 +252,13 @@ export default function Navbar() {
                         <Link href="/cart">
                             <button
                                 aria-label="Shopping cart"
-                                className="relative flex items-center justify-center size-9 sm:size-10 rounded-full bg-surface-highlight hover:bg-primary hover:text-[#122118] text-white transition-all duration-300"
+                                className="relative flex items-center justify-center size-9 sm:size-10 rounded-full bg-surface-highlight hover:bg-primary hover:text-text-on-primary-alt text-white transition-all duration-300"
                             >
                                 <span className="material-symbols-outlined text-[18px] sm:text-[20px]" aria-hidden="true">
                                     shopping_cart
                                 </span>
                                 {cartCount > 0 && (
-                                    <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-primary text-[10px] font-bold text-[#122118]">
+                                    <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-primary text-[10px] font-bold text-text-on-primary-alt">
                                         {cartCount}
                                     </span>
                                 )}
@@ -268,7 +268,7 @@ export default function Navbar() {
                         {/* Mobile Search Toggle */}
                         <button
                             onClick={() => setIsMobileSearchOpen(!isMobileSearchOpen)}
-                            className="md:hidden flex items-center justify-center size-9 sm:size-10 rounded-full bg-surface-highlight hover:bg-primary hover:text-[#122118] text-white transition-all duration-300"
+                            className="md:hidden flex items-center justify-center size-9 sm:size-10 rounded-full bg-surface-highlight hover:bg-primary hover:text-text-on-primary-alt text-white transition-all duration-300"
                         >
                             <span className="material-symbols-outlined text-[18px] sm:text-[20px]">
                                 {isMobileSearchOpen ? 'close' : 'search'}
@@ -354,12 +354,12 @@ export default function Navbar() {
             {isMobileSearchOpen && (
                 <div className="md:hidden px-4 pb-4 animate-in slide-in-from-top duration-300">
                     <div className="relative flex items-center" ref={searchRef}>
-                        <span className={language === 'ar' ? 'absolute right-4 text-[#95c6a9]' : 'absolute left-4 text-[#95c6a9]'}>
+                        <span className={language === 'ar' ? 'absolute right-4 text-secondary' : 'absolute left-4 text-secondary'}>
                             <span className="material-symbols-outlined">search</span>
                         </span>
                         <input
                             autoFocus
-                            className={`w-full bg-surface-highlight text-white placeholder:text-[#95c6a9] rounded-full py-3 ${language === 'ar' ? 'pr-12 pl-4' : 'pl-12 pr-4'} focus:ring-2 focus:ring-primary focus:outline-none border-none text-sm transition-all`}
+                            className={`w-full bg-surface-highlight text-white placeholder:text-secondary rounded-full py-3 ${language === 'ar' ? 'pr-12 pl-4' : 'pl-12 pr-4'} focus:ring-2 focus:ring-primary focus:outline-none border-none text-sm transition-all`}
                             placeholder={language === 'ar' ? 'بحث عن منتجات...' : 'Search products...'}
                             type="text"
                             value={searchQuery}

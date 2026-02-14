@@ -160,7 +160,7 @@ export default function JobsPage() {
             {/* Modal */}
             {showModal && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4">
-                    <div className="bg-background-dark w-full max-w-md rounded-2xl border border-white/10 p-6 max-h-[90vh] overflow-y-auto">
+                    <div className="bg-surface-dark w-full max-w-md rounded-2xl border border-white/10 p-6 max-h-[90vh] overflow-y-auto">
                         <h2 className="text-xl font-bold text-white mb-4">{t('admin.jobs.dialog_title')}</h2>
                         <form onSubmit={handleCreateJob} className="space-y-4">
                             <div>
@@ -222,7 +222,7 @@ export default function JobsPage() {
                                         onChange={uploadFileHandler}
                                         className="hidden"
                                     />
-                                    <div className="flex items-center justify-center gap-3 w-full h-32 rounded-lg border-2 border-dashed border-white/20 bg-background-dark hover:border-primary hover:bg-white/5 transition-all">
+                                    <div className="flex items-center justify-center gap-3 w-full h-32 rounded-lg border-2 border-dashed border-white/20 bg-surface-dark hover:border-primary hover:bg-white/5 transition-all">
                                         <span className="material-symbols-outlined text-4xl text-primary">add</span>
                                         <div className="flex flex-col items-center">
                                             <span className="text-white font-semibold">{t('admin.product.choose_images')}</span>

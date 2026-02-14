@@ -70,7 +70,7 @@ export default function LoginPage() {
                                         </div>
                                         <Input
                                             {...field}
-                                            className={`w-full rounded-full bg-surface-dark border border-border-dark text-white placeholder:text-[#95c6a9] h-14 ${language === 'ar' ? 'pr-12 pl-4' : 'pl-12 pr-4'} focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all duration-200 shadow-sm`}
+                                            className={`w-full rounded-full bg-surface-dark border border-border-dark text-white placeholder:text-text-secondary h-14 ${language === 'ar' ? 'pr-12 pl-4' : 'pl-12 pr-4'} focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all duration-200 shadow-sm`}
                                             placeholder={t('auth.register.emailPlaceholder')}
                                             type="email"
                                         />
@@ -98,7 +98,7 @@ export default function LoginPage() {
                                         </div>
                                         <PasswordInput
                                             {...field}
-                                            className={`w-full rounded-full bg-surface-dark border border-border-dark text-white placeholder:text-[#95c6a9] h-14 ${language === 'ar' ? 'pr-12 pl-4' : 'pl-12 pr-4'} focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all duration-200 shadow-sm`}
+                                            className={`w-full rounded-full bg-surface-dark border border-border-dark text-white placeholder:text-text-secondary h-14 ${language === 'ar' ? 'pr-12 pl-4' : 'pl-12 pr-4'} focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all duration-200 shadow-sm`}
                                             placeholder={t('auth.register.passwordPlaceholder')}
                                         />
                                     </div>

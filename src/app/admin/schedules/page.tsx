@@ -11,7 +11,7 @@ export default function SchedulesPage() {
 
     return (
         <div className="h-full flex flex-col relative overflow-hidden">
-            <div className="bg-background-dark border-b border-white/5 py-5 px-8 sticky top-0 z-10">
+            <div className="bg-surface-dark border-b border-white/5 py-5 px-8 sticky top-0 z-10">
                 <AdminPageHeader
                     title={t('admin.schedules.title')}
                     subtitle={t('admin.schedules.subtitle')}

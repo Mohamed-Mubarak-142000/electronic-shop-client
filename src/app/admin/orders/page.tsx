@@ -29,7 +29,7 @@ export default function OrdersPage() {
                 placeholder="Search by Order ID..."
             >
                 <select
-                    className="form-select block w-full sm:w-auto pl-3 pr-10 py-2 text-sm border-none rounded-lg bg-background-dark text-white focus:outline-none focus:ring-2 focus:ring-primary cursor-pointer"
+                    className="form-select block w-full sm:w-auto pl-3 pr-10 py-2 text-sm border-none rounded-lg bg-surface-dark text-white focus:outline-none focus:ring-2 focus:ring-primary cursor-pointer"
                     value={status}
                     onChange={(e) => setStatus(e.target.value)}
                 >
@@ -43,7 +43,7 @@ export default function OrdersPage() {
                 
                 <div className="h-9 w-px bg-white/10 mx-1 hidden sm:block"></div>
                 <select
-                    className="form-select block w-full sm:w-auto pl-3 pr-10 py-2 text-sm border-none rounded-lg bg-background-dark text-white focus:outline-none focus:ring-2 focus:ring-primary cursor-pointer"
+                    className="form-select block w-full sm:w-auto pl-3 pr-10 py-2 text-sm border-none rounded-lg bg-surface-dark text-white focus:outline-none focus:ring-2 focus:ring-primary cursor-pointer"
                     value={sort}
                     onChange={(e) => setSort(e.target.value)}
                 >

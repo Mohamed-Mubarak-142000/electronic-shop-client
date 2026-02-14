@@ -110,13 +110,13 @@ export default function ProfilePage() {
 
     // Show loading spinner while checking auth or fetching initial data
     if (!user || (!initialData && user)) return (
-        <div className="flex flex-col items-center justify-center w-full min-h-screen bg-background-dark">
+        <div className="flex flex-col items-center justify-center w-full min-h-screen bg-surface-dark">
             <div className="w-16 h-16 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
         </div>
     );
 
     return (
-        <div className="flex flex-col items-center w-full bg-background-dark text-white font-display min-h-screen" dir={dir}>
+        <div className="flex flex-col items-center w-full bg-surface-dark text-white font-display min-h-screen" dir={dir}>
             <div className="w-full px-4 py-8 lg:py-12">
                 <div className="mb-8 items-center justify-between gap-6 flex flex-col md:flex-row">
                     <div>

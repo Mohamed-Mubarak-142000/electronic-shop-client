@@ -14,7 +14,7 @@ export function Table({ children, className = '' }: { children: React.ReactNode;
 
 export function TableHeader({ children }: { children: React.ReactNode }) {
     return (
-        <thead className="bg-[#15261d] text-gray-400 font-medium uppercase text-xs tracking-wider border-b border-white/5">
+        <thead className="bg-card-dark text-gray-400 font-medium uppercase text-xs tracking-wider border-b border-white/5">
             {children}
         </thead>
     );

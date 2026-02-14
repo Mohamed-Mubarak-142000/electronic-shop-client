@@ -23,7 +23,7 @@ const PasswordInput = React.forwardRef<HTMLInputElement, PasswordInputProps>(
                     type="button"
                     tabIndex={-1}
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-4 text-gray-400 dark:text-[#95c6a9] flex items-center justify-center hover:text-primary transition-colors focus:outline-none"
+                    className="absolute right-4 text-gray-400 dark:text-secondary flex items-center justify-center hover:text-primary transition-colors focus:outline-none"
                 >
                     <span className="material-symbols-outlined select-none" aria-hidden="true">
                         {showPassword ? "visibility_off" : "visibility"}

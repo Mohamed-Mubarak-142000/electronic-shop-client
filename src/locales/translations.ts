@@ -597,6 +597,103 @@ export const en = {
     "contact.form.subject": "Subject",
     "contact.form.message": "Message",
     "contact.form.send": "Send Message",
+    "contact.visit": "Visit Us",
+    "contact.call": "Call Us",
+    "contact.address": "123 Circuit Avenue, Power Plaza, Level 4, New York, NY 10001",
+    "contact.support_phone": "Support: +1 (800) ELECTRO",
+    "contact.sales_phone": "Sales: +1 (888) VOLTAGE",
+
+    // Track Order
+    "trackOrder.title": "Track Your Order",
+    "trackOrder.subtitle": "Enter your order ID and email to check your shipment status.",
+    "trackOrder.orderId": "Order ID",
+    "trackOrder.orderIdPlaceholder": "#ORD-12345",
+    "trackOrder.email": "Email Address",
+    "trackOrder.emailPlaceholder": "name@example.com",
+    "trackOrder.trackButton": "Track Status",
+
+    // Returns Page
+    "returns.title": "Returns & Refunds",
+    "returns.policy.title": "30-Day Policy",
+    "returns.policy.desc": "We offer a 30-day return policy for all unused components in their original packaging. Electrical parts that have been installed or show signs of use are not eligible for return due to safety regulations.",
+    "returns.shipping.title": "Return Shipping",
+    "returns.shipping.desc": "Customers are responsible for return shipping costs unless the item arrived damaged or incorrect. We recommend using a trackable shipping service.",
+
+    // Installation Guide
+    "installation.title": "Installation Guide",
+    "installation.subtitle": "Professional guides for safe and efficient installation of your electrical components.",
+    "installation.safety.title": "Safety First",
+    "installation.safety.desc": "Always turn off the main power supply before starting any electrical installation. If you're unsure, consult a licensed electrician.",
+    "installation.safety.button": "Read Manifesto",
+    "installation.videos.title": "Video Tutorials",
+    "installation.videos.desc": "Access our library of step-by-step videos for common products like smart switches and lighting fixtures.",
+    "installation.videos.button": "Watch Now",
+
+    // Privacy Policy
+    "privacy.section1.title": "1. Information We Collect",
+    "privacy.section1.desc": "We collect information that you provide directly to us when you create an account, make a purchase, or communicate with us. This may include your name, email address, phone number, and shipping address.",
+    "privacy.section2.title": "2. How We Use Your Information",
+    "privacy.section2.desc": "We use the information we collect to process your orders, provide customer support, and improve our services. We may also send you administrative messages and promotional communications.",
+    "privacy.section3.title": "3. Information Sharing",
+    "privacy.section3.desc": "We do not sell your personal information to third parties. We may share your information with service providers who perform services on our behalf, such as payment processing and shipping.",
+    "privacy.section4.title": "4. Security",
+    "privacy.section4.desc": "We take reasonable measures to protect your personal information from loss, theft, and unauthorized access. However, no security system is impenetrable, and we cannot guarantee the security of our systems 100%.",
+
+    // Terms & Conditions
+    "terms.section1.title": "1. Acceptance of Terms",
+    "terms.section1.desc": "By accessing or using ElectroShop, you agree to be bound by these Terms of Service and all applicable laws and regulations.",
+    "terms.section2.title": "2. User Accounts",
+    "terms.section2.desc": "You are responsible for maintaining the confidentiality of your account and password. You agree to accept responsibility for all activities that occur under your account.",
+    "terms.section3.title": "3. Product Information",
+    "terms.section3.desc": "We attempt to be as accurate as possible with our product descriptions. However, we do not warrant that product descriptions or other content are accurate, complete, reliable, current, or error-free.",
+    "terms.section4.title": "4. Limitation of Liability",
+    "terms.section4.desc": "In no event shall ElectroShop be liable for any indirect, incidental, special, consequential, or punitive damages arising out of or in connection with your use of the site.",
+
+    // FAQ
+    "faq.question1": "What electrical products do you offer?",
+    "faq.answer1": "We offer a comprehensive range of electrical components including lighting fixtures, switches, fans, circuit breakers, wiring, and professional-grade tools. All products meet safety and quality standards.",
+    "faq.question2": "Do you provide installation services?",
+    "faq.answer2": "While we don't directly provide installation, we have a network of certified electricians we can recommend. We also offer detailed installation guides and technical support for DIY projects.",
+    "faq.question3": "What is your shipping policy?",
+    "faq.answer3": "We offer standard shipping (3-5 business days) and express shipping (1-2 business days). Orders over $100 qualify for free standard shipping. Same-day delivery is available in select areas.",
+    "faq.question4": "Can I return electrical products?",
+    "faq.answer4": "Yes, we accept returns within 30 days for unused items in original packaging. For safety reasons, installed or used electrical components cannot be returned. Please review our full return policy.",
+    "faq.question5": "Do you offer bulk pricing for contractors?",
+    "faq.answer5": "Absolutely! We have a B2B program with wholesale pricing, net-30 payment terms, and dedicated account managers for registered businesses. Contact our sales team to set up a business account.",
+
+    // Wishlist
+    "wishlist.title": "My Wishlist",
+    "wishlist.items": "Items",
+    "wishlist.item": "Item",
+    "wishlist.empty.title": "Your wishlist is empty",
+    "wishlist.empty.desc": "Save items you like to see them here.",
+    "wishlist.continueShopping": "Continue Shopping",
+    "wishlist.addToCart": "Add",
+    "wishlist.addedToCart": "Added to cart!",
+    "wishlist.loginRequired": "Please login to add items to cart",
+
+    // Shop
+    "shop.title": "All Products",
+    "shop.home": "Home",
+    "shop.filter": "Filter",
+    "shop.sortBy": "Sort By",
+    "shop.priceRange": "Price Range",
+    "shop.min": "Min",
+    "shop.max": "Max",
+    "shop.applyFilters": "Apply Filters",
+    "shop.clearFilters": "Clear",
+    "shop.results": "results",
+    "shop.showing": "Showing",
+    "shop.noProducts": "No products found",
+    "shop.tryAdjusting": "Try adjusting your filters",
+
+    // Portfolio
+    "portfolio.title": "Our Projects",
+    "portfolio.subtitle": "Showcasing our latest electrical installations and solutions",
+    "portfolio.viewProject": "View Project",
+    "portfolio.client": "Client",
+    "portfolio.completedOn": "Completed on",
+    "portfolio.noProjects": "No projects available",
 };
 
 export const ar = {
@@ -1196,5 +1293,102 @@ export const ar = {
     "contact.form.subject": "الموضوع",
     "contact.form.message": "الرسالة",
     "contact.form.send": "إرسال الرسالة",
+    "contact.visit": "زرنا",
+    "contact.call": "اتصل بنا",
+    "contact.address": "شارع الدائرة 123، بلازا الطاقة، المستوى 4، نيويورك، NY 10001",
+    "contact.support_phone": "الدعم: +1 (800) ELECTRO",
+    "contact.sales_phone": "المبيعات: +1 (888) VOLTAGE",
+
+    // Track Order
+    "trackOrder.title": "تتبع طلبك",
+    "trackOrder.subtitle": "أدخل رقم الطلب والبريد الإلكتروني للتحقق من حالة الشحن.",
+    "trackOrder.orderId": "رقم الطلب",
+    "trackOrder.orderIdPlaceholder": "#ORD-12345",
+    "trackOrder.email": "البريد الإلكتروني",
+    "trackOrder.emailPlaceholder": "name@example.com",
+    "trackOrder.trackButton": "تتبع الحالة",
+
+    // Returns Page
+    "returns.title": "الإرجاع والاسترداد",
+    "returns.policy.title": "سياسة الـ 30 يومًا",
+    "returns.policy.desc": "نقدم سياسة إرجاع لمدة 30 يومًا لجميع المكونات غير المستخدمة في عبواتها الأصلية. الأجزاء الكهربائية التي تم تركيبها أو تظهر عليها علامات الاستخدام غير مؤهلة للإرجاع بسبب لوائح السلامة.",
+    "returns.shipping.title": "شحن الإرجاع",
+    "returns.shipping.desc": "العملاء مسؤولون عن تكاليف شحن الإرجاع ما لم يصل المنتج تالفًا أو خاطئًا. نوصي باستخدام خدمة شحن قابلة للتتبع.",
+
+    // Installation Guide
+    "installation.title": "دليل التركيب",
+    "installation.subtitle": "أدلة احترافية للتركيب الآمن والفعال للمكونات الكهربائية الخاصة بك.",
+    "installation.safety.title": "السلامة أولاً",
+    "installation.safety.desc": "أطفئ دائمًا مصدر الطاقة الرئيسي قبل بدء أي تركيب كهربائي. إذا كنت غير متأكد، استشر كهربائيًا مرخصًا.",
+    "installation.safety.button": "اقرأ البيان",
+    "installation.videos.title": "دروس الفيديو",
+    "installation.videos.desc": "الوصول إلى مكتبتنا من مقاطع الفيديو خطوة بخطوة للمنتجات الشائعة مثل المفاتيح الذكية وتركيبات الإضاءة.",
+    "installation.videos.button": "شاهد الآن",
+
+    // Privacy Policy
+    "privacy.section1.title": "1. المعلومات التي نجمعها",
+    "privacy.section1.desc": "نجمع المعلومات التي تقدمها لنا مباشرة عند إنشاء حساب، أو إجراء عملية شراء، أو التواصل معنا. قد يشمل ذلك اسمك وعنوان بريدك الإلكتروني ورقم هاتفك وعنوان الشحن.",
+    "privacy.section2.title": "2. كيف نستخدم معلوماتك",
+    "privacy.section2.desc": "نستخدم المعلومات التي نجمعها لمعالجة طلباتك وتقديم دعم العملاء وتحسين خدماتنا. قد نرسل لك أيضًا رسائل إدارية واتصالات ترويجية.",
+    "privacy.section3.title": "3. مشاركة المعلومات",
+    "privacy.section3.desc": "لا نبيع معلوماتك الشخصية لأطراف ثالثة. قد نشارك معلوماتك مع مقدمي الخدمات الذين يؤدون خدمات نيابة عنا، مثل معالجة الدفع والشحن.",
+    "privacy.section4.title": "4. الأمان",
+    "privacy.section4.desc": "نتخذ تدابير معقولة لحماية معلوماتك الشخصية من الفقدان أو السرقة أو الوصول غير المصرح به. ومع ذلك، لا يوجد نظام أمان منيع، ولا يمكننا ضمان أمان أنظمتنا بنسبة 100٪.",
+
+    // Terms & Conditions
+    "terms.section1.title": "1. قبول الشروط",
+    "terms.section1.desc": "بالوصول إلى إلكتروشوب أو استخدامه، فإنك توافق على الالتزام بشروط الخدمة هذه وجميع القوانين واللوائح المعمول بها.",
+    "terms.section2.title": "2. حسابات المستخدمين",
+    "terms.section2.desc": "أنت مسؤول عن الحفاظ على سرية حسابك وكلمة المرور. أنت توافق على تحمل المسؤولية عن جميع الأنشطة التي تحدث تحت حسابك.",
+    "terms.section3.title": "3. معلومات المنتج",
+    "terms.section3.desc": "نحاول أن نكون دقيقين قدر الإمكان مع أوصاف منتجاتنا. ومع ذلك، فإننا لا نضمن أن أوصاف المنتج أو المحتوى الآخر دقيقة أو كاملة أو موثوقة أو حالية أو خالية من الأخطاء.",
+    "terms.section4.title": "4. تحديد المسؤولية",
+    "terms.section4.desc": "في أي حال من الأحوال، لن تكون إلكتروشوب مسؤولة عن أي أضرار غير مباشرة أو عرضية أو خاصة أو تبعية أو عقابية ناشئة عن أو فيما يتعلق باستخدامك للموقع.",
+
+    // FAQ
+    "faq.question1": "ما هي المنتجات الكهربائية التي تقدمونها؟",
+    "faq.answer1": "نقدم مجموعة شاملة من المكونات الكهربائية بما في ذلك تركيبات الإضاءة والمفاتيح والمراوح وقواطع الدوائر والأسلاك والأدوات الاحترافية. جميع المنتجات تلبي معايير السلامة والجودة.",
+    "faq.question2": "هل تقدمون خدمات التركيب؟",
+    "faq.answer2": "بينما لا نقدم التركيب مباشرة، لدينا شبكة من الكهربائيين المعتمدين يمكننا التوصية بهم. نقدم أيضًا أدلة تركيب مفصلة ودعمًا فنيًا لمشاريع DIY.",
+    "faq.question3": "ما هي سياسة الشحن الخاصة بكم؟",
+    "faq.answer3": "نقدم الشحن القياسي (3-5 أيام عمل) والشحن السريع (1-2 يوم عمل). الطلبات التي تزيد عن 100 دولار مؤهلة للشحن القياسي المجاني. التوصيل في نفس اليوم متاح في مناطق مختارة.",
+    "faq.question4": "هل يمكنني إرجاع المنتجات الكهربائية؟",
+    "faq.answer4": "نعم، نقبل الإرجاع في غضون 30 يومًا للأصناف غير المستخدمة في العبوة الأصلية. لأسباب تتعلق بالسلامة، لا يمكن إرجاع المكونات الكهربائية المثبتة أو المستخدمة. يرجى مراجعة سياسة الإرجاع الكاملة.",
+    "faq.question5": "هل تقدمون أسعار الجملة للمقاولين؟",
+    "faq.answer5": "بالتأكيد! لدينا برنامج B2B مع أسعار الجملة، شروط الدفع net-30، ومديري حسابات مخصصين للشركات المسجلة. اتصل بفريق المبيعات لدينا لإعداد حساب تجاري.",
+
+    // Wishlist
+    "wishlist.title": "قائمة الرغبات",
+    "wishlist.items": "عناصر",
+    "wishlist.item": "عنصر",
+    "wishlist.empty.title": "قائمة رغباتك فارغة",
+    "wishlist.empty.desc": "احفظ العناصر التي تحبها لرؤيتها هنا.",
+    "wishlist.continueShopping": "متابعة التسوق",
+    "wishlist.addToCart": "إضافة",
+    "wishlist.addedToCart": "تمت الإضافة إلى السلة!",
+    "wishlist.loginRequired": "يرجى تسجيل الدخول لإضافة العناصر إلى السلة",
+
+    // Shop
+    "shop.title": "جميع المنتجات",
+    "shop.home": "الرئيسية",
+    "shop.filter": "تصفية",
+    "shop.sortBy": "ترتيب حسب",
+    "shop.priceRange": "نطاق السعر",
+    "shop.min": "الحد الأدنى",
+    "shop.max": "الحد الأقصى",
+    "shop.applyFilters": "تطبيق التصفية",
+    "shop.clearFilters": "مسح",
+    "shop.results": "نتيجة",
+    "shop.showing": "عرض",
+    "shop.noProducts": "لم يتم العثور على منتجات",
+    "shop.tryAdjusting": "حاول تعديل الفلاتر الخاصة بك",
+
+    // Portfolio
+    "portfolio.title": "أعمالنا",
+    "portfolio.subtitle": "عرض أحدث تركيباتنا الكهربائية وحلولنا",
+    "portfolio.viewProject": "عرض المشروع",
+    "portfolio.client": "العميل",
+    "portfolio.completedOn": "أكمل في",
+    "portfolio.noProjects": "لا توجد مشاريع",
     "validation.common_error": "يرجى التحقق من النموذج بحثاً عن أخطاء",
 };

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useWishlistStore, WishlistItem } from "@/store/useWishlistStore";
 import { useCartStore } from "@/store/useCartStore";
 import { useAuthStore } from "@/store/useAuthStore";
+import { useTranslation } from "@/hooks/useTranslation";
 import { toast } from "react-hot-toast";
 import Image from "next/image";
 
@@ -11,10 +12,11 @@ export default function WishlistPage() {
     const { wishlistItems, removeItem } = useWishlistStore();
     const { addItem } = useCartStore();
     const { user } = useAuthStore();
+    const { t, dir } = useTranslation();
 
     const handleAddToCart = (item: WishlistItem) => {
         if (!user) {
-            toast.error("Please login to add items to cart");
+            toast.error(t('wishlist.loginRequired'));
             return;
         }
         addItem({
@@ -25,16 +27,16 @@ export default function WishlistPage() {
             imageUrl: item.imageUrl,
             inStock: true
         });
-        toast.success("Added to cart!");
+        toast.success(t('wishlist.addedToCart'));
     };
 
     return (
-        <div className="w-full min-h-[calc(100vh-200px)] bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display flex flex-col items-center">
+        <div className="w-full min-h-[calc(100vh-200px)] bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display flex flex-col items-center" dir={dir}>
             <div className="w-full max-w-[1440px] px-4 md:px-10 py-12">
                 <div className="flex items-center gap-4 mb-10">
-                    <h1 className="text-4xl font-bold tracking-tight">My Wishlist</h1>
+                    <h1 className="text-4xl font-bold tracking-tight">{t('wishlist.title')}</h1>
                     <span className="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-bold">
-                        {wishlistItems.length} {wishlistItems.length === 1 ? 'Item' : 'Items'}
+                        {wishlistItems.length} {wishlistItems.length === 1 ? t('wishlist.item') : t('wishlist.items')}
                     </span>
                 </div>
 
@@ -43,11 +45,11 @@ export default function WishlistPage() {
                         <div className="size-24 rounded-full bg-surface-highlight/20 flex items-center justify-center mb-6">
                             <span className="material-symbols-outlined text-5xl text-gray-500">favorite</span>
                         </div>
-                        <h2 className="text-2xl font-bold mb-2">Your wishlist is empty</h2>
-                        <p className="text-gray-400 mb-8">Save items you like to see them here.</p>
+                        <h2 className="text-2xl font-bold mb-2">{t('wishlist.empty.title')}</h2>
+                        <p className="text-gray-400 mb-8">{t('wishlist.empty.desc')}</p>
                         <Link href="/shop">
-                            <button className="h-12 px-8 rounded-full bg-primary text-[#122118] font-bold hover:scale-105 transition-all">
-                                Continue Shopping
+                            <button className="h-12 px-8 rounded-full bg-primary text-text-on-primary font-bold hover:scale-105 transition-all">
+                                {t('wishlist.continueShopping')}
                             </button>
                         </Link>
                     </div>
@@ -81,10 +83,10 @@ export default function WishlistPage() {
                                     <span className="text-primary text-xl font-bold">${item.price.toFixed(2)}</span>
                                     <button
                                         onClick={() => handleAddToCart(item)}
-                                        className="h-10 px-4 rounded-full bg-primary/10 text-primary hover:bg-primary hover:text-[#122118] font-bold text-sm transition-all flex items-center gap-2"
+                                        className="h-10 px-4 rounded-full bg-primary/10 text-primary hover:bg-primary hover:text-text-on-primary font-bold text-sm transition-all flex items-center gap-2"
                                     >
                                         <span className="material-symbols-outlined text-lg">add_shopping_cart</span>
-                                        Add
+                                        {t('wishlist.addToCart')}
                                     </button>
                                 </div>
                             </div>

@@ -115,7 +115,7 @@ function ShopContent() {
                 {/* Page Heading & Breadcrumbs */}
                 <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-surface-highlight pb-6">
                     <div className="flex flex-col gap-2">
-                        <div className="flex items-center gap-2 text-sm text-[#95c6a9] mb-1">
+                        <div className="flex items-center gap-2 text-sm text-text-secondary mb-1">
                             <Link href="/" className="hover:text-primary transition-colors">
                                 Home
                             </Link>
@@ -125,7 +125,7 @@ function ShopContent() {
                         <h1 className="text-white text-4xl md:text-5xl font-black leading-tight tracking-[-0.033em]">
                             All Products
                         </h1>
-                        <p className="text-[#95c6a9] text-base max-w-2xl mt-2">
+                        <p className="text-text-secondary text-base max-w-2xl mt-2">
                             Browse our wide selection of professional-grade electrical components, smart home devices, and tools for every project.
                         </p>
                     </div>
@@ -190,9 +190,9 @@ function ShopContent() {
                             </>
                         ) : (
                             <div className="flex flex-col items-center justify-center py-20 text-center">
-                                <span className="material-symbols-outlined text-6xl text-[#95c6a9] mb-4 opacity-20">inventory_2</span>
+                                <span className="material-symbols-outlined text-6xl text-text-secondary mb-4 opacity-20">inventory_2</span>
                                 <h3 className="text-white text-xl font-bold mb-2">No products found</h3>
-                                <p className="text-[#95c6a9]">Try adjusting your filters or search criteria.</p>
+                                <p className="text-text-secondary">Try adjusting your filters or search criteria.</p>
                                 <Button
                                     onClick={clearFilters}
                                     className="mt-6 px-6 py-2 font-bold rounded-full transition-colors"

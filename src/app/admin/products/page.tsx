@@ -86,7 +86,7 @@ export default function ProductsPage() {
                 placeholder={t('admin.products.search_placeholder')}
             >
                 <select
-                    className="form-select block w-full sm:w-auto pl-3 pr-10 py-2 text-sm border-none rounded-lg bg-background-dark text-white focus:outline-none focus:ring-2 focus:ring-primary cursor-pointer"
+                    className="form-select block w-full sm:w-auto pl-3 pr-10 py-2 text-sm border-none rounded-lg bg-surface-dark text-white focus:outline-none focus:ring-2 focus:ring-primary cursor-pointer"
                     value={category}
                     onChange={(e) => setCategory(e.target.value)}
                 >
@@ -96,7 +96,7 @@ export default function ProductsPage() {
                     ))}
                 </select>
                 <select
-                    className="form-select block w-full sm:w-auto pl-3 pr-10 py-2 text-sm border-none rounded-lg bg-background-dark text-white focus:outline-none focus:ring-2 focus:ring-primary cursor-pointer"
+                    className="form-select block w-full sm:w-auto pl-3 pr-10 py-2 text-sm border-none rounded-lg bg-surface-dark text-white focus:outline-none focus:ring-2 focus:ring-primary cursor-pointer"
                     value={brand}
                     onChange={(e) => setBrand(e.target.value)}
                 >
@@ -106,7 +106,7 @@ export default function ProductsPage() {
                     ))}
                 </select>
                 <select
-                    className="form-select block w-full sm:w-auto pl-3 pr-10 py-2 text-sm border-none rounded-lg bg-background-dark text-white focus:outline-none focus:ring-2 focus:ring-primary cursor-pointer"
+                    className="form-select block w-full sm:w-auto pl-3 pr-10 py-2 text-sm border-none rounded-lg bg-surface-dark text-white focus:outline-none focus:ring-2 focus:ring-primary cursor-pointer"
                     value={stockStatus}
                     onChange={(e) => setStockStatus(e.target.value)}
                 >
@@ -118,7 +118,7 @@ export default function ProductsPage() {
                 
                 <div className="h-9 w-px bg-white/10 mx-1 hidden sm:block"></div>
                 <select
-                    className="form-select block w-full sm:w-auto pl-3 pr-10 py-2 text-sm border-none rounded-lg bg-background-dark text-white focus:outline-none focus:ring-2 focus:ring-primary cursor-pointer"
+                    className="form-select block w-full sm:w-auto pl-3 pr-10 py-2 text-sm border-none rounded-lg bg-surface-dark text-white focus:outline-none focus:ring-2 focus:ring-primary cursor-pointer"
                     value={sort}
                     onChange={(e) => setSort(e.target.value)}
                 >

@@ -106,7 +106,7 @@ export default function ProductCard({ product }: { product: Product }) {
                         ))}
                     </div>
                     {brandName && (
-                        <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-widest text-[#95c6a9] bg-[#95c6a9]/10 px-1.5 sm:px-2 py-0.5 rounded-md truncate">
+                        <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-widest text-secondary bg-secondary/10 px-1.5 sm:px-2 py-0.5 rounded-md truncate">
                             {brandName}
                         </span>
                     )}
@@ -138,7 +138,7 @@ export default function ProductCard({ product }: { product: Product }) {
                             size="icon-lg"
                             aria-label={isWishlisted ? `Remove ${product.name} from wishlist` : `Add ${product.name} to wishlist`}
                             onClick={handleWishlistToggle}
-                            className={`rounded-full border transition-all ${isWishlisted ? 'bg-red-500/10 border-red-500 text-red-500 hover:text-red-600 hover:border-red-600' : 'bg-[#122118] border-surface-highlight text-white hover:text-red-500 hover:border-red-500 hover:bg-[#122118]'}`}
+                            className={`rounded-full border transition-all ${isWishlisted ? 'bg-red-500/10 border-red-500 text-red-500 hover:text-red-600 hover:border-red-600' : 'bg-background border-surface-highlight text-white hover:text-red-500 hover:border-red-500 hover:bg-background'}`}
                         >
                             <span className={`material-symbols-outlined text-lg sm:text-xl ${isWishlisted ? 'filled' : ''}`} style={{ fontVariationSettings: isWishlisted ? "'FILL' 1" : "" }} aria-hidden="true">favorite</span>
                         </Button>

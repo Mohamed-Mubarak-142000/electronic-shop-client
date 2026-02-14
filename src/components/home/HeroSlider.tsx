@@ -124,13 +124,13 @@ const HeroSlider: React.FC<HeroSliderProps> = ({ products }) => {
             <div className="absolute inset-x-4 top-1/2 -translate-y-1/2 flex items-center justify-between opacity-0 group-hover:opacity-100 transition-opacity z-20 pointer-events-none">
                 <button
                     onClick={prevSlide}
-                    className="p-3 rounded-full bg-black/40 backdrop-blur-lg text-white border border-white/10 hover:bg-primary hover:text-[#122118] transition-all pointer-events-auto shadow-2xl"
+                    className="p-3 rounded-full bg-black/40 backdrop-blur-lg text-white border border-white/10 hover:bg-primary hover:text-text-on-primary-alt transition-all pointer-events-auto shadow-2xl"
                 >
                     <ArrowLeft size={24} />
                 </button>
                 <button
                     onClick={nextSlide}
-                    className="p-3 rounded-full bg-black/40 backdrop-blur-lg text-white border border-white/10 hover:bg-primary hover:text-[#122118] transition-all pointer-events-auto shadow-2xl"
+                    className="p-3 rounded-full bg-black/40 backdrop-blur-lg text-white border border-white/10 hover:bg-primary hover:text-text-on-primary-alt transition-all pointer-events-auto shadow-2xl"
                 >
                     <ArrowRight size={24} />
                 </button>

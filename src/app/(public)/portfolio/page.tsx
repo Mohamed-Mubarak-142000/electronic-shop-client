@@ -50,7 +50,7 @@ const ProjectCard = ({ project, index, language }: { project: Portfolio; index: 
             initial={{ opacity: 0, transform: "translateY(20px)" }}
             animate={{ opacity: 1, transform: "translateY(0)" }}
             transition={{ delay: index * 0.1, duration: 0.3 }}
-            className="group bg-[#112117] rounded-3xl overflow-hidden border border-[#1a3324] hover:border-primary/30 transition-all shadow-lg"
+            className="group bg-background rounded-3xl overflow-hidden border border-border-light hover:border-primary/30 transition-all shadow-lg"
         >
             <div className="aspect-[4/3] bg-surface-highlight overflow-hidden relative">
                 <AnimatePresence mode="wait">
@@ -67,7 +67,7 @@ const ProjectCard = ({ project, index, language }: { project: Portfolio; index: 
                     />
                 </AnimatePresence>
 
-                <div className="absolute top-4 left-4 bg-primary/90 text-[#0a140e] px-3 py-1 rounded-lg text-xs font-black uppercase tracking-widest z-10">
+                <div className="absolute top-4 left-4 bg-primary/90 text-text-on-primary-dark px-3 py-1 rounded-lg text-xs font-black uppercase tracking-widest z-10">
                     {project.category || (language === 'ar' ? 'تجاري' : 'Commercial')}
                 </div>
 
@@ -103,7 +103,7 @@ const ProjectCard = ({ project, index, language }: { project: Portfolio; index: 
                     <h4 className="text-xl font-bold line-clamp-1">{language === 'ar' ? project.titleAr : project.title}</h4>
                     <p className="text-sm text-gray-400 mt-1 line-clamp-2">{language === 'ar' ? project.descriptionAr : project.description}</p>
                 </div>
-                <Link href={`/portfolio/${project._id}`} className="w-full py-3 rounded-xl bg-surface-highlight border border-white/5 text-white text-sm font-bold group-hover:bg-primary group-hover:text-[#0a140e] transition-all flex items-center justify-center gap-2">
+                <Link href={`/portfolio/${project._id}`} className="w-full py-3 rounded-xl bg-surface-highlight border border-white/5 text-white text-sm font-bold group-hover:bg-primary group-hover:text-text-on-primary-dark transition-all flex items-center justify-center gap-2">
                     {language === 'ar' ? 'عرض دراسة الحالة' : 'View Case Study'}
                     <ChevronRight size={16} />
                 </Link>
@@ -145,25 +145,25 @@ export default function PortfolioDashboard() {
     const { owner, portfolios } = data;
 
     return (
-        <div className="min-h-screen bg-[#0a140e] text-white font-display pb-20">
+        <div className="min-h-screen bg-background-darkest text-white font-display pb-20">
             {/* Header Section */}
             <div className="max-w-7xl mx-auto px-6 py-12 flex flex-col md:flex-row md:items-center justify-between gap-6">
                 <div>
                     <h1 className="text-4xl font-black tracking-tight">{language === 'ar' ? 'ملفي المهني' : 'My Portfolio'}</h1>
-                    <p className="text-[#95c6a9] mt-2">
+                    <p className="text-text-secondary mt-2">
                         {language === 'ar' ? 'عرض للمشاريع والشهادات المهنية الخاصة بك.' : 'Showcase of your professional projects and certifications.'}
                     </p>
                 </div>
                 <div className="flex gap-4">
                     {user?.role !== 'user' && (
-                        <button className="flex items-center gap-2 px-6 py-3 rounded-full bg-surface-highlight text-white hover:bg-[#1a3324] transition-all font-bold text-sm border border-white/5">
+                        <button className="flex items-center gap-2 px-6 py-3 rounded-full bg-surface-highlight text-white hover:bg-border-light transition-all font-bold text-sm border border-white/5">
                             <ExternalLink size={18} />
                             {language === 'ar' ? 'عرض عام' : 'Public View'}
                         </button>
                     )}
                     {isAdmin && (
                         <Link href="/admin/portfolio">
-                            <button className="flex items-center gap-2 px-6 py-3 rounded-full bg-primary text-[#0a140e] hover:brightness-110 transition-all font-black text-sm shadow-lg shadow-primary/20">
+                            <button className="flex items-center gap-2 px-6 py-3 rounded-full bg-primary text-text-on-primary-dark hover:brightness-110 transition-all font-black text-sm shadow-lg shadow-primary/20">
                                 <Plus size={18} />
                                 {language === 'ar' ? 'إضافة مشروع' : 'Add Project'}
                             </button>
@@ -176,7 +176,7 @@ export default function PortfolioDashboard() {
                 {/* Main Content Area */}
                 <div className="lg:col-span-8 space-y-8">
                     {/* Profile Card */}
-                    <div className="bg-[#112117] rounded-[2.5rem] p-8 border border-[#1a3324] shadow-2xl relative overflow-hidden group">
+                    <div className="bg-background rounded-[2.5rem] p-8 border border-border-light shadow-2xl relative overflow-hidden group">
                         <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 blur-[100px] rounded-full -mr-20 -mt-20"></div>
 
                         <div className="relative z-10 flex flex-col md:flex-row gap-8 items-center md:items-start text-center md:text-left">
@@ -200,7 +200,7 @@ export default function PortfolioDashboard() {
                                             </span>
                                         )}
                                     </div>
-                                    <p className="text-xl text-[#95c6a9] font-medium">
+                                    <p className="text-xl text-text-secondary font-medium">
                                         {language === 'ar' ? owner.jobTitleAr : owner.jobTitle || 'Master Electrician & Store Owner'}
                                     </p>
                                 </div>
@@ -224,13 +224,13 @@ export default function PortfolioDashboard() {
                             <div className="flex flex-col gap-3 shrink-0">
                                 {isAdmin && (
                                     <Link href="/profile" className="w-full">
-                                        <button className="w-full flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-white text-[#0a140e] font-bold text-sm hover:bg-gray-200 transition-colors">
+                                        <button className="w-full flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-white text-text-on-primary-dark font-bold text-sm hover:bg-gray-200 transition-colors">
                                             <Edit3 size={16} />
                                             {language === 'ar' ? 'تعديل الملف' : 'Edit Profile'}
                                         </button>
                                     </Link>
                                 )}
-                                <button className="w-full flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-surface-highlight border border-white/5 text-white font-bold text-sm hover:bg-[#1a3324] transition-colors">
+                                <button className="w-full flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-surface-highlight border border-white/5 text-white font-bold text-sm hover:bg-border-light transition-colors">
                                     <Share2 size={16} />
                                     {language === 'ar' ? 'مشاركة' : 'Share'}
                                 </button>
@@ -239,7 +239,7 @@ export default function PortfolioDashboard() {
                     </div>
 
                     {/* About Me Section */}
-                    <div className="bg-[#112117] rounded-[2.5rem] p-8 border border-[#1a3324] shadow-xl">
+                    <div className="bg-background rounded-[2.5rem] p-8 border border-border-light shadow-xl">
                         <h3 className="text-2xl font-black mb-6 flex items-center gap-3">
                             <span className="size-8 rounded-lg bg-primary/20 flex items-center justify-center">
                                 <Lightbulb size={18} className="text-primary" />
@@ -278,7 +278,7 @@ export default function PortfolioDashboard() {
                 {/* Sidebar Info */}
                 <div className="lg:col-span-4 space-y-8">
                     {/* Core Competencies */}
-                    <div className="bg-[#112117] rounded-[2.5rem] p-8 border border-[#1a3324] shadow-xl">
+                    <div className="bg-background rounded-[2.5rem] p-8 border border-border-light shadow-xl">
                         <div className="flex items-center justify-between mb-6">
                             <h3 className="text-2xl font-black">{language === 'ar' ? 'الكفاءات الأساسية' : 'Core Competencies'}</h3>
                             <Zap className="text-primary animate-pulse" size={24} />
@@ -303,7 +303,7 @@ export default function PortfolioDashboard() {
                                     <div key={idx} className="group flex flex-col gap-3">
                                         <div className="flex items-center justify-between">
                                             <div className="flex items-center gap-3">
-                                                <div className="size-10 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-[#0a140e] transition-all duration-300">
+                                                <div className="size-10 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-text-on-primary-dark transition-all duration-300">
                                                     <Zap size={18} />
                                                 </div>
                                                 <p className="font-bold text-base tracking-wide text-gray-100">{language === 'ar' ? skill.nameAr : skill.name}</p>
@@ -349,16 +349,16 @@ export default function PortfolioDashboard() {
                 <div className="bg-primary rounded-[3rem] p-10 md:p-20 text-center relative overflow-hidden">
                     <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
                     <div className="relative z-10 space-y-8">
-                        <h2 className="text-4xl md:text-6xl font-black text-[#0a140e] leading-tight">
+                        <h2 className="text-4xl md:text-6xl font-black text-text-on-primary-dark leading-tight">
                             {language === 'ar' ? 'جاهز لكهربة مشروعك القادم؟' : 'Ready to electrify your next project?'}
                         </h2>
-                        <p className="text-[#0a140e]/70 text-lg md:text-xl max-w-2xl mx-auto font-medium">
+                        <p className="text-text-on-primary-dark/70 text-lg md:text-xl max-w-2xl mx-auto font-medium">
                             {language === 'ar' ? 'دعنا نتعاون لتحويل رؤيتك إلى حقيقة من خلال حلول كهربائية آمنة وذكية.' : 'Let’s collaborate to turn your vision into reality with safe and smart electrical solutions.'}
                         </p>
                         <div className="flex flex-wrap justify-center gap-4">
                             <button 
                                 onClick={() => window.dispatchEvent(new Event('open-chat'))}
-                                className="px-10 py-5 rounded-full bg-[#0a140e] text-white text-lg font-black hover:scale-105 transition-transform shadow-2xl"
+                                className="px-10 py-5 rounded-full bg-background-darkest text-white text-lg font-black hover:scale-105 transition-transform shadow-2xl"
                             >
                                 {language === 'ar' ? 'تواصل معنا' : 'Get In Touch'}
                             </button>

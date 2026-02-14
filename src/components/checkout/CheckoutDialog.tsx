@@ -293,10 +293,10 @@ export default function CheckoutDialog({ isOpen, onClose }: CheckoutDialogProps)
                         <button
                             onClick={handlePlaceOrder}
                             disabled={isProcessing}
-                            className="w-full md:w-auto px-10 bg-primary hover:bg-[#2dc468] text-[#112117] font-black text-lg py-4 rounded-full shadow-xl shadow-primary/20 hover:shadow-primary/30 hover:-translate-y-0.5 active:translate-y-0 transition-all flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed"
+                            className="w-full md:w-auto px-10 bg-primary hover:bg-primary-hover text-text-on-primary-alt font-black text-lg py-4 rounded-full shadow-xl shadow-primary/20 hover:shadow-primary/30 hover:-translate-y-0.5 active:translate-y-0 transition-all flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed"
                         >
                             {isProcessing ? (
-                                <span className="loading loading-spinner loading-md bg-[#112117]"></span>
+                                <span className="loading loading-spinner loading-md bg-background"></span>
                             ) : (
                                 <>
                                     <span>{t('confirm_order')}</span>

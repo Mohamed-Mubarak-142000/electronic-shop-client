@@ -133,7 +133,7 @@ export default function ProductDetailsPage({ params }: { params: Promise<{ id: s
         <div className="w-full bg-background-dark min-h-screen font-display flex flex-col items-center text-white">
             <div className="flex-grow w-full max-w-[1440px] px-4 sm:px-6 lg:px-8 py-8">
                 {/* Breadcrumbs */}
-                <div className="flex flex-wrap items-center gap-2 mb-8 text-sm text-[#95c6a9]">
+                <div className="flex flex-wrap items-center gap-2 mb-8 text-sm text-text-secondary">
                     <Link href="/" className="hover:text-primary transition-colors">Home</Link>
                     <span className="material-symbols-outlined text-base">chevron_right</span>
                     <Link href="/shop" className="hover:text-primary transition-colors">Shop</Link>
@@ -255,7 +255,7 @@ export default function ProductDetailsPage({ params }: { params: Promise<{ id: s
                                             <span className="material-symbols-outlined">info</span>
                                         </div>
                                         <div>
-                                            <p className="text-xs text-[#95c6a9]">{key}</p>
+                                            <p className="text-xs text-text-secondary">{key}</p>
                                             <p className="text-sm font-semibold text-white">{value}</p>
                                         </div>
                                     </div>
@@ -266,7 +266,7 @@ export default function ProductDetailsPage({ params }: { params: Promise<{ id: s
                         {/* Product Meta Info */}
                         <div className="flex flex-col gap-4 py-8 mt-4 border-t border-surface-highlight">
                             <div className="flex items-center gap-3 text-sm">
-                                <span className="text-[#95c6a9] font-semibold min-w-[100px]">Category:</span>
+                                <span className="text-text-secondary font-semibold min-w-[100px]">Category:</span>
                                 <Link
                                     href={`/shop?category=${typeof product.category === 'object' ? product.category._id : product.category}`}
                                     className="text-white hover:text-primary transition-colors font-medium"
@@ -275,14 +275,14 @@ export default function ProductDetailsPage({ params }: { params: Promise<{ id: s
                                 </Link>
                             </div>
                             <div className="flex items-center gap-3 text-sm">
-                                <span className="text-[#95c6a9] font-semibold min-w-[100px]">Brand:</span>
+                                <span className="text-text-secondary font-semibold min-w-[100px]">Brand:</span>
                                 <span className="text-white font-medium">
                                     {typeof product.brand === 'object' ? product.brand.name : 'N/A'}
                                 </span>
                             </div>
                             {product.tags && product.tags.length > 0 && (
                                 <div className="flex items-center gap-3 text-sm">
-                                    <span className="text-[#95c6a9] font-semibold min-w-[100px]">Tags:</span>
+                                    <span className="text-text-secondary font-semibold min-w-[100px]">Tags:</span>
                                     <div className="flex flex-wrap gap-2">
                                         {product.tags.map(tag => (
                                             <span key={tag} className="px-3 py-1 rounded-full bg-surface-highlight text-[11px] uppercase tracking-wider font-bold text-primary border border-transparent">
@@ -343,7 +343,7 @@ export default function ProductDetailsPage({ params }: { params: Promise<{ id: s
                                 <Button
                                     variant="outline"
                                     onClick={handleWishlistToggle}
-                                    className={`size-14 rounded-full border flex items-center justify-center transition-all ${isWishlisted ? 'bg-red-500/10 border-red-500 text-red-500 hover:bg-red-500/20 hover:text-red-600 hover:border-red-600' : 'bg-transparent border-[#366348] text-[#95c6a9] hover:bg-transparent hover:border-red-500 hover:text-red-500'}`}
+                                    className={`size-14 rounded-full border flex items-center justify-center transition-all ${isWishlisted ? 'bg-red-500/10 border-red-500 text-red-500 hover:bg-red-500/20 hover:text-red-600 hover:border-red-600' : 'bg-transparent border-border-dark text-text-secondary hover:bg-transparent hover:border-red-500 hover:text-red-500'}`}
                                 >
                                     <span className={`material-symbols-outlined ${isWishlisted ? 'filled' : ''}`} style={{ fontVariationSettings: isWishlisted ? "'FILL' 1" : "" }}>favorite</span>
                                 </Button>
@@ -362,7 +362,7 @@ export default function ProductDetailsPage({ params }: { params: Promise<{ id: s
                                 <button
                                     key={tab}
                                     onClick={() => setActiveTab(tab)}
-                                    className={`pb-4 border-b-2 font-medium text-lg px-2 transition-colors ${activeTab === tab ? 'border-primary text-primary font-bold' : 'border-transparent text-[#95c6a9] hover:text-white'}`}
+                                    className={`pb-4 border-b-2 font-medium text-lg px-2 transition-colors ${activeTab === tab ? 'border-primary text-primary font-bold' : 'border-transparent text-text-secondary hover:text-white'}`}
                                 >
                                     {tab}
                                 </button>
@@ -387,20 +387,20 @@ export default function ProductDetailsPage({ params }: { params: Promise<{ id: s
                                 <h3 className="text-xl font-bold text-white mb-6">Technical Specs</h3>
                                 <div className="space-y-4">
                                     <div className="flex justify-between pb-4 border-b border-surface-highlight/10">
-                                        <span className="text-[#95c6a9]">Brand</span>
+                                        <span className="text-text-secondary">Brand</span>
                                         <span className="font-medium text-white">
                                             {typeof product.brand === 'object' ? product.brand.name : 'N/A'}
                                         </span>
                                     </div>
                                     <div className="flex justify-between pb-4 border-b border-surface-highlight/10">
-                                        <span className="text-[#95c6a9]">Category</span>
+                                        <span className="text-text-secondary">Category</span>
                                         <span className="font-medium text-white">
                                             {typeof product.category === 'object' ? product.category.name : 'N/A'}
                                         </span>
                                     </div>
                                     {product.attributes && Object.entries(product.attributes).map(([key, value]) => (
                                         <div key={key} className="flex justify-between pb-4 border-b border-surface-highlight/10">
-                                            <span className="text-[#95c6a9]">{key}</span>
+                                            <span className="text-text-secondary">{key}</span>
                                             <span className="font-medium text-white">{value}</span>
                                         </div>
                                     ))}

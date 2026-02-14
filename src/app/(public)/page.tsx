@@ -132,7 +132,7 @@ export default function Home() {
               </p>
               <div className="flex flex-wrap gap-4 mt-4">
                 <Link href="/shop">
-                  <button className="h-12 px-8 rounded-full bg-primary text-[#122118] text-base font-bold tracking-wide hover:scale-105 transition-transform flex items-center gap-2">
+                  <button className="h-12 px-8 rounded-full bg-primary text-text-on-primary-alt text-base font-bold tracking-wide hover:scale-105 transition-transform flex items-center gap-2">
                     {t('home.hero.shopHome')}
                     <span className="material-symbols-outlined text-sm">arrow_forward</span>
                   </button>
@@ -142,7 +142,7 @@ export default function Home() {
                     logout();
                     router.push('/register');
                   }}
-                  className="h-12 px-8 rounded-full bg-surface-highlight/80 backdrop-blur-md text-white border border-[#3e6b50] text-base font-bold tracking-wide hover:bg-surface-highlight hover:scale-105 transition-all"
+                  className="h-12 px-8 rounded-full bg-surface-highlight/80 backdrop-blur-md text-white border border-border-subtle text-base font-bold tracking-wide hover:bg-surface-highlight hover:scale-105 transition-all"
                 >
                   {t('home.hero.forPros')}
                 </button>
@@ -190,7 +190,7 @@ export default function Home() {
               <h2 className="text-3xl font-bold text-white tracking-tight">
                 {language === 'ar' ? 'موصى به لك' : 'Recommended For You'}
               </h2>
-              <div className="h-px flex-1 bg-[#254632]"></div>
+              <div className="h-px flex-1 bg-border"></div>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
               {recommendedProducts.map((product: Product) => (
@@ -260,7 +260,7 @@ export default function Home() {
               <h2 className="text-3xl font-bold text-white tracking-tight">
                 {t('home.bestSellers')}
               </h2>
-              <div className="h-px flex-1 bg-[#254632]"></div>
+              <div className="h-px flex-1 bg-border"></div>
             </div>
 
             {bestSellers.length > 0 ? (
@@ -274,7 +274,7 @@ export default function Home() {
                 <div className="h-full">
                   <Link
                     href="/shop"
-                    className="flex flex-col items-center justify-center bg-surface-dark/50 p-6 rounded-[2rem] border-2 border-dashed border-[#254632] hover:border-primary hover:bg-primary/5 transition-all group aspect-[3/4] h-full"
+                    className="flex flex-col items-center justify-center bg-surface-dark/50 p-6 rounded-[2rem] border-2 border-dashed border-border hover:border-primary hover:bg-primary/5 transition-all group aspect-[3/4] h-full"
                   >
                     <div className="size-16 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-4 group-hover:scale-110 transition-transform">
                       <span className="material-symbols-outlined text-4xl">add</span>
@@ -300,7 +300,7 @@ export default function Home() {
         {configs?.showPartnerSection !== false && (
           <div className="py-12">
             <LazySection>
-              <div className="relative overflow-hidden rounded-[3rem] bg-[#254632] bg-opacity-40">
+              <div className="relative overflow-hidden rounded-[3rem] bg-border bg-opacity-40">
                 <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-primary/10 to-transparent"></div>
                 <div className="absolute bottom-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
                 <div className="relative z-10 flex flex-col md:flex-row items-center justify-between p-10 md:p-20 gap-10">
@@ -337,13 +337,13 @@ export default function Home() {
                       alt="Professional electrician with safety equipment and project blueprints"
                       width={320}
                       height={320}
-                      containerClassName="w-full h-full rounded-full border-4 border-[#254632] shadow-2xl rotate-3 hover:rotate-0 transition-transform duration-500"
+                      containerClassName="w-full h-full rounded-full border-4 border-border shadow-2xl rotate-3 hover:rotate-0 transition-transform duration-500"
                       className="relative z-10 w-full h-full object-cover rounded-full"
                       src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-AG2JpXiB2fT-3UQMvwbIsx9b-DzSLP8aG97UO710bW-wLjvufVzVglC4C3PuMCj9cIdNI-1kP9INrZraiWBOiuME2_9LXdrAwvqA0BdLCwAolHdbg6BwM0QDl6x2cF08AnJQGhu4fgIKUJPVsb-JYi3_YP20SlZrJmXcNQKYbyoOCLoowZlO4MEA0BRFoXxdbWCHjOko3iQJFK5207UCuOuof0n3TfwBpq8y2XofH1_FEEIgg2A7OJy5h48-xWaW-UdTY10xWPI"
                       sizes="(max-width: 768px) 256px, 320px"
                       loading="lazy"
                     />
-                    <div className="absolute -bottom-4 -right-4 bg-[#122118] p-4 rounded-2xl border border-[#254632] shadow-xl z-20">
+                    <div className="absolute -bottom-4 -right-4 bg-text-on-primary-alt p-4 rounded-2xl border border-border shadow-xl z-20">
                       <div className="flex items-center gap-3">
                         <div className="bg-green-500/20 p-2 rounded-full text-green-500">
                           <span className="material-symbols-outlined">verified</span>
@@ -390,7 +390,7 @@ export default function Home() {
 
         {/* Store Locator Section */}
         {configs?.showShowroomMapSection !== false && (
-          <LazySection className="py-12 border-t border-[#254632] mt-8" placeholderHeight="min-h-[500px]">
+          <LazySection className="py-12 border-t border-border mt-8" placeholderHeight="min-h-[500px]">
             <div className="grid md:grid-cols-2 gap-8 items-center rounded-3xl bg-surface-dark overflow-hidden min-h-[500px]">
               <div className="p-8 md:p-12">
                 <h2 className="text-3xl font-bold text-white mb-4">
@@ -401,7 +401,7 @@ export default function Home() {
                 </p>
                 <div className="space-y-6">
                   <div className="flex gap-4">
-                    <div className="size-12 rounded-full bg-[#254632] flex items-center justify-center text-primary shrink-0">
+                    <div className="size-12 rounded-full bg-border flex items-center justify-center text-primary shrink-0">
                       <span className="material-symbols-outlined">location_on</span>
                     </div>
                     <div>
@@ -415,7 +415,7 @@ export default function Home() {
                   </div>
                   {showroomInfo?.phone && (
                     <div className="flex gap-4">
-                      <div className="size-12 rounded-full bg-[#254632] flex items-center justify-center text-primary shrink-0">
+                      <div className="size-12 rounded-full bg-border flex items-center justify-center text-primary shrink-0">
                         <span className="material-symbols-outlined">phone</span>
                       </div>
                       <div>
@@ -425,7 +425,7 @@ export default function Home() {
                     </div>
                   )}
                   <div className="flex gap-4">
-                    <div className="size-12 rounded-full bg-[#254632] flex items-center justify-center text-primary shrink-0">
+                    <div className="size-12 rounded-full bg-border flex items-center justify-center text-primary shrink-0">
                       <span className="material-symbols-outlined">schedule</span>
                     </div>
                     <div>

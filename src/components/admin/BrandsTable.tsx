@@ -57,7 +57,7 @@ export default function BrandsTable({ filters }: BrandsTableProps) {
             header: <span className="text-gray-400">{t('admin.table.brand')}</span>,
             cell: (row) => (
                 <div className="flex items-center gap-4">
-                    <div className="size-12 rounded-full bg-white p-2 shrink-0 overflow-hidden flex items-center justify-center border-2 border-[#254632] group-hover:border-primary transition-colors">
+                    <div className="size-12 rounded-full bg-white p-2 shrink-0 overflow-hidden flex items-center justify-center border-2 border-secondary group-hover:border-primary transition-colors">
                         <Image
                             className="object-cover w-full h-full"
                             src={row.logoUrl || '/placeholder.png'}
@@ -87,13 +87,13 @@ export default function BrandsTable({ filters }: BrandsTableProps) {
             cell: (row) => (
                 <div className="flex items-center justify-end gap-2 text-right">
                     <Link href={`/admin/brands/edit/${row._id}`}>
-                        <button className="size-8 flex items-center justify-center rounded-full bg-[#254632] text-white hover:bg-primary hover:text-background-dark transition-colors" title={t('admin.tooltips.edit')}>
+                        <button className="size-8 flex items-center justify-center rounded-full bg-secondary text-white hover:bg-primary hover:text-background-dark transition-colors" title={t('admin.tooltips.edit')}>
                             <span className="material-symbols-outlined text-lg">edit</span>
                         </button>
                     </Link>
                     <button
                         onClick={() => handleDelete(row._id)}
-                        className="size-8 flex items-center justify-center rounded-full bg-[#254632] text-white hover:bg-red-500 hover:text-white transition-colors" title={t('admin.tooltips.delete')}
+                        className="size-8 flex items-center justify-center rounded-full bg-secondary text-white hover:bg-red-500 hover:text-white transition-colors" title={t('admin.tooltips.delete')}
                     >
                         <span className="material-symbols-outlined text-lg">delete</span>
                     </button>
@@ -111,7 +111,7 @@ export default function BrandsTable({ filters }: BrandsTableProps) {
             onPageChange={setPage}
             limit={limit}
             isLoading={isLoading}
-            className="flex flex-col rounded-3xl shadow-xl bg-surface-dark border-[#254632]"
+            className="flex flex-col rounded-3xl shadow-xl bg-surface-dark border-secondary"
         />
     );
 }

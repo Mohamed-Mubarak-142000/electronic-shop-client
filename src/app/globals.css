@@ -2,26 +2,94 @@
 @import "tailwindcss";
 
 @theme inline {
+  /* ============================================
+     TAILWIND COLOR MAPPINGS
+     Maps CSS variables to Tailwind utilities
+     ============================================ */
+
+  /* Background Colors */
+  --color-background: var(--background);
   --color-background-light: var(--background-light);
   --color-background-dark: var(--background-dark);
+  --color-background-darker: var(--background-darker);
+  --color-background-darkest: var(--background-darkest);
+
+  /* Foreground/Text Colors */
+  --color-foreground: var(--foreground);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-text-on-primary: var(--text-on-primary);
+  --color-text-on-primary-alt: var(--text-on-primary-alt);
+  --color-text-on-primary-dark: var(--text-on-primary-dark);
+  --color-text-on-primary-darker: var(--text-on-primary-darker);
+
+  /* Primary Brand Colors */
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-light: var(--primary-light);
+
+  /* Secondary Colors */
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+
+  /* Surface Colors */
   --color-surface-dark: var(--surface-dark);
   --color-surface-highlight: var(--surface-highlight);
-  --color-primary: var(--primary);
+
+  /* Card Colors */
+  --color-card: var(--card);
   --color-card-dark: var(--card-dark);
+  --color-card-foreground: var(--foreground);
+
+  /* Border Colors */
+  --color-border: var(--border);
   --color-border-dark: var(--border-dark);
+  --color-border-light: var(--border-light);
+  --color-border-subtle: var(--border-subtle);
+
+  /* Input Colors */
+  --color-input: var(--input);
+  --color-input-background: var(--input-background);
+
+  /* Muted Colors */
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  /* Accent Colors */
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  /* Popover Colors */
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+
+  /* Focus/Ring Colors */
+  --color-ring: var(--ring);
+
+  /* Semantic Colors */
+  --color-success: var(--success);
+  --color-error: var(--error);
+  --color-warning: var(--warning);
+  --color-info: var(--info);
+
+  /* Font Configuration */
   --font-display: var(--font-spline-sans), sans-serif;
 
+  /* Border Radius */
   --radius-default: 1rem;
   --radius-lg: 2rem;
   --radius-xl: 3rem;
 
+  /* Breakpoints */
   --breakpoint-xs: 480px;
 }
 
 body {
   font-family: var(--font-display);
-  background-color: var(--background-dark);
-  color: white;
+  background-color: var(--background);
+  color: var(--foreground);
 }
 
 .material-symbols-outlined {
@@ -50,23 +118,123 @@ body {
 }
 
 :root {
+  /* ============================================
+     CENTRALIZED THEME COLOR SYSTEM
+     All colors are defined here. Update these
+     values to change the entire site theme.
+     ============================================ */
+
+  /* Base Background Colors */
   --background-light: #f6f8f7;
-  --background-dark: #112117;
-  --surface-dark: #1c3326;
-  --surface-highlight: #254632;
-  --primary: #36e27b;
-  --card-dark: #1c3024;
-  --border-dark: #366348;
+  --background: #112117;           /* Main dark background */
+  --background-dark: #112117;      /* Alias for background */
+  --background-darker: #0b1610;    /* Darker variant for sections */
+  --background-darkest: #0a140e;   /* Darkest variant for emphasis */
+
+  /* Surface Colors (for cards, panels, containers) */
+  --surface-dark: #1c3326;         /* Main surface color */
+  --surface-highlight: #254632;    /* Highlighted surface */
+  --card: #1c3024;                 /* Card background */
+  --card-dark: #1c3024;            /* Alias for card */
+
+  /* Text Colors */
+  --foreground: #ffffff;           /* Primary text color */
+  --text-primary: #ffffff;         /* Alias for foreground */
+  --text-secondary: #95c6a9;       /* Secondary/muted text */
+  --text-muted: #95c6a9;           /* Alias for muted text */
+  --text-on-primary: #112117;      /* Text on primary color */
+  --text-on-primary-alt: #122118;  /* Alternative text on primary */
+  --text-on-primary-dark: #0b1610; /* Dark text on primary */
+  --text-on-primary-darker: #0b1610; /* Even darker text on primary */
+
+  /* Primary Brand Colors */
+  --primary: #36e27b;              /* Main brand color */
+  --primary-foreground: #112117;   /* Text on primary */
+  --primary-hover: #2ec56a;        /* Primary hover state */
+  --primary-light: #48f58d;        /* Lighter primary variant */
+
+  /* Secondary Colors */
+  --secondary: #254632;            /* Secondary brand color */
+  --secondary-foreground: #ffffff; /* Text on secondary */
+
+  /* Border Colors */
+  --border: #254632;               /* Main border color */
+  --border-dark: #366348;          /* Darker border variant */
+  --border-light: #1a3324;         /* Lighter border variant */
+  --border-subtle: #2a5340;        /* Subtle border */
+
+  /* Input Colors */
+  --input: #254632;                /* Input border color */
+  --input-background: #1c3326;     /* Input background */
+
+  /* Muted Colors */
+  --muted: #1c3326;                /* Muted background */
+  --muted-foreground: #95c6a9;     /* Muted text */
+
+  /* Accent Colors */
+  --accent: #254632;               /* Accent background */
+  --accent-foreground: #ffffff;    /* Accent text */
+
+  /* Popover Colors */
+  --popover: #1c3326;              /* Popover background */
+  --popover-foreground: #ffffff;   /* Popover text */
+
+  /* Focus/Ring Colors */
+  --ring: #36e27b;                 /* Focus ring color */
+
+  /* Semantic Colors */
+  --success: #36e27b;              /* Success state */
+  --error: #ef4444;                /* Error state */
+  --warning: #f59e0b;              /* Warning state */
+  --info: #3b82f6;                 /* Info state */
 }
 
-.dark {
-  --background-light: #f6f8f7;
-  --background-dark: #112117;
-  --surface-dark: #1c3326;
-  --surface-highlight: #254632;
+/* Light Mode Theme (optional) */
+.light {
+  --background: #f6f8f7;
+  --background-light: #ffffff;
+  --background-dark: #f6f8f7;
+  --background-darker: #e8eeeb;
+  --background-darkest: #d9e3dd;
+
+  --foreground: #112117;
+  --text-primary: #112117;
+  --text-secondary: #5a7a67;
+  --text-muted: #5a7a67;
+  --text-on-primary: #ffffff;
+
+  --surface-dark: #e8eeeb;
+  --surface-highlight: #d9e3dd;
+
+  --card: #ffffff;
+  --card-dark: #ffffff;
+
   --primary: #36e27b;
-  --card-dark: #1c3024;
-  --border-dark: #366348;
+  --primary-foreground: #ffffff;
+  --primary-hover: #2ec56a;
+
+  --secondary: #f1f5f9;
+  --secondary-foreground: #112117;
+
+  --muted: #f1f5f9;
+  --muted-foreground: #64748b;
+
+  --accent: #f1f5f9;
+  --accent-foreground: #112117;
+
+  --border: #e2e8f0;
+  --border-dark: #cbd5e1;
+  --border-light: #f1f5f9;
+
+  --input: #e2e8f0;
+  --ring: #36e27b;
+}
+
+/* Dark Mode Theme (re-affirm defaults if needed) */
+.dark {
+  /* Dark mode uses :root defaults */
+  --background: #112117;
+  --foreground: #ffffff;
 }
 
 /* Custom scrollbar */

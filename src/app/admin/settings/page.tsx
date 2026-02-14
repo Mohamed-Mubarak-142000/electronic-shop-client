@@ -128,22 +128,22 @@ export default function SettingsPage() {
                         <div className="space-y-2">
                             <Label className="text-gray-400">{t('settings.language')}</Label>
                             <select
-                                className="w-full p-3 rounded-xl border border-white/10 bg-background-dark/80 text-white outline-none focus:border-primary/50 transition-all font-medium"
+                                className="w-full p-3 rounded-xl border border-white/10 bg-surface-dark/80 text-white outline-none focus:border-primary/50 transition-all font-medium"
                                 {...form.register('language')}
                             >
-                                <option value="en" className="bg-background-dark">English</option>
-                                <option value="ar" className="bg-background-dark">Arabic</option>
+                                <option value="en" className="bg-surface-dark">English</option>
+                                <option value="ar" className="bg-surface-dark">Arabic</option>
                             </select>
                         </div>
                         <div className="space-y-2">
                             <Label className="text-gray-400">{t('settings.currency')}</Label>
                             <select
-                                className="w-full p-3 rounded-xl border border-white/10 bg-background-dark/80 text-white outline-none focus:border-primary/50 transition-all font-medium"
+                                className="w-full p-3 rounded-xl border border-white/10 bg-surface-dark/80 text-white outline-none focus:border-primary/50 transition-all font-medium"
                                 {...form.register('currency')}
                             >
-                                <option value="USD" className="bg-background-dark">USD ($)</option>
-                                <option value="EGP" className="bg-background-dark">EGP (جنيه)</option>
-                                <option value="AED" className="bg-background-dark">AED (د.إ)</option>
+                                <option value="USD" className="bg-surface-dark">USD ($)</option>
+                                <option value="EGP" className="bg-surface-dark">EGP (جنيه)</option>
+                                <option value="AED" className="bg-surface-dark">AED (د.إ)</option>
                             </select>
                         </div>
                     </div>
@@ -159,7 +159,7 @@ export default function SettingsPage() {
                         <div className="space-y-2">
                             <Label className="text-gray-400">{t('settings.vodafone')}</Label>
                             <Input
-                                className="bg-background-dark/80 border-white/10 text-white p-3 rounded-xl"
+                                className="bg-surface-dark/80 border-white/10 text-white p-3 rounded-xl"
                                 {...form.register('vodafoneCashNumber')}
                             />
                             {form.formState.errors.vodafoneCashNumber && (
@@ -170,7 +170,7 @@ export default function SettingsPage() {
                         <div className="space-y-2">
                             <Label className="text-gray-400">{t('settings.instapay')}</Label>
                             <Input
-                                className="bg-background-dark/80 border-white/10 text-white p-3 rounded-xl"
+                                className="bg-surface-dark/80 border-white/10 text-white p-3 rounded-xl"
                                 {...form.register('instapayNumber')}
                             />
                             {form.formState.errors.instapayNumber && (
@@ -181,7 +181,7 @@ export default function SettingsPage() {
                         <div className="space-y-2">
                             <Label className="text-gray-400">{t('settings.credit_card')}</Label>
                             <Input
-                                className="bg-background-dark/80 border-white/10 text-white p-3 rounded-xl"
+                                className="bg-surface-dark/80 border-white/10 text-white p-3 rounded-xl"
                                 {...form.register('creditCardNumber')}
                             />
                             {form.formState.errors.creditCardNumber && (
@@ -193,7 +193,7 @@ export default function SettingsPage() {
                             <Label className="text-gray-400">{t('settings.taxi')}</Label>
                             <Input
                                 type="number"
-                                className="bg-background-dark/80 border-white/10 text-white p-3 rounded-xl"
+                                className="bg-surface-dark/80 border-white/10 text-white p-3 rounded-xl"
                                 {...form.register('taxiAmount')}
                             />
                         </div>
@@ -212,7 +212,7 @@ export default function SettingsPage() {
                             <Label className="text-gray-400">{t('settings.email_host')}</Label>
                             <Input
                                 placeholder="smtp.gmail.com"
-                                className="bg-background-dark/80 border-white/10 text-white p-3 rounded-xl"
+                                className="bg-surface-dark/80 border-white/10 text-white p-3 rounded-xl"
                                 {...form.register('emailHost')}
                             />
                         </div>
@@ -221,7 +221,7 @@ export default function SettingsPage() {
                             <Input
                                 type="number"
                                 placeholder="587"
-                                className="bg-background-dark/80 border-white/10 text-white p-3 rounded-xl"
+                                className="bg-surface-dark/80 border-white/10 text-white p-3 rounded-xl"
                                 {...form.register('emailPort')}
                             />
                         </div>
@@ -229,7 +229,7 @@ export default function SettingsPage() {
                             <Label className="text-gray-400">{t('settings.email_user')}</Label>
                             <Input
                                 placeholder="user@gmail.com"
-                                className="bg-background-dark/80 border-white/10 text-white p-3 rounded-xl"
+                                className="bg-surface-dark/80 border-white/10 text-white p-3 rounded-xl"
                                 {...form.register('emailUser')}
                             />
                         </div>
@@ -238,7 +238,7 @@ export default function SettingsPage() {
                             <Input
                                 type="password"
                                 placeholder="••••••••••••"
-                                className="bg-background-dark/80 border-white/10 text-white p-3 rounded-xl"
+                                className="bg-surface-dark/80 border-white/10 text-white p-3 rounded-xl"
                                 {...form.register('emailPassword')}
                             />
                         </div>
@@ -246,7 +246,7 @@ export default function SettingsPage() {
                             <Label className="text-gray-400">{t('settings.from_name')}</Label>
                             <Input
                                 placeholder="Electro Shop"
-                                className="bg-background-dark/80 border-white/10 text-white p-3 rounded-xl"
+                                className="bg-surface-dark/80 border-white/10 text-white p-3 rounded-xl"
                                 {...form.register('fromName')}
                             />
                         </div>
@@ -254,7 +254,7 @@ export default function SettingsPage() {
                             <Label className="text-gray-400">{t('settings.from_email')}</Label>
                             <Input
                                 placeholder="noreply@electroshop.com"
-                                className="bg-background-dark/80 border-white/10 text-white p-3 rounded-xl"
+                                className="bg-surface-dark/80 border-white/10 text-white p-3 rounded-xl"
                                 {...form.register('fromEmail')}
                             />
                         </div>
@@ -270,10 +270,10 @@ export default function SettingsPage() {
 
                     <div className="space-y-6">
                         {/* Hero Section Type Selection */}
-                        <div className="p-4 rounded-xl bg-background-dark/40 border border-white/5">
+                        <div className="p-4 rounded-xl bg-surface-dark/40 border border-white/5">
                             <Label className="text-gray-400 mb-2 block">{t('settings.hero_type')}</Label>
                             <div className="flex gap-4">
-                                <label className="flex-1 flex items-center justify-between p-3 rounded-xl bg-background-dark/60 border border-white/10 cursor-pointer hover:border-primary/50 transition-all">
+                                <label className="flex-1 flex items-center justify-between p-3 rounded-xl bg-surface-dark/60 border border-white/10 cursor-pointer hover:border-primary/50 transition-all">
                                     <div className="flex items-center gap-3">
                                         <span className="material-symbols-outlined text-primary-400">image</span>
                                         <span className="text-white text-sm font-medium">{t('settings.hero_type_static')}</span>
@@ -285,7 +285,7 @@ export default function SettingsPage() {
                                         className="w-4 h-4 accent-primary"
                                     />
                                 </label>
-                                <label className="flex-1 flex items-center justify-between p-3 rounded-xl bg-background-dark/60 border border-white/10 cursor-pointer hover:border-primary/50 transition-all">
+                                <label className="flex-1 flex items-center justify-between p-3 rounded-xl bg-surface-dark/60 border border-white/10 cursor-pointer hover:border-primary/50 transition-all">
                                     <div className="flex items-center gap-3">
                                         <span className="material-symbols-outlined text-primary-400">view_carousel</span>
                                         <span className="text-white text-sm font-medium">{t('settings.hero_type_slider')}</span>
@@ -302,25 +302,25 @@ export default function SettingsPage() {
 
                         {/* Static Hero Content */}
                         {form.watch('heroType') === 'hero' && (
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-4 rounded-xl bg-background-dark/30 border border-white/5 animate-in fade-in slide-in-from-top-2 duration-300">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-4 rounded-xl bg-surface-dark/30 border border-white/5 animate-in fade-in slide-in-from-top-2 duration-300">
                                 <div className="space-y-2">
                                     <Label className="text-gray-400">{t('settings.hero_title1')}</Label>
                                     <Input
-                                        className="bg-background-dark/80 border-white/10 text-white p-3 rounded-xl"
+                                        className="bg-surface-dark/80 border-white/10 text-white p-3 rounded-xl"
                                         {...form.register('heroTitle1')}
                                     />
                                 </div>
                                 <div className="space-y-2">
                                     <Label className="text-gray-400">{t('settings.hero_title2')}</Label>
                                     <Input
-                                        className="bg-background-dark/80 border-white/10 text-white p-3 rounded-xl"
+                                        className="bg-surface-dark/80 border-white/10 text-white p-3 rounded-xl"
                                         {...form.register('heroTitle2')}
                                     />
                                 </div>
                                 <div className="space-y-2 md:col-span-2">
                                     <Label className="text-gray-400">{t('settings.hero_subtitle')}</Label>
                                     <textarea
-                                        className="w-full bg-background-dark/80 border border-white/10 text-white p-3 rounded-xl min-h-[100px] outline-none focus:border-primary transition-all font-sans"
+                                        className="w-full bg-surface-dark/80 border border-white/10 text-white p-3 rounded-xl min-h-[100px] outline-none focus:border-primary transition-all font-sans"
                                         {...form.register('heroSubtitle')}
                                     />
                                 </div>
@@ -329,14 +329,14 @@ export default function SettingsPage() {
 
                         {/* Product Slider Content */}
                         {form.watch('heroType') === 'slider' && (
-                            <div className="p-4 rounded-xl bg-background-dark/30 border border-white/5 space-y-4 animate-in fade-in slide-in-from-top-2 duration-300">
+                            <div className="p-4 rounded-xl bg-surface-dark/30 border border-white/5 space-y-4 animate-in fade-in slide-in-from-top-2 duration-300">
                                 <Label className="text-gray-400">{t('settings.hero_slider_products')}</Label>
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     {[1, 2, 3, 4].map((num) => (
                                         <div key={num} className="space-y-2">
                                             <Label className="text-xs text-gray-500 uppercase tracking-wider font-bold">Slide {num}</Label>
                                             <select
-                                                className="w-full bg-background-dark/80 border border-white/10 text-white p-3 rounded-xl outline-none focus:border-primary transition-all appearance-none cursor-pointer"
+                                                className="w-full bg-surface-dark/80 border border-white/10 text-white p-3 rounded-xl outline-none focus:border-primary transition-all appearance-none cursor-pointer"
                                                 {...form.register(`heroSliderProduct${num}` as any)}
                                             >
                                                 <option value="">{t('settings.select_product')}</option>
@@ -353,11 +353,11 @@ export default function SettingsPage() {
                         )}
 
                         {/* B2B Content */}
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-4 rounded-xl bg-background-dark/30 border border-white/5">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-4 rounded-xl bg-surface-dark/30 border border-white/5">
                             <div className="space-y-2">
                                 <Label className="text-gray-400">{t('settings.b2b_badge')}</Label>
                                 <Input
-                                    className="bg-background-dark/80 border-white/10 text-white p-3 rounded-xl"
+                                    className="bg-surface-dark/80 border-white/10 text-white p-3 rounded-xl"
                                     {...form.register('b2bBadge')}
                                 />
                             </div>
@@ -365,39 +365,39 @@ export default function SettingsPage() {
                             <div className="space-y-2">
                                 <Label className="text-gray-400">{t('settings.b2b_title1')}</Label>
                                 <Input
-                                    className="bg-background-dark/80 border-white/10 text-white p-3 rounded-xl"
+                                    className="bg-surface-dark/80 border-white/10 text-white p-3 rounded-xl"
                                     {...form.register('b2bTitle1')}
                                 />
                             </div>
                             <div className="space-y-2">
                                 <Label className="text-gray-400">{t('settings.b2b_title2')}</Label>
                                 <Input
-                                    className="bg-background-dark/80 border-white/10 text-white p-3 rounded-xl"
+                                    className="bg-surface-dark/80 border-white/10 text-white p-3 rounded-xl"
                                     {...form.register('b2bTitle2')}
                                 />
                             </div>
                             <div className="space-y-2 md:col-span-2">
                                 <Label className="text-gray-400">{t('settings.b2b_description')}</Label>
                                 <textarea
-                                    className="w-full bg-background-dark/80 border border-white/10 text-white p-3 rounded-xl min-h-[100px] outline-none focus:border-primary transition-all font-sans"
+                                    className="w-full bg-surface-dark/80 border border-white/10 text-white p-3 rounded-xl min-h-[100px] outline-none focus:border-primary transition-all font-sans"
                                     {...form.register('b2bDescription')}
                                 />
                             </div>
                         </div>
 
                         {/* Testimonials Content */}
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-4 rounded-xl bg-background-dark/30 border border-white/5">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-4 rounded-xl bg-surface-dark/30 border border-white/5">
                             <div className="space-y-2">
                                 <Label className="text-gray-400">{t('settings.testimonials_title')}</Label>
                                 <Input
-                                    className="bg-background-dark/80 border-white/10 text-white p-3 rounded-xl"
+                                    className="bg-surface-dark/80 border-white/10 text-white p-3 rounded-xl"
                                     {...form.register('testimonialsTitle')}
                                 />
                             </div>
                             <div className="space-y-2">
                                 <Label className="text-gray-400">{t('settings.testimonials_subtitle')}</Label>
                                 <Input
-                                    className="bg-background-dark/80 border-white/10 text-white p-3 rounded-xl"
+                                    className="bg-surface-dark/80 border-white/10 text-white p-3 rounded-xl"
                                     {...form.register('testimonialsSubtitle')}
                                 />
                             </div>
@@ -414,7 +414,7 @@ export default function SettingsPage() {
                                 { key: 'showTestimonialsSection', label: t('settings.show_testimonials'), icon: 'format_quote' },
                                 { key: 'showShowroomMapSection', label: t('settings.show_showroom_map'), icon: 'map' },
                             ].map((item) => (
-                                <div key={item.key} className="flex items-center justify-between p-4 rounded-xl bg-background-dark/30 border border-white/10 hover:bg-background-dark/50 transition-colors">
+                                <div key={item.key} className="flex items-center justify-between p-4 rounded-xl bg-surface-dark/30 border border-white/10 hover:bg-surface-dark/50 transition-colors">
                                     <div className="flex items-center gap-3">
                                         <span className="material-symbols-outlined text-gray-500">{item.icon}</span>
                                         <span className="text-gray-300 font-medium">{item.label}</span>
@@ -443,7 +443,7 @@ export default function SettingsPage() {
                             <Label className="text-gray-400">{t('settings.min_images')}</Label>
                             <Input
                                 type="number"
-                                className="bg-background-dark/80 border-white/10 text-white p-3 rounded-xl"
+                                className="bg-surface-dark/80 border-white/10 text-white p-3 rounded-xl"
                                 {...form.register('minProductImages')}
                             />
                         </div>
@@ -451,7 +451,7 @@ export default function SettingsPage() {
                             <Label className="text-gray-400">{t('settings.max_images')}</Label>
                             <Input
                                 type="number"
-                                className="bg-background-dark/80 border-white/10 text-white p-3 rounded-xl"
+                                className="bg-surface-dark/80 border-white/10 text-white p-3 rounded-xl"
                                 {...form.register('maxProductImages')}
                             />
                         </div>

@@ -22,12 +22,12 @@ export default function ShopToolbar({
             <div className="flex items-center gap-4">
                 <button
                     onClick={onFilterOpen}
-                    className="lg:hidden flex items-center gap-2 px-4 h-10 rounded-full bg-surface-highlight text-white text-sm font-bold hover:bg-[#2d543c] transition-colors border border-primary/20"
+                    className="lg:hidden flex items-center gap-2 px-4 h-10 rounded-full bg-surface-highlight text-white text-sm font-bold hover:bg-surface-highlight transition-colors border border-primary/20"
                 >
                     <span className="material-symbols-outlined text-[20px]">filter_list</span>
                     Filters
                 </button>
-                <p className="text-[#95c6a9] text-sm font-medium">
+                <p className="text-secondary text-sm font-medium">
                     <span className="text-white font-bold">{total}</span> results found
                 </p>
             </div>
@@ -48,7 +48,7 @@ export default function ShopToolbar({
                     <button className="size-8 flex items-center justify-center rounded-full bg-primary text-surface-dark">
                         <span className="material-symbols-outlined text-[20px]">grid_view</span>
                     </button>
-                    <button className="size-8 flex items-center justify-center rounded-full text-[#95c6a9] hover:text-white hover:bg-[#2f553d] transition-colors">
+                    <button className="size-8 flex items-center justify-center rounded-full text-secondary hover:text-white hover:bg-surface-highlight transition-colors">
                         <span className="material-symbols-outlined text-[20px]">view_list</span>
                     </button>
                 </div>

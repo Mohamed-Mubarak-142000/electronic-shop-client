@@ -17,30 +17,30 @@ export default function PrivacyPage() {
                     </p>
 
                     <section>
-                        <h2 className="text-xl font-bold text-white mb-4 uppercase tracking-wider">1. Information We Collect</h2>
+                        <h2 className="text-xl font-bold text-white mb-4 uppercase tracking-wider">{t('privacy.section1.title')}</h2>
                         <p className="leading-relaxed">
-                            We collect information that you provide directly to us when you create an account, make a purchase, or communicate with us. This may include your name, email address, phone number, and shipping address.
+                            {t('privacy.section1.desc')}
                         </p>
                     </section>
 
                     <section>
-                        <h2 className="text-xl font-bold text-white mb-4 uppercase tracking-wider">2. How We Use Your Information</h2>
+                        <h2 className="text-xl font-bold text-white mb-4 uppercase tracking-wider">{t('privacy.section2.title')}</h2>
                         <p className="leading-relaxed">
-                            We use the information we collect to process your orders, provide customer support, and improve our services. We may also send you administrative messages and promotional communications.
+                            {t('privacy.section2.desc')}
                         </p>
                     </section>
 
                     <section>
-                        <h2 className="text-xl font-bold text-white mb-4 uppercase tracking-wider">3. Information Sharing</h2>
+                        <h2 className="text-xl font-bold text-white mb-4 uppercase tracking-wider">{t('privacy.section3.title')}</h2>
                         <p className="leading-relaxed">
-                            We do not sell your personal information to third parties. We may share your information with service providers who perform services on our behalf, such as payment processing and shipping.
+                            {t('privacy.section3.desc')}
                         </p>
                     </section>
 
                     <section>
-                        <h2 className="text-xl font-bold text-white mb-4 uppercase tracking-wider">4. Security</h2>
+                        <h2 className="text-xl font-bold text-white mb-4 uppercase tracking-wider">{t('privacy.section4.title')}</h2>
                         <p className="leading-relaxed">
-                            We take reasonable measures to protect your personal information from loss, theft, and unauthorized access. However, no security system is impenetrable, and we cannot guarantee the security of our systems 100%.
+                            {t('privacy.section4.desc')}
                         </p>
                     </section>
                 </div>

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Spline_Sans } from "next/font/google";
 import "./globals.css";
+import LayoutWrapper from "./LayoutWrapper";
 
 // Performance: Add font-display swap for faster text rendering
 const splineSans = Spline_Sans({
@@ -23,7 +24,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en" className="dark" suppressHydrationWarning>
       {/* Performance: Preconnect to Google Fonts for Material Symbols */}
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -38,7 +39,9 @@ export default function RootLayout({
         className={`${splineSans.variable} antialiased`}
         suppressHydrationWarning={true}
       >
-        <Providers>{children}</Providers>
+        <Providers>
+          <LayoutWrapper>{children}</LayoutWrapper>
+        </Providers>
       </body>
     </html>
   );

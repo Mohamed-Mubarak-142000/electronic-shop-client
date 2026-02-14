@@ -7,7 +7,7 @@ export default function ContactPage() {
 
     return (
         <div className="min-h-screen bg-surface-dark font-display border-t border-surface-highlight">
-            <div className="bg-[#0b1610] py-20 border-b border-surface-highlight">
+            <div className="bg-background-darker py-20 border-b border-surface-highlight">
                 <div className="max-w-[1440px] mx-auto px-4 md:px-10 text-center">
                     <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 uppercase tracking-tight">
                         {t('contact.title')}
@@ -57,7 +57,7 @@ export default function ContactPage() {
                                     placeholder="How can we help?"
                                 />
                             </div>
-                            <button className="w-full bg-primary text-[#0b1610] font-black py-4 rounded-xl hover:brightness-110 transition-all uppercase tracking-widest">
+                            <button className="w-full bg-primary text-text-on-primary-darker font-black py-4 rounded-xl hover:brightness-110 transition-all uppercase tracking-widest">
                                 {t('contact.form.send')}
                             </button>
                         </form>
@@ -68,19 +68,19 @@ export default function ContactPage() {
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                             <div className="p-8 bg-surface-light/5 rounded-3xl border border-surface-highlight group hover:border-primary/30 transition-all">
                                 <span className="material-symbols-outlined text-primary text-4xl mb-4 group-hover:scale-110 transition-transform">location_on</span>
-                                <h3 className="text-white font-bold text-lg mb-2 italic">Visit Us</h3>
+                                <h3 className="text-white font-bold text-lg mb-2 italic">{t('contact.visit')}</h3>
                                 <p className="text-gray-400 text-sm leading-relaxed">
-                                    123 Circuit Avenue<br />
-                                    Power Plaza, Level 4<br />
-                                    New York, NY 10001
+                                    {t('contact.address').split(', ').map((line, i) => (
+                                        <span key={i}>{line}<br /></span>
+                                    ))}
                                 </p>
                             </div>
                             <div className="p-8 bg-surface-light/5 rounded-3xl border border-surface-highlight group hover:border-primary/30 transition-all">
                                 <span className="material-symbols-outlined text-primary text-4xl mb-4 group-hover:scale-110 transition-transform">call</span>
-                                <h3 className="text-white font-bold text-lg mb-2 italic">Call Us</h3>
+                                <h3 className="text-white font-bold text-lg mb-2 italic">{t('contact.call')}</h3>
                                 <p className="text-gray-400 text-sm leading-relaxed">
-                                    Support: +1 (800) ELECTRO<br />
-                                    Sales: +1 (888) VOLTAGE
+                                    {t('contact.support_phone')}<br />
+                                    {t('contact.sales_phone')}
                                 </p>
                             </div>
                         </div>
@@ -92,7 +92,7 @@ export default function ContactPage() {
                                 className="w-full h-full object-cover"
                             />
                             <div className="absolute inset-0 bg-primary/10 flex items-center justify-center">
-                                <div className="bg-[#0b1610] p-4 rounded-full border border-primary/50 animate-pulse">
+                                <div className="bg-background-darker p-4 rounded-full border border-primary/50 animate-pulse">
                                     <span className="material-symbols-outlined text-primary">location_on</span>
                                 </div>
                             </div>

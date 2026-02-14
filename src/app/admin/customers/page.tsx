@@ -29,7 +29,7 @@ export default function CustomersPage() {
                 placeholder="Search by name or email..."
             >
                 <select
-                    className="form-select block w-full sm:w-auto pl-3 pr-10 py-2 text-sm border-none rounded-lg bg-background-dark text-white focus:outline-none focus:ring-2 focus:ring-primary cursor-pointer"
+                    className="form-select block w-full sm:w-auto pl-3 pr-10 py-2 text-sm border-none rounded-lg bg-surface-dark text-white focus:outline-none focus:ring-2 focus:ring-primary cursor-pointer"
                     value={role}
                     onChange={(e) => setRole(e.target.value)}
                 >
@@ -41,7 +41,7 @@ export default function CustomersPage() {
                 
                 <div className="h-9 w-px bg-white/10 mx-1 hidden sm:block"></div>
                 <select
-                    className="form-select block w-full sm:w-auto pl-3 pr-10 py-2 text-sm border-none rounded-lg bg-background-dark text-white focus:outline-none focus:ring-2 focus:ring-primary cursor-pointer"
+                    className="form-select block w-full sm:w-auto pl-3 pr-10 py-2 text-sm border-none rounded-lg bg-surface-dark text-white focus:outline-none focus:ring-2 focus:ring-primary cursor-pointer"
                     value={sort}
                     onChange={(e) => setSort(e.target.value)}
                 >

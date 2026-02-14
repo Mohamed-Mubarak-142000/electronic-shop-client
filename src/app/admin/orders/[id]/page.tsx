@@ -81,7 +81,7 @@ export default function OrderDetailsPage() {
     const currentStatus = order.status || (order.isDelivered ? 'Delivered' : (order.isPaid ? 'Processing' : 'Pending'));
 
     return (
-        <div className="h-full flex flex-col overflow-hidden bg-background-dark">
+        <div className="h-full flex flex-col overflow-hidden bg-surface-dark">
             {/* Header */}
             <div className="flex items-center justify-between px-8 py-6 border-b border-white/5 bg-surface-dark">
                 <div className="flex items-center gap-4">
@@ -146,7 +146,7 @@ export default function OrderDetailsPage() {
                             <h3 className="text-white font-bold text-lg mb-4">{t('admin.orders.update_status')}</h3>
                             <div className="flex gap-3">
                                 <select 
-                                    className="flex-1 bg-background-dark border border-white/10 text-white text-sm rounded-lg px-4 py-3 focus:ring-primary focus:border-primary" 
+                                    className="flex-1 bg-input-background border border-white/10 text-white text-sm rounded-lg px-4 py-3 focus:ring-primary focus:border-primary" 
                                     value={selectedStatus || currentStatus}
                                     onChange={(e) => setSelectedStatus(e.target.value)}
                                 >
@@ -173,7 +173,7 @@ export default function OrderDetailsPage() {
                             </h3>
                             <div className="space-y-4">
                                 {order.orderItems?.map((item, index) => (
-                                    <div key={index} className="flex gap-4 p-4 rounded-xl bg-background-dark border border-white/10 hover:border-gray-600 transition-colors">
+                                    <div key={index} className="flex gap-4 p-4 rounded-xl bg-input-background border border-white/10 hover:border-gray-600 transition-colors">
                                         <Image 
                                             className="rounded-lg object-cover bg-white/5" 
                                             src={item.image || '/placeholder.png'} 

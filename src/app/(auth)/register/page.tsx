@@ -104,7 +104,7 @@ export default function RegisterPage() {
                                             className="w-full bg-surface-dark border border-border-dark text-white text-base rounded-full h-14 pl-5 pr-12 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all placeholder:text-gray-500"
                                             placeholder={t('auth.register.namePlaceholder')}
                                         />
-                                        <div className={`absolute ${language === 'ar' ? 'left-5' : 'right-5'} text-[#95c6a9] flex items-center pointer-events-none`}>
+                                        <div className={`absolute ${language === 'ar' ? 'left-5' : 'right-5'} text-text-secondary flex items-center pointer-events-none`}>
                                             <span className="material-symbols-outlined">person</span>
                                         </div>
                                     </div>
@@ -129,7 +129,7 @@ export default function RegisterPage() {
                                             placeholder={t('auth.register.emailPlaceholder')}
                                             type="email"
                                         />
-                                        <div className={`absolute ${language === 'ar' ? 'left-5' : 'right-5'} text-[#95c6a9] flex items-center pointer-events-none`}>
+                                        <div className={`absolute ${language === 'ar' ? 'left-5' : 'right-5'} text-text-secondary flex items-center pointer-events-none`}>
                                             <span className="material-symbols-outlined">mail</span>
                                         </div>
                                     </div>

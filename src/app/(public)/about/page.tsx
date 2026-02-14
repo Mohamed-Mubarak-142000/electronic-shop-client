@@ -7,7 +7,7 @@ export default function AboutPage() {
 
     return (
         <div className="min-h-screen bg-surface-dark font-display border-t border-surface-highlight">
-            <div className="bg-[#0b1610] py-20 border-b border-surface-highlight">
+            <div className="bg-background-darker py-20 border-b border-surface-highlight">
                 <div className="max-w-[1440px] mx-auto px-4 md:px-10 text-center">
                     <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 uppercase tracking-tight">
                         {t('about.title')}

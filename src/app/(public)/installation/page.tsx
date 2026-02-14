@@ -9,24 +9,24 @@ export default function InstallationPage() {
         <div className="min-h-screen bg-surface-dark font-display border-t border-surface-highlight">
             <div className="max-w-[800px] mx-auto px-4 py-16 text-center">
                 <span className="material-symbols-outlined text-primary text-6xl mb-8">engineering</span>
-                <h1 className="text-4xl font-bold text-white mb-6 uppercase tracking-tight">{t('footer.guide')}</h1>
+                <h1 className="text-4xl font-bold text-white mb-6 uppercase tracking-tight">{t('installation.title')}</h1>
                 <p className="text-gray-400 text-lg mb-12">
-                    Professional guides for safe and efficient installation of your electrical components.
+                    {t('installation.subtitle')}
                 </p>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
                     <div className="bg-surface-light/5 p-8 rounded-3xl border border-surface-highlight">
-                        <h3 className="text-white font-bold mb-4 italic">Safety First</h3>
+                        <h3 className="text-white font-bold mb-4 italic">{t('installation.safety.title')}</h3>
                         <p className="text-gray-400 text-sm leading-relaxed mb-6">
-                            Always turn off the main power supply before starting any electrical installation. If you're unsure, consult a licensed electrician.
+                            {t('installation.safety.desc')}
                         </p>
-                        <button className="text-primary text-xs font-bold uppercase tracking-widest border-b border-primary/30 pb-1">Read Manifesto</button>
+                        <button className="text-primary text-xs font-bold uppercase tracking-widest border-b border-primary/30 pb-1">{t('installation.safety.button')}</button>
                     </div>
                     <div className="bg-surface-light/5 p-8 rounded-3xl border border-surface-highlight">
-                        <h3 className="text-white font-bold mb-4 italic">Video Tutorials</h3>
+                        <h3 className="text-white font-bold mb-4 italic">{t('installation.videos.title')}</h3>
                         <p className="text-gray-400 text-sm leading-relaxed mb-6">
-                            Access our library of step-by-step videos for common products like smart switches and lighting fixtures.
+                            {t('installation.videos.desc')}
                         </p>
-                        <button className="text-primary text-xs font-bold uppercase tracking-widest border-b border-primary/30 pb-1">Watch Now</button>
+                        <button className="text-primary text-xs font-bold uppercase tracking-widest border-b border-primary/30 pb-1">{t('installation.videos.button')}</button>
                     </div>
                 </div>
             </div>
