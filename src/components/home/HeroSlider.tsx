@@ -55,7 +55,7 @@ const HeroSlider: React.FC<HeroSliderProps> = ({ products }) => {
     };
 
     return (
-        <div className="relative w-full overflow-hidden bg-surface-dark min-h-[700px] shadow-2xl group flex flex-col md:flex-row">
+        <div className="relative w-full overflow-hidden bg-surface-dark min-h-[700px] shadow-2xl rounded-b-[3rem] group flex flex-col md:flex-row">
             <AnimatePresence initial={false} custom={direction}>
                 <motion.div
                     key={currentIndex}
@@ -71,7 +71,7 @@ const HeroSlider: React.FC<HeroSliderProps> = ({ products }) => {
                     className="absolute inset-0 w-full h-full flex flex-col md:flex-row"
                 >
                     {/* Left Side - Image (50%) */}
-                    <div className="w-full md:w-1/2 relative h-[300px] md:h-auto overflow-hidden">
+                    <div className="w-full md:w-1/2 relative h-[350px] md:h-auto overflow-hidden">
                         <OptimizedImage
                             src={currentProduct.imageUrl || currentProduct.images[0] || 'https://placehold.co/800x800'}
                             alt={language === 'ar' ? currentProduct.nameAr : currentProduct.name}
@@ -80,38 +80,38 @@ const HeroSlider: React.FC<HeroSliderProps> = ({ products }) => {
                             className="object-cover transition-transform duration-1000 group-hover:scale-105"
                             sizes="(max-width: 768px) 100vw, 50vw"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-r from-background-dark/30 to-transparent"></div>
+                        <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-background-dark/60 via-transparent to-transparent"></div>
                     </div>
 
                     {/* Right Side - Info (50%) */}
-                    <div className="w-full md:w-1/2 p-8 md:p-16 flex flex-col justify-center gap-6 relative z-10 bg-surface-dark/95 backdrop-blur-sm">
-                        <div className="flex flex-col gap-2">
-                            <span className="text-primary font-bold text-sm tracking-widest uppercase">
+                    <div className="w-full md:w-1/2 p-6 md:p-20 flex flex-col justify-center gap-4 md:gap-8 relative z-10 bg-surface-dark/95 backdrop-blur-sm">
+                        <div className="flex flex-col gap-2 md:gap-3">
+                            <span className="text-primary font-bold text-sm md:text-base tracking-[0.2em] uppercase">
                                 {language === 'ar'
                                     ? (typeof currentProduct.category === 'object' ? currentProduct.category?.nameAr : 'مميز')
                                     : (typeof currentProduct.category === 'object' ? currentProduct.category?.name : 'FEATURED')}
                             </span>
-                            <h2 className="text-white text-3xl md:text-5xl font-black leading-tight tracking-tight">
+                            <h2 className="text-white text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-black leading-[1.1] tracking-tight">
                                 {language === 'ar' ? currentProduct.nameAr : currentProduct.name}
                             </h2>
                         </div>
 
-                        <p className="text-gray-300 text-lg leading-relaxed line-clamp-3">
+                        <p className="text-gray-300 text-base sm:text-lg md:text-2xl leading-relaxed md:leading-normal line-clamp-3 md:line-clamp-4 max-w-2xl">
                             {language === 'ar' ? currentProduct.descriptionAr : currentProduct.description}
                         </p>
 
-                        <div className="flex items-center gap-6 mt-4">
+                        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 mt-2 md:mt-6">
                             <div className="flex flex-col">
-                                <span className="text-gray-500 text-xs uppercase tracking-wider font-bold">{t('product.price')}</span>
-                                <span className="text-white text-3xl font-black">
-                                    {currentProduct.price} <small className="text-sm font-bold text-gray-400">{t('common.currency_egp')}</small>
+                                <span className="text-gray-500 text-xs md:text-sm uppercase tracking-wider font-bold mb-1">{t('product.price')}</span>
+                                <span className="text-white text-4xl md:text-5xl font-black text-nowrap">
+                                    {currentProduct.price} <small className="text-sm md:text-lg font-bold text-gray-400">{t('common.currency_egp')}</small>
                                 </span>
                             </div>
 
-                            <Link href={`/product/${currentProduct._id}`} className="flex-1 max-w-[220px]">
-                                <button className="w-full h-14 bg-primary text-[#122118] rounded-2xl font-black shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-2 group/btn">
+                            <Link href={`/product/${currentProduct._id}`} className="w-full sm:w-auto sm:flex-1 max-w-[240px]">
+                                <button className="w-full h-12 md:h-16 bg-primary text-[#122118] text-lg font-bold rounded-2xl shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-2 group/btn">
                                     {t('product.viewDetails')}
-                                    <ArrowRight size={20} className="group-hover/btn:translate-x-1 transition-transform" />
+                                    <ArrowRight size={24} className="group-hover/btn:translate-x-1 transition-transform" />
                                 </button>
                             </Link>
                         </div>

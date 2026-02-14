@@ -93,7 +93,13 @@ export default function SettingsPage() {
 
     useEffect(() => {
         if (configs) {
-            form.reset(configs as unknown as SettingsFormValues);
+            form.reset({
+                ...configs,
+                heroSliderProduct1: configs.heroSliderProduct1 || '',
+                heroSliderProduct2: configs.heroSliderProduct2 || '',
+                heroSliderProduct3: configs.heroSliderProduct3 || '',
+                heroSliderProduct4: configs.heroSliderProduct4 || '',
+            } as unknown as SettingsFormValues);
         }
     }, [configs, form]);
 
