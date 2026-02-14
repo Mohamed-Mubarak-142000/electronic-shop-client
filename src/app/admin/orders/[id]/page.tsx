@@ -19,6 +19,7 @@ export default function OrderDetailsPage() {
     const orderId = params.id as string;
     const queryClient = useQueryClient();
     const [selectedStatus, setSelectedStatus] = useState('');
+    const [generatingInvoice, setGeneratingInvoice] = useState(false);
 
     const { data: order, isLoading, error } = useQuery({
         queryKey: ['order', orderId],
@@ -112,32 +113,51 @@ export default function OrderDetailsPage() {
                     </div>
                 </div>
                 <button
-                    onClick={() => {
-                        const invoiceData = {
-                            invoiceNumber: order._id.substring(0, 8),
-                            date: new Date(order.createdAt).toLocaleDateString(),
-                            clientName: order.user?.name || 'Customer',
-                            companyName: 'Electro Shop',
-                            companyEmail: 'info@electroshop.com',
-                            currency: '$',
-                            items: order.orderItems?.map(item => ({
-                                description: item.name,
-                                quantity: item.qty,
-                                price: item.price
-                            })) || [],
-                            notes: `Payment Method: ${order.paymentMethod} | Status: ${currentStatus}`
-                        };
-                        generateInvoicePDF(invoiceData, language as 'ar' | 'en', 'download');
+                    onClick={async () => {
+                        try {
+                            setGeneratingInvoice(true);
+                            const invoiceData = {
+                                invoiceNumber: order._id.substring(0, 8),
+                                date: new Date(order.createdAt).toLocaleDateString(),
+                                clientName: order.user?.name || 'Customer',
+                                companyName: 'Electro Shop',
+                                companyEmail: 'info@electroshop.com',
+                                currency: '$',
+                                items: order.orderItems?.map(item => ({
+                                    description: item.name,
+                                    quantity: item.qty,
+                                    price: item.price
+                                })) || [],
+                                notes: `Payment Method: ${order.paymentMethod} | Status: ${currentStatus}`
+                            };
+                            await generateInvoicePDF(invoiceData, language as 'ar' | 'en', 'download');
+                            toast.success('Invoice generated successfully!');
+                        } catch (error) {
+                            console.error('Failed to generate invoice:', error);
+                            toast.error('Failed to generate invoice. Please try again.');
+                        } finally {
+                            setGeneratingInvoice(false);
+                        }
                     }}
-                    className="flex items-center gap-2 px-4 py-2 bg-primary text-black font-bold rounded-lg hover:bg-green-400 transition-colors"
+                    disabled={generatingInvoice}
+                    className="flex items-center gap-2 px-4 py-2 bg-primary text-black font-bold rounded-lg hover:bg-green-400 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                    <span className="material-symbols-outlined text-xl">download</span>
-                    {t('admin.orders.download_invoice') || 'Download Invoice'}
+                    {generatingInvoice ? (
+                        <>
+                            <div className="w-5 h-5 border-2 border-black border-t-transparent rounded-full animate-spin"></div>
+                            <span>Generating...</span>
+                        </>
+                    ) : (
+                        <>
+                            <span className="material-symbols-outlined text-xl">download</span>
+                            {t('admin.orders.download_invoice') || 'Download Invoice'}
+                        </>
+                    )}
                 </button>
             </div>
 
             {/* Content */}
-            <div className="flex-1 overflow-y-auto py-8">
+            <div className="flex-1 overflow-y-auto py-8 px-4 lg:px-8">
                 <div className=" mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6">
                     {/* Main Content - Left Side */}
                     <div className="lg:col-span-2 space-y-6">

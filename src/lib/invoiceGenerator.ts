@@ -1,10 +1,67 @@
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
+import { loadCustomFonts, fontDefinitions } from './customFonts';
 
-// Initialize pdfMake with default fonts
+// Initialize pdfMake with default fonts first
 if (typeof window !== 'undefined') {
-  (pdfMake as any).vfs = pdfFonts;
+  (pdfMake as any).vfs = (pdfFonts as any).pdfMake?.vfs || pdfFonts;
 }
+
+// Flag to track if fonts are loaded
+let fontsLoaded = false;
+let fontsLoading = false;
+let fontLoadPromise: Promise<void> | null = null;
+
+/**
+ * Initialize custom fonts with Amiri support for Arabic
+ */
+const initializeFonts = async () => {
+  if (typeof window === 'undefined') {
+    return;
+  }
+
+  // If fonts are already loaded, return immediately
+  if (fontsLoaded) {
+    return;
+  }
+
+  // If fonts are currently loading, wait for that promise
+  if (fontsLoading && fontLoadPromise) {
+    return fontLoadPromise;
+  }
+
+  // Start loading fonts
+  fontsLoading = true;
+  fontLoadPromise = (async () => {
+    try {
+      const customFonts = await loadCustomFonts();
+      
+      if (customFonts) {
+        // Combine default fonts with custom fonts
+        const defaultVfs = (pdfFonts as any).pdfMake?.vfs || pdfFonts;
+        (pdfMake as any).vfs = {
+          ...defaultVfs,
+          ...customFonts,
+        };
+
+        // Define font families
+        (pdfMake as any).fonts = fontDefinitions;
+        
+        fontsLoaded = true;
+        console.log('Custom fonts loaded successfully');
+      } else {
+        console.warn('Failed to load custom fonts, using default fonts');
+      }
+    } catch (error) {
+      console.error('Error initializing custom fonts:', error);
+      // Fall back to default fonts
+    } finally {
+      fontsLoading = false;
+    }
+  })();
+
+  return fontLoadPromise;
+};
 
 interface InvoiceItem {
   description: string;
@@ -475,70 +532,79 @@ export const generateInvoicePDF = async (
   language: Language = 'en',
   action: 'download' | 'print' | 'open' = 'download'
 ): Promise<void> => {
-  let content: any[] = [];
+  try {
+    // Initialize custom fonts before generating PDF
+    await initializeFonts();
 
-  if (language === 'both') {
-    // Generate both English and Arabic versions on separate pages
-    content = [
-      ...generateCompanyInfo(data, 'en'),
-      ...generateHeader(data, 'en'),
-      generateInvoiceTable(data, 'en'),
-      ...generatePaymentSummary(data, 'en'),
-      ...generateFooter(data, 'en'),
-      { text: '', pageBreak: 'after' },
-      ...generateCompanyInfo(data, 'ar'),
-      ...generateHeader(data, 'ar'),
-      generateInvoiceTable(data, 'ar'),
-      ...generatePaymentSummary(data, 'ar'),
-      ...generateFooter(data, 'ar'),
-    ];
-  } else {
-    // Generate single language version
-    content = [
-      ...generateCompanyInfo(data, language),
-      ...generateHeader(data, language),
-      generateInvoiceTable(data, language),
-      ...generatePaymentSummary(data, language),
-      ...generateFooter(data, language),
-    ];
-  }
+    let content: any[] = [];
 
-  const docDefinition: any = {
-    pageSize: 'A4',
-    pageMargins: [50, 60, 50, 60],
-    content,
-    styles: {
-      header: {
-        fontSize: 32,
-        bold: true,
-        color: '#0f172a',
+    if (language === 'both') {
+      // Generate both English and Arabic versions on separate pages
+      content = [
+        ...generateCompanyInfo(data, 'en'),
+        ...generateHeader(data, 'en'),
+        generateInvoiceTable(data, 'en'),
+        ...generatePaymentSummary(data, 'en'),
+        ...generateFooter(data, 'en'),
+        { text: '', pageBreak: 'after' },
+        ...generateCompanyInfo(data, 'ar'),
+        ...generateHeader(data, 'ar'),
+        generateInvoiceTable(data, 'ar'),
+        ...generatePaymentSummary(data, 'ar'),
+        ...generateFooter(data, 'ar'),
+      ];
+    } else {
+      // Generate single language version
+      content = [
+        ...generateCompanyInfo(data, language),
+        ...generateHeader(data, language),
+        generateInvoiceTable(data, language),
+        ...generatePaymentSummary(data, language),
+        ...generateFooter(data, language),
+      ];
+    }
+
+    const docDefinition: any = {
+      pageSize: 'A4',
+      pageMargins: [50, 60, 50, 60],
+      content,
+      styles: {
+        header: {
+          fontSize: 32,
+          bold: true,
+          color: '#0f172a',
+        },
+        tableHeader: {
+          bold: true,
+          fontSize: 12,
+          color: 'white',
+          fillColor: '#2563eb',
+        },
       },
-      tableHeader: {
-        bold: true,
-        fontSize: 12,
-        color: 'white',
-        fillColor: '#2563eb',
+      defaultStyle: {
+        font: fontsLoaded ? 'Amiri' : 'Roboto', // Use Amiri if loaded, fallback to Roboto
+        fontSize: 11,
+        lineHeight: 1.4,
+        color: '#1e293b',
       },
-    },
-    defaultStyle: {
-      fontSize: 11,
-      lineHeight: 1.4,
-      color: '#1e293b',
-    },
-  };
+    };
 
-  const pdfDocGenerator = pdfMake.createPdf(docDefinition);
+    const pdfDocGenerator = pdfMake.createPdf(docDefinition);
 
-  switch (action) {
-    case 'download':
-      pdfDocGenerator.download(`invoice-${data.invoiceNumber}.pdf`);
-      break;
-    case 'print':
-      pdfDocGenerator.print();
-      break;
-    case 'open':
-      pdfDocGenerator.open();
-      break;
+    switch (action) {
+      case 'download':
+        pdfDocGenerator.download(`invoice-${data.invoiceNumber}.pdf`);
+        break;
+      case 'print':
+        pdfDocGenerator.print();
+        break;
+      case 'open':
+        pdfDocGenerator.open();
+        break;
+    }
+  } catch (error) {
+    console.error('Error generating invoice PDF:', error);
+    throw new Error('Failed to generate invoice. Please try again.');
   }
 };
 
