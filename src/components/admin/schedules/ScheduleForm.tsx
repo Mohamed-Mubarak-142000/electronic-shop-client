@@ -113,7 +113,7 @@ export default function ScheduleForm() {
                 isOpen={open} 
                 onClose={() => setOpen(false)} 
                 title={t('admin.schedules.create_title')}
-                className="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white flex flex-col overflow-hidden max-h-[85vh] h-auto"
+                className="bg-background-dark text-white flex flex-col overflow-hidden max-h-[85vh] h-auto"
             >
                 <div className="p-6">
                     <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
