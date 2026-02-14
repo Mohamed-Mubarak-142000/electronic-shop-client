@@ -865,8 +865,6 @@ export const ar = {
     order_success: "تم الطلب بنجاح!",
 
     // Admin
-    "admin.dashboard.loading": "Loading dashboard...",
-    "admin.dashboard.loading": "جاري تحميل لوحة التحكم...",
     "admin.dashboard": "لوحة التحكم",
     "admin.dashboard_subtitle": "إليك ما يحدث في متجرك اليوم.",
     "admin.export": "تصدير التقرير",
