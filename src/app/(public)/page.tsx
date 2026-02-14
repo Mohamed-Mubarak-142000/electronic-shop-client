@@ -103,7 +103,7 @@ export default function Home() {
         {configs?.heroType === 'slider' && sliderProducts && sliderProducts.length > 0 ? (
           <HeroSlider products={sliderProducts} />
         ) : (
-          <div className="relative overflow-hidden min-h-[520px] flex items-center group">
+          <div className="relative overflow-hidden min-h-[700px] flex items-center group">
             {/* Performance: Hero image with high priority for LCP optimization */}
             <OptimizedImage
               src="https://lh3.googleusercontent.com/aida-public/AB6AXuDADEqPsOmKi_XwT6AvVte0yDQygWKaXYZ2lasqr0jLA8v6hyUh66MVDYjpNFU2O-7zz3D72k5QkRVp3KOi-6o1nxnw_63XoyWOIxgMPa1GdeCpvrrQzN7J5iGAyJProQ_TjdnkXTwzicepoLZ2xTTorXP5pj0ehkLNZeXjB9HXxcVg1WHQdS6TNptMGr6odEC-0zSdIqIksRC6UuEzr0jlBxHubRXGtva1bUJHDOmUihlEXDu6s5dQPFSYlNCgAZK6wZq4Tfchwog"

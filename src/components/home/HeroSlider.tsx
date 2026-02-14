@@ -55,7 +55,7 @@ const HeroSlider: React.FC<HeroSliderProps> = ({ products }) => {
     };
 
     return (
-        <div className="relative w-full overflow-hidden bg-surface-dark min-h-[520px] shadow-2xl group flex flex-col md:flex-row">
+        <div className="relative w-full overflow-hidden bg-surface-dark min-h-[700px] shadow-2xl group flex flex-col md:flex-row">
             <AnimatePresence initial={false} custom={direction}>
                 <motion.div
                     key={currentIndex}
